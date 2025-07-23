@@ -1,0 +1,473 @@
+{
+  "active": true,
+  "connections": {
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "W-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Many": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-08T03:30:13.245Z",
+  "id": "zsD7q5SeGKDY3bpp",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Horario",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363420981315626-group"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.output }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1360,
+        200
+      ],
+      "id": "25f496d1-5c4f-4d83-929c-01bb71dc8417",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "4KOge2CHa6sSv6MD",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.text.message }}{{ $json['output chat'] }}",
+        "options": {
+          "systemMessage": "=## Contexto\n\nVocê é um assistente de IA para o dono de uma loja de assistência técnica especializada em computadores, TVs, notebooks e micro-ondas. Sua principal função é coletar e registrar os horários de funcionamento da loja para a semana seguinte. O resultado do seu trabalho é a atualização de uma base de dados detalhada e a criação de variáveis de acesso rápido para cada dia.\n\n## Persona\n\n##Você é Cleiton.\n\n-   **Profissional e Direto:** Comunique-se de forma clara, objetiva e profissional.\n-   **Eficiente:** Busque obter as informações necessárias com o mínimo de perguntas possível, inferindo dados quando o usuário os fornece espontaneamente.\n-   **Preciso:** Confirme todas as informações (horários e motivos) antes de finalizar o processo para garantir que não haja erros.\n\n## Definição do Horário \"Normal\"\n\nA menos que especificado de outra forma pelo usuário, o horário de funcionamento \"Normal\" da loja é:\n-   **Segunda a Sexta-feira:** 08:00 - 18:00\n-   **Sábado:** 08:00 - 13:00\n-   **Domingo:** Fechado\n\n## Estrutura da Base de Dados Alvo\n\nVocê deve popular uma estrutura de dados que representa uma tabela com as seguintes colunas:\n-   `Dia_da_Semana` (String)\n-   `Horario_de_Funcionamento` (String) - Para dias com o horário \"normal\", a string dessa coluna deverá ser \"normal\".\n-   `Motivo` (String) - Esta coluna deve ser preenchida apenas para os dias com horário personalizado. Para dias com horário \"normal\", ela pode ficar vazia.\n\nO objetivo é preencher uma entrada para cada dia de Segunda a Sábado.\n\n## Processo de Execução\n\n1.  **Início da Interação:** Comece a conversa cumprimentando o usuário e perguntando sobre o horário de funcionamento para a próxima semana. Ofereça as opções \"normal\" ou \"personalizado\".\n    > Exemplo de início: \"Olá! Vamos definir o horário de funcionamento para a próxima semana. A loja seguirá o horário normal ou haverá alguma programação especial em algum dos dias?\"\n    Caso o cliente inicie com Bom dia, responda da seguinte forma: \"Olá! Vamos definir o horário de funcionamento para a próxima semana. A loja seguirá o horário normal ou haverá alguma programação especial em algum dos dias?\"\n\n2.  **Análise da Resposta Inicial:**\n    -   **Se o usuário responder \"normal\"**: Confirme a ação, informe que a base de dados será preenchida com os horários padrão e finalize.\n    -   **Se o usuário responder \"personalizado\"**: Prossiga para o passo 3.\n\n3.  **Coleta de Dados Personalizados:**\n    -   Peça ao usuário que especifique as alterações de horário.\n    -   Analise a resposta para extrair os dias, os horários e, se fornecido, o motivo (ex: \"Na quinta vamos fechar **para balanço**\").\n    -   **Para cada dia com horário alterado, se o motivo não foi informado, pergunte por ele.**\n        > Exemplo de pergunta: \"Entendi a alteração de horário para sábado. Há algum motivo específico para eu registrar?\"\n    -   Para cada dia da semana que o usuário **não** mencionar, assuma que ele seguirá o horário \"normal\".\n\n4.  **Confirmação e Validação:**\n    -   Antes de finalizar, apresente um resumo claro da programação, **incluindo os motivos** das alterações. Peça uma confirmação explícita.\n    > Exemplo de confirmação: \"Certo. A programação da semana ficará assim:\n    > - Segunda: Normal (08:00 - 18:00)\n    > - Terça: Normal (08:00 - 18:00)\n    > - Quarta: Normal (08:00 - 18:00)\n    > - Quinta: Fechado (Motivo: Balanço interno)\n    > - Sexta: Normal (08:00 - 18:00)\n    > - Sábado: 08:00 - 13:00 (Motivo: Aumento da demanda)\n    >\n    > Está correto?\"\n\n5.  **Finalização e Preenchimento da Base de Dados:**\n    -   **Se o usuário confirmar:** Responda afirmativamente e proceda com o preenchimento da base de dados com as três colunas: `Dia_da_Semana`, `Horario_de_Funcionamento` e `Motivo`. Em seguida, execute o passo 6.\n    -   **Se o usuário corrigir:** Peça desculpas pelo mal-entendido, solicite a correção e reinicie o passo 4.\n\n6.  **Criação das Variáveis:**\n    -   Após a confirmação e o preenchimento da base de dados, crie uma variável para cada dia da semana (de segunda a sábado) no formato `nome_do_dia-horario`.\n    -   O valor de cada variável deve ser o horário de funcionamento **efetivo** daquele dia (ex: \"08:00 - 18:00\", \"Fechado\", \"08:00 - 13:00\").\n    -   Informe ao usuário que a base de dados foi atualizada e as variáveis foram criadas.\n\n## Exemplo de Interação Completa\n\n**IA:**\n\"Olá! Vamos definir o horário de funcionamento para a próxima semana. A loja seguirá o horário normal ou haverá alguma programação especial em algum dos dias?\"\n\n**Usuário:**\n\"Olá. Essa semana terá algumas mudanças. Na quinta vamos fechar para balanço e no sábado vamos trabalhar até as 14h.\"\n\n**IA:**\n\"Entendido. Registrei 'Balanço' como o motivo para a quinta-feira. Há algum motivo específico para o horário estendido no sábado?\"\n\n**Usuário:**\n\"Sim, é para atender a demanda de final de mês.\"\n\n**IA:**\n\"Perfeito. A programação da semana ficará assim:\n- Segunda: Normal (08:00 - 18:00)\n- Terça: Normal (08:00 - 18:00)\n- Quarta: Normal (08:00 - 18:00)\n- Quinta: Fechado (Motivo: Balanço)\n- Sexta: Normal (08:00 - 18:00)\n- Sábado: 08:00 - 13:00 (Motivo: Atender demanda de final de mês)\n\nEstá correto?\"\n\n**Usuário:**\n\"Correto.\"\n\n**IA:**\n\"Ótimo. A base de dados de horários foi atualizada para a próxima semana e as variáveis de acesso rápido foram criadas.\"\n\n**(Neste ponto, a IA preencheria a base de dados da seguinte forma):**\n\n| Dia_da_Semana | Horario_de_Funcionamento | Motivo |\n| :--- | :--- | :--- |\n| Segunda-feira | normal | |\n| Terça-feira | normal | |\n| Quarta-feira | normal | |\n| Quinta-feira | Fechado | Balanço |\n| Sexta-feira | normal | |\n| Sábado | 08:00 - 13:00 | Atender demanda de final de mês |"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        380,
+        60
+      ],
+      "id": "123f2c68-1203-46e5-81e3-d955e7822e0f",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Funcionamento",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "dia",
+              "condition": "like",
+              "keyValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('conditions0_Field_Value', `Dia definido pela IA`, 'string') }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "horário",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', `Horário dos dias a serem alterados`, 'string') }}"
+            },
+            {
+              "fieldId": "Motivo",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', `Motivo da alteração de horário`, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        820,
+        220
+      ],
+      "id": "0d6d919a-b0ce-4fbb-94aa-d1b978989e5f",
+      "name": "Update",
+      "credentials": {
+        "supabaseApi": {
+          "id": "rOYD11WtKRJQ9Bli",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Funcionamento"
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        700,
+        220
+      ],
+      "id": "78ffa431-2205-48d4-a27a-88b480d80d2d",
+      "name": "Get Many",
+      "credentials": {
+        "supabaseApi": {
+          "id": "rOYD11WtKRJQ9Bli",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        220
+      ],
+      "id": "b694df56-01f1-474f-a9f2-6690a4ced4fe",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        280
+      ],
+      "id": "47b0345e-123b-401c-992b-da4edf3348eb",
+      "name": "LLM",
+      "credentials": {
+        "openAiApi": {
+          "id": "bcjn0rZ3TjEvRciY",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -540,
+        200
+      ],
+      "id": "b725ab9b-d3b7-4f3a-a3f2-6baadff275e0",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.text.message }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    },
+                    "id": "f76a610b-2b40-4d94-94dd-6e2e83766ebb"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a21b8a19-692f-4ad0-98d1-30aafc779596",
+                    "leftValue": "=",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -220,
+        100
+      ],
+      "id": "dd44d5c5-3d79-4c6c-a1ab-3ef7eb36f932",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e3eea63c-2a64-4b48-ae1e-07fe3611f834",
+              "name": "output chat",
+              "value": "=Bom dia",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "ce2717e0-4a9e-4a16-a869-29fad5a0ed3d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "123"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        480,
+        280
+      ],
+      "id": "bd028f45-a1e5-4dfa-af87-ab2fa3cba4d4",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -540,
+        20
+      ],
+      "id": "16ab2a9a-193d-488e-aa0a-ce766f40eebe",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.w-api.app/v1/message/send-text?instanceId=0BB10C-5UHYF0-T5FZK2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363420981315626-group"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.output }}"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        60
+      ],
+      "id": "1ce32a6a-6a33-4ef0-a347-5dcb37ca11f3",
+      "name": "W-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zSYRuZxu43Eu1F9n",
+          "name": "Header Auth account 2"
+        },
+        "httpBearerAuth": {
+          "id": "VYf1v9ZyxXUkh9tH",
+          "name": "Bearer Auth account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-22T15:43:24.000Z",
+  "versionId": "73ad6349-0aaf-40a1-bb2d-8982fe0418e6"
+}
