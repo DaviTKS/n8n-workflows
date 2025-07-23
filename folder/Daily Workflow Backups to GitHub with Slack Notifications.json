@@ -623,7 +623,6 @@
             "caseSensitive": true,
             "typeValidation": "strict"
           },
-          "combinator": "and",
           "conditions": [
             {
               "id": "628f6e8f-d817-4c53-89ec-b1acbb3dfef8",
@@ -645,7 +644,8 @@
               "leftValue": "={{ $json.error }}",
               "rightValue": ""
             }
-          ]
+          ],
+          "combinator": "and"
         },
         "options": {}
       },
@@ -667,6 +667,12 @@
               "name": "download_url",
               "value": "={{ $json.download_url }}",
               "type": "string"
+            },
+            {
+              "id": "cc4327b8-d66c-47b4-8eba-208c1917f2a8",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
             }
           ]
         },
@@ -687,6 +693,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-24T01:19:16.000Z",
-  "versionId": "bf40599f-6b3f-4b7d-8dfa-5ff8f9f7ec24"
+  "updatedAt": "2025-07-24T01:19:59.000Z",
+  "versionId": "9b2cbfc3-5dfb-4fcb-9f96-91f157bde43a"
 }
