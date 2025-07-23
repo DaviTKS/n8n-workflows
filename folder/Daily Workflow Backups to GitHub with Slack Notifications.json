@@ -74,7 +74,7 @@
       "main": [
         [
           {
-            "node": "Is File too large?",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -164,11 +164,11 @@
         ]
       ]
     },
-    "Is File too large?": {
+    "If": {
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Get File",
             "type": "main",
             "index": 0
           }
@@ -186,7 +186,7 @@
       "main": [
         [
           {
-            "node": "Get File",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -221,7 +221,7 @@
       "name": "Return",
       "type": "n8n-nodes-base.set",
       "position": [
-        3940,
+        4160,
         600
       ],
       "typeVersion": 3.3
@@ -232,7 +232,7 @@
       "name": "Merge Items",
       "type": "n8n-nodes-base.merge",
       "position": [
-        3060,
+        3280,
         400
       ],
       "typeVersion": 2
@@ -245,7 +245,7 @@
       "name": "isDiffOrNew",
       "type": "n8n-nodes-base.code",
       "position": [
-        3280,
+        3500,
         400
       ],
       "typeVersion": 1
@@ -271,7 +271,7 @@
       "name": "Create new file",
       "type": "n8n-nodes-base.github",
       "position": [
-        3720,
+        3940,
         400
       ],
       "webhookId": "b440dead-fad0-4546-8ca7-201aa2ea2936",
@@ -305,7 +305,7 @@
       "name": "Edit existing file",
       "type": "n8n-nodes-base.github",
       "position": [
-        3720,
+        3940,
         200
       ],
       "webhookId": "1dfc4103-7c23-4814-a0b5-dd4f5a96d36b",
@@ -466,13 +466,14 @@
       "name": "Switch",
       "type": "n8n-nodes-base.switch",
       "position": [
-        3500,
+        3720,
         400
       ],
       "typeVersion": 3.2
     },
     {
       "parameters": {
+        "returnAll": false,
         "filters": {},
         "requestOptions": {}
       },
@@ -588,6 +589,33 @@
     },
     {
       "parameters": {
+        "url": "={{ $json.download_url }}",
+        "options": {}
+      },
+      "id": "78dd800a-e7df-4834-9e38-e0d8c5aa0c34",
+      "name": "Get File",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        3240,
+        80
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1adaa738-6b43-403d-8ddd-6b1556c8e344",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        1960,
+        400
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
         "conditions": {
           "options": {
             "version": 2,
@@ -622,47 +650,20 @@
         "options": {}
       },
       "id": "97b1e70b-a584-46af-87de-2be74333c285",
-      "name": "Is File too large?",
+      "name": "If",
       "type": "n8n-nodes-base.if",
       "position": [
-        2400,
+        2740,
         200
       ],
       "typeVersion": 2.2
     },
     {
       "parameters": {
-        "url": "={{ $json.download_url }}",
-        "options": {}
-      },
-      "id": "78dd800a-e7df-4834-9e38-e0d8c5aa0c34",
-      "name": "Get File",
-      "type": "n8n-nodes-base.httpRequest",
-      "position": [
-        3020,
-        80
-      ],
-      "typeVersion": 4.2
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "1adaa738-6b43-403d-8ddd-6b1556c8e344",
-      "name": "Loop Over Items",
-      "type": "n8n-nodes-base.splitInBatches",
-      "position": [
-        1960,
-        400
-      ],
-      "typeVersion": 3
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
-              "id": "e4001a73-a958-4b13-ae05-2162bca09a3b",
+              "id": "0ea93756-4c67-49e2-9d6e-50cd193280ff",
               "name": "download_url",
               "value": "={{ $json.download_url }}",
               "type": "string"
@@ -674,10 +675,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2820,
-        80
+        2440,
+        200
       ],
-      "id": "9805ef11-6e1f-4f8c-9c35-245d37643097",
+      "id": "1f5d9374-551c-4f52-9abe-4e34cac43fd6",
       "name": "Edit Fields"
     }
   ],
@@ -686,6 +687,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-24T01:03:03.000Z",
-  "versionId": "5fc5eabf-ebab-48ee-8079-8f9674aba3b6"
+  "updatedAt": "2025-07-24T01:10:30.000Z",
+  "versionId": "7f9ee10a-52e6-477c-9b3e-4f4ba61748f3"
 }
