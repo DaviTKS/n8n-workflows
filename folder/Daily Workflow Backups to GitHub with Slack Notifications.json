@@ -326,7 +326,6 @@
             "caseSensitive": true,
             "typeValidation": "strict"
           },
-          "combinator": "and",
           "conditions": [
             {
               "id": "bb64ed2c-5193-4b8f-a9e8-55cb83ea244c",
@@ -337,7 +336,8 @@
               "leftValue": "={{ $json.updatedAt }}",
               "rightValue": "={{ $now.minus(1, 'days') }}"
             }
-          ]
+          ],
+          "combinator": "and"
         },
         "options": {}
       },
@@ -687,6 +687,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-24T01:10:30.000Z",
-  "versionId": "7f9ee10a-52e6-477c-9b3e-4f4ba61748f3"
+  "updatedAt": "2025-07-24T01:19:16.000Z",
+  "versionId": "bf40599f-6b3f-4b7d-8dfa-5ff8f9f7ec24"
 }
