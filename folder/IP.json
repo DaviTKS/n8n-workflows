@@ -1,0 +1,92 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "W-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-23T00:58:43.772Z",
+  "id": "I9quXP9ZHrqwEmBC",
+  "isArchived": false,
+  "meta": null,
+  "name": "IP",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ip",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "eef5f418-0869-4f28-bd1d-3721394bec98",
+      "name": "Webhook",
+      "webhookId": "dba71045-10a5-49ba-9a5b-7299158d4a92"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.w-api.app/v1/message/send-text?instanceId=0BB10C-5UHYF0-T5FZK2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5512982113000"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.body.content }}"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        0
+      ],
+      "id": "3a8dba81-4cf6-4b55-a3d8-3a483205a38f",
+      "name": "W-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zSYRuZxu43Eu1F9n",
+          "name": "Header Auth account 2"
+        },
+        "httpBearerAuth": {
+          "id": "VYf1v9ZyxXUkh9tH",
+          "name": "Bearer Auth account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-23T17:03:13.000Z",
+  "versionId": "068ec3d5-8c21-4a04-976b-bb8a0813f295"
+}
