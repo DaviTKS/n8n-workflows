@@ -61,13 +61,7 @@
     },
     "Get File": {
       "main": [
-        [
-          {
-            "node": "Merge Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Get a file": {
@@ -168,7 +162,7 @@
       "main": [
         [
           {
-            "node": "Get File",
+            "node": "Merge Items",
             "type": "main",
             "index": 0
           }
@@ -554,7 +548,6 @@
           "value": "={{ $('Config').item.json.repo_name }}"
         },
         "filePath": "={{ $('Config').item.json.sub_path }}/{{$('Loop Over Items').item.json.name}}.json",
-        "asBinaryProperty": false,
         "additionalParameters": {}
       },
       "id": "a58a2c07-0162-433f-93e5-9fceabec5edc",
@@ -628,8 +621,8 @@
       "name": "Get File",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        2620,
-        200
+        2660,
+        80
       ],
       "typeVersion": 4.2
     },
@@ -652,6 +645,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-24T00:51:16.000Z",
-  "versionId": "c34c4333-78d4-481f-aa9c-7c9098e6a3e2"
+  "updatedAt": "2025-07-24T00:53:28.000Z",
+  "versionId": "6da4c3a9-86dc-4627-8337-91add8f1a576"
 }
