@@ -334,7 +334,7 @@
                 "operation": "afterOrEquals"
               },
               "leftValue": "={{ $json.updatedAt }}",
-              "rightValue": "={{ $now.minus(1, 'days') }}"
+              "rightValue": "={{ $now.minus(100, 'days') }}"
             }
           ],
           "combinator": "and"
@@ -673,6 +673,12 @@
               "name": "content",
               "value": "={{ $json.content }}",
               "type": "string"
+            },
+            {
+              "id": "adc7ff4e-b8c0-430f-becd-115fc4d9835a",
+              "name": "error",
+              "value": "={{ $json.error }}",
+              "type": "string"
             }
           ]
         },
@@ -693,6 +699,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-24T01:19:59.000Z",
-  "versionId": "9b2cbfc3-5dfb-4fcb-9f96-91f157bde43a"
+  "updatedAt": "2025-07-24T01:20:32.000Z",
+  "versionId": "3b2bd579-de13-41e0-b0f6-5405e4c4fe06"
 }
