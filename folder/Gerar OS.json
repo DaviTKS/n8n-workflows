@@ -1,0 +1,2271 @@
+{
+  "active": true,
+  "connections": {
+    "Encontrar Cliente": {
+      "main": [
+        [
+          {
+            "node": "Fone Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Cliente": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Criar Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Get Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OS Central": {
+      "main": [
+        [
+          {
+            "node": "Nome",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telefone1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Aparelho",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Modelo",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Defeito",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Observações",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "OS",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add OS Cliente": {
+      "main": [
+        [
+          {
+            "node": "Salve historico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Cliente": {
+      "main": [
+        [
+          {
+            "node": "Add OS Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Data3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixar OS": {
+      "main": [
+        [
+          {
+            "node": "Print",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fone Check": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Baixar OS1": {
+      "main": [
+        [
+          {
+            "node": "Print2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Upload file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telefone": {
+      "main": [
+        [
+          {
+            "node": "dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Print": {
+      "main": [
+        []
+      ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Mes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mes1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create folder1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create folder1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "(Z-API) Enviar Mensagem": {
+      "main": [
+        []
+      ]
+    },
+    "Print2": {
+      "main": [
+        [
+          {
+            "node": "W-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nome": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telefone1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aparelho": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modelo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Defeito": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Observações": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OS": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "HTTP Request5": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "HTTP Request7": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 7
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Baixar OS1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Data2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data3": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Sauda",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Sauda2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauda2": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "dados": {
+      "main": [
+        [
+          {
+            "node": "Encontrar Cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salve historico": {
+      "main": [
+        [
+          {
+            "node": "OS Central",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-08T01:56:06.849Z",
+  "id": "hSMtCUdLS8LSFoDL",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Gerar OS",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "form",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -940,
+        -220
+      ],
+      "id": "2ae88102-2ef1-44d1-8e46-e9c696912f57",
+      "name": "Webhook",
+      "webhookId": "2118250c-bd78-4e1f-9923-fc67c94aacb4"
+    },
+    {
+      "parameters": {},
+      "id": "c2738fa7-208e-40a5-b320-4ddf8ff21659",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2060,
+        -200
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Usuarios",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "numero",
+              "keyValue": "=55{{ $('Telefone').item.json.telefone }}"
+            }
+          ]
+        }
+      },
+      "id": "9fc0e3c4-c108-4e9c-96de-378398f91b2c",
+      "name": "Encontrar Cliente",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -220
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "rOYD11WtKRJQ9Bli",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "Usuarios",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "usuarios",
+              "fieldValue": "={{ $('dados').item.json.body.nome }} {{ $('dados').item.json.body.sobrenome }}"
+            },
+            {
+              "fieldId": "numero",
+              "fieldValue": "=55{{ $('Telefone').item.json.telefone }}"
+            }
+          ]
+        }
+      },
+      "id": "617ebba2-a8c5-4336-8298-216c70fea559",
+      "name": "Criar Cliente",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        -100
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "rOYD11WtKRJQ9Bli",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Encontrar Cliente').item.json.numero }}",
+                    "rightValue": "null",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "6d29bce9-997b-40cc-9e10-7658e6b6957c"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a9fedeb7-8e71-4610-a47b-269a4daabd6f",
+                    "leftValue": "={{ $('Encontrar Cliente').item.json.numero }}",
+                    "rightValue": "null",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1780,
+        -200
+      ],
+      "id": "ff983b53-dda5-4ed1-bd52-20782731ce71",
+      "name": "Switch1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "38697d05-ffa0-4257-9902-bc877b389288",
+              "name": "Telefone",
+              "value": "={{ $('Fone Check').item.json.Fone }}{{ $json.numero }}",
+              "type": "string"
+            },
+            {
+              "id": "190873d7-4a7e-4833-bf05-ec0c648112c5",
+              "name": "Nome",
+              "value": "={{ $('Encontrar Cliente').item.json.usuarios }}{{ $json.usuarios }}",
+              "type": "string"
+            },
+            {
+              "id": "0e9030da-4496-4274-977b-1d3cc7015dd5",
+              "name": "Aparelho",
+              "value": "={{ $('dados').item.json.body.aparelho }}",
+              "type": "string"
+            },
+            {
+              "id": "37a5c497-6993-4445-b544-aedb5f9a1f37",
+              "name": "Marca",
+              "value": "={{ $('dados').item.json.body.marca }}",
+              "type": "string"
+            },
+            {
+              "id": "9fadfbf2-d331-4f93-8039-d5214618b6d5",
+              "name": "Modelo",
+              "value": "={{ $('dados').item.json.body.modelo }}",
+              "type": "string"
+            },
+            {
+              "id": "fe5d0eeb-b333-425d-9c14-717ef7bd3099",
+              "name": "Defeito",
+              "value": "={{ $('dados').item.json.body.defeito }}",
+              "type": "string"
+            },
+            {
+              "id": "50b9a5e2-e31e-4a55-8925-bc7b3e994966",
+              "name": "Observações",
+              "value": "={{ $('dados').item.json.body.observacoes }}",
+              "type": "string"
+            },
+            {
+              "id": "c4368c9c-fd21-44db-a090-807b69bd49ff",
+              "name": "mes_extenso",
+              "value": "={{ $('Mes1').item.json.mes_extenso }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2460,
+        0
+      ],
+      "id": "fdfa2128-b73b-4102-b6bb-10755362892c",
+      "name": "Edit Fields",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1TWDQ4ZDbjPiQI8eyQ6hJz_FPPiCyUMUKs9MrTX0lHKI",
+          "mode": "list",
+          "cachedResultName": "OS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TWDQ4ZDbjPiQI8eyQ6hJz_FPPiCyUMUKs9MrTX0lHKI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TWDQ4ZDbjPiQI8eyQ6hJz_FPPiCyUMUKs9MrTX0lHKI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "OS": "={{ $('Telefone').item.json.OS }}",
+            "Telefone": "={{ $('Webhook').item.json.body.telefone }}",
+            "Nome": "={{ $('Get Cliente').item.json.usuarios }}",
+            "Aparelho": "={{ $('Edit Fields').item.json.Aparelho }}",
+            "Marca": "={{ $('Edit Fields').item.json.Marca }}",
+            "Modelo": "={{ $('Edit Fields').item.json.Modelo }}",
+            "Defeito": "={{ $('Edit Fields').item.json.Defeito }}",
+            "Observações": "={{ $('Edit Fields').item.json['Observações'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "OS",
+              "displayName": "OS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Aparelho",
+              "displayName": "Aparelho",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Marca",
+              "displayName": "Marca",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Modelo",
+              "displayName": "Modelo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Defeito",
+              "displayName": "Defeito",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Serviços",
+              "displayName": "Serviços",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Observações",
+              "displayName": "Observações",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        3280,
+        0
+      ],
+      "id": "69660555-c78e-4380-81d6-1ddad6d9251b",
+      "name": "OS Central",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Usuarios",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "numero",
+              "condition": "eq",
+              "keyValue": "={{ $json.numero }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "OS",
+              "fieldValue": "={{ $json.OS }},{{ $('Telefone').item.json.OS }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        0
+      ],
+      "id": "917c6478-a4ae-4d7f-a61f-1760fd27044d",
+      "name": "Add OS Cliente",
+      "executeOnce": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "rOYD11WtKRJQ9Bli",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Usuarios",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "numero",
+              "keyValue": "={{ $json.Telefone }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        0
+      ],
+      "id": "d3cc9f66-e86a-4415-8942-59f29dbf86fe",
+      "name": "Get Cliente",
+      "executeOnce": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "rOYD11WtKRJQ9Bli",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Add OS Cliente').item.json.numero }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá {{ $(\"Edit Fields\").item.json.Nome.split(' ')[0] }}! \nSua OS é a número {{ $('OS Central').item.json.OS }}.\n\nReferente ao seu *{{ $('OS Central').item.json.Aparelho }} {{ $('OS Central').item.json.Marca }}*\n\n_Modelo {{ $('OS Central').item.json.Modelo }}._\n\nDefeito relatado: *{{ $('OS Central').item.json.Defeito }}*\n\nObservações do técnico: {{ $('OS Central').item.json['Observações'] }}\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "31a57d3d-b03f-40af-aa1e-cd697d6e0a7a",
+      "name": "(Z-API) Enviar Mensagem",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6580,
+        20
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "4KOge2CHa6sSv6MD",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        320,
+        -1200
+      ],
+      "id": "ace4f022-fba6-4b08-aa14-b8ae294905f6",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://drive.google.com/uc?export=download&id=12_LN0CrIPJQLaIxvrHS6l6i-t7viuvX7",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        940,
+        -740
+      ],
+      "id": "843d1dfb-d579-4cea-8a1e-7df60b5ae7e4",
+      "name": "Baixar OS"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.226:5678/print",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1180,
+        -740
+      ],
+      "id": "8c198e3c-d1b3-4276-80a8-7a742fd701cf",
+      "name": "Print",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zSYRuZxu43Eu1F9n",
+          "name": "Header Auth account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://docs.google.com/spreadsheets/d/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/export?format=pdf&size=A4&top_margin=0.10&bottom_margin=0.10&left_margin=0.10&right_margin=0.10",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5620,
+        -60
+      ],
+      "id": "cae9eb1f-23e8-4eda-971b-2c69cf1ff018",
+      "name": "Baixar OS1",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "22483a97-3ecb-4abd-8d2a-bb0b5f76a50a",
+              "name": "Fone",
+              "value": "={{ $json.numero }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        140,
+        -220
+      ],
+      "id": "2e25245d-efb4-49b7-a6f7-e2212e3b2009",
+      "name": "Fone Check"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.226:5678/print",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5820,
+        -160
+      ],
+      "id": "3cdefa8f-26f6-4e9a-ad7b-0ca9c7a95e02",
+      "name": "Print2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zSYRuZxu43Eu1F9n",
+          "name": "Header Auth account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ae877252-63b2-4d3e-af11-8005b06c1edd",
+              "name": "telefone",
+              "value": "={{ $json.body.telefone.replace(/\\D/g, '').replace(/^55/, '').trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "9f528e6b-2cd6-424f-b24e-7136bd33e448",
+              "name": "OS",
+              "value": "={{ $json.body.os_number }}",
+              "type": "number"
+            },
+            {
+              "id": "9ee4adc2-72b9-4b3c-a836-d31d6913e4a0",
+              "name": "=",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -780,
+        -220
+      ],
+      "id": "6f3c84c5-0eae-40e1-8bc8-65d2929a0ebe",
+      "name": "Telefone"
+    },
+    {
+      "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -220
+      ],
+      "id": "0c500997-b1f0-4adb-86d1-153247350890",
+      "name": "Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        -220
+      ],
+      "id": "cf0b51be-a484-426c-a12b-097fc733b7c2",
+      "name": "Mes1"
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "=data",
+        "name": "={{ $('Telefone').item.json.OS }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Search files and folders').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        5820,
+        40
+      ],
+      "id": "cfa81695-e639-447c-bf06-135bb8cef3e0",
+      "name": "Upload file1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "tTIaOYYEyCaxSnfY",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Mes1').item.json.mes_extenso }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1v41-f6H9oVW9sKlR6sVHtPdaNyUSWKkd",
+          "mode": "list",
+          "cachedResultName": "Entrada",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1v41-f6H9oVW9sKlR6sVHtPdaNyUSWKkd"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1420,
+        -100
+      ],
+      "id": "7e2a9d53-d3c1-49ce-9af5-2e32ae50f560",
+      "name": "Create folder1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "tTIaOYYEyCaxSnfY",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75f9532a-cbe0-4f5f-9333-6f0e3037b075",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $('Mes1').item.json.mes_extenso }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        -200
+      ],
+      "id": "3bc3745e-49b8-40ae-a217-37f645a42873",
+      "name": "If1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1v41-f6H9oVW9sKlR6sVHtPdaNyUSWKkd",
+            "mode": "list",
+            "cachedResultName": "Entrada",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1v41-f6H9oVW9sKlR6sVHtPdaNyUSWKkd"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1100,
+        -220
+      ],
+      "id": "e1b0e9da-da0d-48e6-b625-ce1d24c84770",
+      "name": "Search files and folders1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "tTIaOYYEyCaxSnfY",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1v41-f6H9oVW9sKlR6sVHtPdaNyUSWKkd",
+            "mode": "list",
+            "cachedResultName": "Entrada",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1v41-f6H9oVW9sKlR6sVHtPdaNyUSWKkd"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1560,
+        -200
+      ],
+      "id": "822c61ab-ae7e-4ada-b8ac-d85501f3a1a2",
+      "name": "Search files and folders",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "tTIaOYYEyCaxSnfY",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/values/OS%202025!{{ $json.local }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "valueInputOption",
+              "value": "RAW"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"OS 2025!{{ $json.local }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\"{{ $json.text }}\"]\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4560,
+        -600
+      ],
+      "id": "481423ac-e0f0-4044-a2d8-f61cd273e53f",
+      "name": "HTTP Request",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f7c0dcd-b35c-46c3-91d8-dceb0eef69b8",
+              "name": "text",
+              "value": "={{ $json.Nome }}",
+              "type": "string"
+            },
+            {
+              "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
+              "name": "local",
+              "value": "C5",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4260,
+        -600
+      ],
+      "id": "fae28652-a5f9-4312-925b-bfeb99311a5c",
+      "name": "Nome"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/values/OS%202025!{{ $json.local }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "valueInputOption",
+              "value": "RAW"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"OS 2025!{{ $json.local }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\"{{ $json.text }}\"]\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4560,
+        -440
+      ],
+      "id": "83ccf686-5b6e-4449-a15c-c7f682d4b6a6",
+      "name": "HTTP Request1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/values/OS%202025!{{ $json.local }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "valueInputOption",
+              "value": "RAW"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"OS 2025!{{ $json.local }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\"{{ $json.text }}\"]\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4560,
+        -280
+      ],
+      "id": "604a78f8-be7e-4ecd-89c8-631009f99e48",
+      "name": "HTTP Request2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/values/OS%202025!{{ $json.local }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "valueInputOption",
+              "value": "RAW"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"OS 2025!{{ $json.local }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\"{{ $json.text }}\"]\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4560,
+        -120
+      ],
+      "id": "2ac7a7ad-3009-4afc-8ad8-68e27bc71312",
+      "name": "HTTP Request3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f7c0dcd-b35c-46c3-91d8-dceb0eef69b8",
+              "name": "text",
+              "value": "={{ $json.Telefone }}",
+              "type": "string"
+            },
+            {
+              "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
+              "name": "local",
+              "value": "G5",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4260,
+        -440
+      ],
+      "id": "8f3ee91b-271e-41de-9773-72c2e1235fc3",
+      "name": "Telefone1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f7c0dcd-b35c-46c3-91d8-dceb0eef69b8",
+              "name": "text",
+              "value": "={{ $json.Aparelho }} - {{ $json.Marca }}",
+              "type": "string"
+            },
+            {
+              "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
+              "name": "local",
+              "value": "C6",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4260,
+        -280
+      ],
+      "id": "d08cc210-8c24-42d7-8163-294f87e30962",
+      "name": "Aparelho"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f7c0dcd-b35c-46c3-91d8-dceb0eef69b8",
+              "name": "text",
+              "value": "={{ $json.Modelo }}",
+              "type": "string"
+            },
+            {
+              "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
+              "name": "local",
+              "value": "I7",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4260,
+        -120
+      ],
+      "id": "7a78febe-a2d2-413a-85f1-9f2dc44bdfec",
+      "name": "Modelo"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/values/OS%202025!{{ $json.local }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "valueInputOption",
+              "value": "RAW"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"OS 2025!{{ $json.local }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\"{{ $json.text }}\"]\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4560,
+        60
+      ],
+      "id": "9f9d9df8-d1a8-4222-b145-74516c20ff18",
+      "name": "HTTP Request4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/values/OS%202025!{{ $json.local }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "valueInputOption",
+              "value": "RAW"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"OS 2025!{{ $json.local }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\"{{ $json.text }}\"]\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4560,
+        220
+      ],
+      "id": "661352ca-1d8c-41f9-a6ff-8a846ce3c129",
+      "name": "HTTP Request5",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f7c0dcd-b35c-46c3-91d8-dceb0eef69b8",
+              "name": "text",
+              "value": "={{ $json.Defeito }}",
+              "type": "string"
+            },
+            {
+              "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
+              "name": "local",
+              "value": "E8",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4260,
+        60
+      ],
+      "id": "cc34026b-a26e-47b5-a9d4-d1feab4f2dca",
+      "name": "Defeito"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f7c0dcd-b35c-46c3-91d8-dceb0eef69b8",
+              "name": "text",
+              "value": "={{ $json['Observações'] }}",
+              "type": "string"
+            },
+            {
+              "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
+              "name": "local",
+              "value": "B9",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4260,
+        220
+      ],
+      "id": "7a510246-19bb-4bdb-b6c7-3f46def0b810",
+      "name": "Observações"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/values/OS%202025!{{ $json.local }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "valueInputOption",
+              "value": "RAW"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"OS 2025!{{ $json.local }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\"{{ $json.text }}\"]\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4560,
+        380
+      ],
+      "id": "f070f3ac-ec51-422c-af38-f84d62353f56",
+      "name": "HTTP Request6",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://sheets.googleapis.com/v4/spreadsheets/1mBqrGbJJg7Kf9qH9kDmdJpsvklfbh7BX1aS0-1IdnHw/values/OS%202025!{{ $json.local }}?valueInputOption=RAW",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleSheetsOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "valueInputOption",
+              "value": "RAW"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"range\": \"OS 2025!{{ $json.local }}\",\n  \"majorDimension\": \"ROWS\",\n  \"values\": [\n    [\"{{ $json.text }}\"]\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4560,
+        540
+      ],
+      "id": "33620245-31d5-4477-8eb7-4f8d17b14f94",
+      "name": "HTTP Request7",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O1aMIL0d4FL7Nnro",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f7c0dcd-b35c-46c3-91d8-dceb0eef69b8",
+              "name": "text",
+              "value": "={{ $json.dataFormatada }}",
+              "type": "string"
+            },
+            {
+              "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
+              "name": "local",
+              "value": "H13",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4400,
+        380
+      ],
+      "id": "c6c3d69d-9a7e-4f98-8049-304c4692a582",
+      "name": "Data2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0f7c0dcd-b35c-46c3-91d8-dceb0eef69b8",
+              "name": "text",
+              "value": "={{ $json.OS }}",
+              "type": "string"
+            },
+            {
+              "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
+              "name": "local",
+              "value": "J2",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4260,
+        540
+      ],
+      "id": "c7bdaa7e-dec1-4951-83b2-ab6e7ac78d70",
+      "name": "OS"
+    },
+    {
+      "parameters": {
+        "numberInputs": 8
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        5300,
+        -160
+      ],
+      "id": "9cc42c55-bad3-44c3-9019-056c722b5756",
+      "name": "Merge1",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4260,
+        380
+      ],
+      "id": "04f9402f-bbb9-4e8e-b0e0-5cbd119aa6a4",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.w-api.app/v1/message/send-text?instanceId=0BB10C-5UHYF0-T5FZK2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "5512982113000"
+            },
+            {
+              "name": "message",
+              "value": "Testando W-API"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1600,
+        -1100
+      ],
+      "id": "5c5625d6-d4b3-47e1-9d11-7dde1b0d5d91",
+      "name": "W-API",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zSYRuZxu43Eu1F9n",
+          "name": "Header Auth account 2"
+        },
+        "httpBearerAuth": {
+          "id": "VYf1v9ZyxXUkh9tH",
+          "name": "Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.w-api.app/v1/message/send-text?instanceId=0BB10C-5UHYF0-T5FZK2",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Add OS Cliente').item.json.numero }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $('Sauda2').item.json.saudacao }} {{ $(\"Edit Fields\").item.json.Nome.split(' ')[0] }}! \nSua OS é a número {{ $('Telefone').item.json.OS }}\n\nReferente ao seu *{{ $('OS Central').item.json.Aparelho }} {{ $('OS Central').item.json.Marca }}*\n\n_Modelo {{ $('OS Central').item.json.Modelo }}._\n\nDefeito relatado: *{{ $('OS Central').item.json.Defeito }}*\n\nObservações do técnico: {{ $('OS Central').item.json['Observações'] }}\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6040,
+        -160
+      ],
+      "id": "77641054-1840-4eae-81df-beb58ae11054",
+      "name": "W-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "zSYRuZxu43Eu1F9n",
+          "name": "Header Auth account 2"
+        },
+        "httpBearerAuth": {
+          "id": "VYf1v9ZyxXUkh9tH",
+          "name": "Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const dataString = item.json.dataFormatada; // Ex: \"15/07/2025 15:01\"\n\n  // Converte string BR para ISO (yyyy-mm-ddTHH:MM:00)\n  const partes = dataString.split(/[\\s/:]/); // [dia, mês, ano, hora, minuto]\n  const dataISO = `${partes[2]}-${partes[1]}-${partes[0]}T${partes[3]}:${partes[4]}:00`;\n\n  const data = new Date(dataISO);\n  const horaAtual = data.getHours();\n\n  let saudacao;\n\n  if (horaAtual >= 6 && horaAtual < 12) {\n    saudacao = \"Bom dia\";\n  } else if (horaAtual >= 12 && horaAtual < 18) {\n    saudacao = \"Boa tarde\";\n  } else {\n    saudacao = \"Boa noite\";\n  }\n\n  item.json.saudacao = saudacao;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1260,
+        -1220
+      ],
+      "id": "30e890cf-9825-4885-895d-f9e4f19777dc",
+      "name": "Sauda"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Define o fuso horário de São Paulo\nconst agora = new Date().toLocaleString(\"pt-BR\", { timeZone: \"America/Sao_Paulo\" });\nconst horaAtual = new Date(agora).getHours();\n\nlet saudacao;\n\nif (horaAtual >= 6 && horaAtual < 12) {\n  saudacao = \"Bom dia\";\n} else if (horaAtual >= 12 && horaAtual < 18) {\n  saudacao = \"Boa tarde\";\n} else {\n  saudacao = \"Boa noite\";\n}\n\nreturn [{ json: { saudacao } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        200,
+        -1460
+      ],
+      "id": "92a5924d-e91a-44ef-87af-8df132865c19",
+      "name": "Sauda1"
+    },
+    {
+      "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        580,
+        -1220
+      ],
+      "id": "5a7815a0-1fe5-4da7-b40d-7f4a5f3574a2",
+      "name": "Data3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data3').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        -1220
+      ],
+      "id": "41f7f28c-7b9f-4a01-8c75-bb1de3dc15e8",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        -1480
+      ],
+      "id": "911adc9b-95e7-433f-89f7-599a35caa2ee",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        -220
+      ],
+      "id": "2180b18d-6c80-4105-bc85-ca8e263723b8",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const dataString = item.json.dataFormatada; // Ex: \"15/07/2025 15:01\"\n\n  // Converte string BR para ISO (yyyy-mm-ddTHH:MM:00)\n  const partes = dataString.split(/[\\s/:]/); // [dia, mês, ano, hora, minuto]\n  const dataISO = `${partes[2]}-${partes[1]}-${partes[0]}T${partes[3]}:${partes[4]}:00`;\n\n  const data = new Date(dataISO);\n  const horaAtual = data.getHours();\n\n  let saudacao;\n\n  if (horaAtual >= 6 && horaAtual < 12) {\n    saudacao = \"Bom dia\";\n  } else if (horaAtual >= 12 && horaAtual < 18) {\n    saudacao = \"Boa tarde\";\n  } else {\n    saudacao = \"Boa noite\";\n  }\n\n  item.json.saudacao = saudacao;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        -220
+      ],
+      "id": "2e6dc937-d345-4b68-98b8-0a2060010b25",
+      "name": "Sauda2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "51c41fbb-ec99-42f3-8f11-942dff4f5087",
+              "name": "body.nome",
+              "value": "={{ $('Webhook').item.json.body.nome.toLowerCase().replace(/(^|\\s)\\w/g, l => l.toUpperCase()) }}",
+              "type": "string"
+            },
+            {
+              "id": "917b6d7b-48c6-4908-8fcf-934d178456f3",
+              "name": "body.sobrenome",
+              "value": "={{ $('Webhook').item.json.body.sobrenome.toLowerCase().replace(/(^|\\s)\\w/g, l => l.toUpperCase()) }}",
+              "type": "string"
+            },
+            {
+              "id": "7676b0b5-f9f2-41a0-975a-e2cd997fa678",
+              "name": "body.aparelho",
+              "value": "={{ $('Webhook').item.json.body.aparelho.toLowerCase().replace(/(^|\\s)\\w/g, l => l.toUpperCase()) }}",
+              "type": "string"
+            },
+            {
+              "id": "e7fe4169-3602-4866-bb93-67de0cd4bd58",
+              "name": "body.marca",
+              "value": "={{ $('Webhook').item.json.body.marca}}",
+              "type": "string"
+            },
+            {
+              "id": "0481a439-fb2b-42a9-8029-ccafaf7d4280",
+              "name": "body.modelo",
+              "value": "={{ $('Webhook').item.json.body.modelo}}",
+              "type": "string"
+            },
+            {
+              "id": "c2245e6a-a828-4803-bc07-29a808a63ec1",
+              "name": "body.defeito",
+              "value": "={{ $('Webhook').item.json.body.defeito.toLowerCase().replace(/(^|\\s)\\w/g, l => l.toUpperCase()) }}",
+              "type": "string"
+            },
+            {
+              "id": "35d2e7ec-7fc4-4b44-8e01-55833b04f343",
+              "name": "body.observacoes",
+              "value": "={{ $('Webhook').item.json.body.observacoes.toLowerCase().replace(/(^|\\s)\\w/g, l => l.toUpperCase()) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -560,
+        -220
+      ],
+      "id": "d83f9463-73cc-4334-94cc-dcab4ce71c20",
+      "name": "dados"
+    },
+    {
+      "parameters": {
+        "tableId": "ordens_servico",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "os_number",
+              "fieldValue": "={{ $('Telefone').item.json.OS }}"
+            },
+            {
+              "fieldId": "nome",
+              "fieldValue": "={{ $('dados').item.json.body.nome }}"
+            },
+            {
+              "fieldId": "sobrenome",
+              "fieldValue": "={{ $('dados').item.json.body.sobrenome }}"
+            },
+            {
+              "fieldId": "aparelho",
+              "fieldValue": "={{ $('dados').item.json.body.aparelho }}"
+            },
+            {
+              "fieldId": "marca",
+              "fieldValue": "={{ $('dados').item.json.body.marca }}"
+            },
+            {
+              "fieldId": "modelo",
+              "fieldValue": "={{ $('dados').item.json.body.modelo }}"
+            },
+            {
+              "fieldId": "defeito",
+              "fieldValue": "={{ $('dados').item.json.body.defeito }}"
+            },
+            {
+              "fieldId": "observacoes",
+              "fieldValue": "={{ $('dados').item.json.body.observacoes }}"
+            },
+            {
+              "fieldId": "telefone",
+              "fieldValue": "={{ $('Webhook').item.json.body.telefone }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        3100,
+        0
+      ],
+      "id": "388cddf4-7c81-4f88-b65a-5e4656929ab8",
+      "name": "Salve historico",
+      "executeOnce": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "rOYD11WtKRJQ9Bli",
+          "name": "Supabase account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "kadosh.ngrok.dev",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+            "content-length": "200",
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "content-type": "application/json",
+            "origin": "null",
+            "priority": "u=1, i",
+            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "2804:868:d041:b78b:9dff:c160:73e1:22f8",
+            "x-forwarded-host": "kadosh.ngrok.dev",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "telefone": "(12) 98186-9502",
+            "nome": "Guilherme",
+            "sobrenome": "Costa",
+            "aparelho": "Notebook",
+            "marca": "DELL",
+            "modelo": "Inspiron",
+            "defeito": "Upgrade Completo - Mem, SSD, Backup",
+            "observacoes": "Com fonte"
+          },
+          "webhookUrl": "https://kadosh.ngrok.dev/webhook/form",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-23T23:20:40.000Z",
+  "versionId": "d3d0b479-3ef8-4e32-807e-4d96f23cf50a"
+}
