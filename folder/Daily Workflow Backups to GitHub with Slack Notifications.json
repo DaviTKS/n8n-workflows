@@ -74,7 +74,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -176,17 +176,6 @@
         [
           {
             "node": "Merge Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -635,14 +624,14 @@
               "rightValue": ""
             },
             {
-              "id": "63fc68bb-63d0-40a8-92e4-2a62b5a71812",
+              "id": "9d850ae0-38d5-4ae4-bed7-bc40586b9056",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "",
               "operator": {
                 "type": "string",
                 "operation": "notExists",
                 "singleValue": true
-              },
-              "leftValue": "={{ $json.error }}",
-              "rightValue": ""
+              }
             }
           ],
           "combinator": "and"
@@ -657,41 +646,6 @@
         200
       ],
       "typeVersion": 2.2
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "0ea93756-4c67-49e2-9d6e-50cd193280ff",
-              "name": "download_url",
-              "value": "={{ $json.download_url }}",
-              "type": "string"
-            },
-            {
-              "id": "cc4327b8-d66c-47b4-8eba-208c1917f2a8",
-              "name": "content",
-              "value": "={{ $json.content }}",
-              "type": "string"
-            },
-            {
-              "id": "adc7ff4e-b8c0-430f-becd-115fc4d9835a",
-              "name": "error",
-              "value": "={{ $json.error }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2440,
-        200
-      ],
-      "id": "1f5d9374-551c-4f52-9abe-4e34cac43fd6",
-      "name": "Edit Fields"
     }
   ],
   "pinData": {},
@@ -699,6 +653,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-24T01:20:32.000Z",
-  "versionId": "3b2bd579-de13-41e0-b0f6-5405e4c4fe06"
+  "updatedAt": "2025-07-24T01:24:42.000Z",
+  "versionId": "200f1483-3b8f-4e42-9e2c-db88c5bd614f"
 }
