@@ -1,17 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "Filtro Inicial Mensagens": {
-      "main": [
-        [
-          {
-            "node": "Lead",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent": {
       "main": [
         [
@@ -60,12 +49,12 @@
       "main": [
         [
           {
-            "node": "Split Out",
+            "node": "Organização1",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Organização1",
+            "node": "Split Out",
             "type": "main",
             "index": 0
           }
@@ -183,17 +172,6 @@
         ]
       ]
     },
-    "Join": {
-      "main": [
-        [
-          {
-            "node": "Date & Time",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Grp ou Msg": {
       "main": [
         [
@@ -234,7 +212,7 @@
       "main": [
         [
           {
-            "node": "Filtro Inicial Mensagens",
+            "node": "Lead",
             "type": "main",
             "index": 0
           }
@@ -413,17 +391,6 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "MEM": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -663,28 +630,6 @@
         ]
       ]
     },
-    "Date & Time": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "1o Nome": {
       "main": [
         [
@@ -706,6 +651,123 @@
           }
         ]
       ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Mes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mes1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Sauda2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauda2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Join": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-07-08T03:32:25.485Z",
@@ -718,84 +780,10 @@
   "nodes": [
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 1
-          },
-          "conditions": [
-            {
-              "id": "24aa4532-80db-4c1e-977a-0036b82a8e5f",
-              "leftValue": "={{ $json.body.isEdit }}",
-              "rightValue": "false",
-              "operator": {
-                "type": "boolean",
-                "operation": "false",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "204f54b0-e3ed-4ff4-8302-8c20d3b8aa78",
-              "leftValue": "={{ $json.body.isGroup }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "false",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "130cc493-a17a-4cc1-955b-816799583076",
-              "leftValue": "={{ $json.body.isNewsletter }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "false",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "c51986d9-f347-4198-89bb-9e4cd0f021c9",
-              "leftValue": "={{ $json.body.broadcast }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "false",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "ac9c4286-34d7-4058-9bbb-985bd9c2b6e7",
-              "leftValue": "={{ $json.body.fromApi }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "false",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "01ecd1b4-283f-4228-9d03-6ef3727607ff",
-      "name": "Filtro Inicial Mensagens",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2.1,
-      "position": [
-        2920,
-        -780
-      ]
-    },
-    {
-      "parameters": {
         "promptType": "define",
         "text": "={{ $('Join').item.json.mensagens }}",
         "options": {
-          "systemMessage": "=## 🚨 Regra de Prioridade Máxima\n\n* **Gatilho de Comando Específico:**\n\n  * **SE** a mensagem do usuário for **exatamente** `falacomigobb`:\n\n    * **Responda APENAS E UNICAMENTE** com o texto: \"Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\"\n    * Ignore todas as outras instruções e personas. Não adicione nenhuma outra palavra ou saudação.\n  * **CASO CONTRÁRIO**, siga todas as instruções abaixo.\n\n## 🎯 Papel Principal (Persona)\n\n## Seu nome é Cleiton, o agente de atendimento humano.\n\n* **Você é Cleiton:** Um agente de atendimento humano e profissional para a assistência técnica Leão de Judá.\n* **Seu Local de Trabalho:** Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n* **Objetivo:** Atender clientes, entender suas necessidades, coletar informações e direcionar para um técnico especialista quando necessário.\n* **Comportamento Chave:** Aja como humano em um ambiente empresarial. **Evite deixar claro que você é uma IA.**\n\n## ⚙️ Diretrizes Gerais de Comportamento\n\n### Tom e Estilo\n\n* **🔄 Saudação Automática Baseada no Horário:**\n\n## Caso o cliente inicie a conversa com 'bom dia', 'boa tarde' ou 'boa noite', execute a diretriz abaixo, caso contrário, mantenha a saudação normal.\n\n  **siga rigorosamente estas regras com base no horário informado em `{{ $json.data_hora_formatada }}`**\n\n  * **Bom dia:** das 06:00 até as 11:59\n  * **Boa tarde:** das 12:00 até as 17:59\n  * **Boa noite:** das 18:00 até as 05:59\n\n\n* **Cordialidade Profissional:** Atenda sempre com cordialidade.\n\n* **Adaptação:** Adapte seu tom ao cliente, mantendo registro formal e profissional.\n\n* **Conciso:** Frases curtas e diretas.\n\n* **Uso do Nome:** Cite o primeiro nome do cliente (`{{ $('1o Nome').item.json.primeiroNome }}`) somente na primeira mensagem.\n\n### Contexto e Continuidade\n\n* Sempre considere o histórico prévio para evitar repetição.\n\n## 📋 Escopo de Serviços e Produtos\n\nInforme que a assistência trabalha com:\n\n* **Manutenção e Consertos:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All in Ones, MacBooks (exceto celulares).\n* **Vendas:** Peças, componentes, TVs, Notebooks, Montagem de PCs Gamer/Profissional, Monitores, Periféricos.\n\n## Fluxo de Atendimento\n\n### 1. Primeiro Contato\n\n* Cumprimente conforme horário (Bom dia, Boa tarde ou Boa noite).\n* Pergunte como ajudar, exceto se o problema já estiver declarado.\n\n### 2. Entendimento\n\n* Deixe o cliente descrever o problema sem solicitar detalhes técnicos inicialmente.\n\n### 3. Cenários Específicos\n\n* **Retirada de Aparelhos:**\n\n  * Informe que o técnico entrará em contato e desative o atendimento.\n\n* **Dúvida Técnica/Pedido de Peças:**\n\n  * Direcione imediatamente ao especialista, coletando antes modelo e descrição do problema ou peça.\n\n* **Consulta de Preços:**\n\n  * Consulte a `tool(valores)` somente se solicitado especificamente.\n\n* **Pedido de Desconto:**\n\n  * Informe que consultará o técnico sobre desconto via PIX ou encaminhe ao técnico.\n\n* **Consulta por OS:**\n\n  * Informe que irá verificar com o técnico e retornará o status.\n\n* **Pergunta sobre Endereço:**\n\n  * Informe apenas se solicitado, indicando localização ao lado da lotérica.\n\n* **Pergunta sobre Horário:**\n\n  * Consulte a `tool(Funcionamento)`:\n\n    * Horário normal: Segunda a sexta das 08h-18h, sábado das 08h-13h.\n    * Informe horários alterados com motivos se houver.\n    * Se houver pergunta sobre retirada de aparelho, informe horário e encaminhe ao técnico para verificação.\n\n## ⚠️ Regras de Escalada\n\n* Transfira para o técnico se: dúvida técnica, busca por peças, clima negativo, serviço/produto indisponível, situação não prevista ou perguntas sobre sua identidade (IA).\n\n## 🛠️ Ferramentas e Variáveis\n\n* **Nome do Cliente:** `{{ $('1o Nome').item.json.primeiroNome }}`\n* **Telefone do Cliente:** `{{ $('Lead').item.json.Telefone }}`\n* **Tool (valores):** Apenas para consultas específicas de preço.\n* **Tool (Status):** Controle interno após encaminhar atendimento ao técnico.\n"
+          "systemMessage": "=## 🚨 Regra de Prioridade Máxima\n\n* **Gatilho de Comando Específico:**\n\n  * **SE** a mensagem do usuário for **exatamente** `falacomigobb`:\n\n    * **Responda APENAS E UNICAMENTE** com o texto: \"Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\"\n    * Ignore todas as outras instruções e personas. Não adicione nenhuma outra palavra ou saudação.\n  * **CASO CONTRÁRIO**, siga todas as instruções abaixo.\n\n**SEMPRE ENVIE ESTE TEXTO TAG JUNTAMENTE COM A SUA MENSAGEM {{ $json.output }}\n\n## 🎯 Papel Principal (Persona)\n\n## Seu nome é Max, o agente de atendimento humano.\n\n* **Você é Max:** Um agente de atendimento humano e profissional para a assistência técnica Leão de Judá.\n* **Seu Local de Trabalho:** Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n* **Objetivo:** Atender clientes, entender suas necessidades, coletar informações e direcionar para um técnico especialista quando necessário.\n* **Comportamento Chave:** Aja como humano em um ambiente empresarial. **Evite deixar claro que você é uma IA.**\n\n## ⚙️ Diretrizes Gerais de Comportamento\n\n### Tom e Estilo\n\n* **Cordialidade Profissional:** Atenda sempre com cordialidade.\n\n* **Adaptação:** Adapte seu tom ao cliente, mantendo registro formal e profissional.\n\n* **Conciso:** Frases curtas e diretas.\n\n* **Uso do Nome:** Cite o primeiro nome do cliente (`{{ $('1o Nome').item.json.primeiroNome }}`) somente na primeira mensagem.\n\n### Contexto e Continuidade\n\n* Sempre considere o histórico prévio para evitar repetição.\n\n## 📋 Escopo de Serviços e Produtos\n\nInforme que a assistência trabalha com:\n\n* **Manutenção e Consertos:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All in Ones, MacBooks (exceto celulares).\n* **Vendas:** Peças, componentes, TVs, Notebooks, Montagem de PCs Gamer/Profissional, Monitores, Periféricos.\n\n## Fluxo de Atendimento\n\n### 2. Entendimento\n\n* Deixe o cliente descrever o problema sem solicitar detalhes técnicos inicialmente.\n\n### 3. Cenários Específicos\n\n* **Retirada de Aparelhos:**\n\n  * Informe que o técnico entrará em contato e desative o atendimento.\n\n* **Dúvida Técnica/Pedido de Peças:**\n\n  * Direcione imediatamente ao especialista, coletando antes modelo e descrição do problema ou peça.\n\n* **Consulta de Preços:**\n\n  * Consulte a `tool(valores)` somente se solicitado especificamente.\n\n* **Pedido de Desconto:**\n\n  * Informe que consultará o técnico sobre desconto via PIX ou encaminhe ao técnico.\n\n* **Consulta por OS:**\n\n  * Informe que irá verificar com o técnico e retornará o status.\n\n* **Pergunta sobre Endereço:**\n\n  * Informe apenas se solicitado, indicando localização ao lado da lotérica.\n\n* **Pergunta sobre Horário:**\n\n  * Consulte a `tool(Funcionamento)`:\n\n    * Horário normal: Segunda a sexta das 08h-18h, sábado das 08h-13h.\n    * Informe horários alterados com motivos se houver.\n    * Se houver pergunta sobre retirada de aparelho, informe horário e encaminhe ao técnico para verificação.\n\n## ⚠️ Regras de Escalada\n\n* Transfira para o técnico se: dúvida técnica, busca por peças, clima negativo, serviço/produto indisponível, situação não prevista ou perguntas sobre sua identidade (IA).\n\n## 🛠️ Ferramentas e Variáveis\n\n* **Nome do Cliente:** `{{ $('1o Nome').item.json.primeiroNome }}`\n* **Telefone do Cliente:** `{{ $('Lead').item.json.Telefone }}`\n* **Tool (valores):** Apenas para consultas específicas de preço.\n* **Tool (Status):** Controle interno após encaminhar atendimento ao técnico.\n"
         }
       },
       "id": "d01e9ef2-23a7-41da-8302-d38c45683b06",
@@ -889,11 +877,12 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        5560,
+        5780,
         -900
       ],
       "id": "a9a64138-f015-4f98-8297-8cd91db44405",
-      "name": "Split Out"
+      "name": "Split Out",
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -902,7 +891,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        5800,
+        6240,
         -900
       ],
       "id": "c14a5b5e-c75f-4039-801a-69334fc3dd16",
@@ -915,7 +904,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5660,
+        6100,
         -780
       ],
       "id": "c9585a68-4c8f-4150-8056-c7c75104bb14",
@@ -930,7 +919,7 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        5120,
+        5340,
         -500
       ],
       "id": "f263e6a5-388c-4649-8d04-49cb3cf38365",
@@ -1029,13 +1018,13 @@
             {
               "id": "701b4e56-bead-4f6e-8811-c2ba1ba41152",
               "name": "Nome",
-              "value": "={{ $json.body.sender.pushName }}",
+              "value": "={{ $json.body.data.pushName }}",
               "type": "string"
             },
             {
               "id": "f6e77a5a-e114-4144-ba1e-aae22aa2cc44",
               "name": "Telefone",
-              "value": "={{ $json.body.chat.id }}",
+              "value": "={{ $json.body.data.key.remoteJid.split('@')[0] }}",
               "type": "string"
             }
           ]
@@ -1058,7 +1047,7 @@
             {
               "id": "8157da41-080f-4f0c-98cd-b1dbcacca0b4",
               "name": "Mensagem",
-              "value": "={{ $('Filtro Inicial Mensagens').item.json.body.msgContent.conversation }}",
+              "value": "={{ $('Filtro Davi').item.json.body.data.message.conversation }}",
               "type": "string"
             }
           ]
@@ -1073,30 +1062,6 @@
       ],
       "id": "c267a626-7598-4b57-8ef7-8b5ae88d4858",
       "name": "Mensagem Lead"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "562f4574-659b-4b90-b885-d6acdb3e2e13",
-              "name": "mensagens",
-              "value": "={{ $('Get Buffer 2').item.json.mensagens.join(\"\\n\") }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        4380,
-        -1200
-      ],
-      "id": "615d129a-990f-492d-bf43-da5f6cc7a4ac",
-      "name": "Join",
-      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -1142,11 +1107,11 @@
                 "conditions": [
                   {
                     "id": "ca0ede51-ecde-4e1f-879a-946a2fda65eb",
-                    "leftValue": "={{ $json.body.isGroup }}",
+                    "leftValue": "={{ $json.body.data.message.senderKeyDistributionMessage.groupId }}",
                     "rightValue": "",
                     "operator": {
-                      "type": "boolean",
-                      "operation": "false",
+                      "type": "string",
+                      "operation": "empty",
                       "singleValue": true
                     }
                   }
@@ -1164,11 +1129,11 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.body.isGroup }}",
+                    "leftValue": "={{ $json.body.data.message.senderKeyDistributionMessage.groupId }}",
                     "rightValue": "",
                     "operator": {
-                      "type": "boolean",
-                      "operation": "true",
+                      "type": "string",
+                      "operation": "notEmpty",
                       "singleValue": true
                     },
                     "id": "c0eba5d2-a7df-4916-bec0-ed0ced47910a"
@@ -1204,8 +1169,8 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.body.chatName }}",
-                    "rightValue": "Gerenciamento produtos",
+                    "leftValue": "={{ $json.body.data.message.senderKeyDistributionMessage.groupId }}",
+                    "rightValue": "120363420981315626@g.us",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
@@ -1227,7 +1192,7 @@
                 "conditions": [
                   {
                     "id": "e511c57c-9c85-41de-a011-02ae6b9f7345",
-                    "leftValue": "={{ $json.body.phone }}",
+                    "leftValue": "={{ $json.body.data.message.senderKeyDistributionMessage.groupId }}",
                     "rightValue": "120363420981315626-group",
                     "operator": {
                       "type": "string",
@@ -1290,8 +1255,8 @@
           "conditions": [
             {
               "id": "19592785-3f85-493a-bfcd-b124873afc6f",
-              "leftValue": "={{ $json.body.chat.id }}",
-              "rightValue": "5512982113000",
+              "leftValue": "={{ $json.body.data.key.remoteJid }}",
+              "rightValue": "5512982113000@s.whatsapp.net",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1300,8 +1265,8 @@
             },
             {
               "id": "2893267a-2090-433b-b5a4-2ab3999e376e",
-              "leftValue": "={{ $json.body.chat.id }}",
-              "rightValue": "551239313000",
+              "leftValue": "={{ $json.body.data.key.remoteJid }}",
+              "rightValue": "551239313000@s.whatsapp.net",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1310,8 +1275,8 @@
             },
             {
               "id": "892182a8-3d5f-4aa1-96fa-9dd34e68b674",
-              "leftValue": "={{ $json.body.chat.id }}",
-              "rightValue": "5512991853000",
+              "leftValue": "={{ $json.body.data.key.remoteJid }}",
+              "rightValue": "5512991853000@s.whatsapp.net",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1320,8 +1285,8 @@
             },
             {
               "id": "6d170522-e390-477f-9423-0f1174c559e5",
-              "leftValue": "={{ $json.body.chat.id }}",
-              "rightValue": "5512997199752",
+              "leftValue": "={{ $json.body.data.key.remoteJid }}",
+              "rightValue": "5512982813000@s.whatsapp.net",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1521,7 +1486,7 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        6480,
+        6920,
         -600
       ],
       "id": "8f6fc419-7da9-4df6-a68f-5de4cf86c416",
@@ -1539,7 +1504,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        6360,
+        6800,
         -600
       ],
       "id": "1c0bf415-33a5-483b-8ba3-fb60909ccd64",
@@ -1562,7 +1527,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        6400,
+        6840,
         -860
       ],
       "id": "a22edc71-a4ed-4ba3-a2e6-62a8a008317a",
@@ -1758,7 +1723,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        6780,
+        7220,
         -860
       ],
       "id": "012e69d3-9d7b-4af5-b384-41be8a69b1e0",
@@ -1805,21 +1770,6 @@
           "name": "Supabase account"
         }
       }
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=v2_{{ $('Lead').item.json.Telefone }}",
-        "contextWindowLength": 10
-      },
-      "id": "da7d4bd5-ba67-4eaf-a798-1b0643d525a8",
-      "name": "MEM",
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.2,
-      "position": [
-        4540,
-        -580
-      ]
     },
     {
       "parameters": {
@@ -2330,8 +2280,8 @@
           "conditions": [
             {
               "id": "639cb065-4e74-47bc-bd4d-ed007ee25eff",
-              "leftValue": "={{ $json.body.chatName }}",
-              "rightValue": "Gerenciamento produtos",
+              "leftValue": "={{ $json.body.data.key.participant }}",
+              "rightValue": "5512982113000@s.whatsapp.net",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -2448,7 +2398,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        5640,
+        6080,
         -420
       ],
       "id": "bc881cf1-e644-4683-8e6e-d6063397900c",
@@ -2474,7 +2424,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        5900,
+        6340,
         -420
       ],
       "id": "fb19c7ca-f5b1-40a3-9ec5-3e5e25eb2097",
@@ -2498,32 +2448,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        4560,
-        -1200
-      ],
-      "id": "ff787eaa-9c34-425a-b975-44fd1c469738",
-      "name": "Date & Time"
-    },
-    {
-      "parameters": {
-        "jsCode": "// Pega o item de entrada.\nconst item = items[0];\n\n// --- IMPORTANTE ---\n// Substitua 'seuCampoDeData' abaixo pelo nome real do campo que contém a data no seu item.\n// Exemplo: se a data vem de um campo chamado \"createdAt\", use item.json.createdAt\nconst dataStringISO = item.json.currentDate; \n\n// Cria um objeto Date a partir da string. O JavaScript entende o formato ISO 8601 nativamente.\nconst data = new Date(dataStringISO);\n\n// Extrai os componentes da data\n// .padStart(2, '0') garante que sempre teremos dois dígitos (ex: 07 em vez de 7)\nconst dia = String(data.getDate()).padStart(2, '0');\nconst mes = String(data.getMonth() + 1).padStart(2, '0'); // getMonth() retorna 0-11, por isso somamos 1\nconst ano = data.getFullYear();\nconst horas = String(data.getHours()).padStart(2, '0');\nconst minutos = String(data.getMinutes()).padStart(2, '0');\nconst segundos = String(data.getSeconds()).padStart(2, '0');\n\n// Monta as strings nos formatos desejados\nconst dataFormatada = `${dia}/${mes}/${ano}`;\nconst dataHoraFormatada = `${horas}:${minutos}`;\n\n// Adiciona os novos campos com as datas formatadas ao item.\n// Você pode usar qualquer um dos formatos abaixo no restante do seu workflow.\nitem.json.data_formatada = dataFormatada;\nitem.json.data_hora_formatada = dataHoraFormatada;\n\n// Retorna o item modificado para o próximo nó.\nreturn item;"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        4740,
-        -1200
-      ],
-      "id": "59ac5217-5610-4cfd-a847-99aac4620057",
-      "name": "Code"
-    },
-    {
-      "parameters": {
         "jsCode": "const nomeCompleto = $('Lead').first().json.Nome || '';\nconst primeiroNome = nomeCompleto.trim().split(' ')[0] || '';\n\nreturn {\n  json: {\n    primeiroNome,\n  }\n};\n"
       },
       "type": "n8n-nodes-base.code",
@@ -2538,46 +2462,260 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.w-api.app/v1/message/send-text?instanceId=0BB10C-5UHYF0-T5FZK2",
+        "url": "https://api.sea-ads.com.br/message/sendText/Davi Teste",
         "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Lead').item.json.Telefone }}"
-            },
-            {
-              "name": "message",
-              "value": "={{ $json['output.mensagens'] }}"
-            },
-            {
-              "name": "delayMessage",
-              "value": "5"
-            }
-          ]
-        },
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"number\": \"{{ $('Lead').item.json.Telefone }}\",\n    \"text\": \"*#Max - Atendimento*\\n{{ $('Split Out').item.json['output.mensagens'] }}\",\n    \"delay\":3000\n} ",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5920,
+        6500,
         -780
       ],
       "id": "01913df5-4393-4e6f-9243-affe6154b9f1",
       "name": "W-API1",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "zSYRuZxu43Eu1F9n",
-          "name": "Header Auth account 2"
+          "id": "9O4S73201TzyGhWM",
+          "name": "Header Auth account 3"
         },
         "httpBearerAuth": {
           "id": "VYf1v9ZyxXUkh9tH",
           "name": "Bearer Auth account"
         }
       }
+    },
+    {
+      "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        4260,
+        -1360
+      ],
+      "id": "8f0d4163-9f1c-4899-a169-6c1e72cef9aa",
+      "name": "Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4420,
+        -1360
+      ],
+      "id": "7c87ae50-dc65-434c-83b4-b6b0172dd520",
+      "name": "Mes1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4600,
+        -1360
+      ],
+      "id": "21fac163-a6bd-4547-943f-b53b21eeee2c",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const dataString = item.json.dataFormatada; // Ex: \"15/07/2025 15:01\"\n\n  // Converte string BR para ISO (yyyy-mm-ddTHH:MM:00)\n  const partes = dataString.split(/[\\s/:]/); // [dia, mês, ano, hora, minuto]\n  const dataISO = `${partes[2]}-${partes[1]}-${partes[0]}T${partes[3]}:${partes[4]}:00`;\n\n  const data = new Date(dataISO);\n  const horaAtual = data.getHours();\n\n  let saudacao;\n\n  if (horaAtual >= 6 && horaAtual < 12) {\n    saudacao = \"Bom dia\";\n  } else if (horaAtual >= 12 && horaAtual < 18) {\n    saudacao = \"Boa tarde\";\n  } else {\n    saudacao = \"Boa noite\";\n  }\n\n  item.json.saudacao = saudacao;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4840,
+        -1360
+      ],
+      "id": "ff144f54-0f37-4f4a-8868-3d9ab07c7cb2",
+      "name": "Sauda2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Join').item.json.mensagens }}",
+        "options": {
+          "systemMessage": "=## 🚨 Regra de Prioridade Máxima\n\n* **Gatilho de Comando Específico:**\n\n  * **SE** a mensagem do usuário for **exatamente** `falacomigobb`:\n\n    * **Responda APENAS E UNICAMENTE** com o texto: \"Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\"\n    * Ignore todas as outras instruções e personas. Não adicione nenhuma outra palavra ou saudação.\n  * **CASO CONTRÁRIO**, siga todas as instruções abaixo.\n\n## 🎯 Papel Principal (Persona)\n\n## Seu nome é Cleiton, o agente de atendimento humano.\n\n* **Você é Cleiton:** Um agente de atendimento humano e profissional para a assistência técnica Leão de Judá.\n* **Seu Local de Trabalho:** Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n* **Objetivo:** Atender clientes, entender suas necessidades, coletar informações e direcionar para um técnico especialista quando necessário.\n* **Comportamento Chave:** Aja como humano em um ambiente empresarial. **Evite deixar claro que você é uma IA.**\n\n## ⚙️ Diretrizes Gerais de Comportamento\n\n### Tom e Estilo\n\n* **🔄 Saudação Automática Baseada no Horário:**\n\n\n##**siga rigorosamente esta saudação `{{ $json.saudacao }}`**\n\n* **Cordialidade Profissional:** Atenda sempre com cordialidade.\n\n* **Adaptação:** Adapte seu tom ao cliente, mantendo registro formal e profissional.\n\n* **Conciso:** Frases curtas e diretas.\n\n* **Uso do Nome:** Cite o primeiro nome do cliente (`{{ $('1o Nome').item.json.primeiroNome }}`) somente na primeira mensagem.\n\n### Contexto e Continuidade\n\n* Sempre considere o histórico prévio para evitar repetição.\n\n## 📋 Escopo de Serviços e Produtos\n\nInforme que a assistência trabalha com:\n\n* **Manutenção e Consertos:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All in Ones, MacBooks (exceto celulares).\n* **Vendas:** Peças, componentes, TVs, Notebooks, Montagem de PCs Gamer/Profissional, Monitores, Periféricos.\n\n## Fluxo de Atendimento\n\n### 1. Primeiro Contato\n\n* Cumprimente conforme a saudação({{ $json.saudacao }}).\n* Pergunte como ajudar, exceto se o problema já estiver declarado.\n\n### 2. Entendimento\n\n* Deixe o cliente descrever o problema sem solicitar detalhes técnicos inicialmente.\n\n### 3. Cenários Específicos\n\n* **Retirada de Aparelhos:**\n\n  * Informe que o técnico entrará em contato e desative o atendimento.\n\n* **Dúvida Técnica/Pedido de Peças:**\n\n  * Direcione imediatamente ao especialista, coletando antes modelo e descrição do problema ou peça.\n\n* **Consulta de Preços:**\n\n  * Consulte a `tool(valores)` somente se solicitado especificamente.\n\n* **Pedido de Desconto:**\n\n  * Informe que consultará o técnico sobre desconto via PIX ou encaminhe ao técnico.\n\n* **Consulta por OS:**\n\n  * Informe que irá verificar com o técnico e retornará o status.\n\n* **Pergunta sobre Endereço:**\n\n  * Informe apenas se solicitado, indicando localização ao lado da lotérica.\n\n* **Pergunta sobre Horário:**\n\n  * Consulte a `tool(Funcionamento)`:\n\n    * Horário normal: Segunda a sexta das 08h-18h, sábado das 08h-13h.\n    * Informe horários alterados com motivos se houver.\n    * Se houver pergunta sobre retirada de aparelho, informe horário e encaminhe ao técnico para verificação.\n\n## ⚠️ Regras de Escalada\n\n* Transfira para o técnico se: dúvida técnica, busca por peças, clima negativo, serviço/produto indisponível, situação não prevista ou perguntas sobre sua identidade (IA).\n\n## 🛠️ Ferramentas e Variáveis\n\n* **Nome do Cliente:** `{{ $('1o Nome').item.json.primeiroNome }}`\n* **Telefone do Cliente:** `{{ $('Lead').item.json.Telefone }}`\n* **Tool (valores):** Apenas para consultas específicas de preço.\n* **Tool (Status):** Controle interno após encaminhar atendimento ao técnico.\n"
+        }
+      },
+      "id": "485485a9-d5e8-4472-87bf-cdac8dd47ce1",
+      "name": "AI Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        3900,
+        -1160
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "562f4574-659b-4b90-b885-d6acdb3e2e13",
+              "name": "mensagens",
+              "value": "={{ $('Get Buffer 2').item.json.mensagens.join(\"\\n\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4080,
+        -1360
+      ],
+      "id": "615d129a-990f-492d-bf43-da5f6cc7a4ac",
+      "name": "Join",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Mensagem Lead').item.json.Mensagem }}",
+        "options": {
+          "systemMessage": "=Você é uma IA com foco em saudar o cliente segundo o horário.\n\nNome={{ $('1o Nome').item.json.primeiroNome }}\n\n##Diretriz primária: SOMENTE SAUDAR O CLIENTE CASO ELE SAUDE OU SEJA A PRIMEIRA INTERAÇÃO SALVA\n\nSAUDAÇÃO INICIAL - SAUDAR SEMPRE DE ACORDO COM O HORÁRIO, IGNORAR COMPLETAMENTE O INPUT DO USUÁRIO\n\ncurrent_time = {{ $json.dataFormatada }}\n\nSAUDAÇÃO INICIAL\n\nVerificar horário com a tool current_time e ajustar saudação:\n\nÓtimo dia, [nome]! (antes de 12h)\n\nÓtima tarde, [nome]! (entre 12h e 18h)\n\nÓtima noite, [nome]! (após 18h)"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        5120,
+        -1360
+      ],
+      "id": "ac4c38d8-3d33-4524-9b11-d9c20a0b2c7d",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        5120,
+        -1160
+      ],
+      "id": "eeb32a4c-ec59-4986-93b2-c62146cda8ad",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "bcjn0rZ3TjEvRciY",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "91f02795-5796-4845-94ea-289b469f4ae7",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "=Ótima tarde, {{ $('1o Nome').item.json.primeiroNome }}!",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "5b632051-9439-46d8-89a7-80d70e07dd94",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "=Ótimo dia, {{ $('1o Nome').item.json.primeiroNome }}!",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "708a3dd9-fb0f-49a8-8b37-f136aef51f22",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "=Ótima noite, {{ $('1o Nome').item.json.primeiroNome }}!",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5500,
+        -1360
+      ],
+      "id": "8df270bc-9fc3-4f76-87f7-06c6ec1b3c02",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "58864ebc-824c-47cf-a5eb-49fd54193c14",
+              "name": "output",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5800,
+        -1320
+      ],
+      "id": "d75595f9-55e9-4da5-8ea2-70537d877e54",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Webhook').item.json.body.data.key.remoteJid }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        4540,
+        -560
+      ],
+      "id": "3d45a75d-a5b3-4a22-ab79-ee4cc854f9c5",
+      "name": "Simple Memory"
     }
   ],
   "pinData": {},
@@ -2587,6 +2725,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-22T17:16:18.000Z",
-  "versionId": "949da3e8-8665-4ad2-9591-4dd4c7154418"
+  "updatedAt": "2025-07-26T22:31:59.000Z",
+  "versionId": "2869b19d-e033-4d13-ae58-2de92e117216"
 }
