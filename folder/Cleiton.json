@@ -74,10 +74,16 @@
     },
     "Loop Over Items": {
       "main": [
-        [],
         [
           {
-            "node": "W-API1",
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Z-API",
             "type": "main",
             "index": 0
           }
@@ -132,7 +138,7 @@
       "main": [
         [
           {
-            "node": "Get Buffer 1",
+            "node": "Get Buffer",
             "type": "main",
             "index": 0
           }
@@ -143,7 +149,7 @@
       "main": [
         [
           {
-            "node": "Get Buffer 1",
+            "node": "Get Buffer",
             "type": "main",
             "index": 0
           }
@@ -165,7 +171,7 @@
       "main": [
         [
           {
-            "node": "1o Nome",
+            "node": "If6",
             "type": "main",
             "index": 0
           }
@@ -231,24 +237,6 @@
         [
           {
             "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If Redis OK": {
-      "main": [
-        [
-          {
-            "node": "Lock process",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Loop",
             "type": "main",
             "index": 0
           }
@@ -324,7 +312,13 @@
             "index": 0
           }
         ],
-        [],
+        [
+          {
+            "node": "Delete Msg ID Buffer 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Merge1",
@@ -396,84 +390,11 @@
         ]
       ]
     },
-    "Não encaminhada": {
-      "main": [
-        [
-          {
-            "node": "Check Lock Too",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Encaminhada": {
-      "main": [
-        [
-          {
-            "node": "Check Lock",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Get Buffer 1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Lock process": {
-      "main": [
-        [
-          {
-            "node": "Deleta Buffer",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If": {
-      "main": [
-        [
-          {
-            "node": "Encaminhada",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Não encaminhada",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        []
-      ]
-    },
     "Deleta Buffer": {
       "main": [
         [
           {
             "node": "Organização",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check Lock": {
-      "main": [
-        [
-          {
-            "node": "If Redis OK",
             "type": "main",
             "index": 0
           }
@@ -495,7 +416,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "If4",
             "type": "main",
             "index": 0
           }
@@ -597,17 +518,6 @@
         ]
       ]
     },
-    "Check Lock Too": {
-      "main": [
-        [
-          {
-            "node": "If Redis OK",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Organização1": {
       "main": [
         [
@@ -635,17 +545,6 @@
         [
           {
             "node": "Encontrar Cliente",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "W-API1": {
-      "main": [
-        [
-          {
-            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -760,10 +659,333 @@
     },
     "Simple Memory": {
       "ai_memory": [
+        []
+      ]
+    },
+    "If Redis OK1": {
+      "main": [
+        [
+          {
+            "node": "Lock process1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Get Buffer 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Não encaminhada1": {
+      "main": [
+        [
+          {
+            "node": "Check Lock Too1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Encaminhada1": {
+      "main": [
+        [
+          {
+            "node": "Check Lock1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Get Buffer ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lock process1": {
+      "main": [
+        [
+          {
+            "node": "Deleta Buffer1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Encaminhada1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Não encaminhada1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Lock1": {
+      "main": [
+        [
+          {
+            "node": "If Redis OK1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Buffer ": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Buffer 3": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Lock Too1": {
+      "main": [
+        [
+          {
+            "node": "If Redis OK1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Get Buffer 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "1o Nome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Buffer": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Buffer1": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "1o Nome",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
         [
           {
             "node": "AI Agent",
             "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Deleta Buffer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Buffer 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Buffer 4": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Organização3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Organização3": {
+      "main": [
+        [
+          {
+            "node": "Get Buffer 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete MSG ID Buffer": {
+      "main": [
+        [
+          {
+            "node": "Get Buffer 4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "If8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Buffer1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If8": {
+      "main": [
+        [
+          {
+            "node": "Redis8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Z-API": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Delete MSG ID Buffer",
+            "type": "main",
             "index": 0
           }
         ]
@@ -783,7 +1005,7 @@
         "promptType": "define",
         "text": "={{ $('Join').item.json.mensagens }}",
         "options": {
-          "systemMessage": "=## 🚨 Regra de Prioridade Máxima\n\n* **Gatilho de Comando Específico:**\n\n  * **SE** a mensagem do usuário for **exatamente** `falacomigobb`:\n\n    * **Responda APENAS E UNICAMENTE** com o texto: \"Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\"\n    * Ignore todas as outras instruções e personas. Não adicione nenhuma outra palavra ou saudação.\n  * **CASO CONTRÁRIO**, siga todas as instruções abaixo.\n\n**SEMPRE ENVIE ESTE TEXTO TAG JUNTAMENTE COM A SUA MENSAGEM {{ $json.output }}\n\n## 🎯 Papel Principal (Persona)\n\n## Seu nome é Max, o agente de atendimento humano.\n\n* **Você é Max:** Um agente de atendimento humano e profissional para a assistência técnica Leão de Judá.\n* **Seu Local de Trabalho:** Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n* **Objetivo:** Atender clientes, entender suas necessidades, coletar informações e direcionar para um técnico especialista quando necessário.\n* **Comportamento Chave:** Aja como humano em um ambiente empresarial. **Evite deixar claro que você é uma IA.**\n\n## ⚙️ Diretrizes Gerais de Comportamento\n\n### Tom e Estilo\n\n* **Cordialidade Profissional:** Atenda sempre com cordialidade.\n\n* **Adaptação:** Adapte seu tom ao cliente, mantendo registro formal e profissional.\n\n* **Conciso:** Frases curtas e diretas.\n\n* **Uso do Nome:** Cite o primeiro nome do cliente (`{{ $('1o Nome').item.json.primeiroNome }}`) somente na primeira mensagem.\n\n### Contexto e Continuidade\n\n* Sempre considere o histórico prévio para evitar repetição.\n\n## 📋 Escopo de Serviços e Produtos\n\nInforme que a assistência trabalha com:\n\n* **Manutenção e Consertos:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All in Ones, MacBooks (exceto celulares).\n* **Vendas:** Peças, componentes, TVs, Notebooks, Montagem de PCs Gamer/Profissional, Monitores, Periféricos.\n\n## Fluxo de Atendimento\n\n### 2. Entendimento\n\n* Deixe o cliente descrever o problema sem solicitar detalhes técnicos inicialmente.\n\n### 3. Cenários Específicos\n\n* **Retirada de Aparelhos:**\n\n  * Informe que o técnico entrará em contato e desative o atendimento.\n\n* **Dúvida Técnica/Pedido de Peças:**\n\n  * Direcione imediatamente ao especialista, coletando antes modelo e descrição do problema ou peça.\n\n* **Consulta de Preços:**\n\n  * Consulte a `tool(valores)` somente se solicitado especificamente.\n\n* **Pedido de Desconto:**\n\n  * Informe que consultará o técnico sobre desconto via PIX ou encaminhe ao técnico.\n\n* **Consulta por OS:**\n\n  * Informe que irá verificar com o técnico e retornará o status.\n\n* **Pergunta sobre Endereço:**\n\n  * Informe apenas se solicitado, indicando localização ao lado da lotérica.\n\n* **Pergunta sobre Horário:**\n\n  * Consulte a `tool(Funcionamento)`:\n\n    * Horário normal: Segunda a sexta das 08h-18h, sábado das 08h-13h.\n    * Informe horários alterados com motivos se houver.\n    * Se houver pergunta sobre retirada de aparelho, informe horário e encaminhe ao técnico para verificação.\n\n## ⚠️ Regras de Escalada\n\n* Transfira para o técnico se: dúvida técnica, busca por peças, clima negativo, serviço/produto indisponível, situação não prevista ou perguntas sobre sua identidade (IA).\n\n## 🛠️ Ferramentas e Variáveis\n\n* **Nome do Cliente:** `{{ $('1o Nome').item.json.primeiroNome }}`\n* **Telefone do Cliente:** `{{ $('Lead').item.json.Telefone }}`\n* **Tool (valores):** Apenas para consultas específicas de preço.\n* **Tool (Status):** Controle interno após encaminhar atendimento ao técnico.\n"
+          "systemMessage": "=## 🚨 Regra de Prioridade Máxima\n\n* **SEMPRE ENVIE ESTE TEXTO [{{ $json.output }}] JUNTAMENTE COM A SUA RESPOSTA AO USUÁRIO, ISTO SERÁ SUA TAG DE ATENDIMENTO.\n\n* **Gatilho de Comando Específico:**\n\n  * **SE** a mensagem do usuário for **exatamente** `falacomigobb`:\n\n    * **Responda APENAS E UNICAMENTE** com o texto: \"Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\"\n    * Ignore todas as outras instruções e personas. Não adicione nenhuma outra palavra ou saudação.\n  * **CASO CONTRÁRIO**, siga todas as instruções abaixo.\n\n\n## 🎯 Papel Principal (Persona)\n\n## Seu nome é Max, o agente de atendimento humano.\n\n* **Você é Max:** Um agente de atendimento humano e profissional para a assistência técnica Leão de Judá.\n* **Seu Local de Trabalho:** Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n* **Objetivo:** Atender clientes, entender suas necessidades, coletar informações e direcionar para um técnico especialista quando necessário.\n* **Comportamento Chave:** Aja como humano em um ambiente empresarial. **Evite deixar claro que você é uma IA.**\n\n## ⚙️ Diretrizes Gerais de Comportamento\n\n### Tom e Estilo\n\n* **Cordialidade Profissional:** Atenda sempre com cordialidade.\n\n* **Adaptação:** Adapte seu tom ao cliente, mantendo registro formal e profissional.\n\n* **Conciso:** Frases curtas e diretas.\n\n* **Uso do Nome:** Cite o primeiro nome do cliente (`{{ $('1o Nome').item.json.primeiroNome }}`) somente na primeira mensagem.\n\n### Contexto e Continuidade\n\n* Sempre considere o histórico prévio para evitar repetição.\n\n## 📋 Escopo de Serviços e Produtos\n\nInforme que a assistência trabalha com:\n\n* **A assistência NÃO trabalha com retirada de aparelhos a domicilio**\n\n* **Manutenção e Consertos:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All in Ones, MacBooks (exceto celulares).\n\n* **Vendas:** Peças, componentes, periféricos, Montagem de PCs Gamer/Profissional.\n\n* **Vendas Aparelhos(Consultar disponibilidade):** TVs, Notebooks, Monitores.\n\n## Fluxo de Atendimento\n\n### 2. Entendimento\n\n* Deixe o cliente descrever o problema sem solicitar detalhes técnicos inicialmente.\n\n### 3. Cenários Específicos\n\n* **Retirada de Aparelhos:**\n\n  * Informe que o técnico entrará em contato e desative o atendimento.\n\n* **Dúvida Técnica:**\n\n  * Direcione imediatamente ao especialista, coletando antes modelo e descrição do problema ou peça.\n\n\n* **Pedido de Peças:**\n\n  * Apenas encaminhe ao técnico.\n\n\n* **Consulta de disponibilidade de peças, componentes o periféricos:**\n\n  * SOMENTE encaminhe o texto \"[[Catálogo]]\"\n\n* **Pedido de Venda de PCs, Notebooks ou TVs:**\n\n  * Direcione ao especialista, dizendo que o técnico vai consultar a disponibilidade.\n\n* **Consulta de Preços:**\n\n  * SOMENTE Consulte a `tool(valores)` se solicitado especificamente algum valor.\n  * NUNCA retorne mais do que o solicitado\n  * NÃO liste itens com asterisco para negrito\n\n\n* **Pedido de Desconto:**\n\n  * Informe que consultará o técnico sobre desconto via PIX ou encaminhe ao técnico.\n\n* **Consulta por OS:**\n\n  * Informe que irá verificar com o técnico e retornará o status.\n\n* **Pergunta sobre Endereço:**\n\n  * Informe apenas se solicitado, indicando localização ao lado da lotérica.\n\n* **Pergunta sobre Horário:**\n\n  * Consulte a `tool(Funcionamento)`:\n\n    * Horário normal: Segunda a sexta das 08h-18h, sábado das 08h-13h.\n    * Informe horários alterados com motivos se houver.\n    * Se houver pergunta sobre retirada de aparelho, informe horário e encaminhe ao técnico para verificação.\n\n\n## ⚠️ Regras de Escalada\n\n  *Transfira para o técnico se: dúvida técnica, busca por peças, clima negativo, serviço/produto indisponível, situação não prevista ou perguntas sobre sua identidade (IA).\n  *Caso transferir para o técnico, diga de forma explicita estar transferindo o atendimento E ENCERRE O ATENDIMENTO IMEDIATAMENTE.\n   -Não prolongue ou ofereça ajuda posteriormente.\n\n\n\n## 🛠️ Ferramentas e Variáveis\n\n* **Nome do Cliente:** `{{ $('1o Nome').item.json.primeiroNome }}`\n* **Telefone do Cliente:** `{{ $('Lead').item.json.Telefone }}`\n* **Tool (valores):** Apenas para consultas específicas de preço.\n* **Tool (Status):** Controle interno após encaminhar atendimento ao técnico."
         }
       },
       "id": "d01e9ef2-23a7-41da-8302-d38c45683b06",
@@ -791,7 +1013,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        4520,
+        5620,
         -780
       ],
       "alwaysOutputData": true
@@ -807,8 +1029,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        2240,
-        -820
+        720,
+        -760
       ],
       "webhookId": "bc978142-377f-4daf-b31e-3390dc1be1df"
     },
@@ -821,7 +1043,7 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        4640,
+        5740,
         -580
       ],
       "id": "d9558fa3-3e06-46f7-94d3-f86987ed97c1",
@@ -840,7 +1062,7 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
       "typeVersion": 1,
       "position": [
-        5060,
+        6160,
         -700
       ],
       "id": "f32c8ec1-507d-4cb7-b443-614ce20b118a",
@@ -854,7 +1076,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "=#Apenas estruture o XML <mensagem_do_usuario> no formato JSON solicitado no output parser Estrutura e seguindo as instruções de formatação abaixo. \nNão altere nada mais na mensagem \n\n## Formatação \n- Divida as mensagens para que fiquem naturais e humanizadas; \n- Divida as mensagens conforme estrutura do output parser para que não fiquem muito longas (maiores que 240 caracteres); \n- Não separe mensagens vazias; \n- Apenas separe sentenças completas;\n- Para negrito (bold) use apenas um nunca duas * (exemplo: negrito).\n\n\nExemplo de formato JSON:\n{\n\"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}"
+              "message": "=#Apenas estruture o XML <mensagem_do_usuario> no formato JSON solicitado no output parser Estrutura e seguindo as instruções de formatação abaixo. \nNão altere nada mais na mensagem \n\n## Formatação \n- Divida as mensagens para que fiquem naturais e humanizadas; \n- Divida as mensagens conforme estrutura do output parser para que não fiquem muito longas (maiores que 240 caracteres); \n- Não separe mensagens que tenham menos de 50 caracteres, a não ser que necessário.\n- Não separe mensagens vazias; \n- Apenas separe sentenças completas;\n- Não separe mensagens após vírgulas (\",\")\n- Para negrito (bold) use apenas um nunca duas * (exemplo: negrito).\n\n\nExemplo de formato JSON:\n{\n\"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}"
             }
           ]
         },
@@ -863,7 +1085,7 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        4940,
+        6040,
         -860
       ],
       "id": "4c09b7ac-b92d-4cba-bf2a-f5712e4d7aa1",
@@ -877,8 +1099,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        5780,
-        -900
+        6620,
+        -920
       ],
       "id": "a9a64138-f015-4f98-8297-8cd91db44405",
       "name": "Split Out",
@@ -891,8 +1113,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        6240,
-        -900
+        7020,
+        -920
       ],
       "id": "c14a5b5e-c75f-4039-801a-69334fc3dd16",
       "name": "Loop Over Items"
@@ -904,8 +1126,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        6100,
-        -780
+        6880,
+        -800
       ],
       "id": "c9585a68-4c8f-4150-8056-c7c75104bb14",
       "name": "Wait",
@@ -919,7 +1141,7 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        5340,
+        6240,
         -500
       ],
       "id": "f263e6a5-388c-4649-8d04-49cb3cf38365",
@@ -933,8 +1155,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4700,
-        20
+        5160,
+        60
       ],
       "id": "d6fccf07-162c-4a05-a119-c602367058a7",
       "name": "HTTP Request",
@@ -951,8 +1173,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        4900,
-        20
+        5360,
+        60
       ],
       "id": "326aa76a-35a3-4005-8d06-17401b17f7bc",
       "name": "OpenAI",
@@ -975,8 +1197,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4900,
-        -140
+        5360,
+        -100
       ],
       "id": "0d69a6c5-5619-4144-8238-cd1e30f22e77",
       "name": "Redis",
@@ -998,8 +1220,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5120,
-        20
+        5580,
+        60
       ],
       "id": "10f6152d-ef08-4e46-8918-f5bdda88c0f2",
       "name": "Redis3",
@@ -1018,13 +1240,13 @@
             {
               "id": "701b4e56-bead-4f6e-8811-c2ba1ba41152",
               "name": "Nome",
-              "value": "={{ $json.body.data.pushName }}",
+              "value": "={{ $json.body.senderName }}",
               "type": "string"
             },
             {
               "id": "f6e77a5a-e114-4144-ba1e-aae22aa2cc44",
               "name": "Telefone",
-              "value": "={{ $json.body.data.key.remoteJid.split('@')[0] }}",
+              "value": "={{ $json.body.phone }}",
               "type": "string"
             }
           ]
@@ -1034,8 +1256,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2760,
-        -560
+        1420,
+        -840
       ],
       "id": "41c44216-c23f-45cf-97bc-a245d916bfcb",
       "name": "Lead"
@@ -1047,7 +1269,7 @@
             {
               "id": "8157da41-080f-4f0c-98cd-b1dbcacca0b4",
               "name": "Mensagem",
-              "value": "={{ $('Filtro Davi').item.json.body.data.message.conversation }}",
+              "value": "={{ $('Webhook').item.json.body.text.message }}",
               "type": "string"
             }
           ]
@@ -1057,8 +1279,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2940,
-        -560
+        1560,
+        -840
       ],
       "id": "c267a626-7598-4b57-8ef7-8b5ae88d4858",
       "name": "Mensagem Lead"
@@ -1086,8 +1308,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2940,
-        240
+        3100,
+        -100
       ],
       "id": "bae5129a-8cc2-4f9b-9bb4-0b281e4bfd2b",
       "name": "Execute Workflow"
@@ -1107,11 +1329,11 @@
                 "conditions": [
                   {
                     "id": "ca0ede51-ecde-4e1f-879a-946a2fda65eb",
-                    "leftValue": "={{ $json.body.data.message.senderKeyDistributionMessage.groupId }}",
+                    "leftValue": "={{ $json.body.isGroup }}",
                     "rightValue": "",
                     "operator": {
-                      "type": "string",
-                      "operation": "empty",
+                      "type": "boolean",
+                      "operation": "false",
                       "singleValue": true
                     }
                   }
@@ -1129,11 +1351,11 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.body.data.message.senderKeyDistributionMessage.groupId }}",
+                    "leftValue": "={{ $json.body.isGroup }}",
                     "rightValue": "",
                     "operator": {
-                      "type": "string",
-                      "operation": "notEmpty",
+                      "type": "boolean",
+                      "operation": "true",
                       "singleValue": true
                     },
                     "id": "c0eba5d2-a7df-4916-bec0-ed0ced47910a"
@@ -1149,8 +1371,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        2460,
-        -820
+        900,
+        -760
       ],
       "id": "ab0b0c78-6861-449a-842b-8a10a47ef375",
       "name": "Grp ou Msg"
@@ -1236,8 +1458,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        2380,
-        340
+        2540,
+        0
       ],
       "id": "096bca9f-49c7-48c0-8ecf-24da4847b5e1",
       "name": "Que Grp?",
@@ -1255,8 +1477,8 @@
           "conditions": [
             {
               "id": "19592785-3f85-493a-bfcd-b124873afc6f",
-              "leftValue": "={{ $json.body.data.key.remoteJid }}",
-              "rightValue": "5512982113000@s.whatsapp.net",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "5512982113000",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1265,8 +1487,8 @@
             },
             {
               "id": "2893267a-2090-433b-b5a4-2ab3999e376e",
-              "leftValue": "={{ $json.body.data.key.remoteJid }}",
-              "rightValue": "551239313000@s.whatsapp.net",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "551239313000",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1275,8 +1497,8 @@
             },
             {
               "id": "892182a8-3d5f-4aa1-96fa-9dd34e68b674",
-              "leftValue": "={{ $json.body.data.key.remoteJid }}",
-              "rightValue": "5512991853000@s.whatsapp.net",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "5512991853000",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1285,8 +1507,8 @@
             },
             {
               "id": "6d170522-e390-477f-9423-0f1174c559e5",
-              "leftValue": "={{ $json.body.data.key.remoteJid }}",
-              "rightValue": "5512982813000@s.whatsapp.net",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "5512982813000",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1301,8 +1523,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        2760,
-        -780
+        1280,
+        -840
       ],
       "id": "91359ad2-206b-47ae-b29a-a7a64821f855",
       "name": "Filtro Davi"
@@ -1362,56 +1584,12 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        4460,
-        -80
+        4920,
+        -40
       ],
       "id": "cace15ba-5879-429d-96af-721280ff09d1",
       "name": "TXT or AUD",
       "alwaysOutputData": false
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "01d20e0a-253c-47df-9d6c-24ac2180f922",
-              "leftValue": "={{ $('Get Buffer 2').item.json.mensagens.last() }}",
-              "rightValue": "={{ $('Get Buffer 1').item.json.mensagens.last() }}",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            },
-            {
-              "id": "c854517f-8a28-4bb6-ac33-eb8b07777a22",
-              "leftValue": "={{ $json.Locked }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        6020,
-        340
-      ],
-      "id": "900d4489-d079-415c-bdc0-a82e0ed03c57",
-      "name": "If Redis OK"
     },
     {
       "parameters": {
@@ -1427,7 +1605,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        4440,
+        5500,
         -580
       ],
       "id": "dc997c78-25f0-4dd4-88f7-b770f17e8e7a",
@@ -1451,7 +1629,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        5020,
+        6120,
         -500
       ],
       "id": "2f3e7a26-940d-441c-b93b-935750241402",
@@ -1465,29 +1643,14 @@
     },
     {
       "parameters": {
-        "content": "## Filtragem Grupo",
-        "height": 360,
-        "width": 800
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        2340,
-        200
-      ],
-      "id": "9e7d87a3-e89f-4fe5-8ade-fc9a4482544a",
-      "name": "Sticky Note"
-    },
-    {
-      "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "=v2_{{ $('Lead').item.json.Telefone }}"
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        6920,
-        -600
+        8340,
+        -500
       ],
       "id": "8f6fc419-7da9-4df6-a68f-5de4cf86c416",
       "name": "MEM 2"
@@ -1504,8 +1667,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        6800,
-        -600
+        8220,
+        -500
       ],
       "id": "1c0bf415-33a5-483b-8ba3-fb60909ccd64",
       "name": "OpenAI Chat Model",
@@ -1521,14 +1684,14 @@
         "promptType": "define",
         "text": "={{ $('AI Agent').item.json.output }}",
         "options": {
-          "systemMessage": "=Você é um analista de texto com o único objetivo de analisar se deve ou não desativar a conversa através da tool (Status) caso perceba que a conversa foi redirecionada para o técnico ou um atendente humano, caso a conversa esteja percorrendo um clima muito negativo, ou caso o prompt peça para o cliente aguardar ou esperar.\n\nVocê só ira encerrar a conversa caso:\n-Veja no seu prompt que o atendende escreveu algo como \"Estarei encaminhando para o técnico\", \"Vou passar para o técnico\", ou semelhantes.\n-Perceba no prompt um tom de desculpas ou erros cometidos.\n\n#Não encerre a conversa caso não perceba nenhum destes sinais.\n\n#Seu output será apenas \"Ativo\" ou \"Desativado\"\n#Sempre envie o seu output para a tool (Status)"
+          "systemMessage": "=Você é um analista de texto com o único objetivo de analisar se deve ou não desativar a conversa através da tool (Status) caso perceba que a conversa foi redirecionada para o técnico ou um atendente humano, caso a conversa esteja percorrendo um clima muito negativo, ou caso o prompt peça para o cliente aguardar ou esperar.\n\nVocê só ira encerrar a conversa caso:\n-Veja no seu prompt que o atendende escreveu algo como \"Estarei encaminhando para o técnico\", \"Vou passar para o técnico\", ou semelhantes.\n-Perceba no prompt um tom de desculpas ou erros cometidos.\n\n#Não encerre a conversa caso não perceba nenhum destes sinais.\n\n#Nunca encerre a conversa caso o agente esteja aguardando alguma resposta.\n\n#Seu output será apenas \"Ativo\" ou \"Desativado\"\n#Sempre envie o seu output para a tool (Status)"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        6840,
-        -860
+        8260,
+        -760
       ],
       "id": "a22edc71-a4ed-4ba3-a2e6-62a8a008317a",
       "name": "Avaliador"
@@ -1637,7 +1800,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        3560,
+        4040,
         -60
       ],
       "id": "9cff01bf-3fd5-4a24-8a2c-bfaada18cae5",
@@ -1654,8 +1817,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4120,
-        -120
+        4600,
+        -240
       ],
       "id": "73bcb49b-b102-4192-880f-07a3cf718f09",
       "name": "Redis5",
@@ -1676,8 +1839,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3860,
-        -120
+        4340,
+        -240
       ],
       "id": "c9848f36-a43b-4c9c-ad80-da1de2e2adc7",
       "name": "status",
@@ -1699,7 +1862,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3400,
+        3880,
         -40
       ],
       "id": "d2097cb0-1874-4783-a62c-d53ebef8424e",
@@ -1723,8 +1886,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        7220,
-        -860
+        8640,
+        -760
       ],
       "id": "012e69d3-9d7b-4af5-b384-41be8a69b1e0",
       "name": "Redis6",
@@ -1742,7 +1905,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5780,
+        7320,
         -100
       ],
       "id": "0b676fb7-1677-4d12-a589-e149afac361a",
@@ -1759,7 +1922,7 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        4740,
+        5840,
         -580
       ],
       "id": "998903a2-f8bc-43fe-8ce4-9bfee8700e12",
@@ -1792,166 +1955,11 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2940,
-        400
+        3100,
+        60
       ],
       "id": "553b60f8-b268-419f-ae09-77f381c4cd7d",
       "name": "Execute Workflow1"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "3e6829d4-a8a5-4253-a4c8-57f24dc80a25",
-              "leftValue": "={{ $('Webhook').item.json.body.forwarded }}",
-              "rightValue": "",
-              "operator": {
-                "type": "boolean",
-                "operation": "false",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2.2,
-      "position": [
-        5740,
-        340
-      ],
-      "id": "dee69cd6-74dc-4bcd-9c42-a1b1513a84b4",
-      "name": "Não encaminhada"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "575c2511-e5c8-43f8-acd9-e5448d43bcda",
-              "leftValue": "={{ $('Webhook').item.json.body.forwarded }}",
-              "rightValue": "true",
-              "operator": {
-                "type": "boolean",
-                "operation": "true",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2.2,
-      "position": [
-        5740,
-        160
-      ],
-      "id": "b7c21b6c-bd76-43eb-93e8-e2e3875db54e",
-      "name": "Encaminhada"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        6200,
-        360
-      ],
-      "id": "eb900084-ad1c-4590-9fe7-3ba247a0b82c",
-      "name": "Loop"
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "={{ $('Lead').item.json.Telefone }}_lock",
-        "value": "true",
-        "expire": true,
-        "ttl": 40
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        6160,
-        140
-      ],
-      "id": "96761803-09e5-4a18-bac8-b511bf0f8d32",
-      "name": "Lock process",
-      "credentials": {
-        "redis": {
-          "id": "NRjQ80xpNAewkw5b",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "loose",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "21000688-f298-408a-bada-726bbfa2e218",
-              "leftValue": "={{ $json.mensagens[0] }}",
-              "rightValue": "[null]",
-              "operator": {
-                "type": "boolean",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "or"
-        },
-        "looseTypeValidation": true,
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        5560,
-        260
-      ],
-      "id": "fc5e00d1-3b4e-4998-9e58-3634d44bc67f",
-      "name": "If"
-    },
-    {
-      "parameters": {
-        "content": "## Buffer avançado com filtragem simultânea múltipla (Forwarding)",
-        "height": 800,
-        "width": 1100,
-        "color": 5
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        5360,
-        -200
-      ],
-      "id": "76d4ebc5-f5e8-4081-883a-db5422c5e45b",
-      "name": "Sticky Note2"
     },
     {
       "parameters": {
@@ -1961,34 +1969,12 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        6300,
-        140
+        9000,
+        -100
       ],
       "id": "fa7f7b51-d8b7-47a3-ad10-35839be19b5f",
       "name": "Deleta Buffer",
       "executeOnce": true,
-      "credentials": {
-        "redis": {
-          "id": "NRjQ80xpNAewkw5b",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "Locked",
-        "key": "={{ $('Lead').item.json.Telefone }}_lock",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        5880,
-        160
-      ],
-      "id": "bdd2e5b2-8fa8-4575-a397-4f3665e0405a",
-      "name": "Check Lock",
       "credentials": {
         "redis": {
           "id": "NRjQ80xpNAewkw5b",
@@ -2006,7 +1992,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5500,
+        6940,
         -100
       ],
       "id": "7d43a779-7f4e-4f3b-953c-0b093d2bdc87",
@@ -2029,7 +2015,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        6080,
+        7560,
         -100
       ],
       "id": "8d935866-a509-4fe2-89d6-7432fb83edc6",
@@ -2049,7 +2035,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        4020,
+        4280,
         -700
       ]
     },
@@ -2071,7 +2057,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        3360,
+        3620,
         -700
       ],
       "alwaysOutputData": true,
@@ -2103,7 +2089,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        3760,
+        4020,
         -660
       ],
       "alwaysOutputData": true,
@@ -2128,7 +2114,7 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "=",
+                    "leftValue": "={{ $json.numero }}",
                     "rightValue": "",
                     "operator": {
                       "type": "string",
@@ -2172,7 +2158,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        3520,
+        3780,
         -700
       ],
       "id": "77323cd6-965d-4b31-ab21-87c0c65f1b3e",
@@ -2184,89 +2170,11 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        4000,
-        40
+        4460,
+        140
       ],
       "id": "7ee78ba3-01a4-4cae-87b0-683f525364fb",
       "name": "Merge1"
-    },
-    {
-      "parameters": {
-        "content": "## Transcribe & Push",
-        "height": 400,
-        "width": 900
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        4420,
-        -180
-      ],
-      "id": "0d8a54a3-38bf-4759-bbfb-49784f4f4734",
-      "name": "Sticky Note1"
-    },
-    {
-      "parameters": {
-        "content": "## Qualifica Lead",
-        "height": 440,
-        "width": 1020,
-        "color": 3
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        3320,
-        -200
-      ],
-      "id": "d0b1a892-2557-48cf-81b5-ea87f42f6bc1",
-      "name": "Sticky Note3"
-    },
-    {
-      "parameters": {
-        "content": "  ##   Cadastro Cliente",
-        "height": 340,
-        "width": 1020,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        3240,
-        -780
-      ],
-      "id": "e1a07322-bcb2-45d9-b945-51f3fba7fd8f",
-      "name": "Sticky Note4"
-    },
-    {
-      "parameters": {
-        "content": "## Filtragem inicial + Set String",
-        "height": 440,
-        "width": 440
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        2680,
-        -840
-      ],
-      "id": "9c494a35-5205-409c-859e-aa2d6cd8ce15",
-      "name": "Sticky Note5"
-    },
-    {
-      "parameters": {
-        "content": "## Hook + Seleção",
-        "height": 220,
-        "width": 440,
-        "color": 7
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        2200,
-        -880
-      ],
-      "id": "4ceae7b8-5032-4bf3-8d39-54b8ca9371ab",
-      "name": "Sticky Note6"
     },
     {
       "parameters": {
@@ -2296,8 +2204,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        2740,
-        240
+        2900,
+        -100
       ],
       "id": "e07f8933-ce13-44ec-8bfa-33ae28931287",
       "name": "Ger. Produtos"
@@ -2338,8 +2246,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        2740,
-        400
+        2900,
+        60
       ],
       "id": "b5493258-3a50-4755-a48d-2af2abf46136",
       "name": "Horário"
@@ -2349,102 +2257,33 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        6320,
-        -400
+        8860,
+        -380
       ],
       "id": "c4792f2e-80e0-4fd5-bbf9-9eb693966d64",
       "name": "Organização"
     },
     {
-      "parameters": {
-        "content": "## Agente conversacional + Agente Parser",
-        "height": 580,
-        "width": 1060,
-        "color": 5
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        4360,
-        -940
-      ],
-      "id": "50349f07-b6e2-4980-a780-b72d2a7df324",
-      "name": "Sticky Note7"
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "Locked",
-        "key": "={{ $('Lead').item.json.Telefone }}_lock",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        5880,
-        340
-      ],
-      "id": "9e002e41-277c-431f-a9ce-e7808cd2f988",
-      "name": "Check Lock Too",
-      "credentials": {
-        "redis": {
-          "id": "NRjQ80xpNAewkw5b",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        6080,
-        -420
+        6860,
+        -500
       ],
       "id": "bc881cf1-e644-4683-8e6e-d6063397900c",
       "name": "Organização1"
     },
     {
-      "parameters": {
-        "content": "## Envio de mensagens picado",
-        "height": 460,
-        "width": 620
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        5500,
-        -980
-      ],
-      "id": "d1786ec9-10e2-4aa9-a4ae-d0adee02d1da",
-      "name": "Sticky Note8"
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        6340,
-        -420
+        7500,
+        -500
       ],
       "id": "fb19c7ca-f5b1-40a3-9ec5-3e5e25eb2097",
       "name": "Organização2"
-    },
-    {
-      "parameters": {
-        "content": "## Encerra conversa com o agente",
-        "height": 460,
-        "width": 700,
-        "color": 3
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        6300,
-        -920
-      ],
-      "id": "64573eb3-97f7-42fc-922e-73b357fb36d9",
-      "name": "Sticky Note9"
     },
     {
       "parameters": {
@@ -2453,41 +2292,11 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3180,
+        3660,
         -1000
       ],
       "id": "417a1cf5-3055-4a7c-b8ae-2b8a1be01285",
       "name": "1o Nome"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.sea-ads.com.br/message/sendText/Davi Teste",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n    \"number\": \"{{ $('Lead').item.json.Telefone }}\",\n    \"text\": \"*#Max - Atendimento*\\n{{ $('Split Out').item.json['output.mensagens'] }}\",\n    \"delay\":3000\n} ",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        6500,
-        -780
-      ],
-      "id": "01913df5-4393-4e6f-9243-affe6154b9f1",
-      "name": "W-API1",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "9O4S73201TzyGhWM",
-          "name": "Header Auth account 3"
-        },
-        "httpBearerAuth": {
-          "id": "VYf1v9ZyxXUkh9tH",
-          "name": "Bearer Auth account"
-        }
-      }
     },
     {
       "parameters": {
@@ -2497,7 +2306,7 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        4260,
+        5360,
         -1360
       ],
       "id": "8f0d4163-9f1c-4899-a169-6c1e72cef9aa",
@@ -2510,7 +2319,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4420,
+        5520,
         -1360
       ],
       "id": "7c87ae50-dc65-434c-83b4-b6b0172dd520",
@@ -2523,7 +2332,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4600,
+        5700,
         -1360
       ],
       "id": "21fac163-a6bd-4547-943f-b53b21eeee2c",
@@ -2536,7 +2345,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4840,
+        5940,
         -1360
       ],
       "id": "ff144f54-0f37-4f4a-8868-3d9ab07c7cb2",
@@ -2555,8 +2364,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        3900,
-        -1160
+        3440,
+        -1460
       ],
       "alwaysOutputData": true
     },
@@ -2577,7 +2386,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4080,
+        5180,
         -1360
       ],
       "id": "615d129a-990f-492d-bf43-da5f6cc7a4ac",
@@ -2595,7 +2404,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        5120,
+        6440,
         -1360
       ],
       "id": "ac4c38d8-3d33-4524-9b11-d9c20a0b2c7d",
@@ -2613,7 +2422,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        5120,
+        6440,
         -1160
       ],
       "id": "eeb32a4c-ec59-4986-93b2-c62146cda8ad",
@@ -2673,7 +2482,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        5500,
+        6820,
         -1360
       ],
       "id": "8df270bc-9fc3-4f76-87f7-06c6ec1b3c02",
@@ -2686,7 +2495,7 @@
             {
               "id": "58864ebc-824c-47cf-a5eb-49fd54193c14",
               "name": "output",
-              "value": "",
+              "value": "null",
               "type": "string"
             }
           ]
@@ -2696,8 +2505,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5800,
-        -1320
+        7080,
+        -1280
       ],
       "id": "d75595f9-55e9-4da5-8ea2-70537d877e54",
       "name": "Edit Fields"
@@ -2705,17 +2514,835 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Webhook').item.json.body.data.key.remoteJid }}",
+        "sessionKey": "={{ $('Lead').item.json.Telefone }}",
         "contextWindowLength": 10
       },
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        4540,
-        -560
+        4760,
+        -760
       ],
       "id": "3d45a75d-a5b3-4a22-ab79-ee4cc854f9c5",
       "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "01d20e0a-253c-47df-9d6c-24ac2180f922",
+              "leftValue": "={{ $('Get Buffer 3').item.json.mensagens.last() }}",
+              "rightValue": "={{ $('Get Buffer ').item.json.mensagens.last() }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "c854517f-8a28-4bb6-ac33-eb8b07777a22",
+              "leftValue": "={{ $json.Locked }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2680,
+        1460
+      ],
+      "id": "b45e93a6-45d0-46da-b20f-18100e6f7af9",
+      "name": "If Redis OK1"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2440,
+        1020
+      ],
+      "id": "daafb6f0-f364-41dc-9e98-35e705f87522",
+      "name": "Wait3",
+      "webhookId": "57eac84a-ce2d-4739-a3fc-f76dc268657e",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3e6829d4-a8a5-4253-a4c8-57f24dc80a25",
+              "leftValue": "={{ $('Webhook').item.json.body.forwarded }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        1460
+      ],
+      "id": "0c8246fb-50e8-4364-b70c-4cd8e522e440",
+      "name": "Não encaminhada1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "575c2511-e5c8-43f8-acd9-e5448d43bcda",
+              "leftValue": "={{ $('Webhook').item.json.body.forwarded }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2400,
+        1280
+      ],
+      "id": "659ecdf5-ad35-4027-8c72-6afdbc3bfd71",
+      "name": "Encaminhada1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2860,
+        1480
+      ],
+      "id": "a59209ec-6c3b-45b1-b949-ffa1fe9d36df",
+      "name": "Loop1"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('Lead').item.json.Telefone }}_lock",
+        "value": "true",
+        "expire": true,
+        "ttl": 40
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2820,
+        1260
+      ],
+      "id": "a657ef87-4461-4daa-aa82-486b86178632",
+      "name": "Lock process1",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "21000688-f298-408a-bada-726bbfa2e218",
+              "leftValue": "={{ $json.mensagens[0] }}",
+              "rightValue": "[null]",
+              "operator": {
+                "type": "boolean",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2220,
+        1380
+      ],
+      "id": "639efd13-a85c-4016-bd22-6d248d6c7fbf",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "content": "## Buffer avançado com filtragem simultânea múltipla (Forwarding)",
+        "height": 800,
+        "width": 1100,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        920
+      ],
+      "id": "e4333091-fc10-4bac-81a8-0a80b0ad88c2",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Lead').item.json.Telefone }}_buffer"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2960,
+        1260
+      ],
+      "id": "b276542f-7725-4e64-84a8-8b52c7eff045",
+      "name": "Deleta Buffer1",
+      "executeOnce": true,
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "Locked",
+        "key": "={{ $('Lead').item.json.Telefone }}_lock",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2540,
+        1280
+      ],
+      "id": "800c5e3d-bb66-4151-825d-af697a9edf68",
+      "name": "Check Lock1",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "mensagens",
+        "key": "={{ $('Lead').item.json.Telefone }}_buffer",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        1020
+      ],
+      "id": "2c6cf88a-a131-44bc-9798-f860c3c84e52",
+      "name": "Get Buffer ",
+      "executeOnce": true,
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "mensagens",
+        "key": "={{ $('Lead').item.json.Telefone }}_buffer",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2740,
+        1020
+      ],
+      "id": "6b12052e-2cfd-4982-a945-87d11142db8b",
+      "name": "Get Buffer 3",
+      "executeOnce": true,
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "Locked",
+        "key": "={{ $('Lead').item.json.Telefone }}_lock",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2540,
+        1460
+      ],
+      "id": "27092b5a-e09d-4a09-a57e-06015c64854a",
+      "name": "Check Lock Too1",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=5512982113000_check",
+        "value": "=Ativo",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 3600
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        7180,
+        -1520
+      ],
+      "id": "14daf23e-c787-4eb4-a1b1-2ed6b831b0cb",
+      "name": "Redis7",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a0ba33dd-8d0b-4673-bf52-ba7954e29370",
+              "leftValue": "={{ $json.mensagens }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "f6b79ed2-cb77-402a-b3a4-f8d5b179f4ba",
+              "leftValue": "={{ $json.mensagens }}",
+              "rightValue": "={{ $('Webhook').item.json.body.messageId }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        6020,
+        -40
+      ],
+      "id": "2743a29d-09be-40ff-b7ce-4c6e7911448b",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('Lead').item.json.Telefone }}_msg",
+        "value": "={{ $('Webhook').item.json.body.messageId }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        -900
+      ],
+      "id": "55f9b100-9075-4353-a1da-cd2e2ab7f2ec",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "mensagens",
+        "key": "={{ $('Lead').item.json.Telefone }}_msg",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        5800,
+        -40
+      ],
+      "id": "34448278-4f6c-429f-a3eb-b24be7cd50e6",
+      "name": "Get Buffer",
+      "executeOnce": true,
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "mensagens",
+        "key": "={{ $('Lead').item.json.Telefone }}_msg",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2860,
+        -820
+      ],
+      "id": "d9d00adb-5fa6-474a-ae56-a10b46e95fd7",
+      "name": "Get Buffer1",
+      "executeOnce": true,
+      "retryOnFail": false,
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f45894f6-038e-4e41-95fa-4d302d638794",
+              "leftValue": "={{ $json.mensagens }}",
+              "rightValue": "null",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3140,
+        -920
+      ],
+      "id": "cf64a1b8-f30b-4d4b-be70-2ef05b169e86",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Lead').item.json.Telefone }}_DB"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        5640,
+        -580
+      ],
+      "id": "4278012e-c947-404a-895e-9093b5acca02",
+      "name": "Redis Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "19626244-f0e4-4f6c-82bd-53810b6ab6d1",
+              "leftValue": "={{ $json.mensagens.last() }}",
+              "rightValue": "={{ $('Get Buffer 1').item.json.mensagens.last() }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        7780,
+        -100
+      ],
+      "id": "e96bdd2d-6057-4aa1-9024-0111df4a5d76",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "mensagens",
+        "key": "={{ $('Lead').item.json.Telefone }}_buffer",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        7680,
+        -1020
+      ],
+      "id": "3906cdb4-de83-4508-aa98-c9e04c913cf8",
+      "name": "Get Buffer 4",
+      "executeOnce": true,
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2dcea664-7257-45bf-be54-1168bdc13ff3",
+              "leftValue": "={{ $json.mensagens }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        7820,
+        -1020
+      ],
+      "id": "ee93b05e-36dd-4420-90ed-009e11a46960",
+      "name": "If5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        7760,
+        -400
+      ],
+      "id": "02bf6ffe-24a4-464b-8689-79616e0be823",
+      "name": "Organização3"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Lead').item.json.Telefone }}_msg"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        4460,
+        -60
+      ],
+      "id": "04e931be-f9cf-4acd-9678-28cf0299fc06",
+      "name": "Delete Msg ID Buffer 1",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('Lead').item.json.Telefone }}_msg"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        7500,
+        -1020
+      ],
+      "id": "291b2b61-e782-4ddb-a158-6b760b895ae0",
+      "name": "Delete MSG ID Buffer",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce44d552-db37-4741-b37a-9f8fc25c8990",
+              "leftValue": "={{ $('Webhook').item.json.body.fromMe }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1780,
+        -840
+      ],
+      "id": "638cfc1e-ea1f-4b7f-8cea-3bafcf20f2bd",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('Lead').item.json.Telefone }}_check",
+        "value": "=Desativado",
+        "keyType": "string",
+        "expire": true,
+        "ttl": 3600
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2300,
+        -960
+      ],
+      "id": "a12b7796-2ce3-4fe4-bbf5-daf850775012",
+      "name": "Redis8",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8c7f3257-668c-42f8-be0f-af2809c8905b",
+              "leftValue": "={{ $('Mensagem Lead').item.json.Mensagem }}",
+              "rightValue": "Max",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2000,
+        -940
+      ],
+      "id": "e71bd3c7-4f85-460f-a33f-941cddc7f63e",
+      "name": "If8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"phone\": \"{{ $('Lead').item.json.Telefone }}\",\n    \"message\": \"*#Max - Atendimento*\\n{{ $('Split Out').item.json['output.mensagens'] }}\",\n    \"delayMessage\":3\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        7500,
+        -800
+      ],
+      "id": "01913df5-4393-4e6f-9243-affe6154b9f1",
+      "name": "Z-API",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "4KOge2CHa6sSv6MD",
+          "name": "Header Auth account"
+        },
+        "httpBearerAuth": {
+          "id": "VYf1v9ZyxXUkh9tH",
+          "name": "Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('Lead').item.json.Telefone }}_DB.temp",
+        "keyType": "list",
+        "expire": true,
+        "ttl": 18000
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        7240,
+        -1020
+      ],
+      "id": "fd9678bd-7d49-4d38-bf79-0121966f980c",
+      "name": "Redis2",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        8280,
+        -1180
+      ],
+      "id": "6e3bf3db-d8a8-4101-81a5-f432eadd7df6",
+      "name": "AI Agent3"
     }
   ],
   "pinData": {},
@@ -2725,6 +3352,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-26T22:31:59.000Z",
-  "versionId": "2869b19d-e033-4d13-ae58-2de92e117216"
+  "updatedAt": "2025-07-28T02:38:52.000Z",
+  "versionId": "14831127-f85f-4f66-9b6f-78039d2d60f9"
 }
