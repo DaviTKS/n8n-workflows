@@ -1125,7 +1125,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://192.168.1.226:5678/print",
+        "url": "http://192.168.0.68:5678/print",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
@@ -1965,9 +1965,9 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.w-api.app/v1/message/send-text?instanceId=0BB10C-5UHYF0-T5FZK2",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
         "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -1997,8 +1997,8 @@
       "name": "W-API1",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "zSYRuZxu43Eu1F9n",
-          "name": "Header Auth account 2"
+          "id": "4KOge2CHa6sSv6MD",
+          "name": "Header Auth account"
         },
         "httpBearerAuth": {
           "id": "VYf1v9ZyxXUkh9tH",
@@ -2218,54 +2218,13 @@
       }
     }
   ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "kadosh.ngrok.dev",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-            "content-length": "200",
-            "accept": "*/*",
-            "accept-encoding": "gzip, deflate, br, zstd",
-            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
-            "content-type": "application/json",
-            "origin": "null",
-            "priority": "u=1, i",
-            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "2804:868:d041:b78b:9dff:c160:73e1:22f8",
-            "x-forwarded-host": "kadosh.ngrok.dev",
-            "x-forwarded-proto": "https"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "telefone": "(12) 98186-9502",
-            "nome": "Guilherme",
-            "sobrenome": "Costa",
-            "aparelho": "Notebook",
-            "marca": "DELL",
-            "modelo": "Inspiron",
-            "defeito": "Upgrade Completo - Mem, SSD, Backup",
-            "observacoes": "Com fonte"
-          },
-          "webhookUrl": "https://kadosh.ngrok.dev/webhook/form",
-          "executionMode": "production"
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-23T23:20:40.000Z",
-  "versionId": "d3d0b479-3ef8-4e32-807e-4d96f23cf50a"
+  "updatedAt": "2025-07-28T01:09:30.000Z",
+  "versionId": "41edd8b9-ad51-4528-add7-8cf35119404f"
 }
