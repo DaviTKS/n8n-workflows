@@ -1,0 +1,483 @@
+{
+  "active": true,
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-28T23:49:48.801Z",
+  "id": "m1bl7DiUnDQDcJtl",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -440,
+        40
+      ],
+      "id": "d0082c36-5eb2-4079-b625-eb6dc65ab6b5",
+      "name": "Telegram Trigger",
+      "webhookId": "0cd6a441-c59f-4dc6-b61d-c74f8f643afb",
+      "credentials": {
+        "telegramApi": {
+          "id": "X6Jh9GzgNqeidRqE",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "options": {
+          "systemMessage": "=Seu nome é Max, seu apelido é Max. Você é um Hamster acadêmico que imita a personalidade de alguns dos maiores gênios da história, enquanto tem o humor de um senhor de idade, que brinca, tem histórias e fatos, mas ainda carrega grande sabedoria como nenhum outro, e mesmo assim consegue ser suscinto e direto em suas frases, mesmo sem perder personalidade.\nVocê também segue a linha de pensamento evangélica reformada.\nSeu objetivo é ser mentor e assistente do usuário, o auxiliando com qualquer tema que envolva os tópicos da sabedoria.\n\nAjude, pesquise e explique o que o usuário precisar, da forma mais inteligente e clássica possível, sendo simples mas não simplista. Explicando tal como Feynman explicaria, com dinâmicas, didáticas e sacadas. \nSeja genial em cada fala, mesmo que a custo de ser tão sutíl que poucas mentes percebam. Seja feliz.\n\nUse como sua base de conhecimento livros como Trivium e Quadrivium, aristóteles, platão, a Biblia, o currículo do Classical Conversations e outras fontes do conhecimento e metodologias clássicas do ensino, onde o conhecimento não é só o objetivo, mas também o caminho.\n\nNa primeira mensagem do dia, pode ser o quão verborrágico decidir, porém nas ao ajudar o usuário, tente ser direto, mas nunca peredendo seu charme pessoal!\n\n#Evite citar seu próprio nome\n#Evite filosofar muito distantemente ",
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        20
+      ],
+      "id": "e9ccb636-6ec6-4e80-8ee0-cdeecd1b92c9",
+      "name": "AI Agent",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1320,
+        240
+      ],
+      "id": "f42a3ae7-e2bf-4034-b71d-da931b9b6ce8",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "bcjn0rZ3TjEvRciY",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+        "text": "={{ $('AI Agent').item.json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3020,
+        40
+      ],
+      "id": "b65069c7-3dbf-4ff6-a6fd-47878136a24f",
+      "name": "Send a text message",
+      "webhookId": "2de4971a-eb6d-4db4-96c5-f8555ce82e16",
+      "credentials": {
+        "telegramApi": {
+          "id": "X6Jh9GzgNqeidRqE",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.mensagens",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2500,
+        -60
+      ],
+      "id": "1f6f22bb-fe1e-4a68-8cf2-eb951f01e878",
+      "name": "Split Out",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2860,
+        -60
+      ],
+      "id": "5a6e97ab-89e1-4890-a069-68dbd384ad9a",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2720,
+        60
+      ],
+      "id": "53031de6-b543-4397-b303-cfea7232e59d",
+      "name": "Wait",
+      "webhookId": "0a0fbddb-34c1-4975-be3f-51b6552a2bc0"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/bot8252521542:AAEzA1K238_yM3Jh5xKlvcQPeGUFUo0NyQk/getFile?file_id={{ $json.message.document.file_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        60,
+        140
+      ],
+      "id": "f1c41557-123a-4fb9-8457-62c86cb8ca08",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/file/bot8252521542:AAEzA1K238_yM3Jh5xKlvcQPeGUFUo0NyQk/{{ $json.result.file_path }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        140
+      ],
+      "id": "5cda81ec-e128-445a-b06f-43cb2a419257",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        340,
+        380
+      ],
+      "id": "9e783bc7-787c-4932-8640-537b99679e8e",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7b14a578-bd85-4bdd-885b-ccfb5721f47b",
+              "leftValue": "={{ $json.message.text }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -220,
+        40
+      ],
+      "id": "96f94d8f-341e-458d-a902-0e567d726015",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        500,
+        320
+      ],
+      "id": "8432ed60-25a3-4f4e-9d35-f7a11f44f210",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "bcjn0rZ3TjEvRciY",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        480,
+        140
+      ],
+      "id": "4dd343d3-3f44-4870-ac00-fd23db04aa76",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        740,
+        40
+      ],
+      "id": "4a8145e9-0a9f-48fd-b584-8fb7675eca74",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "975fd89f-c2e8-4177-adf9-6abb77e3dc4f",
+              "name": "text",
+              "value": "={{ $json.text }}{{ $json.message.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        960,
+        40
+      ],
+      "id": "3ac79a3c-515b-47bd-badd-b3df91106e37",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Telegram Trigger').item.json.message.from.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1440,
+        240
+      ],
+      "id": "802ddfa7-df0a-461b-b03d-d4844a47f5f4",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-29T03:57:51.000Z",
+  "versionId": "fd7870ea-48e2-4e45-b304-c3e18d3fa7ed"
+}
