@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "AI Agent": {
       "main": [
@@ -17,6 +17,11 @@
         [
           {
             "node": "If9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields1",
             "type": "main",
             "index": 0
           }
@@ -1135,7 +1140,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        680,
+        440,
         -780
       ],
       "webhookId": "aa84ef49-0566-487f-b5db-eeb335ca209a"
@@ -3876,6 +3881,87 @@
       ],
       "id": "93235506-4331-43d2-9322-9a62f16f8f77",
       "name": "If9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "16fba710-79df-40c4-bfa9-b320311e1d19",
+              "name": "phone",
+              "value": "={{ $json.body.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "4aec332c-b531-45e6-95ce-1c361cd217bc",
+              "name": "name",
+              "value": "={{ $json.body.senderName }}",
+              "type": "string"
+            },
+            {
+              "id": "4efea8c0-1832-4190-9261-68589abbefb2",
+              "name": "idMensagem",
+              "value": "={{ $json.body.messageId }}",
+              "type": "string"
+            },
+            {
+              "id": "5b740991-541e-4ec9-836c-b426aad74b84",
+              "name": "message",
+              "value": "={{ $json.body.text.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        720,
+        -1060
+      ],
+      "id": "8b5969c9-8fda-450d-94b9-a9bab267615a",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://189.55.119.185:3000/api/v1/accounts/1/contact_inboxes?inbox_id=N9pZSAJgkgjGq8brfG3BxYYQ",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "Davi"
+            },
+            {
+              "name": "identifier",
+              "value": "(12)98211-3000"
+            },
+            {
+              "name": "phone_number",
+              "value": "=+5512982113000"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        -1060
+      ],
+      "id": "999e6b2e-21ef-4b4d-955c-9760a672df52",
+      "name": "HTTP Request1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZfTK2jEDLoDUD4Nd",
+          "name": "Chatwoot"
+        }
+      }
     }
   ],
   "pinData": {
@@ -3884,12 +3970,12 @@
         "json": {
           "headers": {
             "host": "kadosh.ngrok.dev",
-            "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:111.0) Gecko/20100101 Firefox/111.0",
-            "content-length": "582",
+            "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1",
+            "content-length": "572",
             "content-type": "application/json",
             "origin": "https://api.z-api.io",
             "server": "Z-API",
-            "x-forwarded-for": "168.138.125.213",
+            "x-forwarded-for": "144.22.244.59",
             "x-forwarded-host": "kadosh.ngrok.dev",
             "x-forwarded-proto": "https",
             "z-api-token": "771E4BE1F789AB112E4831D6",
@@ -3898,23 +3984,32 @@
           "params": {},
           "query": {},
           "body": {
+            "isStatusReply": false,
+            "chatLid": "201928088764602@lid",
+            "connectedPhone": "551239313000",
+            "waitingMessage": false,
+            "isEdit": false,
             "isGroup": false,
             "isNewsletter": false,
             "instanceId": "3E29DB01364090EFDC8006E9A5181015",
-            "messageId": "3F2DE3EAF24DCFF440D9",
-            "momment": 1753729986000,
-            "status": "RECEIVED",
+            "messageId": "320C70A5C6FABABBFAA208800C861FED",
+            "phone": "5512997106952",
             "fromMe": false,
-            "phone": "5511981414427",
-            "chatName": "5511981414427",
-            "senderName": "Madi",
+            "momment": 1753892513000,
+            "status": "RECEIVED",
+            "chatName": "Dairton",
             "senderPhoto": null,
-            "photo": "https://pps.whatsapp.net/v/t61.24694-24/422349786_998112778324880_7451165834288602330_n.jpg?ccb=11-4&oh=01_Q5Aa2AE5pzpbdE86Jw0H7Ixq04XZra91SZN1DjaOAwLvj8jOHg&oe=6894F7A3&_nc_sid=5e03e0&_nc_cat=102",
+            "senderName": "Dairton",
+            "photo": null,
             "broadcast": false,
             "participantLid": null,
+            "messageExpirationSeconds": 0,
+            "forwarded": false,
             "type": "ReceivedCallback",
-            "waitingMessage": true,
-            "viewOnce": false
+            "fromApi": false,
+            "text": {
+              "message": "Olá!"
+            }
           },
           "webhookUrl": "https://kadosh.ngrok.dev/webhook/recebetext1",
           "executionMode": "production"
@@ -3928,6 +4023,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-28T23:19:37.000Z",
-  "versionId": "49e35bdb-a22d-4127-93a8-42bf9ded3a4c"
+  "updatedAt": "2025-07-30T23:37:09.000Z",
+  "versionId": "54e92486-30cc-46a9-86cd-36339fe889b3"
 }
