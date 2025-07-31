@@ -289,7 +289,7 @@
       "main": [
         [
           {
-            "node": "W-API1",
+            "node": "Z-API",
             "type": "main",
             "index": 0
           }
@@ -1964,50 +1964,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Add OS Cliente').item.json.numero }}"
-            },
-            {
-              "name": "message",
-              "value": "={{ $('Sauda2').item.json.saudacao }} {{ $(\"Edit Fields\").item.json.Nome.split(' ')[0] }}! \nSua OS é a número {{ $('Telefone').item.json.OS }}\n\nReferente ao seu *{{ $('OS Central').item.json.Aparelho }} {{ $('OS Central').item.json.Marca }}*\n\n_Modelo {{ $('OS Central').item.json.Modelo }}._\n\nDefeito relatado: *{{ $('OS Central').item.json.Defeito }}*\n\nObservações do técnico: {{ $('OS Central').item.json['Observações'] }}\n"
-            },
-            {
-              "name": "delayMessage",
-              "value": "5"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        6040,
-        -160
-      ],
-      "id": "77641054-1840-4eae-81df-beb58ae11054",
-      "name": "W-API1",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "4KOge2CHa6sSv6MD",
-          "name": "Header Auth account"
-        },
-        "httpBearerAuth": {
-          "id": "VYf1v9ZyxXUkh9tH",
-          "name": "Bearer Auth account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "jsCode": "return items.map(item => {\n  const dataString = item.json.dataFormatada; // Ex: \"15/07/2025 15:01\"\n\n  // Converte string BR para ISO (yyyy-mm-ddTHH:MM:00)\n  const partes = dataString.split(/[\\s/:]/); // [dia, mês, ano, hora, minuto]\n  const dataISO = `${partes[2]}-${partes[1]}-${partes[0]}T${partes[3]}:${partes[4]}:00`;\n\n  const data = new Date(dataISO);\n  const horaAtual = data.getHours();\n\n  let saudacao;\n\n  if (horaAtual >= 6 && horaAtual < 12) {\n    saudacao = \"Bom dia\";\n  } else if (horaAtual >= 12 && horaAtual < 18) {\n    saudacao = \"Boa tarde\";\n  } else {\n    saudacao = \"Boa noite\";\n  }\n\n  item.json.saudacao = saudacao;\n  return item;\n});\n"
       },
       "type": "n8n-nodes-base.code",
@@ -2216,6 +2172,50 @@
           "name": "Supabase account"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Add OS Cliente').item.json.numero }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $('Sauda2').item.json.saudacao }} {{ $(\"Edit Fields\").item.json.Nome.split(' ')[0] }}! \nSua OS é a número {{ $('Telefone').item.json.OS }}\n\nReferente ao seu *{{ $('OS Central').item.json.Aparelho }} {{ $('OS Central').item.json.Marca }}*\n\n_Modelo {{ $('OS Central').item.json.Modelo }}._\n\nDefeito relatado: *{{ $('OS Central').item.json.Defeito }}*\n\nObservações do técnico: {{ $('OS Central').item.json['Observações'] }}\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6040,
+        -160
+      ],
+      "id": "77641054-1840-4eae-81df-beb58ae11054",
+      "name": "Z-API",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "4KOge2CHa6sSv6MD",
+          "name": "Header Auth account"
+        },
+        "httpBearerAuth": {
+          "id": "VYf1v9ZyxXUkh9tH",
+          "name": "Bearer Auth account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -2225,6 +2225,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-28T01:09:30.000Z",
-  "versionId": "41edd8b9-ad51-4528-add7-8cf35119404f"
+  "updatedAt": "2025-07-30T21:07:41.000Z",
+  "versionId": "a743e75e-8c67-458b-9ed1-61a899ec056e"
 }
