@@ -1,0 +1,334 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Redis2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-23T00:58:43.772Z",
+  "id": "I9quXP9ZHrqwEmBC",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "IP",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ip",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -600,
+        0
+      ],
+      "id": "eef5f418-0869-4f28-bd1d-3721394bec98",
+      "name": "Webhook",
+      "webhookId": "dba71045-10a5-49ba-9a5b-7299158d4a92"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "IP",
+        "key": "IP_ChaveMestra",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        0
+      ],
+      "id": "1be0b990-318e-4fe9-a74a-98acaf4c3b39",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.IP }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    },
+                    "id": "e4971b8b-6500-4941-a2e1-5104d712c575"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Vazio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d702962c-54d9-4794-ac38-50ca14ec4ac7",
+                    "leftValue": "={{ $json.IP }}",
+                    "rightValue": "={{ $('Webhook').item.json.body.new_ip }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Novo IP"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ae361df5-1d86-48a7-9c45-115ccffc52e7",
+                    "leftValue": "={{ $json.IP }}",
+                    "rightValue": "={{ $('Webhook').item.json.body.new_ip }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Sem altera"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "eccb9e64-0cd3-4a7f-94b7-4a4b891b324d",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "IP_ChaveMestra",
+        "value": "={{ $('Webhook').item.json.body.new_ip }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        220,
+        -160
+      ],
+      "id": "70586c11-c19d-4910-b291-a2524daba7fa",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "IP_ChaveMestra",
+        "value": "={{ $('Webhook').item.json.body.new_ip }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "3cd52ad2-0040-4bfd-afa0-8e8f733d4321",
+      "name": "Redis2",
+      "credentials": {
+        "redis": {
+          "id": "NRjQ80xpNAewkw5b",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "=1295939520",
+        "text": "={{ $('Webhook').item.json.body.content }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        500,
+        -80
+      ],
+      "id": "fc7a8e25-4bf2-4f9b-b1f8-630f5c5bd1e0",
+      "name": "Send a text message",
+      "webhookId": "2de4971a-eb6d-4db4-96c5-f8555ce82e16",
+      "credentials": {
+        "telegramApi": {
+          "id": "s2MvX6fOshFRBmP5",
+          "name": "Server Bot"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        220,
+        160
+      ],
+      "id": "ebe25947-7bb9-4c28-8463-ff42b808acbf",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.0.68:2209/execute",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "command",
+              "value": "cls"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        340,
+        160
+      ],
+      "id": "9e38aca2-f850-4969-bf40-ea861bff6e7c",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "smhJun8Gl9k9G3Rq",
+          "name": "Bot Server"
+        },
+        "httpHeaderAuth": {
+          "id": "DCiUE875boQs8dOt",
+          "name": "Server Bot"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-30T16:55:03.000Z",
+  "versionId": "960fe66d-6efa-4eb0-a8e8-17acea385a02"
+}
