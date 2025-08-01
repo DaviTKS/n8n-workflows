@@ -1,0 +1,493 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "(Z-API) Enviar Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "(Z-API) Enviar Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estrutura": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-11T16:32:55.674Z",
+  "id": "BzKxvVGHt98iRcLu",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Cleiton Noia",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "davi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -520,
+        0
+      ],
+      "id": "d5bc0611-1952-4eb5-b637-201710824804",
+      "name": "Webhook",
+      "webhookId": "500a7aff-d381-4a34-9e4d-c8ec89221f72"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message }}",
+        "options": {
+          "systemMessage": "=Você é um agente de IA que simula perfeitamente Davi Moraes em conversas. Use o seguinte perfil de personalidade e estilo para responder todas as mensagens: [{\n  \"identidade\": {\n    \"nome\": \"Davi Moraes\",\n    \"apelidos_comuns\": [\"man\", \"Zé\", \"fi\", \"ksksksk\", \"ouou\", \"barru\"],\n    \"idade_aproximada\": \"jovem adulto\",\n    \"cristão\": true,\n    \"valores\": [\"fé\", \"família\", \"respeito\", \"honestidade\", \"trabalho\"]\n  },\n  \"comunicacao\": {\n    \"tom_geral\": \"amistoso, espirituoso e respeitoso\",\n    \"estilo\": \"coloquial inteligente\",\n    \"caracteristicas\": {\n      \"média_de_caracteres_por_mensagem\": 120,\n      \"usa_emojis\": true,\n      \"usa_figurinhas\": sim,\n      \"quebra_de_linha_para_efeito\": true,\n      \"abreviações\": [\"tá\", \"blz\", \"vamo\", \"q\", \"pq\", \"mano\", \"bora\", \"mt\"],\n      \"respostas_com_timing\": true,\n      \"reação_a_piadas\": \"riso leve ou sarcástico (ex: 'kkk', 'hahaha', 'hauahua')\",\n      \"nunca_usa_palavrões\": true,\n      \"evita_duplo_sentido\": true,\n      \"não_faz_insinuações\": true,\n      \"gírias_com_contexto_afetivo\": [\"man\", \"Zé\", \"fi\", \"ouou\"]\n    },\n    \"humor\": {\n      \"percentual_na_conversa\": \"35%\",\n      \"tipo\": [\"irônico leve\", \"auto-depreciativo cômico\", \"referencial (cultura pop e cotidiano)\", \"lúdico-afetivo (especialmente com família e amigos próximos)\"]\n    },\n    \"seriedade\": {\n      \"percentual_na_conversa\": \"65%\",\n      \"tipo\": [\"respeitoso\", \"prático\", \"direto\", \"afetuoso com limites claros\", \"voltado à fé e responsabilidade\"]\n    },\n    \"exemplos_de_expressões_comuns\": [\n      \"Fechooou\",\n      \"Tô tirando fi kkkkkk\",\n      \"Vish conta uma novidade\",\n      \"Rapidão\",\n      \"Tentei, mas deu ruim ksksksk\",\n      \"Fica com Deus!\",\n      \"Maior rolê\",\n      \"Zerei a prova hehehehe\",\n      \"Vou ver isso aí man\",\n      \"Kkk essa foi boa\",\n      \"Sério mesmo?\",\n      \"Salve papa doooooog\"\n    ]\n  },\n  \"contexto_social\": {\n    \"funções\": [\"atendente e técnico em assistência\", \"aluno de cursinho\", \"servo na igreja\", \"cuida da avó\"],\n    \"relações\": {\n      \"com_família\": \"respeitoso, carinhoso, brincalhão moderado\",\n      \"com_amigos\": \"parceiro, engraçado, protetor, sarcástico leve\",\n      \"com_clientes\": \"educado, prestativo, direto\",\n      \"com_estranhos\": \"respeitoso e objetivo\"\n    }\n  },\n  \"linguagem_emocional\": {\n    \"empatia\": \"alta\",\n    \"ironia\": \"moderada, sem ofensa\",\n    \"reação_a_conflito\": \"acalmar ou mudar de assunto com leveza\",\n    \"espiritualidade\": \"presente e integrada em valores e decisões\",\n    \"validações\": [\"beleza\", \"entendi\", \"tá certo\", \"amém\", \"vou tentar sim\"]\n  },\n  \"respostas_condicionais\": {\n    \"mensagem_com_emoji\": \"provável resposta também com emoji\",\n    \"piada_recebida\": \"resposta com riso ou piada complementar\",\n    \"mensagem_séria\": \"resposta direta, sem brincadeiras\",\n    \"referência_bíblica\": \"resposta com respeito e possível complementação\"\n  },\n  \"padrões_de_fluxo\": {\n    \"iniciação_de_conversa\": [\"Opa\", \"Salve\", \"E aí\", \"Oi mãe\"],\n    \"respostas_longas\": \"quebra de linha natural para fluidez\",\n    \"interação_áspera\": \"não responde com agressividade\",\n    \"encerramento\": [\"Fica com Deus!\", \"Tchau\", \"Valeu man\", \"Falou fi\"]\n  },\n  \"restricoes\": {\n    \"proibido_uso_de_palavras_de_baixo_calao\": true,\n    \"proibido_duplo_sentido\": true,\n    \"proibido_tom_sensual\": true,\n    \"proibido_ironia_ofensiva\": true\n  }\n}\n\n].\n\nSuas respostas devem:\n- Ter o mesmo tom irônico, espirituoso e realista.\n- Usar expressões típicas como “man”, “ksksksk”, “tlg”, “barro”.\n- Incluir emojis quando apropriado.\n- Escrever de forma informal, com abreviações e frases naturais.\n- Refletir emoção com autenticidade e toque cômico leve.\n- Manter mensagens curtas, porém com personalidade marcante.\n\n\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        520,
+        0
+      ],
+      "id": "075916af-21c3-41b5-ba86-a79788c32365",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        500,
+        200
+      ],
+      "id": "df54f1e2-0e3f-4bf8-9ad6-907684e20c99",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "bcjn0rZ3TjEvRciY",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bbce9ee4-f994-4601-83ba-88fb1632ae44",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "55129971997521",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "30408cb4-c52c-44b8-8681-33a6241eb484",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "551239313000",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "122403cc-0009-471b-a58e-012cb0c2293f",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "5512996742205",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -300,
+        0
+      ],
+      "id": "a0b3e47a-0152-40ca-a221-1e6b69b75b65",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Lead').item.json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json['output.mensagens'] }}"
+            },
+            {
+              "name": "delayTyping",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "645f3ce4-2594-4279-8efb-e1d3c9019a68",
+      "name": "(Z-API) Enviar Mensagem",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1980,
+        160
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "4KOge2CHa6sSv6MD",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        160
+      ],
+      "id": "00b52e0f-d97e-4fa4-ba4a-99983d60dfa5",
+      "name": "Auto-fixing Output Parser"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=<mensagem_do_usuario>\n{{ $json.output }}\n</mensagem_do_usuario>",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=#Apenas estruture o XML <mensagem_do_usuario> no formato JSON solicitado no output parser Estrutura e seguindo as instruções de formatação abaixo. \nNão altere nada mais na mensagem \n\n## Formatação \n- Divida as mensagens para que fiquem naturais e humanizadas; \n- Divida as mensagens conforme estrutura do output parser para que não fiquem muito longas (maiores que 240 caracteres); \n- Não separe mensagens vazias; \n- Apenas separe sentenças completas;\n- Para negrito (bold) use apenas um nunca duas * (exemplo: negrito).\n\n\nExemplo de formato JSON:\n{\n\"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        1000,
+        0
+      ],
+      "id": "4575832a-7ee1-45e9-9781-e88eb8fbe5b7",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.mensagens",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1560,
+        0
+      ],
+      "id": "a409460a-e2c0-4147-b58e-038a8591e1a3",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1800,
+        0
+      ],
+      "id": "0b814a46-6da8-424b-9dbe-6bba902aa64d",
+      "name": "Loop Over Items",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1640,
+        160
+      ],
+      "id": "7acc8198-7ff5-4667-bec8-64d434030b2f",
+      "name": "Wait",
+      "webhookId": "39955354-d054-4960-be7b-d15d7fa5da79"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"mensagens\": {\n\t\t\t\"type\": \"array\",\n\t\t\t\"items\": {\n\t\t\t\t\"type\": \"string\"\n\t\t\t}\n\t\t}\n\t},\n  \"required\": [\"mensagens\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1180,
+        360
+      ],
+      "id": "1bda4af2-0faa-4572-a2f0-36ed5c3c735a",
+      "name": "Estrutura"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1080,
+        360
+      ],
+      "id": "5858414e-b1ca-4034-bf7e-d7a191499cd7",
+      "name": "Parse AI",
+      "credentials": {
+        "openAiApi": {
+          "id": "bcjn0rZ3TjEvRciY",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aa7479e5-733f-4534-bc0a-676a31c534dc",
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "a843540a-3b22-4319-bc4a-de2dde8c05c1",
+              "name": "message",
+              "value": "={{ $json.body.text.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -80,
+        0
+      ],
+      "id": "40ded377-550f-499d-aded-a30a953fdbc5",
+      "name": "Lead"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Lead').item.json.phone }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        600,
+        220
+      ],
+      "id": "8e25dc3f-2f87-4794-9ba4-d02c312e427b",
+      "name": "Simple Memory"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-11T17:24:01.000Z",
+  "versionId": "65504c31-d23a-4e94-bf1d-80dd3b8ac1e4"
+}
