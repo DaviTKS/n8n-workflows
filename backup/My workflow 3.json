@@ -1,0 +1,36 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-07-23T23:54:59.089Z",
+  "id": "uJ5mY9KImP5sdEnb",
+  "isArchived": true,
+  "meta": null,
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ML",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b9f5a1a9-1fa7-4f5e-a7bf-997ad76f49a9",
+      "name": "Webhook",
+      "webhookId": "7d6bb951-3bd7-4d7b-8a87-815f93d2bb1d"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-24T02:57:17.000Z",
+  "versionId": "9cd81c71-b56c-4947-b9ab-7d8821106782"
+}
