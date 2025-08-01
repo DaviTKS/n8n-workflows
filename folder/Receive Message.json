@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Webhook": {
       "main": [
@@ -47,13 +47,7 @@
     },
     "Cria contato": {
       "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Switch": {
@@ -67,7 +61,7 @@
         ],
         [
           {
-            "node": "Cria contato",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -162,7 +156,18 @@
       "main": [
         [
           {
-            "node": "Cria contato1",
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Cria contato",
             "type": "main",
             "index": 0
           }
@@ -173,7 +178,9 @@
   "createdAt": "2025-07-30T23:37:03.625Z",
   "id": "qjm5Ezbz5RrDZSo1",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Receive Message",
   "nodes": [
     {
@@ -380,7 +387,7 @@
             },
             {
               "name": "avatar_url",
-              "value": "=data"
+              "value": "=\"{{ $json.webContentLink }}\""
             }
           ]
         },
@@ -389,8 +396,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        860,
-        180
+        1100,
+        220
       ],
       "id": "3291f0e6-8e34-472e-a445-d4b8657e5634",
       "name": "Cria contato",
@@ -688,53 +695,41 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1020,
-        180
+        780,
+        220
       ],
       "id": "44fc2940-aad2-46f1-9ca9-211a29f6c24e",
       "name": "HTTP Request"
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/contacts/",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "name",
-              "value": "={{ $('Lead').item.json.Nome }}"
-            },
-            {
-              "name": "identifier",
-              "value": "={{ $('Lead').item.json.Telefone }}"
-            },
-            {
-              "name": "phone_number",
-              "value": "=+{{ $('Lead').item.json.Telefone }}"
-            },
-            {
-              "name": "avatar_url",
-              "value": "=data"
-            }
-          ]
+        "name": "={{ $('Webhook').item.json.body.phone }}_pic",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "13YqHVlhJkwL6ZEQh3D8rNq2r3TB_0In5",
+          "mode": "list",
+          "cachedResultName": "Thumbs Cliente Chatwoot",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/13YqHVlhJkwL6ZEQh3D8rNq2r3TB_0In5"
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
       "position": [
-        1160,
-        180
+        940,
+        220
       ],
-      "id": "cf442574-2885-4842-b06d-79909a1c8569",
-      "name": "Cria contato1",
+      "id": "1ed35ac4-e59c-473b-a0e6-ba569172ca4e",
+      "name": "Upload file",
       "credentials": {
-        "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
-          "name": "Chatwoot"
+        "googleDriveOAuth2Api": {
+          "id": "tTIaOYYEyCaxSnfY",
+          "name": "Google Drive account"
         }
       }
     }
@@ -746,6 +741,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-31T02:42:47.000Z",
-  "versionId": "6de9caf8-33df-4fe9-ac60-ee0da4a8258e"
+  "updatedAt": "2025-07-31T04:59:40.000Z",
+  "versionId": "17625128-ab7f-4657-a131-e7018fcf1bcb"
 }
