@@ -317,7 +317,7 @@
                 "operation": "afterOrEquals"
               },
               "leftValue": "={{ $json.updatedAt }}",
-              "rightValue": "={{ $now.minus(1, 'days') }}"
+              "rightValue": "={{ $now.minus(100, 'days') }}"
             }
           ],
           "combinator": "and"
@@ -650,6 +650,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-01T19:37:58.000Z",
-  "versionId": "5e3f5df0-6013-4070-8517-c5d22c305a15"
+  "updatedAt": "2025-08-01T19:39:26.000Z",
+  "versionId": "947b69b8-17c4-4fbc-91c7-368f6ef567b8"
 }
