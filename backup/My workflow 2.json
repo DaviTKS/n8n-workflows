@@ -1,0 +1,73 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-22T17:16:14.745Z",
+  "id": "Qj9C6T4BEPJp4GMZ",
+  "isArchived": true,
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "37f2fd77-b820-470f-8a60-dc8089fc2e96",
+      "name": "When chat message received",
+      "webhookId": "d2247369-7323-472e-af08-94dbe573a0e1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "8b04f8a5-adcf-4085-9bbf-cdc87ae6da7f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "path": "6408b452-e213-4bed-91f6-77662cdb7353"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        580,
+        0
+      ],
+      "id": "d4b50aba-066e-4640-9385-300b68bedd83",
+      "name": "MCP Server Trigger",
+      "webhookId": "6408b452-e213-4bed-91f6-77662cdb7353"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-24T02:56:53.000Z",
+  "versionId": "291bd5ed-fbdc-4089-9465-2ea6110586ff"
+}
