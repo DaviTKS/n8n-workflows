@@ -1,0 +1,746 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead": {
+      "main": [
+        [
+          {
+            "node": "Se meu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria Conversa": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Adiciona ao Inbox": {
+      "main": [
+        [
+          {
+            "node": "Cria Conversa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria contato": {
+      "main": [
+        []
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Procura Conversa",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Envia msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procura CTT": {
+      "main": [
+        [
+          {
+            "node": "IDs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Cria Conversa1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IDs": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procura Conversa": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria Conversa1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Se meu": {
+      "main": [
+        [
+          {
+            "node": "Procura CTT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Cria contato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-30T23:37:03.625Z",
+  "id": "qjm5Ezbz5RrDZSo1",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Receive Message",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "recebetext",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        140
+      ],
+      "id": "14534a0c-3650-4866-a31c-efb43cce68bf",
+      "name": "Webhook",
+      "webhookId": "1d1c12ab-d774-47f5-8211-f53aa4c3c625"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "701b4e56-bead-4f6e-8811-c2ba1ba41152",
+              "name": "Nome",
+              "value": "={{ $json.body.senderName }}",
+              "type": "string"
+            },
+            {
+              "id": "f6e77a5a-e114-4144-ba1e-aae22aa2cc44",
+              "name": "Telefone",
+              "value": "={{ $json.body.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "50ff4835-ef58-49cd-84e8-b883503c1519",
+              "name": "Mensagem",
+              "value": "={{ $json.body.text.message }}",
+              "type": "string"
+            },
+            {
+              "id": "e043feaa-550a-4f2e-93a0-10fa76feaeb0",
+              "name": "Status",
+              "value": "={{ $json.body.status }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -520,
+        140
+      ],
+      "id": "de3c431e-9aba-4c52-acfc-7297a232a22a",
+      "name": "Lead"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/conversations",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "inbox_id",
+              "value": "1"
+            },
+            {
+              "name": "source_id",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "contact_id",
+              "value": "={{ $('Cria contato').item.json.payload.contact.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1560,
+        180
+      ],
+      "id": "94c50f80-adcc-4c88-9831-030818bc483d",
+      "name": "Cria Conversa",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZfTK2jEDLoDUD4Nd",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/conversations/{{ $json.id }}{{ $json.payload[0].messages[0].conversation_id }}/messages\n",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "={{ $('Webhook').item.json.body.text.message }}"
+            },
+            {
+              "name": "message_type",
+              "value": "incoming"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2100,
+        140
+      ],
+      "id": "b6cd4fb3-101c-45ec-a834-f064a4cf0d60",
+      "name": "Envia msg",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZfTK2jEDLoDUD4Nd",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://192.168.0.71:3000/api/v1/accounts/1//contacts/{{ $json.payload.contact.id }}/contact_inboxes",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Lead').item.json.Nome }}"
+            },
+            {
+              "name": "identifier",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "phone_number",
+              "value": "=+{{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "inbox_id",
+              "value": "1"
+            },
+            {
+              "name": "source_id",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1360,
+        180
+      ],
+      "id": "a67fadf8-9cd3-4057-9f4b-f4e76294cbd0",
+      "name": "Adiciona ao Inbox",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZfTK2jEDLoDUD4Nd",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Lead').item.json.Nome }}"
+            },
+            {
+              "name": "identifier",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "phone_number",
+              "value": "=+{{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "avatar_url",
+              "value": "=\"{{ $json.webContentLink }}\""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        220
+      ],
+      "id": "3291f0e6-8e34-472e-a445-d4b8657e5634",
+      "name": "Cria contato",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZfTK2jEDLoDUD4Nd",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Procura CTT').item.json.payload[0].name }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    },
+                    "id": "486a1465-cfe7-456b-a1f9-12b1349975f3"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Já cadastrado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f45075f4-f04b-42d1-88a4-cd2291e8492a",
+                    "leftValue": "={{ $json.inboxID }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Não cadastrado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        560,
+        140
+      ],
+      "id": "1138da6c-7c28-4d65-89d2-4154f93cc728",
+      "name": "Switch",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1880,
+        140
+      ],
+      "id": "fa8e4472-ac4e-45f5-84ce-5d5cc342cd0b",
+      "name": "Merge",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/contacts/search",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.Telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        140
+      ],
+      "id": "0dde599d-778d-4123-bbc7-0a910e05a91b",
+      "name": "Procura CTT",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZfTK2jEDLoDUD4Nd",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ee50f47c-1781-4815-9fa5-148048e43df6",
+              "leftValue": "={{ $json.payload }}",
+              "rightValue": "={{ $('Lead').item.json.Telefone }}",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1260,
+        20
+      ],
+      "id": "f86e41e9-5e31-43cc-937a-4cf8e620e7f3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f7e92917-814a-492b-af4a-1395b8ce02b0",
+              "name": "inboxID",
+              "value": "={{ $json.payload[0].contact_inboxes[0].inbox.id }}",
+              "type": "number"
+            },
+            {
+              "id": "eaf14da9-cc9f-47e9-a47c-e442935eb425",
+              "name": "ContactID",
+              "value": "={{ $json.payload[0].id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        280,
+        140
+      ],
+      "id": "85e411aa-6579-4728-87a6-3601ff05386d",
+      "name": "IDs"
+    },
+    {
+      "parameters": {
+        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/contacts/{{ $json.ContactID }}/conversations",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $('Procura CTT').item.json.payload[0].identifier }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        20
+      ],
+      "id": "ace581fe-23ea-4e8f-bc90-a728259f948e",
+      "name": "Procura Conversa",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZfTK2jEDLoDUD4Nd",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/conversations",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "inbox_id",
+              "value": "1"
+            },
+            {
+              "name": "source_id",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "contact_id",
+              "value": "={{ $('Procura CTT').item.json.payload[0].id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        -60
+      ],
+      "id": "8585d960-0b7e-4f54-8745-56ac9e937126",
+      "name": "Cria Conversa1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "ZfTK2jEDLoDUD4Nd",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d6c6befe-8b7e-4190-9dde-74992e7b333f",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "RECEIVED",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -300,
+        140
+      ],
+      "id": "5d2b274a-9dd0-4e65-a204-f4147ccc059c",
+      "name": "Se meu"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Webhook').item.json.body.photo }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        780,
+        220
+      ],
+      "id": "44fc2940-aad2-46f1-9ca9-211a29f6c24e",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Webhook').item.json.body.phone }}_pic",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "13YqHVlhJkwL6ZEQh3D8rNq2r3TB_0In5",
+          "mode": "list",
+          "cachedResultName": "Thumbs Cliente Chatwoot",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/13YqHVlhJkwL6ZEQh3D8rNq2r3TB_0In5"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        940,
+        220
+      ],
+      "id": "1ed35ac4-e59c-473b-a0e6-ba569172ca4e",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "tTIaOYYEyCaxSnfY",
+          "name": "Google Drive account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-07-31T04:59:40.000Z",
+  "versionId": "17625128-ab7f-4657-a131-e7018fcf1bcb"
+}
