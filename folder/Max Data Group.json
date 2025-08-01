@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "AI Agent": {
       "main": [
@@ -17,11 +17,6 @@
         [
           {
             "node": "If9",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Edit Fields1",
             "type": "main",
             "index": 0
           }
@@ -3881,87 +3876,6 @@
       ],
       "id": "93235506-4331-43d2-9322-9a62f16f8f77",
       "name": "If9"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "16fba710-79df-40c4-bfa9-b320311e1d19",
-              "name": "phone",
-              "value": "={{ $json.body.phone }}",
-              "type": "string"
-            },
-            {
-              "id": "4aec332c-b531-45e6-95ce-1c361cd217bc",
-              "name": "name",
-              "value": "={{ $json.body.senderName }}",
-              "type": "string"
-            },
-            {
-              "id": "4efea8c0-1832-4190-9261-68589abbefb2",
-              "name": "idMensagem",
-              "value": "={{ $json.body.messageId }}",
-              "type": "string"
-            },
-            {
-              "id": "5b740991-541e-4ec9-836c-b426aad74b84",
-              "name": "message",
-              "value": "={{ $json.body.text.message }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        720,
-        -1060
-      ],
-      "id": "8b5969c9-8fda-450d-94b9-a9bab267615a",
-      "name": "Edit Fields1"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=http://189.55.119.185:3000/api/v1/accounts/1/contact_inboxes?inbox_id=N9pZSAJgkgjGq8brfG3BxYYQ",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "name",
-              "value": "Davi"
-            },
-            {
-              "name": "identifier",
-              "value": "(12)98211-3000"
-            },
-            {
-              "name": "phone_number",
-              "value": "=+5512982113000"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        980,
-        -1060
-      ],
-      "id": "999e6b2e-21ef-4b4d-955c-9760a672df52",
-      "name": "HTTP Request1",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
-          "name": "Chatwoot"
-        }
-      }
     }
   ],
   "pinData": {
@@ -4023,6 +3937,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-30T23:37:09.000Z",
-  "versionId": "54e92486-30cc-46a9-86cd-36339fe889b3"
+  "updatedAt": "2025-07-31T05:00:02.000Z",
+  "versionId": "d2d856d8-2430-4747-a09b-c7bdf41c37ed"
 }
