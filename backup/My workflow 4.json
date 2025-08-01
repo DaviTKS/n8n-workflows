@@ -1,0 +1,222 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Mes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mes1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Sauda2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauda2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-26T19:34:46.003Z",
+  "id": "TQSVV18LzMiyvYCX",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -780,
+        0
+      ],
+      "id": "ce4e6e98-f6f1-40b3-bc24-0e0d4a77e5b3",
+      "name": "When chat message received",
+      "webhookId": "d48780e0-cbe1-4d18-be40-fa4e316f827f"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=Você é uma IA com foco em saudar o cliente segundo o horário.\n\n##Diretriz primária: SOMENTE SAUDAR O CLIENTE CASO ELE SAUDE OU SEJA A PRIMEIRA INTERAÇÃO SALVA\n\nSAUDAÇÃO INICIAL - SAUDAR SEMPRE DE ACORDO COM O HORÁRIO, NÃO IMPORTA A SAUDAÇÃO DO CLIENTE\n\nCASO O CLIENTE NÂO MANDE UMA SAUDAÇÃO, RESPONDA COM O TEXTO '01'\n\nDATA= {{ $json.dataFormatada }}\nAjustar a saudação seguindo a variável [DATA]:\n\nÓtimo dia, [nome]! (antes de 12h)\n\nÓtima tarde, [nome]! (entre 12h e 18h)\n\nÓtima noite, [nome]! (após 18h)\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "b8da94b0-a4eb-4e24-afce-73e2f11c6c20",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        180
+      ],
+      "id": "cd2181f7-8080-4a27-9443-8fccf0360d7a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "bcjn0rZ3TjEvRciY",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        300,
+        180
+      ],
+      "id": "208e5888-0231-4952-8a6d-7d10c90c728f",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -560,
+        0
+      ],
+      "id": "20009c0f-33b6-450b-956a-c909367ee69c",
+      "name": "Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -400,
+        0
+      ],
+      "id": "e90daa4b-dc1c-43f9-a54f-5696ec2320e3",
+      "name": "Mes1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        0
+      ],
+      "id": "a9bcf824-8c62-4232-b33d-81e59fc6086e",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const dataString = item.json.dataFormatada; // Ex: \"15/07/2025 15:01\"\n\n  // Converte string BR para ISO (yyyy-mm-ddTHH:MM:00)\n  const partes = dataString.split(/[\\s/:]/); // [dia, mês, ano, hora, minuto]\n  const dataISO = `${partes[2]}-${partes[1]}-${partes[0]}T${partes[3]}:${partes[4]}:00`;\n\n  const data = new Date(dataISO);\n  const horaAtual = data.getHours();\n\n  let saudacao;\n\n  if (horaAtual >= 6 && horaAtual < 12) {\n    saudacao = \"Bom dia\";\n  } else if (horaAtual >= 12 && horaAtual < 18) {\n    saudacao = \"Boa tarde\";\n  } else {\n    saudacao = \"Boa noite\";\n  }\n\n  item.json.saudacao = saudacao;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        20,
+        0
+      ],
+      "id": "dcd3e61d-fd75-4405-9eb8-0a10c34704a3",
+      "name": "Sauda2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-26T19:42:13.000Z",
+  "versionId": "d87986a8-e9a0-4116-af1a-0394f09f913f"
+}
