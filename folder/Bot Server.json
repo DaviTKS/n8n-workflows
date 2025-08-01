@@ -37,6 +37,13 @@
         ],
         [
           {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "Edit Fields4",
             "type": "main",
             "index": 0
@@ -105,7 +112,7 @@
           {
             "node": "Merge",
             "type": "main",
-            "index": 3
+            "index": 4
           }
         ]
       ]
@@ -139,6 +146,17 @@
             "node": "Send a text message",
             "type": "main",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
           }
         ]
       ]
@@ -295,6 +313,29 @@
                 "conditions": [
                   {
                     "id": "320a6227-6fde-4c1a-b5ee-2f956d5e7f06",
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "/ip",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "17f45bc2-2459-4b62-8be3-2028b72c5c2a",
                     "leftValue": "",
                     "rightValue": "",
                     "operator": {
@@ -322,7 +363,7 @@
     },
     {
       "parameters": {
-        "numberInputs": 4
+        "numberInputs": 5
       },
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
@@ -443,7 +484,7 @@
       "typeVersion": 3.4,
       "position": [
         180,
-        280
+        440
       ],
       "id": "0560c794-6221-4550-9526-78e71353d3b7",
       "name": "Edit Fields4"
@@ -512,6 +553,29 @@
           "name": "Server Bot"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e95de587-dcab-4c91-ab0f-614ca897cba8",
+              "name": "command",
+              "value": "=(iwr ipinfo.io/ip -UseBasicParsing).content",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        180,
+        280
+      ],
+      "id": "2b7f9014-9c92-454e-802b-3391539d7c5c",
+      "name": "Edit Fields5"
     }
   ],
   "pinData": {},
@@ -521,6 +585,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-30T20:49:52.000Z",
-  "versionId": "72939b46-97f2-4fdc-a4c2-9eeb8ccf10ae"
+  "updatedAt": "2025-07-31T16:40:57.000Z",
+  "versionId": "b77dda0c-edde-4a21-99d1-920a348b3716"
 }
