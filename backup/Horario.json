@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "AI Agent1": {
       "main": [
@@ -119,8 +119,8 @@
       ]
     }
   },
-  "createdAt": "2025-07-08T03:30:13.245Z",
-  "id": "zsD7q5SeGKDY3bpp",
+  "createdAt": "2025-08-02T01:28:57.264Z",
+  "id": "ApgHGhyEipy6Bbf8",
   "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
@@ -151,17 +151,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1360,
-        200
+        1504,
+        16
       ],
-      "id": "25f496d1-5c4f-4d83-929c-01bb71dc8417",
-      "name": "HTTP Request",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "4KOge2CHa6sSv6MD",
-          "name": "Header Auth account"
-        }
-      }
+      "id": "bb7645e8-ae65-4ef2-992f-eb8afbc20890",
+      "name": "HTTP Request"
     },
     {
       "parameters": {
@@ -174,10 +168,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        380,
-        60
+        528,
+        -128
       ],
-      "id": "123f2c68-1203-46e5-81e3-d955e7822e0f",
+      "id": "cb680140-37eb-40a4-b158-c7650743521c",
       "name": "AI Agent1"
     },
     {
@@ -209,14 +203,14 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        820,
-        220
+        976,
+        32
       ],
-      "id": "0d6d919a-b0ce-4fbb-94aa-d1b978989e5f",
+      "id": "f1c3461c-8818-481d-ab8c-93a0318df20b",
       "name": "Update",
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -229,14 +223,14 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        700,
-        220
+        848,
+        32
       ],
-      "id": "78ffa431-2205-48d4-a27a-88b480d80d2d",
+      "id": "5f73c2ca-ba36-407a-8af6-c2de9fed5399",
       "name": "Get Many",
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -246,10 +240,10 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        1060,
-        220
+        1216,
+        32
       ],
-      "id": "b694df56-01f1-474f-a9f2-6690a4ced4fe",
+      "id": "cf4224d9-d338-4817-9210-c205fdf3d8a4",
       "name": "Calculator"
     },
     {
@@ -264,14 +258,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        320,
-        280
+        464,
+        96
       ],
-      "id": "47b0345e-123b-401c-992b-da4edf3348eb",
+      "id": "677ee97e-a5a5-4ec6-9f91-8748d52ccab2",
       "name": "LLM",
       "credentials": {
         "openAiApi": {
-          "id": "bcjn0rZ3TjEvRciY",
+          "id": "sB9sHBeXxAJCJTEo",
           "name": "OpenAi account"
         }
       }
@@ -293,10 +287,10 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        -540,
-        200
+        -400,
+        16
       ],
-      "id": "b725ab9b-d3b7-4f3a-a3f2-6baadff275e0",
+      "id": "5eaa7b98-ab3e-49a7-a945-24a6228c70a9",
       "name": "Schedule Trigger"
     },
     {
@@ -356,10 +350,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -220,
-        100
+        -80,
+        -96
       ],
-      "id": "dd44d5c5-3d79-4c6c-a1ab-3ef7eb36f932",
+      "id": "fc3beaea-ffa6-4d9a-ba58-0224880dd072",
       "name": "Switch"
     },
     {
@@ -379,10 +373,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        0,
-        0
+        144,
+        -192
       ],
-      "id": "ce2717e0-4a9e-4a16-a869-29fad5a0ed3d",
+      "id": "99fd6638-5be2-4373-b014-a3508ae8f120",
       "name": "Edit Fields"
     },
     {
@@ -393,10 +387,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        480,
-        280
+        624,
+        96
       ],
-      "id": "bd028f45-a1e5-4dfa-af87-ab2fa3cba4d4",
+      "id": "5cf02bba-580e-4507-a9dc-e35c88878f63",
       "name": "Simple Memory"
     },
     {
@@ -406,18 +400,18 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -540,
-        20
+        -400,
+        -176
       ],
-      "id": "16ab2a9a-193d-488e-aa0a-ce766f40eebe",
+      "id": "20957c5c-529a-4db0-b814-e8f225a47e42",
       "name": "When Executed by Another Workflow"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.w-api.app/v1/message/send-text?instanceId=0BB10C-5UHYF0-T5FZK2",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
         "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -430,8 +424,8 @@
               "value": "={{ $json.output }}"
             },
             {
-              "name": "delayMessage",
-              "value": "5"
+              "name": "delay",
+              "value": "3"
             }
           ]
         },
@@ -440,19 +434,15 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        700,
-        60
+        848,
+        -128
       ],
-      "id": "1ce32a6a-6a33-4ef0-a347-5dcb37ca11f3",
+      "id": "551b04fc-5ece-4045-9f66-54ff9b7ee043",
       "name": "W-API1",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "zSYRuZxu43Eu1F9n",
-          "name": "Header Auth account 2"
-        },
-        "httpBearerAuth": {
-          "id": "VYf1v9ZyxXUkh9tH",
-          "name": "Bearer Auth account"
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
         }
       }
     }
@@ -461,13 +451,9 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": {
-    "node:Schedule Trigger": {
-      "recurrenceRules": []
-    }
-  },
+  "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2025-07-22T15:43:24.000Z",
-  "versionId": "73ad6349-0aaf-40a1-bb2d-8982fe0418e6"
+  "triggerCount": 0,
+  "updatedAt": "2025-08-06T01:46:12.000Z",
+  "versionId": "8d59a495-4f02-4968-b709-e9ed52e408e9"
 }
