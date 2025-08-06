@@ -162,9 +162,9 @@
       ]
     }
   },
-  "createdAt": "2025-07-11T16:32:55.674Z",
-  "id": "BzKxvVGHt98iRcLu",
-  "isArchived": false,
+  "createdAt": "2025-08-02T01:25:27.818Z",
+  "id": "0Ix2NA3lLsJENjd2",
+  "isArchived": true,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -179,10 +179,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -520,
-        0
+        112,
+        -144
       ],
-      "id": "d5bc0611-1952-4eb5-b637-201710824804",
+      "id": "eb08ca35-9c63-4cf1-8677-0abf938b9fe5",
       "name": "Webhook",
       "webhookId": "500a7aff-d381-4a34-9e4d-c8ec89221f72"
     },
@@ -197,10 +197,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        520,
-        0
+        1152,
+        -144
       ],
-      "id": "075916af-21c3-41b5-ba86-a79788c32365",
+      "id": "b4f5c086-20f3-4266-a59d-82bcae5329ba",
       "name": "AI Agent"
     },
     {
@@ -215,17 +215,11 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        500,
-        200
+        1136,
+        64
       ],
-      "id": "df54f1e2-0e3f-4bf8-9ad6-907684e20c99",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "bcjn0rZ3TjEvRciY",
-          "name": "OpenAi account"
-        }
-      }
+      "id": "81ace29c-1756-4360-b0c7-aae2a2220b4b",
+      "name": "OpenAI Chat Model"
     },
     {
       "parameters": {
@@ -275,10 +269,10 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -300,
-        0
+        336,
+        -144
       ],
-      "id": "a0b3e47a-0152-40ca-a221-1e6b69b75b65",
+      "id": "e4fd0af2-8b72-43c7-b3f5-51f65cfe2e81",
       "name": "Filter"
     },
     {
@@ -306,20 +300,14 @@
         },
         "options": {}
       },
-      "id": "645f3ce4-2594-4279-8efb-e1d3c9019a68",
+      "id": "366a1c51-48a1-4b97-8ec0-fcf0e8bf7bb8",
       "name": "(Z-API) Enviar Mensagem",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1980,
-        160
-      ],
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "4KOge2CHa6sSv6MD",
-          "name": "Header Auth account"
-        }
-      }
+        2624,
+        16
+      ]
     },
     {
       "parameters": {
@@ -328,10 +316,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
       "typeVersion": 1,
       "position": [
-        1120,
-        160
+        1760,
+        16
       ],
-      "id": "00b52e0f-d97e-4fa4-ba4a-99983d60dfa5",
+      "id": "ca05e15b-2230-49dc-81c0-77c6d44f3c21",
       "name": "Auto-fixing Output Parser"
     },
     {
@@ -351,10 +339,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        1000,
-        0
+        1632,
+        -144
       ],
-      "id": "4575832a-7ee1-45e9-9781-e88eb8fbe5b7",
+      "id": "a0102da0-7d09-4258-a34e-e2160eb36283",
       "name": "Basic LLM Chain"
     },
     {
@@ -365,10 +353,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1560,
-        0
+        2192,
+        -144
       ],
-      "id": "a409460a-e2c0-4147-b58e-038a8591e1a3",
+      "id": "4ec01cb5-f993-4c53-b102-797e7b3d7056",
       "name": "Split Out"
     },
     {
@@ -378,10 +366,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1800,
-        0
+        2432,
+        -144
       ],
-      "id": "0b814a46-6da8-424b-9dbe-6bba902aa64d",
+      "id": "3c67a233-caa3-4ab6-96ef-902698fe544f",
       "name": "Loop Over Items",
       "alwaysOutputData": true
     },
@@ -392,10 +380,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1640,
-        160
+        2272,
+        16
       ],
-      "id": "7acc8198-7ff5-4667-bec8-64d434030b2f",
+      "id": "a46b403e-febd-4b17-897a-8f64b1a7c5fe",
       "name": "Wait",
       "webhookId": "39955354-d054-4960-be7b-d15d7fa5da79"
     },
@@ -407,10 +395,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        1180,
-        360
+        1824,
+        224
       ],
-      "id": "1bda4af2-0faa-4572-a2f0-36ed5c3c735a",
+      "id": "05041534-68b4-476c-8432-19836a66eceb",
       "name": "Estrutura"
     },
     {
@@ -425,17 +413,11 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1080,
-        360
+        1712,
+        224
       ],
-      "id": "5858414e-b1ca-4034-bf7e-d7a191499cd7",
-      "name": "Parse AI",
-      "credentials": {
-        "openAiApi": {
-          "id": "bcjn0rZ3TjEvRciY",
-          "name": "OpenAi account"
-        }
-      }
+      "id": "658fce53-0f3c-4a34-a259-68be39823250",
+      "name": "Parse AI"
     },
     {
       "parameters": {
@@ -460,10 +442,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -80,
-        0
+        560,
+        -144
       ],
-      "id": "40ded377-550f-499d-aded-a30a953fdbc5",
+      "id": "1501205e-5e90-4aef-8831-502119674f96",
       "name": "Lead"
     },
     {
@@ -474,10 +456,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        600,
-        220
+        1232,
+        80
       ],
-      "id": "8e25dc3f-2f87-4794-9ba4-d02c312e427b",
+      "id": "fcfdb483-4065-49c1-b34a-1b3d254bc869",
       "name": "Simple Memory"
     }
   ],
@@ -487,7 +469,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2025-07-11T17:24:01.000Z",
-  "versionId": "65504c31-d23a-4e94-bf1d-80dd3b8ac1e4"
+  "triggerCount": 0,
+  "updatedAt": "2025-08-02T01:26:10.000Z",
+  "versionId": "af3bc7ee-3433-48bd-a16e-d93464b19964"
 }
