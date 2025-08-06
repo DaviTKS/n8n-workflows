@@ -41,6 +41,14 @@
         ],
         [
           {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [
+          {
             "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
@@ -52,7 +60,7 @@
       "main": [
         [
           {
-            "node": "Send a text message",
+            "node": "Edit Fields1",
             "type": "main",
             "index": 0
           }
@@ -60,6 +68,28 @@
       ]
     },
     "Redis2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
       "main": [
         [
           {
@@ -71,8 +101,8 @@
       ]
     }
   },
-  "createdAt": "2025-07-23T00:58:43.772Z",
-  "id": "I9quXP9ZHrqwEmBC",
+  "createdAt": "2025-08-02T01:29:58.160Z",
+  "id": "ZFfsN7twwrkF9mro",
   "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
@@ -88,10 +118,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -600,
-        0
+        -576,
+        112
       ],
-      "id": "eef5f418-0869-4f28-bd1d-3721394bec98",
+      "id": "9e67aa3d-08b8-4afd-b651-619be56488e1",
       "name": "Webhook",
       "webhookId": "dba71045-10a5-49ba-9a5b-7299158d4a92"
     },
@@ -105,14 +135,14 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -240,
-        0
+        -224,
+        112
       ],
-      "id": "1be0b990-318e-4fe9-a74a-98acaf4c3b39",
+      "id": "42a91268-cf39-46e7-910e-b27b5fd846ac",
       "name": "Redis",
       "credentials": {
         "redis": {
-          "id": "NRjQ80xpNAewkw5b",
+          "id": "Y9iYyrM7JSw5IMqj",
           "name": "Redis account"
         }
       }
@@ -180,6 +210,51 @@
                 },
                 "conditions": [
                   {
+                    "id": "74dd0992-8fc0-4a2b-90d8-e0a250782819",
+                    "leftValue": "={{ $('Webhook').item.json.body.content }}",
+                    "rightValue": "Envio manual",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "29cdd539-c093-4607-a414-1ab65d36d0cc",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
                     "id": "ae361df5-1d86-48a7-9c45-115ccffc52e7",
                     "leftValue": "={{ $json.IP }}",
                     "rightValue": "={{ $('Webhook').item.json.body.new_ip }}",
@@ -202,10 +277,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -20,
-        0
+        0,
+        112
       ],
-      "id": "eccb9e64-0cd3-4a7f-94b7-4a4b891b324d",
+      "id": "07fe34f1-ce29-4cf5-93e7-00bd73d842fd",
       "name": "Switch"
     },
     {
@@ -217,14 +292,14 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        220,
-        -160
+        880,
+        -96
       ],
-      "id": "70586c11-c19d-4910-b291-a2524daba7fa",
+      "id": "ebfb4941-2108-472c-acb4-b54ee1584d64",
       "name": "Redis1",
       "credentials": {
         "redis": {
-          "id": "NRjQ80xpNAewkw5b",
+          "id": "Y9iYyrM7JSw5IMqj",
           "name": "Redis account"
         }
       }
@@ -238,14 +313,14 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        220,
-        0
+        880,
+        64
       ],
-      "id": "3cd52ad2-0040-4bfd-afa0-8e8f733d4321",
+      "id": "be030767-9647-4983-9456-336c39c0c244",
       "name": "Redis2",
       "credentials": {
         "redis": {
-          "id": "NRjQ80xpNAewkw5b",
+          "id": "Y9iYyrM7JSw5IMqj",
           "name": "Redis account"
         }
       }
@@ -253,7 +328,7 @@
     {
       "parameters": {
         "chatId": "=1295939520",
-        "text": "={{ $('Webhook').item.json.body.content }}",
+        "text": "={{ $json.IP }}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -261,16 +336,16 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        500,
-        -80
+        1616,
+        128
       ],
-      "id": "fc7a8e25-4bf2-4f9b-b1f8-630f5c5bd1e0",
+      "id": "891819d1-c95f-4303-8184-4cebb716a751",
       "name": "Send a text message",
       "webhookId": "2de4971a-eb6d-4db4-96c5-f8555ce82e16",
       "credentials": {
         "telegramApi": {
-          "id": "s2MvX6fOshFRBmP5",
-          "name": "Server Bot"
+          "id": "LnYyNU54LkNB79CH",
+          "name": "Server BOT"
         }
       }
     },
@@ -279,56 +354,99 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        220,
-        160
+        160,
+        352
       ],
-      "id": "ebe25947-7bb9-4c28-8463-ff42b808acbf",
+      "id": "c9b973c2-41d6-4e38-941f-d7d04c3b2025",
       "name": "No Operation, do nothing"
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "http://192.168.0.68:2209/execute",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
+        "assignments": {
+          "assignments": [
             {
-              "name": "command",
-              "value": "cls"
+              "id": "0ee6f38f-b8ef-4778-9a07-cc3de34f0ee5",
+              "name": "IP",
+              "value": "=🛰️ Envio Manual IP: {{ $json.IP }}",
+              "type": "string"
             }
           ]
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        340,
-        160
+        880,
+        320
       ],
-      "id": "9e38aca2-f850-4969-bf40-ea861bff6e7c",
-      "name": "HTTP Request",
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "smhJun8Gl9k9G3Rq",
-          "name": "Bot Server"
+      "id": "bad10b7e-e6ba-4840-9279-427fb82890f5",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2e8d562e-04b5-420f-9580-5658f2b125ec",
+              "name": "IP",
+              "value": "=🛰️ Novo IP: {{ $('Webhook').item.json.body.new_ip }}",
+              "type": "string"
+            }
+          ]
         },
-        "httpHeaderAuth": {
-          "id": "DCiUE875boQs8dOt",
-          "name": "Server Bot"
-        }
-      }
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1088,
+        -16
+      ],
+      "id": "8e018381-2004-4f99-817e-7696d904c785",
+      "name": "Edit Fields1"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "auto.kadovesh.com",
+            "user-agent": "axios/1.11.0",
+            "content-length": "145",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
+            "cf-ipcountry": "BR",
+            "cf-ray": "968ddc203e1bb18d-MIA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-warp-tag-id": "e2cdb32c-58d4-4ea6-8409-425d697ae4cc",
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "x-forwarded-for": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "content": "ℹ️ Envio manual! O IP externo atual do servidor é: *177.183.18.23*",
+            "username": "Monitor de IP Externo",
+            "new_ip": "177.183.18.23"
+          },
+          "webhookUrl": "https://auto.kadovesh.com/webhook/ip",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-30T16:55:03.000Z",
-  "versionId": "960fe66d-6efa-4eb0-a8e8-17acea385a02"
+  "updatedAt": "2025-08-06T01:46:17.000Z",
+  "versionId": "6b8be5ae-5a02-44d5-b651-440fb9be7af8"
 }
