@@ -90,12 +90,10 @@
       ]
     }
   },
-  "createdAt": "2025-07-08T16:15:02.358Z",
-  "id": "US8mU4mGxm3Ycmqj",
+  "createdAt": "2025-08-02T01:37:50.754Z",
+  "id": "2Zpk5F0YQDPeC5VM",
   "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "meta": null,
   "name": "Produtos",
   "nodes": [
     {
@@ -122,15 +120,15 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        760,
-        0
+        1024,
+        -64
       ],
-      "id": "0a7b59b0-d93e-4903-ac59-8eb8c3a17c80",
+      "id": "ee0c4250-5204-4387-9370-36cd4ce00598",
       "name": "HTTP Request",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "4KOge2CHa6sSv6MD",
-          "name": "Header Auth account"
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
         }
       }
     },
@@ -145,10 +143,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        400,
-        0
+        656,
+        -64
       ],
-      "id": "a095e907-a009-4edd-b5c0-e4d7a7776eb8",
+      "id": "fc94bdb9-bccc-485c-814e-2d9bc3bb8ca6",
       "name": "AI Agent1"
     },
     {
@@ -174,14 +172,14 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        880,
-        180
+        1136,
+        128
       ],
-      "id": "45806db4-5632-4c1a-8bc5-b086d0d1b2d3",
+      "id": "adcd313f-a90c-4f0d-b00b-49ee1a487d83",
       "name": "Criar",
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -219,14 +217,14 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        760,
-        180
+        1024,
+        128
       ],
-      "id": "2da1c985-cdb6-4329-afb2-bf27bcdb86d7",
+      "id": "0b07274d-8457-48e7-ab2d-63dfc1a3d9ec",
       "name": "Update",
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -239,14 +237,14 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        640,
-        180
+        896,
+        128
       ],
-      "id": "942c9050-d124-4bfe-8a33-6b9bacff237c",
+      "id": "04d5364d-02fc-4999-be98-f7ae74987783",
       "name": "Get Many",
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -256,10 +254,10 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        1000,
-        180
+        1264,
+        128
       ],
-      "id": "700dc6b7-a234-46ca-93ad-f60fae6db4d7",
+      "id": "4736aeab-2649-47a5-81bc-3b100f86349e",
       "name": "Calculator"
     },
     {
@@ -271,10 +269,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        380,
-        240
+        640,
+        176
       ],
-      "id": "7e39e720-ac09-4d3e-ae85-c01486d7b53b",
+      "id": "f59a5a2f-4057-4c29-8da3-adbb919e6f78",
       "name": "Mem"
     },
     {
@@ -289,14 +287,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        260,
-        240
+        528,
+        176
       ],
-      "id": "c06c646a-c726-4500-9860-c79c773d2c7d",
+      "id": "01df230b-12d7-4744-a583-5801449575c6",
       "name": "LLM",
       "credentials": {
         "openAiApi": {
-          "id": "bcjn0rZ3TjEvRciY",
+          "id": "sB9sHBeXxAJCJTEo",
           "name": "OpenAi account"
         }
       }
@@ -308,10 +306,10 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        0,
-        0
+        256,
+        -64
       ],
-      "id": "683a4ece-3870-4281-b761-97ce81c4d371",
+      "id": "aa677ced-86ac-43cf-853d-d28174ee69af",
       "name": "Start"
     }
   ],
@@ -322,6 +320,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-08T16:15:56.000Z",
-  "versionId": "d081fc51-30bb-4cb7-ab49-56538b3c3922"
+  "updatedAt": "2025-08-06T01:46:15.000Z",
+  "versionId": "2d2293bb-6c15-4450-9c41-edfe5d91f15f"
 }
