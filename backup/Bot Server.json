@@ -162,8 +162,8 @@
       ]
     }
   },
-  "createdAt": "2025-07-29T23:48:50.101Z",
-  "id": "i3aybwr5rZ9tFnRv",
+  "createdAt": "2025-08-02T01:24:51.562Z",
+  "id": "JMCxh4UcEyxR5AcJ",
   "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
@@ -173,7 +173,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://192.168.0.68:2208/execute",
+        "url": "http://192.168.0.159:2208/execute",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -190,19 +190,15 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1180,
-        -20
+        1200,
+        128
       ],
-      "id": "69eceb3f-7fc4-4b9c-9aa2-1f37cf81d5ce",
+      "id": "be48f510-014b-4f16-a15b-a52be2b466bb",
       "name": "HTTP Request",
       "credentials": {
-        "httpBearerAuth": {
-          "id": "smhJun8Gl9k9G3Rq",
-          "name": "Bot Server"
-        },
         "httpHeaderAuth": {
-          "id": "DCiUE875boQs8dOt",
-          "name": "Server Bot"
+          "id": "nACSs0RNIGUHkzah",
+          "name": "Token CMD"
         }
       },
       "onError": "continueRegularOutput"
@@ -217,16 +213,16 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -460,
-        -20
+        -448,
+        128
       ],
-      "id": "cce779f3-fb0d-452e-9ac2-9dfc7d28b57a",
+      "id": "997f00ce-b989-4f8e-a853-1355a409eb6f",
       "name": "Telegram Trigger",
       "webhookId": "0cd6a441-c59f-4dc6-b61d-c74f8f643afb",
       "credentials": {
         "telegramApi": {
-          "id": "s2MvX6fOshFRBmP5",
-          "name": "Server Bot"
+          "id": "LnYyNU54LkNB79CH",
+          "name": "Server BOT"
         }
       }
     },
@@ -355,10 +351,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -240,
-        -20
+        -224,
+        128
       ],
-      "id": "cc8e3b64-1980-4e56-94d7-13d5a9c1a9c8",
+      "id": "dee1a3c8-853c-4750-a7d7-b875e507fb4b",
       "name": "Switch"
     },
     {
@@ -368,10 +364,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        740,
-        -20
+        768,
+        128
       ],
-      "id": "65aa5091-878e-4f46-8bfd-86c6141a0c2c",
+      "id": "f705b734-cdb7-48e4-af86-c2c0b334d6fc",
       "name": "Merge"
     },
     {
@@ -391,10 +387,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        940,
-        -20
+        960,
+        128
       ],
-      "id": "c125415c-b7bb-4a2a-b522-858b4aad014d",
+      "id": "34f0099d-de54-456d-b855-6fece4841a71",
       "name": "Edit Fields"
     },
     {
@@ -414,10 +410,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -20,
-        -140
+        0,
+        0
       ],
-      "id": "0d1a9b33-66b8-4dd5-abd3-90e8170194d9",
+      "id": "0fc25461-923e-44d6-a3c5-e00ec9c1130d",
       "name": "Edit Fields1"
     },
     {
@@ -437,10 +433,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        100,
-        -20
+        128,
+        128
       ],
-      "id": "ab916e37-564a-4116-b170-ce26cf036988",
+      "id": "9238ceea-de68-4c6c-93dc-552cf6675da3",
       "name": "Edit Fields2"
     },
     {
@@ -460,10 +456,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        180,
-        140
+        208,
+        288
       ],
-      "id": "312c65fd-5d76-41ee-9c44-3db37b9c07c1",
+      "id": "66800b8c-e8dc-423b-8585-886480f6b281",
       "name": "Edit Fields3"
     },
     {
@@ -483,10 +479,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        180,
-        440
+        208,
+        592
       ],
-      "id": "0560c794-6221-4550-9526-78e71353d3b7",
+      "id": "c3331cca-0c8d-45c4-8ca2-6193b055d097",
       "name": "Edit Fields4"
     },
     {
@@ -500,10 +496,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        1400,
-        -20
+        1424,
+        128
       ],
-      "id": "425ddaf3-b9ff-43aa-b250-1b3473470d6d",
+      "id": "56cb169d-bae3-47cd-81e5-834c71ca10af",
       "name": "AI Agent"
     },
     {
@@ -518,14 +514,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1420,
-        200
+        1440,
+        352
       ],
-      "id": "1d601f3b-acd8-477f-90f8-88d391e86221",
+      "id": "d8e23911-9557-46d9-8def-0e49218a269d",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "bcjn0rZ3TjEvRciY",
+          "id": "sB9sHBeXxAJCJTEo",
           "name": "OpenAi account"
         }
       }
@@ -541,16 +537,16 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1820,
-        -20
+        1840,
+        128
       ],
-      "id": "c28cdaeb-e195-4df6-8599-643af9ca5b2b",
+      "id": "9d5a945d-cacf-46ea-84eb-1138c64afb61",
       "name": "Send a text message",
       "webhookId": "2de4971a-eb6d-4db4-96c5-f8555ce82e16",
       "credentials": {
         "telegramApi": {
-          "id": "s2MvX6fOshFRBmP5",
-          "name": "Server Bot"
+          "id": "LnYyNU54LkNB79CH",
+          "name": "Server BOT"
         }
       }
     },
@@ -571,10 +567,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        180,
-        280
+        208,
+        432
       ],
-      "id": "2b7f9014-9c92-454e-802b-3391539d7c5c",
+      "id": "6a41c22d-650f-4463-81d3-8b85b642186f",
       "name": "Edit Fields5"
     }
   ],
@@ -585,6 +581,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-01T04:11:55.000Z",
-  "versionId": "8900f156-fa1f-448c-8668-c74a3aa8a864"
+  "updatedAt": "2025-08-06T01:45:31.000Z",
+  "versionId": "f115e83f-cb03-4ac0-8d61-516c750069a0"
 }
