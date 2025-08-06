@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Webhook": {
       "main": [
@@ -12,24 +12,18 @@
         ]
       ]
     },
-    "Lead": {
-      "main": [
-        [
-          {
-            "node": "Se meu",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Cria Conversa": {
       "main": [
         [
           {
+            "node": "Delete a file",
+            "type": "main",
+            "index": 0
+          },
+          {
             "node": "Merge",
             "type": "main",
-            "index": 1
+            "index": 2
           }
         ]
       ]
@@ -45,13 +39,15 @@
         ]
       ]
     },
-    "Cria contato": {
-      "main": [
-        []
-      ]
-    },
     "Switch": {
       "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ],
         [
           {
             "node": "Procura Conversa",
@@ -72,7 +68,7 @@
       "main": [
         [
           {
-            "node": "Envia msg",
+            "node": "Switch1",
             "type": "main",
             "index": 0
           }
@@ -103,7 +99,7 @@
           {
             "node": "Merge",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -136,7 +132,7 @@
           {
             "node": "Merge",
             "type": "main",
-            "index": 0
+            "index": 1
           }
         ]
       ]
@@ -167,7 +163,188 @@
       "main": [
         [
           {
-            "node": "Cria contato",
+            "node": "Cria contato2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envia msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Envia msg1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Upload file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file1": {
+      "main": [
+        [
+          {
+            "node": "Cria contato1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria contato1": {
+      "main": [
+        [
+          {
+            "node": "Delete a file1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Procura Conversa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Se meu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Se meu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete a file1": {
+      "main": [
+        []
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Adiciona ao Inbox",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cria contato2": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Procura CTT",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
             "type": "main",
             "index": 0
           }
@@ -175,8 +352,8 @@
       ]
     }
   },
-  "createdAt": "2025-07-30T23:37:03.625Z",
-  "id": "qjm5Ezbz5RrDZSo1",
+  "createdAt": "2025-08-02T01:38:29.288Z",
+  "id": "tA4NRdV7T6HqLzhp",
   "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
@@ -186,64 +363,23 @@
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "recebetext",
+        "path": "recebetext1",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -720,
-        140
+        -6400,
+        400
       ],
-      "id": "14534a0c-3650-4866-a31c-efb43cce68bf",
+      "id": "bbbcdc32-959d-4be9-a802-e23a5bb29390",
       "name": "Webhook",
       "webhookId": "1d1c12ab-d774-47f5-8211-f53aa4c3c625"
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "701b4e56-bead-4f6e-8811-c2ba1ba41152",
-              "name": "Nome",
-              "value": "={{ $json.body.senderName }}",
-              "type": "string"
-            },
-            {
-              "id": "f6e77a5a-e114-4144-ba1e-aae22aa2cc44",
-              "name": "Telefone",
-              "value": "={{ $json.body.phone }}",
-              "type": "string"
-            },
-            {
-              "id": "50ff4835-ef58-49cd-84e8-b883503c1519",
-              "name": "Mensagem",
-              "value": "={{ $json.body.text.message }}",
-              "type": "string"
-            },
-            {
-              "id": "e043feaa-550a-4f2e-93a0-10fa76feaeb0",
-              "name": "Status",
-              "value": "={{ $json.body.status }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        -520,
-        140
-      ],
-      "id": "de3c431e-9aba-4c52-acfc-7297a232a22a",
-      "name": "Lead"
-    },
-    {
-      "parameters": {
         "method": "POST",
-        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/conversations",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/conversations",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -259,7 +395,7 @@
             },
             {
               "name": "contact_id",
-              "value": "={{ $('Cria contato').item.json.payload.contact.id }}"
+              "value": "={{ $('Cria contato2').item.json.payload.contact.id }}"
             }
           ]
         },
@@ -268,14 +404,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1560,
-        180
+        -1200,
+        384
       ],
-      "id": "94c50f80-adcc-4c88-9831-030818bc483d",
+      "id": "97dc3eef-f09f-49a3-aac1-c80d92718e85",
       "name": "Cria Conversa",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
+          "id": "d18szDNg2XivypkT",
           "name": "Chatwoot"
         }
       }
@@ -283,7 +419,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/conversations/{{ $json.id }}{{ $json.payload[0].messages[0].conversation_id }}/messages\n",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/conversations/{{ $json.id }}{{ $json.payload[0].messages[0].conversation_id }}{{ $json.payload.id }}/messages",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -295,7 +431,7 @@
             },
             {
               "name": "message_type",
-              "value": "incoming"
+              "value": "={{ $('IDs').item.json.Status }}"
             }
           ]
         },
@@ -304,14 +440,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2100,
-        140
+        384,
+        432
       ],
-      "id": "b6cd4fb3-101c-45ec-a834-f064a4cf0d60",
+      "id": "27d414ae-188c-4512-a75e-3682ff2ab121",
       "name": "Envia msg",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
+          "id": "d18szDNg2XivypkT",
           "name": "Chatwoot"
         }
       }
@@ -319,7 +455,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=http://192.168.0.71:3000/api/v1/accounts/1//contacts/{{ $json.payload.contact.id }}/contact_inboxes",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/contacts/{{ $json.payload.contact.id }}/contact_inboxes",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -352,58 +488,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1360,
-        180
+        -1360,
+        384
       ],
-      "id": "a67fadf8-9cd3-4057-9f4b-f4e76294cbd0",
+      "id": "f838c40a-fe4c-4067-ba18-5c6c9ebbadfe",
       "name": "Adiciona ao Inbox",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
-          "name": "Chatwoot"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/contacts",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "name",
-              "value": "={{ $('Lead').item.json.Nome }}"
-            },
-            {
-              "name": "identifier",
-              "value": "={{ $('Lead').item.json.Telefone }}"
-            },
-            {
-              "name": "phone_number",
-              "value": "=+{{ $('Lead').item.json.Telefone }}"
-            },
-            {
-              "name": "avatar_url",
-              "value": "=\"{{ $json.webContentLink }}\""
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1100,
-        220
-      ],
-      "id": "3291f0e6-8e34-472e-a445-d4b8657e5634",
-      "name": "Cria contato",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
+          "id": "d18szDNg2XivypkT",
           "name": "Chatwoot"
         }
       }
@@ -412,6 +504,29 @@
       "parameters": {
         "rules": {
           "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d6a74fbf-d6f5-4e68-a9f2-b917dcf0fc96",
+                    "leftValue": "={{ $('Procura CTT').item.json.payload[0].name }}",
+                    "rightValue": "Assistência Técnica Leão de Juda",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
             {
               "conditions": {
                 "options": {
@@ -469,28 +584,30 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        560,
-        140
+        -3040,
+        368
       ],
-      "id": "1138da6c-7c28-4d65-89d2-4154f93cc728",
+      "id": "1020d67e-b4bf-4f7f-b8fa-5e344a51d6f4",
       "name": "Switch",
       "alwaysOutputData": false
     },
     {
-      "parameters": {},
+      "parameters": {
+        "numberInputs": 3
+      },
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1880,
-        140
+        -576,
+        304
       ],
-      "id": "fa8e4472-ac4e-45f5-84ce-5d5cc342cd0b",
+      "id": "8ffacacb-1890-45a1-9910-8b28bac278e2",
       "name": "Merge",
       "alwaysOutputData": false
     },
     {
       "parameters": {
-        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/contacts/search",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/contacts/search",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
@@ -498,7 +615,7 @@
           "parameters": [
             {
               "name": "q",
-              "value": "={{ $json.Telefone }}"
+              "value": "={{ $('Lead').item.json.Telefone }}"
             }
           ]
         },
@@ -507,14 +624,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        0,
-        140
+        -3392,
+        384
       ],
-      "id": "0dde599d-778d-4123-bbc7-0a910e05a91b",
+      "id": "41b9c8e0-2df3-4678-9bd1-bc504aaed02c",
       "name": "Procura CTT",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
+          "id": "d18szDNg2XivypkT",
           "name": "Chatwoot"
         }
       }
@@ -547,10 +664,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1260,
-        20
+        -1936,
+        256
       ],
-      "id": "f86e41e9-5e31-43cc-937a-4cf8e620e7f3",
+      "id": "fb75aba0-6e42-4c8c-9cac-03990b03edfa",
       "name": "If"
     },
     {
@@ -568,6 +685,12 @@
               "name": "ContactID",
               "value": "={{ $json.payload[0].id }}",
               "type": "number"
+            },
+            {
+              "id": "97898e3a-af27-4bda-b836-458042d0e118",
+              "name": "Status",
+              "value": "={{ $('Se meu').item.json.Status }}",
+              "type": "string"
             }
           ]
         },
@@ -576,15 +699,15 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        280,
-        140
+        -3248,
+        384
       ],
-      "id": "85e411aa-6579-4728-87a6-3601ff05386d",
+      "id": "79b350d5-968d-4531-95a0-db1862472e43",
       "name": "IDs"
     },
     {
       "parameters": {
-        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/contacts/{{ $json.ContactID }}/conversations",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/contacts/{{ $('IDs').item.json.ContactID }}/conversations",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendQuery": true,
@@ -601,14 +724,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1040,
-        20
+        -2144,
+        256
       ],
-      "id": "ace581fe-23ea-4e8f-bc90-a728259f948e",
+      "id": "0ef8c6c5-7513-4be9-9629-2017ede9589e",
       "name": "Procura Conversa",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
+          "id": "d18szDNg2XivypkT",
           "name": "Chatwoot"
         }
       }
@@ -616,7 +739,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "=http://192.168.0.71:3000/api/v1/accounts/1/conversations",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/conversations",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -641,14 +764,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1480,
-        -60
+        -1568,
+        160
       ],
-      "id": "8585d960-0b7e-4f54-8745-56ac9e937126",
+      "id": "3c511b80-0af7-4734-840c-04787f4a02c5",
       "name": "Cria Conversa1",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "ZfTK2jEDLoDUD4Nd",
+          "id": "d18szDNg2XivypkT",
           "name": "Chatwoot"
         }
       }
@@ -665,7 +788,7 @@
           "conditions": [
             {
               "id": "d6c6befe-8b7e-4190-9dde-74992e7b333f",
-              "leftValue": "={{ $json.Status }}",
+              "leftValue": "={{ $('Webhook').item.json.body.status }}",
               "rightValue": "RECEIVED",
               "operator": {
                 "type": "string",
@@ -674,17 +797,17 @@
               }
             }
           ],
-          "combinator": "and"
+          "combinator": "or"
         },
         "options": {}
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -300,
-        140
+        -3840,
+        400
       ],
-      "id": "5d2b274a-9dd0-4e65-a204-f4147ccc059c",
+      "id": "e299240e-5d7f-4b12-8b5d-caae5edb4da3",
       "name": "Se meu"
     },
     {
@@ -695,10 +818,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        780,
-        220
+        -2272,
+        400
       ],
-      "id": "44fc2940-aad2-46f1-9ca9-211a29f6c24e",
+      "id": "324fd2e2-dea8-4d98-8856-413817b93d3e",
       "name": "HTTP Request"
     },
     {
@@ -721,26 +844,599 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        940,
-        220
+        -2096,
+        400
       ],
-      "id": "1ed35ac4-e59c-473b-a0e6-ba569172ca4e",
+      "id": "8b0ba59c-aeee-4418-bc5c-dd39885b0714",
       "name": "Upload file",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "tTIaOYYEyCaxSnfY",
+          "id": "1ib4QgSSisyBlll3",
           "name": "Google Drive account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "deleteFile",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Upload file').item.json.webViewLink }}",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1008,
+        480
+      ],
+      "id": "e04841e9-2a7a-40ca-a6a0-b860970cfb20",
+      "name": "Delete a file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/conversations/{{ $json.id }}{{ $json.payload[0].messages[0].conversation_id }}/messages\n",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "={{ $('Webhook').item.json.body.text.message }}."
+            },
+            {
+              "parameterType": "formBinaryData",
+              "name": "attachments[]",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "message_type",
+              "value": "={{ $('IDs').item.json.Status }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        336,
+        224
+      ],
+      "id": "a46794cf-6343-4fbd-8847-0798d0bb1442",
+      "name": "Envia msg1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "d18szDNg2XivypkT",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook').item.json.body.image.imageUrl }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    },
+                    "id": "bd0be870-d69d-43d8-b826-daaa21ceeebe"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "82b5d93e-7d44-4c25-b2a8-71c5af34bc53",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -128,
+        320
+      ],
+      "id": "6dbdfc8f-d1e8-4b94-a604-73afd12064be",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Webhook').item.json.body.image.imageUrl }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        80,
+        224
+      ],
+      "id": "3a66c625-aec0-4e10-b7b4-a30306685ddf",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/contacts/{{ $('HTTP Request2').item.json.ContactID }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Lead').item.json.Nome }}"
+            },
+            {
+              "name": "identifier",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "phone_number",
+              "value": "=+{{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "avatar_url",
+              "value": "=https://lh3.googleusercontent.com/d/{{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2464,
+        -208
+      ],
+      "id": "a2296ad7-b824-42e3-a0e6-84e6f55c80fe",
+      "name": "Cria contato1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "d18szDNg2XivypkT",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Webhook').item.json.body.photo }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2832,
+        -208
+      ],
+      "id": "bcf09f5a-c3ce-409c-b488-55e0111bd81b",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Webhook').item.json.body.phone }}_pic",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "13YqHVlhJkwL6ZEQh3D8rNq2r3TB_0In5",
+          "mode": "list",
+          "cachedResultName": "Thumbs Cliente Chatwoot",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/13YqHVlhJkwL6ZEQh3D8rNq2r3TB_0In5"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2656,
+        -208
+      ],
+      "id": "d60589da-dca8-4847-8340-d8ff67b753e0",
+      "name": "Upload file1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteFile",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Upload file1').item.json.webViewLink }}",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2464,
+        0
+      ],
+      "id": "eec7e6b1-f5a6-4fd7-994d-258d7d25dbe8",
+      "name": "Delete a file1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4b581150-4e0e-4500-903e-85e338ba2f93",
+              "leftValue": "={{ $('Webhook').item.json.body.fromMe }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -4960,
+        400
+      ],
+      "id": "3fda76dc-6d03-4213-b431-9c2eaa4377a6",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "50c2461a-039e-4ba0-8411-13c5e5f871ae",
+              "name": "Status",
+              "value": "outgoing",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4752,
+        304
+      ],
+      "id": "228151f4-4822-4ee2-8d77-9a8dbe381692",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "50c2461a-039e-4ba0-8411-13c5e5f871ae",
+              "name": "Status",
+              "value": "incoming",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4752,
+        464
+      ],
+      "id": "0f94aca5-2e54-40bc-8fd0-7de75852b930",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "701b4e56-bead-4f6e-8811-c2ba1ba41152",
+              "name": "Nome",
+              "value": "={{ $json.body.senderName }}",
+              "type": "string"
+            },
+            {
+              "id": "f6e77a5a-e114-4144-ba1e-aae22aa2cc44",
+              "name": "Telefone",
+              "value": "={{ $json.body.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "50ff4835-ef58-49cd-84e8-b883503c1519",
+              "name": "Mensagem",
+              "value": "={{ $json.body.text.message }}",
+              "type": "string"
+            },
+            {
+              "id": "e043feaa-550a-4f2e-93a0-10fa76feaeb0",
+              "name": "Status",
+              "value": "={{ $json.body.status }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -6240,
+        400
+      ],
+      "id": "c1f4a37a-c0e5-42eb-be1e-acfb7dc13f58",
+      "name": "Lead"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('Webhook').item.json.body.phone }}.{{ $('Webhook').item.json.body.text.message }}",
+        "value": "={{ $('Webhook').item.json.body.phone }}.{{ $('Webhook').item.json.body.text.message }}",
+        "expire": true,
+        "ttl": 20
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -4448,
+        304
+      ],
+      "id": "ef7e336b-9118-4b47-b455-ec7023b5efb4",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "16b44093-7eeb-46ce-b2a0-050c414872fe",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1616,
+        400
+      ],
+      "id": "def935be-15d2-4d69-8f1c-f741c0b4b4c2",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/contacts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Lead').item.json.Nome }}"
+            },
+            {
+              "name": "identifier",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "phone_number",
+              "value": "=+{{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "avatar_url",
+              "value": "=https://lh3.googleusercontent.com/d/{{ $json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1936,
+        400
+      ],
+      "id": "a3aa9deb-d02a-4a41-a52e-6b04ec3bde11",
+      "name": "Cria contato2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "d18szDNg2XivypkT",
+          "name": "Chatwoot"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b70583ff-ca0d-4f58-8e73-f17bdc8ca3d9",
+              "leftValue": "={{ $json.Telefone }}",
+              "rightValue": "5512982113000",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -6032,
+        400
+      ],
+      "id": "8b33e591-f5d5-4210-9578-348475ae1c66",
+      "name": "If3"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "auto.kadovesh.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+            "content-length": "762",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "168.75.102.34",
+            "cf-ipcountry": "BR",
+            "cf-ray": "969f0822aef80184-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "origin": "https://api.z-api.io",
+            "server": "Z-API",
+            "x-forwarded-for": "168.75.102.34",
+            "x-forwarded-proto": "https",
+            "z-api-token": "771E4BE1F789AB112E4831D6"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "isStatusReply": false,
+            "chatLid": "90164332388418@lid",
+            "connectedPhone": "551239313000",
+            "waitingMessage": false,
+            "isEdit": false,
+            "isGroup": false,
+            "isNewsletter": false,
+            "instanceId": "3E29DB01364090EFDC8006E9A5181015",
+            "messageId": "3A812EC2CEBFA9752D41",
+            "phone": "5512982113000",
+            "fromMe": true,
+            "momment": 1754320752000,
+            "status": "RECEIVED",
+            "chatName": "+55 12 98211-3000",
+            "senderPhoto": null,
+            "senderName": "Assistência Técnica Leão de Juda",
+            "photo": "https://pps.whatsapp.net/v/t61.24694-24/484873030_9628712110531731_5581350847859461709_n.jpg?ccb=11-4&oh=01_Q5Aa2AFE-MRcTkf3cUWyeYkntuNdcpOOwv6SKqgpIaFdUoIuUg&oe=689DDB21&_nc_sid=5e03e0&_nc_cat=102",
+            "broadcast": false,
+            "participantLid": null,
+            "forwarded": false,
+            "type": "ReceivedCallback",
+            "fromApi": false,
+            "text": {
+              "message": "Teste"
+            }
+          },
+          "webhookUrl": "https://auto.kadovesh.com/webhook/recebetext1",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-31T04:59:40.000Z",
-  "versionId": "17625128-ab7f-4657-a131-e7018fcf1bcb"
+  "updatedAt": "2025-08-04T16:10:40.000Z",
+  "versionId": "923c3b11-3ece-43d0-bda4-99771eb87d1e"
 }
