@@ -45,7 +45,7 @@
       "main": [
         [
           {
-            "node": "Telefone",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -202,11 +202,6 @@
         ]
       ]
     },
-    "Print": {
-      "main": [
-        []
-      ]
-    },
     "Data": {
       "main": [
         [
@@ -278,11 +273,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "(Z-API) Enviar Mensagem": {
-      "main": [
-        []
       ]
     },
     "Print2": {
@@ -559,10 +549,127 @@
           }
         ]
       ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Print3": {
+      "main": [
+        [
+          {
+            "node": "Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "Print3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row": {
+      "main": [
+        [
+          {
+            "node": "Get a row1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data1": {
+      "main": [
+        [
+          {
+            "node": "Mes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mes": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Sauda3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauda3": {
+      "main": [
+        [
+          {
+            "node": "Z-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "createdAt": "2025-07-08T01:56:06.849Z",
-  "id": "hSMtCUdLS8LSFoDL",
+  "createdAt": "2025-08-02T01:26:38.571Z",
+  "id": "Ux9gNIxJfGnNvNGV",
   "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
@@ -578,22 +685,22 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -940,
-        -220
+        -1344,
+        1200
       ],
-      "id": "2ae88102-2ef1-44d1-8e46-e9c696912f57",
+      "id": "76be5743-68b9-4907-8fa1-5fcbc1aeab4a",
       "name": "Webhook",
       "webhookId": "2118250c-bd78-4e1f-9923-fc67c94aacb4"
     },
     {
       "parameters": {},
-      "id": "c2738fa7-208e-40a5-b320-4ddf8ff21659",
+      "id": "9b2875f2-2083-4803-9ef9-a7680907ab63",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        2060,
-        -200
+        2464,
+        1200
       ],
       "alwaysOutputData": true
     },
@@ -610,18 +717,18 @@
           ]
         }
       },
-      "id": "9fc0e3c4-c108-4e9c-96de-378398f91b2c",
+      "id": "49bfb88b-40b3-47d7-8578-7ae3ecb97c02",
       "name": "Encontrar Cliente",
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -40,
-        -220
+        368,
+        1184
       ],
       "alwaysOutputData": true,
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -642,18 +749,18 @@
           ]
         }
       },
-      "id": "617ebba2-a8c5-4336-8298-216c70fea559",
+      "id": "6e84ffbc-d1d0-45aa-a2bb-151909c84a68",
       "name": "Criar Cliente",
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        1920,
-        -100
+        2336,
+        1312
       ],
       "alwaysOutputData": true,
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -716,10 +823,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        1780,
-        -200
+        2192,
+        1200
       ],
-      "id": "ff983b53-dda5-4ed1-bd52-20782731ce71",
+      "id": "3c35d8e4-1aec-401f-a4c5-b724601131fe",
       "name": "Switch1",
       "alwaysOutputData": false
     },
@@ -782,10 +889,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2460,
-        0
+        2864,
+        1408
       ],
-      "id": "fdfa2128-b73b-4102-b6bb-10755362892c",
+      "id": "89946f61-ec15-4cf3-9898-6a807aa4315b",
       "name": "Edit Fields",
       "executeOnce": true
     },
@@ -911,15 +1018,15 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.6,
       "position": [
-        3280,
-        0
+        3696,
+        1408
       ],
-      "id": "69660555-c78e-4380-81d6-1ddad6d9251b",
+      "id": "d92c8a79-9508-43eb-9605-bbc33da87162",
       "name": "OS Central",
       "executeOnce": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -949,15 +1056,15 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2880,
-        0
+        3296,
+        1408
       ],
-      "id": "917c6478-a4ae-4d7f-a61f-1760fd27044d",
+      "id": "41e64beb-9d69-40be-9ea6-b8b1366c5771",
       "name": "Add OS Cliente",
       "executeOnce": true,
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -978,15 +1085,15 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2680,
-        0
+        3088,
+        1408
       ],
-      "id": "d3cc9f66-e86a-4415-8942-59f29dbf86fe",
+      "id": "a6ab2da9-cf59-4715-a7ca-d5715b953ba0",
       "name": "Get Cliente",
       "executeOnce": true,
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -1012,18 +1119,18 @@
         },
         "options": {}
       },
-      "id": "31a57d3d-b03f-40af-aa1e-cd697d6e0a7a",
+      "id": "f6d34064-df7d-40c9-853a-12c3cc3b3d2a",
       "name": "(Z-API) Enviar Mensagem",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        6580,
-        20
+        6784,
+        1424
       ],
       "credentials": {
         "httpHeaderAuth": {
-          "id": "4KOge2CHa6sSv6MD",
-          "name": "Header Auth account"
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
         }
       }
     },
@@ -1032,10 +1139,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        320,
-        -1200
+        528,
+        208
       ],
-      "id": "ace4f022-fba6-4b08-aa14-b8ae294905f6",
+      "id": "7bde4927-b687-4569-9a27-a064aeb569f0",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -1046,10 +1153,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        940,
-        -740
+        1136,
+        672
       ],
-      "id": "843d1dfb-d579-4cea-8a1e-7df60b5ae7e4",
+      "id": "02764708-8792-4c6c-bcff-17860f91a92f",
       "name": "Baixar OS"
     },
     {
@@ -1072,15 +1179,15 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1180,
-        -740
+        1376,
+        672
       ],
-      "id": "8c198e3c-d1b3-4276-80a8-7a742fd701cf",
+      "id": "51e0db12-eb02-447c-a40a-b6119dee869d",
       "name": "Print",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "zSYRuZxu43Eu1F9n",
-          "name": "Header Auth account 2"
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
         }
       }
     },
@@ -1092,10 +1199,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5620,
-        -60
+        6032,
+        1344
       ],
-      "id": "cae9eb1f-23e8-4eda-971b-2c69cf1ff018",
+      "id": "0911f7b3-4675-46e2-9e05-84e840120884",
       "name": "Baixar OS1",
       "executeOnce": true
     },
@@ -1116,22 +1223,23 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        140,
-        -220
+        544,
+        1184
       ],
-      "id": "2e25245d-efb4-49b7-a6f7-e2212e3b2009",
+      "id": "4406eeb9-1ce1-45cb-86f8-cae97fcc344a",
       "name": "Fone Check"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://192.168.0.68:5678/print",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendQuery": true,
-        "queryParameters": {
+        "url": "http://192.168.0.159:5566/print",
+        "sendHeaders": true,
+        "headerParameters": {
           "parameters": [
-            {}
+            {
+              "name": "X-API-Key",
+              "value": "ChaveSecreta"
+            }
           ]
         },
         "sendBody": true,
@@ -1142,17 +1250,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5820,
-        -160
+        6224,
+        1248
       ],
-      "id": "3cdefa8f-26f6-4e9a-ad7b-0ca9c7a95e02",
-      "name": "Print2",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "zSYRuZxu43Eu1F9n",
-          "name": "Header Auth account 2"
-        }
-      }
+      "id": "d470754b-8e31-43c7-8db3-70d65557ed9f",
+      "name": "Print2"
     },
     {
       "parameters": {
@@ -1183,10 +1285,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -780,
-        -220
+        -384,
+        1184
       ],
-      "id": "6f3c84c5-0eae-40e1-8bc8-65d2929a0ebe",
+      "id": "962355d7-54db-4629-8208-e66437c0c76a",
       "name": "Telefone"
     },
     {
@@ -1197,10 +1299,10 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        320,
-        -220
+        736,
+        1184
       ],
-      "id": "0c500997-b1f0-4adb-86d1-153247350890",
+      "id": "d980bcde-3de1-4052-93de-437b2edbb8ba",
       "name": "Data"
     },
     {
@@ -1210,10 +1312,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        480,
-        -220
+        896,
+        1184
       ],
-      "id": "cf0b51be-a484-426c-a12b-097fc733b7c2",
+      "id": "eaba9001-6aa0-4055-a82d-61d522d51172",
       "name": "Mes1"
     },
     {
@@ -1235,14 +1337,14 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        5820,
-        40
+        6224,
+        1440
       ],
-      "id": "cfa81695-e639-447c-bf06-135bb8cef3e0",
+      "id": "b615a55e-9c22-46f0-afda-a397236b3b31",
       "name": "Upload file1",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "tTIaOYYEyCaxSnfY",
+          "id": "1ib4QgSSisyBlll3",
           "name": "Google Drive account"
         }
       }
@@ -1268,14 +1370,14 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1420,
-        -100
+        1824,
+        1312
       ],
-      "id": "7e2a9d53-d3c1-49ce-9af5-2e32ae50f560",
+      "id": "eeb6fc67-7a28-42b8-9ce5-8a4f8f3f5723",
       "name": "Create folder1",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "tTIaOYYEyCaxSnfY",
+          "id": "1ib4QgSSisyBlll3",
           "name": "Google Drive account"
         }
       }
@@ -1308,10 +1410,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1280,
-        -200
+        1696,
+        1200
       ],
-      "id": "3bc3745e-49b8-40ae-a217-37f645a42873",
+      "id": "34ea75d0-f00e-4912-bd9e-5e4c512c6816",
       "name": "If1",
       "alwaysOutputData": false
     },
@@ -1334,15 +1436,15 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1100,
-        -220
+        1504,
+        1184
       ],
-      "id": "e1b0e9da-da0d-48e6-b625-ce1d24c84770",
+      "id": "4c694535-ff68-4479-a87c-7f9188a4d006",
       "name": "Search files and folders1",
       "alwaysOutputData": true,
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "tTIaOYYEyCaxSnfY",
+          "id": "1ib4QgSSisyBlll3",
           "name": "Google Drive account"
         }
       }
@@ -1366,15 +1468,15 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        1560,
-        -200
+        1968,
+        1200
       ],
-      "id": "822c61ab-ae7e-4ada-b8ac-d85501f3a1a2",
+      "id": "fc187d83-540b-4759-8fd0-ab3e6556aeeb",
       "name": "Search files and folders",
       "alwaysOutputData": true,
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "tTIaOYYEyCaxSnfY",
+          "id": "1ib4QgSSisyBlll3",
           "name": "Google Drive account"
         }
       }
@@ -1402,14 +1504,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4560,
-        -600
+        4976,
+        800
       ],
-      "id": "481423ac-e0f0-4044-a2d8-f61cd273e53f",
+      "id": "7f7069b1-a3fc-4876-bcd3-62ff9bf2fe72",
       "name": "HTTP Request",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -1437,10 +1539,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4260,
-        -600
+        4672,
+        800
       ],
-      "id": "fae28652-a5f9-4312-925b-bfeb99311a5c",
+      "id": "831e42a1-c5df-4f9a-a01f-81797437fa85",
       "name": "Nome"
     },
     {
@@ -1466,14 +1568,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4560,
-        -440
+        4976,
+        960
       ],
-      "id": "83ccf686-5b6e-4449-a15c-c7f682d4b6a6",
+      "id": "6422c9ec-bf18-4561-9563-7dbf86c4764c",
       "name": "HTTP Request1",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -1501,14 +1603,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4560,
-        -280
+        4976,
+        1120
       ],
-      "id": "604a78f8-be7e-4ecd-89c8-631009f99e48",
+      "id": "1061f0da-442d-4b45-b343-77ec3994124e",
       "name": "HTTP Request2",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -1536,14 +1638,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4560,
-        -120
+        4976,
+        1280
       ],
-      "id": "2ac7a7ad-3009-4afc-8ad8-68e27bc71312",
+      "id": "1563b8cc-7965-405f-ba84-16af9c07dc62",
       "name": "HTTP Request3",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -1571,10 +1673,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4260,
-        -440
+        4672,
+        960
       ],
-      "id": "8f3ee91b-271e-41de-9773-72c2e1235fc3",
+      "id": "9118a5d6-852e-4fbe-9f20-f3fd8df64678",
       "name": "Telefone1"
     },
     {
@@ -1600,10 +1702,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4260,
-        -280
+        4672,
+        1120
       ],
-      "id": "d08cc210-8c24-42d7-8163-294f87e30962",
+      "id": "df75feb4-2275-42d8-bea4-beb9b6c8c2dc",
       "name": "Aparelho"
     },
     {
@@ -1629,10 +1731,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4260,
-        -120
+        4672,
+        1280
       ],
-      "id": "7a78febe-a2d2-413a-85f1-9f2dc44bdfec",
+      "id": "c4ff7650-b3e3-4e8e-afcf-3ce6978c5769",
       "name": "Modelo"
     },
     {
@@ -1658,14 +1760,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4560,
-        60
+        4976,
+        1472
       ],
-      "id": "9f9d9df8-d1a8-4222-b145-74516c20ff18",
+      "id": "98105a7c-f375-4099-9ad3-4afa5e6bdaf8",
       "name": "HTTP Request4",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -1693,14 +1795,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4560,
-        220
+        4976,
+        1632
       ],
-      "id": "661352ca-1d8c-41f9-a6ff-8a846ce3c129",
+      "id": "402513ae-2c1d-4029-afd9-b5a83dd3779b",
       "name": "HTTP Request5",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -1728,10 +1830,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4260,
-        60
+        4672,
+        1472
       ],
-      "id": "cc34026b-a26e-47b5-a9d4-d1feab4f2dca",
+      "id": "18b34c28-f4be-4b00-9f20-a56870a6c2b6",
       "name": "Defeito"
     },
     {
@@ -1757,10 +1859,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4260,
-        220
+        4672,
+        1632
       ],
-      "id": "7a510246-19bb-4bdb-b6c7-3f46def0b810",
+      "id": "d2d49c8e-f107-4329-822d-d75e70a5ec8f",
       "name": "Observações"
     },
     {
@@ -1786,14 +1888,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4560,
-        380
+        4976,
+        1792
       ],
-      "id": "f070f3ac-ec51-422c-af38-f84d62353f56",
+      "id": "43f56425-517c-467b-bcc9-3688b6709592",
       "name": "HTTP Request6",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -1821,14 +1923,14 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4560,
-        540
+        4976,
+        1952
       ],
-      "id": "33620245-31d5-4477-8eb7-4f8d17b14f94",
+      "id": "08cab48e-038a-447c-99c9-855f71a473af",
       "name": "HTTP Request7",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "O1aMIL0d4FL7Nnro",
+          "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
       }
@@ -1856,10 +1958,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4400,
-        380
+        4816,
+        1792
       ],
-      "id": "c6c3d69d-9a7e-4f98-8049-304c4692a582",
+      "id": "0e5062a7-e3d6-44a9-82e2-df0c5fdfe089",
       "name": "Data2"
     },
     {
@@ -1885,10 +1987,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4260,
-        540
+        4672,
+        1952
       ],
-      "id": "c7bdaa7e-dec1-4951-83b2-ab6e7ac78d70",
+      "id": "d00714e6-d313-42da-9b44-066d0142f05e",
       "name": "OS"
     },
     {
@@ -1898,69 +2000,25 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        5300,
-        -160
+        5712,
+        1248
       ],
-      "id": "9cc42c55-bad3-44c3-9019-056c722b5756",
+      "id": "49fe0818-5123-4623-9f5e-6209b820946f",
       "name": "Merge1",
       "executeOnce": true
     },
     {
       "parameters": {
-        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4260,
-        380
+        4672,
+        1792
       ],
-      "id": "04f9402f-bbb9-4e8e-b0e0-5cbd119aa6a4",
+      "id": "fc6f767c-0f8d-4733-90d1-0573ac4ce99a",
       "name": "Code"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.w-api.app/v1/message/send-text?instanceId=0BB10C-5UHYF0-T5FZK2",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "5512982113000"
-            },
-            {
-              "name": "message",
-              "value": "Testando W-API"
-            },
-            {
-              "name": "delayMessage",
-              "value": "5"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1600,
-        -1100
-      ],
-      "id": "5c5625d6-d4b3-47e1-9d11-7dde1b0d5d91",
-      "name": "W-API",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "zSYRuZxu43Eu1F9n",
-          "name": "Header Auth account 2"
-        },
-        "httpBearerAuth": {
-          "id": "VYf1v9ZyxXUkh9tH",
-          "name": "Bearer Auth account"
-        }
-      }
     },
     {
       "parameters": {
@@ -1969,10 +2027,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1260,
-        -1220
+        1456,
+        192
       ],
-      "id": "30e890cf-9825-4885-895d-f9e4f19777dc",
+      "id": "04c04e9d-5fe8-4789-b8cf-2fdb8905de51",
       "name": "Sauda"
     },
     {
@@ -1982,10 +2040,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        200,
-        -1460
+        400,
+        -64
       ],
-      "id": "92a5924d-e91a-44ef-87af-8df132865c19",
+      "id": "e9630dba-7493-4616-88d7-957d8a00839a",
       "name": "Sauda1"
     },
     {
@@ -1996,10 +2054,10 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        580,
-        -1220
+        784,
+        192
       ],
-      "id": "5a7815a0-1fe5-4da7-b40d-7f4a5f3574a2",
+      "id": "1b17fa32-6927-44fc-b06f-9ab60d010a24",
       "name": "Data3"
     },
     {
@@ -2009,10 +2067,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        800,
-        -1220
+        1008,
+        192
       ],
-      "id": "41f7f28c-7b9f-4a01-8c75-bb1de3dc15e8",
+      "id": "740c3481-52e3-4cf2-b49b-54558d06aeba",
       "name": "Code2"
     },
     {
@@ -2022,23 +2080,23 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -20,
-        -1480
+        176,
+        -80
       ],
-      "id": "911adc9b-95e7-433f-89f7-599a35caa2ee",
+      "id": "0362ef67-872f-43a8-b1b7-58efdc840e24",
       "name": "Code3"
     },
     {
       "parameters": {
-        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        660,
-        -220
+        1072,
+        1184
       ],
-      "id": "2180b18d-6c80-4105-bc85-ca8e263723b8",
+      "id": "cf98d828-7bcd-4b24-8f19-62c4f4cd5475",
       "name": "Code1"
     },
     {
@@ -2048,10 +2106,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        900,
-        -220
+        1312,
+        1184
       ],
-      "id": "2e6dc937-d345-4b68-98b8-0a2060010b25",
+      "id": "45aad233-9d04-46c4-828f-04cdc4ebd20d",
       "name": "Sauda2"
     },
     {
@@ -2079,13 +2137,13 @@
             {
               "id": "e7fe4169-3602-4866-bb93-67de0cd4bd58",
               "name": "body.marca",
-              "value": "={{ $('Webhook').item.json.body.marca}}",
+              "value": "={{ $('Webhook').item.json.body.marca.toUpperCase()}}",
               "type": "string"
             },
             {
               "id": "0481a439-fb2b-42a9-8029-ccafaf7d4280",
               "name": "body.modelo",
-              "value": "={{ $('Webhook').item.json.body.modelo}}",
+              "value": "={{ $('Webhook').item.json.body.modelo.toUpperCase()}}",
               "type": "string"
             },
             {
@@ -2107,10 +2165,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -560,
-        -220
+        -160,
+        1184
       ],
-      "id": "d83f9463-73cc-4334-94cc-dcab4ce71c20",
+      "id": "dd6a8ee5-8014-4647-916c-eb63a9d7b589",
       "name": "dados"
     },
     {
@@ -2160,15 +2218,15 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        3100,
-        0
+        3504,
+        1408
       ],
-      "id": "388cddf4-7c81-4f88-b65a-5e4656929ab8",
+      "id": "b4a95fbe-c649-485c-9676-dab9be8dcd1e",
       "name": "Salve historico",
       "executeOnce": true,
       "credentials": {
         "supabaseApi": {
-          "id": "rOYD11WtKRJQ9Bli",
+          "id": "r7qiHeLbj3sFTwB4",
           "name": "Supabase account"
         }
       }
@@ -2201,30 +2259,324 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        6040,
-        -160
+        6448,
+        1248
       ],
-      "id": "77641054-1840-4eae-81df-beb58ae11054",
+      "id": "3ab69f15-babb-4522-acc7-13761eb497bc",
       "name": "Z-API",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "4KOge2CHa6sSv6MD",
-          "name": "Header Auth account"
-        },
-        "httpBearerAuth": {
-          "id": "VYf1v9ZyxXUkh9tH",
-          "name": "Bearer Auth account"
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5e754a0b-c808-47aa-9e89-5682fc6b0202",
+              "leftValue": "={{ $json.body.reprinting }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1136,
+        1200
+      ],
+      "id": "72078656-bab0-4109-ad33-bd157a8909c2",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Get a row').item.json.os_number }}",
+        "filter": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -400,
+        1424
+      ],
+      "id": "cf99c69e-b6b0-4381-a6c0-fc5588c4b9a2",
+      "name": "Search files and folders2",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://drive.google.com/uc?export=download&id={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        1424
+      ],
+      "id": "2586fd80-a336-4c98-a02c-1a76b38185ab",
+      "name": "HTTP Request8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.0.159:5566/print",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "ChaveSecreta"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -112,
+        1424
+      ],
+      "id": "b8807bf3-9790-4aba-a5b9-cf16cb2651c0",
+      "name": "Print3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Get a row1').item.json.numero }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $('Sauda3').item.json.saudacao }} {{ $('Get a row').item.json.nome }}! \nSua OS é a número {{ $('Get a row').item.json.os_number }}\n\nReferente ao seu *{{ $('Get a row').item.json.aparelho }} {{ $('Get a row').item.json.marca }}*\n\n_Modelo {{ $('Get a row').item.json.modelo }}._\n\nDefeito relatado: *{{ $('Get a row').item.json.defeito }}*\n\nObservações do técnico: {{ $('Get a row').item.json.observacoes }}\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        608,
+        1424
+      ],
+      "id": "7dea7e00-d90d-4ca4-a2a9-3b4dd7dcf688",
+      "name": "Z-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "ordens_servico",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "os_number",
+              "keyValue": "={{ $json.body.os_number }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -688,
+        1424
+      ],
+      "id": "97da71ca-80f8-4846-9093-82d2dee320cc",
+      "name": "Get a row",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Usuarios",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "usuarios",
+              "keyValue": "={{ $json.nome }} {{ $json.sobrenome }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -544,
+        1424
+      ],
+      "id": "4cfb6a8f-67bb-4110-86ce-25535e028e73",
+      "name": "Get a row1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        32,
+        1424
+      ],
+      "id": "c42f83a8-c392-485c-a452-cd7888a3d526",
+      "name": "Data1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        176,
+        1424
+      ],
+      "id": "117c6cee-bfce-43ee-a270-aac73e85ff77",
+      "name": "Mes"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data1').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        1424
+      ],
+      "id": "488ccc80-d6dc-46a8-b7dd-0aec38b2239b",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const dataString = item.json.dataFormatada; // Ex: \"15/07/2025 15:01\"\n\n  // Converte string BR para ISO (yyyy-mm-ddTHH:MM:00)\n  const partes = dataString.split(/[\\s/:]/); // [dia, mês, ano, hora, minuto]\n  const dataISO = `${partes[2]}-${partes[1]}-${partes[0]}T${partes[3]}:${partes[4]}:00`;\n\n  const data = new Date(dataISO);\n  const horaAtual = data.getHours();\n\n  let saudacao;\n\n  if (horaAtual >= 6 && horaAtual < 12) {\n    saudacao = \"Bom dia\";\n  } else if (horaAtual >= 12 && horaAtual < 18) {\n    saudacao = \"Boa tarde\";\n  } else {\n    saudacao = \"Boa noite\";\n  }\n\n  item.json.saudacao = saudacao;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        464,
+        1424
+      ],
+      "id": "1a4b96d3-0718-478c-91d7-2654f17364a5",
+      "name": "Sauda3"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "auto.kadovesh.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+            "content-length": "394",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
+            "cf-ipcountry": "BR",
+            "cf-ray": "96a945a79ca17424-MIA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "origin": "https://3jq9i34l676b615l024yamb8q3rjpr2wh95ue9o4eujyx627pk-h785866787.scf.usercontent.goog",
+            "priority": "u=1, i",
+            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "reprinting": true,
+            "os_number": 25548,
+            "telefone": "(11) 98594-6200",
+            "nome": "Roberto",
+            "sobrenome": "Leite",
+            "aparelho": "Televisor",
+            "marca": "SAMSUNG",
+            "modelo": "UN32F4200AG",
+            "defeito": "Placa de fonte queimada, Tela quebrada",
+            "observacoes": "Com Suporte , Pé Adaptado",
+            "servicos": "Reparo da Placa de Fonte (R$ 250,00); Troca da Tela (R$ 270,00)",
+            "pecas": "Tela nova (R$ 1.500,00)",
+            "valor_total": 2020
+          },
+          "webhookUrl": "https://auto.kadovesh.com/webhook/form",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-30T21:07:41.000Z",
-  "versionId": "a743e75e-8c67-458b-9ed1-61a899ec056e"
+  "updatedAt": "2025-08-06T01:46:22.000Z",
+  "versionId": "b8c0ac9c-e65c-4eba-aa9b-245094e34e87"
 }
