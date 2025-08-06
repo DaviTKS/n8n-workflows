@@ -1,11 +1,11 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Webhook": {
       "main": [
         [
           {
-            "node": "If",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -16,7 +16,69 @@
       "main": [
         [
           {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "Z-API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Z-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Redis",
             "type": "main",
             "index": 0
           }
@@ -24,10 +86,12 @@
       ]
     }
   },
-  "createdAt": "2025-07-31T01:02:48.577Z",
-  "id": "UgNhzrqMLBRXV0Cy",
+  "createdAt": "2025-08-02T01:38:55.180Z",
+  "id": "4fs0Rn6WpVaqld0F",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Send Message",
   "nodes": [
     {
@@ -39,10 +103,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -320,
-        0
+        -624,
+        -160
       ],
-      "id": "4c9d91ef-3fb3-408d-96cf-db1d224efef9",
+      "id": "d2e02a74-60d2-4285-b672-8369e297f212",
       "name": "Webhook",
       "webhookId": "9e2e1bd2-f274-4c20-9889-3ef7d86ccedf"
     },
@@ -57,15 +121,15 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "={{ $json.body.conversation.meta.sender.phone_number }}"
+              "value": "={{ $('Edit Fields').item.json.tel }}"
             },
             {
               "name": "message",
-              "value": "={{ $json.body.content }}"
+              "value": "={{ $('Edit Fields').item.json.message }}"
             },
             {
               "name": "delayTyping",
-              "value": "3"
+              "value": "1"
             }
           ]
         },
@@ -74,19 +138,15 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        460,
-        0
+        1776,
+        -160
       ],
-      "id": "6ba55fb2-fb0e-43f5-966d-0a1701fc3a99",
+      "id": "e3f4bb98-d87a-4461-b0f5-570b1c3ff91c",
       "name": "Z-API",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "4KOge2CHa6sSv6MD",
-          "name": "Header Auth account"
-        },
-        "httpBearerAuth": {
-          "id": "VYf1v9ZyxXUkh9tH",
-          "name": "Bearer Auth account"
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
         }
       }
     },
@@ -102,7 +162,7 @@
           "conditions": [
             {
               "id": "bd644768-12f7-4882-884b-8fc82b81ba57",
-              "leftValue": "={{ $json.body.message_type }}",
+              "leftValue": "={{ $('Webhook').item.json.body.message_type }}",
               "rightValue": "outgoing",
               "operator": {
                 "type": "string",
@@ -118,20 +178,408 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -100,
-        0
+        1008,
+        -160
       ],
-      "id": "1d7a9903-29db-41d4-9061-4207f96422ac",
+      "id": "8ce11612-4643-42e7-bef9-5c1b4fee08ae",
       "name": "If"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook').item.json.body.conversation.messages[0].attachments[0].file_type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "103351a0-9a09-4511-925d-2f81ab2deb24"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d164fd0b-bc66-4a24-b1c3-273d2a4abb13",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1216,
+        -256
+      ],
+      "id": "c81844b3-6aa5-47e9-ac60-f2c129229838",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-image",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Edit Fields').item.json.tel }}"
+            },
+            {
+              "name": "image",
+              "value": "={{ $('Webhook').item.json.body.conversation.messages[0].attachments[0].data_url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1776,
+        -304
+      ],
+      "id": "0bd1de8b-2b19-4b94-a752-c790e5b49a77",
+      "name": "Z-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/conversations/{{ $('Webhook').item.json.body.conversation.id }}/messages\n",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "attachments[]",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "file_type",
+              "value": "image"
+            },
+            {
+              "name": "message_type",
+              "value": "incoming"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1712,
+        -496
+      ],
+      "id": "16ff1f23-57f3-481c-84a4-7133f7199350",
+      "name": "Envia msg",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "d18szDNg2XivypkT",
+          "name": "Chatwoot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Webhook').item.json.body.conversation.messages[0].attachments[0].data_url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1440,
+        -368
+      ],
+      "id": "bac2d4d0-1b79-4812-a3af-884468f6290b",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "61c0e690-7b35-4a8c-b4e1-44571b1c213b",
+              "leftValue": "={{ $json.Buffer }}",
+              "rightValue": "={{ $('Webhook').item.json.body.conversation.contact_inbox.source_id }}.{{ $('Webhook').item.json.body.conversation.messages[0].content }}",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        288,
+        -160
+      ],
+      "id": "6dc25400-a8f6-4465-9be9-f28deb5e9021",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "=Buffer",
+        "key": "={{ $json.tel }}.{{ $json.message }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        -160
+      ],
+      "id": "5222ed55-90eb-4962-be4b-503cccc92555",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2197565b-418b-4eb3-9886-699cf4a939a1",
+              "name": "tel",
+              "value": "={{ $json.body.conversation.contact_inbox.source_id }}",
+              "type": "string"
+            },
+            {
+              "id": "e6cb2b83-6c2f-4755-91b7-9e13d5365234",
+              "name": "message",
+              "value": "={{ $json.body.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -416,
+        -160
+      ],
+      "id": "5efe7801-ece6-4ec9-b345-7edaa3675b48",
+      "name": "Edit Fields"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "auto.kadovesh.com",
+            "user-agent": "rest-client/2.1.0 (linux x86_64) ruby/3.4.4p34",
+            "content-length": "2561",
+            "accept": "application/json",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "2804:14d:6885:42f0::1001",
+            "cf-ipcountry": "BR",
+            "cf-ray": "969f40d85892c036-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "x-forwarded-for": "2804:14d:6885:42f0::1001",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "account": {
+              "id": 1,
+              "name": "Leão de Judá Informática"
+            },
+            "additional_attributes": {},
+            "content_attributes": {},
+            "content_type": "text",
+            "content": "5",
+            "conversation": {
+              "additional_attributes": {},
+              "can_reply": true,
+              "channel": "Channel::Api",
+              "contact_inbox": {
+                "id": 28,
+                "contact_id": 39,
+                "inbox_id": 1,
+                "source_id": "5512982113000",
+                "created_at": "2025-08-04T15:57:44.442Z",
+                "updated_at": "2025-08-04T15:57:44.442Z",
+                "hmac_verified": false,
+                "pubsub_token": "qw1iqaZW9VPkV79DBuDqouXv"
+              },
+              "id": 31,
+              "inbox_id": 1,
+              "messages": [
+                {
+                  "id": 155,
+                  "content": "5",
+                  "account_id": 1,
+                  "inbox_id": 1,
+                  "conversation_id": 31,
+                  "message_type": 1,
+                  "created_at": 1754323075,
+                  "updated_at": "2025-08-04T15:57:55.278Z",
+                  "private": false,
+                  "status": "sent",
+                  "source_id": null,
+                  "content_type": "text",
+                  "content_attributes": {},
+                  "sender_type": "User",
+                  "sender_id": 1,
+                  "external_source_ids": {},
+                  "additional_attributes": {},
+                  "processed_message_content": "5",
+                  "sentiment": {},
+                  "conversation": {
+                    "assignee_id": 1,
+                    "unread_count": 0,
+                    "last_activity_at": 1754323075,
+                    "contact_inbox": {
+                      "source_id": "5512982113000"
+                    }
+                  },
+                  "sender": {
+                    "id": 1,
+                    "name": "Davi Moraes",
+                    "available_name": "Davi Moraes",
+                    "avatar_url": "",
+                    "type": "user",
+                    "availability_status": null,
+                    "thumbnail": ""
+                  }
+                }
+              ],
+              "labels": [],
+              "meta": {
+                "sender": {
+                  "additional_attributes": {},
+                  "custom_attributes": {},
+                  "email": null,
+                  "id": 39,
+                  "identifier": "5512982113000",
+                  "name": "Assistência Técnica Leão de Juda",
+                  "phone_number": "+5512982113000",
+                  "thumbnail": "https://chatwoot.kadovesh.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBjQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58adb38b6487c12a772db1ea917c47d07390a314/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--9f2d1930b882e9bfc8ed299312bc745d99c590c3/Untitled.jpg",
+                  "blocked": false,
+                  "type": "contact"
+                },
+                "assignee": {
+                  "id": 1,
+                  "name": "Davi Moraes",
+                  "available_name": "Davi Moraes",
+                  "avatar_url": "",
+                  "type": "user",
+                  "availability_status": null,
+                  "thumbnail": ""
+                },
+                "team": null,
+                "hmac_verified": false
+              },
+              "status": "open",
+              "custom_attributes": {},
+              "snoozed_until": null,
+              "unread_count": 0,
+              "first_reply_created_at": "2025-08-04T15:57:49.042Z",
+              "priority": null,
+              "waiting_since": 0,
+              "agent_last_seen_at": 0,
+              "contact_last_seen_at": 0,
+              "last_activity_at": 1754323075,
+              "timestamp": 1754323075,
+              "created_at": 1754323068,
+              "updated_at": 1754323075.281462
+            },
+            "created_at": "2025-08-04T15:57:55.278Z",
+            "id": 155,
+            "inbox": {
+              "id": 1,
+              "name": "Whatsapp"
+            },
+            "message_type": "outgoing",
+            "private": false,
+            "sender": {
+              "id": 1,
+              "name": "Davi Moraes",
+              "email": "contato.davimnm@gmail.com",
+              "type": "user"
+            },
+            "source_id": null,
+            "event": "message_created"
+          },
+          "webhookUrl": "https://auto.kadovesh.com/webhook/enviatext",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-07-31T04:59:41.000Z",
-  "versionId": "d506ff55-0018-45af-9ac5-a91f3b3f52a0"
+  "updatedAt": "2025-08-04T16:01:38.000Z",
+  "versionId": "0f4c7594-6441-4e20-b235-af82c051ba76"
 }
