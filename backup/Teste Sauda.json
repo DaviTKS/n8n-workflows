@@ -1,0 +1,214 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Mes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mes1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Sauda2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sauda2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-02T01:37:25.593Z",
+  "id": "CjXkyVMisydX9oR6",
+  "isArchived": true,
+  "meta": null,
+  "name": "Teste Sauda",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        256,
+        -64
+      ],
+      "id": "87fed50d-c420-4024-b1f3-e0f22cd5f5e0",
+      "name": "When chat message received",
+      "webhookId": "d48780e0-cbe1-4d18-be40-fa4e316f827f"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('When chat message received').item.json.chatInput }}",
+        "options": {
+          "systemMessage": "=Você é uma IA com foco em saudar o cliente segundo o horário.\n\n##Diretriz primária: SOMENTE SAUDAR O CLIENTE CASO ELE SAUDE OU SEJA A PRIMEIRA INTERAÇÃO SALVA\n\nSAUDAÇÃO INICIAL - SAUDAR SEMPRE DE ACORDO COM O HORÁRIO, NÃO IMPORTA A SAUDAÇÃO DO CLIENTE\n\nCASO O CLIENTE NÂO MANDE UMA SAUDAÇÃO, RESPONDA COM O TEXTO '01'\n\nDATA= {{ $json.dataFormatada }}\nAjustar a saudação seguindo a variável [DATA]:\n\nÓtimo dia, [nome]! (antes de 12h)\n\nÓtima tarde, [nome]! (entre 12h e 18h)\n\nÓtima noite, [nome]! (após 18h)\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1264,
+        -64
+      ],
+      "id": "b522f6b7-21ef-454f-bc1b-307052032aeb",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1200,
+        128
+      ],
+      "id": "40990241-6433-45f4-944e-0782e1f30f4e",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('When chat message received').item.json.sessionId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1344,
+        128
+      ],
+      "id": "4514f493-dd24-499e-9733-982372b8bfaf",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        480,
+        -64
+      ],
+      "id": "6ce25bdf-27be-4a7a-8d0b-1b3ecf2d0cb3",
+      "name": "Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        640,
+        -64
+      ],
+      "id": "4f6c83a9-e42e-4c26-b4bd-d10b4d631494",
+      "name": "Mes1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        816,
+        -64
+      ],
+      "id": "a283411b-0c88-4d3f-8a6a-07b923760a4c",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const dataString = item.json.dataFormatada; // Ex: \"15/07/2025 15:01\"\n\n  // Converte string BR para ISO (yyyy-mm-ddTHH:MM:00)\n  const partes = dataString.split(/[\\s/:]/); // [dia, mês, ano, hora, minuto]\n  const dataISO = `${partes[2]}-${partes[1]}-${partes[0]}T${partes[3]}:${partes[4]}:00`;\n\n  const data = new Date(dataISO);\n  const horaAtual = data.getHours();\n\n  let saudacao;\n\n  if (horaAtual >= 6 && horaAtual < 12) {\n    saudacao = \"Bom dia\";\n  } else if (horaAtual >= 12 && horaAtual < 18) {\n    saudacao = \"Boa tarde\";\n  } else {\n    saudacao = \"Boa noite\";\n  }\n\n  item.json.saudacao = saudacao;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1056,
+        -64
+      ],
+      "id": "6622f0a8-8bd4-4f4f-87c2-968cad1e3261",
+      "name": "Sauda2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-06T01:46:28.000Z",
+  "versionId": "13438e0d-197a-4ee6-b2d6-11deb56d91bc"
+}
