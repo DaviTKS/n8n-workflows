@@ -1,0 +1,725 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Z-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Z-API1": {
+      "main": [
+        [
+          {
+            "node": "Z-API2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Z-API2": {
+      "main": [
+        []
+      ]
+    },
+    "servicos_executados": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "defeitos_identificados": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pecas_utilizadas": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Z-API3": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "servicos_executados1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "defeitos_identificados1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "pecas_utilizadas1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Z-API3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-08-04T21:48:42.949Z",
+  "id": "Ih7B8ln36C76h3B1",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Envio PIX/Orçamento",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pix",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1232,
+        -240
+      ],
+      "id": "c39c7070-88bf-441f-b2ce-3955662d644c",
+      "name": "Webhook",
+      "webhookId": "b963b45b-dde2-44ee-9599-414715fe0865"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e707e13f-9bd2-4c87-9fe5-9f3e65644d68",
+              "leftValue": "={{ $json.body.dados_orcamento }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1040,
+        -240
+      ],
+      "id": "a603d340-ec4a-4587-896e-8a5456b65d5e",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-button-pix",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.body.phone }}"
+            },
+            {
+              "name": "pixKey",
+              "value": "=32473333000124"
+            },
+            {
+              "name": "type",
+              "value": "CNPJ"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -720,
+        -112
+      ],
+      "id": "f4e56ab5-c11a-48b5-bebb-fa98134b3792",
+      "name": "Z-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Valor: R${{ $('Webhook').item.json.body.valor }}"
+            },
+            {
+              "name": "delayMessage",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -544,
+        -112
+      ],
+      "id": "7936bf4c-2b02-4ed1-9678-024fb05ad463",
+      "name": "Z-API2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "usuarios",
+          "mode": "list",
+          "cachedResultName": "usuarios"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        16,
+        176
+      ],
+      "id": "740e1f5e-332b-4b40-8540-98b99563ff79",
+      "name": "Insert rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "ZEobhMYEeazW7SRl",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.dados_orcamento }}",
+        "options": {
+          "systemMessage": "=Seu objetivo é pegar os dados_orcamento e organizá-los em uma tabela do supabase.\n\nPara cada defeito, serviço e peça você deverá criar uma linha.\n\nPara defeitos, a tabela a ser utilizada é a defeitos_identificados. Você irá preencher cada linha com a OS atual[{{ $('Webhook').item.json.body.dados_orcamento.os_number }}] e os defeitos.\n\nPara serviços, a tabela a ser utilizada é a servicos_executados. Você irá preencher cada linha com a OS atual[{{ $('Webhook').item.json.body.dados_orcamento.os_number }}, a descrição do serviço e o valor.\n\nPara peças, a tabela a ser utilizada é a pecas_utilizadas. Você irá preencher cada linha com a OS atual[{{ $('Webhook').item.json.body.dados_orcamento.os_number }}, a descrição da peça e o valor.\n\nSegue abaixo o schema de cada tabela:\n\ncreate table public.pecas_utilizadas (\n  id bigint generated by default as identity not null,\n  ordem_servico_id bigint null,\n  descricao text not null,\n  valor numeric(10, 2) not null,\n  constraint pecas_utilizadas_pkey primary key (id),\n  constraint pecas_utilizadas_ordem_servico_id_fkey foreign KEY (ordem_servico_id) references ordens_de_servico (os_number) on delete CASCADE\n) TABLESPACE pg_default;\n\ncreate table public.servicos_executados (\n  id bigint generated by default as identity not null,\n  ordem_servico_id bigint null,\n  descricao text not null,\n  valor numeric(10, 2) not null,\n  constraint servicos_executados_pkey primary key (id),\n  constraint servicos_executados_ordem_servico_id_fkey foreign KEY (ordem_servico_id) references ordens_de_servico (os_number) on delete CASCADE\n) TABLESPACE pg_default;\n\ncreate table public.defeitos_identificados (\n  id bigint generated by default as identity not null,\n  ordem_servico_id bigint null,\n  descricao text not null,\n  constraint defeitos_identificados_pkey primary key (id),\n  constraint defeitos_identificados_ordem_servico_id_fkey foreign KEY (ordem_servico_id) references ordens_de_servico (os_number) on delete CASCADE\n) TABLESPACE pg_default;"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -48,
+        -800
+      ],
+      "id": "f78a9138-c3f3-4cb3-a666-a3b94e96938c",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "tableId": "servicos_executados",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ordem_servico_id",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "descricao",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "valor",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues2_Field_Value', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        256,
+        -688
+      ],
+      "id": "83a8ff4c-543b-4fd5-b565-e1825479168a",
+      "name": "servicos_executados",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "defeitos_identificados",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ordem_servico_id",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "descricao",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        368,
+        -688
+      ],
+      "id": "b2057dee-e496-4749-b520-62cc2fab7e2b",
+      "name": "defeitos_identificados",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "pecas_utilizadas",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ordem_servico_id",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "descricao",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "valor",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues2_Field_Value', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        480,
+        -688
+      ],
+      "id": "2452b99f-50d7-4c1a-84c3-fc675ee9dd38",
+      "name": "pecas_utilizadas",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -48,
+        -672
+      ],
+      "id": "4fec1a62-87d4-4a40-b055-850b0cc113ae",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1d8d6091-0c92-46ed-a4c3-4d490831bb33",
+              "leftValue": "={{ $json.body.dados_orcamento.Salvar }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -544,
+        -384
+      ],
+      "id": "fcb29374-4951-427e-87f7-d875f576440c",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5512982113000"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json.body.message }}"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -192,
+        -368
+      ],
+      "id": "f8480423-f429-4b18-9181-d826c4c2656b",
+      "name": "Z-API3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Webhook').item.json.body.dados_orcamento }}",
+        "options": {
+          "systemMessage": "=Seu objetivo é pegar os dados_orcamento e organizá-los em uma tabela do supabase.\n\nPara cada defeito, serviço e peça você deverá criar uma linha.\n\nPara defeitos, a tabela a ser utilizada é a defeitos_identificados. Você irá preencher cada linha com a OS atual[{{ $('Webhook').item.json.body.dados_orcamento.os_number }}] e os defeitos.\n\nPara serviços, a tabela a ser utilizada é a servicos_executados. Você irá preencher cada linha com a OS atual[{{ $('Webhook').item.json.body.dados_orcamento.os_number }}, a descrição do serviço e o valor.\n\nPara peças, a tabela a ser utilizada é a pecas_utilizadas. Você irá preencher cada linha com a OS atual[{{ $('Webhook').item.json.body.dados_orcamento.os_number }}, a descrição da peça e o valor.\n\nSegue abaixo o schema de cada tabela:\n\ncreate table public.pecas_utilizadas (\n  id bigint generated by default as identity not null,\n  ordem_servico_id bigint null,\n  descricao text not null,\n  valor numeric(10, 2) not null,\n  constraint pecas_utilizadas_pkey primary key (id),\n  constraint pecas_utilizadas_ordem_servico_id_fkey foreign KEY (ordem_servico_id) references ordens_de_servico (os_number) on delete CASCADE\n) TABLESPACE pg_default;\n\ncreate table public.servicos_executados (\n  id bigint generated by default as identity not null,\n  ordem_servico_id bigint null,\n  descricao text not null,\n  valor numeric(10, 2) not null,\n  constraint servicos_executados_pkey primary key (id),\n  constraint servicos_executados_ordem_servico_id_fkey foreign KEY (ordem_servico_id) references ordens_de_servico (os_number) on delete CASCADE\n) TABLESPACE pg_default;\n\ncreate table public.defeitos_identificados (\n  id bigint generated by default as identity not null,\n  ordem_servico_id bigint null,\n  descricao text not null,\n  constraint defeitos_identificados_pkey primary key (id),\n  constraint defeitos_identificados_ordem_servico_id_fkey foreign KEY (ordem_servico_id) references ordens_de_servico (os_number) on delete CASCADE\n) TABLESPACE pg_default;"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        -16,
+        -368
+      ],
+      "id": "8479ed19-4e8a-4e7c-b5b5-c9db7acae46f",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "tableId": "servicos_executados",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ordem_servico_id",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "descricao",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "valor",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues2_Field_Value', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        512,
+        -256
+      ],
+      "id": "2ab8ac1d-2827-4356-8ad1-b54c057f83d7",
+      "name": "servicos_executados1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "defeitos_identificados",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ordem_servico_id",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "descricao",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        384,
+        -256
+      ],
+      "id": "aa648a73-5051-4273-a43a-10a7b7b29a80",
+      "name": "defeitos_identificados1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "pecas_utilizadas",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "ordem_servico_id",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "descricao",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', ``, 'string') }}"
+            },
+            {
+              "fieldId": "valor",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues2_Field_Value', ``, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        256,
+        -256
+      ],
+      "id": "9ef83926-01fd-42bc-826d-bfafe8aa1ed4",
+      "name": "pecas_utilizadas1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -16,
+        -208
+      ],
+      "id": "4d3e5bd9-8970-44fd-be85-79fd03e0ffea",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-06T01:49:58.000Z",
+  "versionId": "3b3d070c-884f-46ba-821c-d0ff7b2b2415"
+}
