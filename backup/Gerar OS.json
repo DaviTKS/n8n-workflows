@@ -45,7 +45,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -552,20 +552,8 @@
     },
     "If": {
       "main": [
-        [
-          {
-            "node": "Telefone",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get a row",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        [],
+        []
       ]
     },
     "Search files and folders2": {
@@ -661,6 +649,75 @@
         [
           {
             "node": "Z-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a row2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request9": {
+      "main": [
+        [
+          {
+            "node": "Print4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row2": {
+      "main": [
+        [
+          {
+            "node": "Get a row3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a row3": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders3",
             "type": "main",
             "index": 0
           }
@@ -2299,8 +2356,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1136,
-        1200
+        -1584,
+        1408
       ],
       "id": "72078656-bab0-4109-ad33-bd157a8909c2",
       "name": "If"
@@ -2516,6 +2573,211 @@
       ],
       "id": "1a4b96d3-0718-478c-91d7-2654f17364a5",
       "name": "Sauda3"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.reprinting, $json.body.reprinting_only }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "false",
+                      "singleValue": true
+                    },
+                    "id": "4957eb22-a909-471c-9b52-edb9e59b8949"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "95c7c19e-2e6f-4bf4-8022-cce6bc15bfef",
+                    "leftValue": "={{ $json.body.reprinting }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6dffda69-ea3e-4d8e-af04-301bb407d709",
+                    "leftValue": "={{ $json.body.reprinting_only }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -1136,
+        1200
+      ],
+      "id": "4ef1230d-40ea-4f64-9e17-325c3af12e34",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Get a row2').item.json.os_number }}",
+        "filter": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -400,
+        1584
+      ],
+      "id": "c937b170-c0b5-4c80-a331-927ba102564d",
+      "name": "Search files and folders3",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://drive.google.com/uc?export=download&id={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        1584
+      ],
+      "id": "017dad6a-e8d0-409a-9486-e8d80b9f27c4",
+      "name": "HTTP Request9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.0.159:5566/print",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "ChaveSecreta"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -112,
+        1584
+      ],
+      "id": "1fb5d06a-4921-458f-b662-8e7c84d481ba",
+      "name": "Print4"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "ordens_servico",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "os_number",
+              "keyValue": "={{ $json.body.os_number }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -688,
+        1584
+      ],
+      "id": "7d95248e-357d-42fc-aec6-2f452bd2877d",
+      "name": "Get a row2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "Usuarios",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "usuarios",
+              "keyValue": "={{ $json.nome }} {{ $json.sobrenome }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -544,
+        1584
+      ],
+      "id": "9f49c55d-8e6a-4216-ba84-47b81eafc93a",
+      "name": "Get a row3",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2525,45 +2787,47 @@
           "headers": {
             "host": "auto.kadovesh.com",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-            "content-length": "394",
+            "content-length": "306",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
+            "cf-connecting-ip": "2804:14d:6885:42f0:7c6f:e956:4848:f19b",
             "cf-ipcountry": "BR",
-            "cf-ray": "96a945a79ca17424-MIA",
+            "cf-ray": "96b9ed7a4db91f08-MIA",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
             "connection": "keep-alive",
             "content-type": "application/json",
-            "origin": "https://3jq9i34l676b615l024yamb8q3rjpr2wh95ue9o4eujyx627pk-h785866787.scf.usercontent.goog",
+            "origin": "http://192.168.0.159",
             "priority": "u=1, i",
+            "referer": "http://192.168.0.159/",
             "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
             "sec-ch-ua-mobile": "?0",
             "sec-ch-ua-platform": "\"Windows\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
+            "x-forwarded-for": "2804:14d:6885:42f0:7c6f:e956:4848:f19b",
             "x-forwarded-proto": "https"
           },
           "params": {},
           "query": {},
           "body": {
-            "reprinting": true,
-            "os_number": 25548,
-            "telefone": "(11) 98594-6200",
-            "nome": "Roberto",
-            "sobrenome": "Leite",
+            "reprinting_only": true,
+            "os_number": 25556,
+            "telefone": "(12) 98817-0487",
+            "nome": "Andreia",
+            "sobrenome": "Santana",
             "aparelho": "Televisor",
-            "marca": "SAMSUNG",
-            "modelo": "UN32F4200AG",
-            "defeito": "Placa de fonte queimada, Tela quebrada",
-            "observacoes": "Com Suporte , Pé Adaptado",
-            "servicos": "Reparo da Placa de Fonte (R$ 250,00); Troca da Tela (R$ 270,00)",
-            "pecas": "Tela nova (R$ 1.500,00)",
-            "valor_total": 2020
+            "marca": "SEMP TOSHIBA",
+            "modelo": "32L2800",
+            "defeito": "Nao Liga ",
+            "observacoes": " Somente Standby",
+            "servicos": "",
+            "pecas": "",
+            "valor_total": 0,
+            "forma_pagamento": "Não informado"
           },
           "webhookUrl": "https://auto.kadovesh.com/webhook/form",
           "executionMode": "production"
@@ -2577,6 +2841,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-06T01:46:22.000Z",
-  "versionId": "b8c0ac9c-e65c-4eba-aa9b-245094e34e87"
+  "updatedAt": "2025-08-07T21:41:43.000Z",
+  "versionId": "9fdf8c61-5066-49c9-85f1-eabca072c01b"
 }
