@@ -2583,12 +2583,12 @@
                 "options": {
                   "caseSensitive": true,
                   "leftValue": "",
-                  "typeValidation": "strict",
+                  "typeValidation": "loose",
                   "version": 2
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.body.reprinting, $json.body.reprinting_only }}",
+                    "leftValue": "={{ $json.body.reprinting }}",
                     "rightValue": "",
                     "operator": {
                       "type": "boolean",
@@ -2606,7 +2606,7 @@
                 "options": {
                   "caseSensitive": true,
                   "leftValue": "",
-                  "typeValidation": "strict",
+                  "typeValidation": "loose",
                   "version": 2
                 },
                 "conditions": [
@@ -2629,7 +2629,7 @@
                 "options": {
                   "caseSensitive": true,
                   "leftValue": "",
-                  "typeValidation": "strict",
+                  "typeValidation": "loose",
                   "version": 2
                 },
                 "conditions": [
@@ -2649,6 +2649,7 @@
             }
           ]
         },
+        "looseTypeValidation": true,
         "options": {}
       },
       "type": "n8n-nodes-base.switch",
@@ -2787,47 +2788,43 @@
           "headers": {
             "host": "auto.kadovesh.com",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-            "content-length": "306",
+            "content-length": "220",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "2804:14d:6885:42f0:7c6f:e956:4848:f19b",
+            "cf-connecting-ip": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
             "cf-ipcountry": "BR",
-            "cf-ray": "96b9ed7a4db91f08-MIA",
+            "cf-ray": "96d8a3df2a2ac288-MIA",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
             "connection": "keep-alive",
             "content-type": "application/json",
-            "origin": "http://192.168.0.159",
+            "origin": "http://localhost",
             "priority": "u=1, i",
-            "referer": "http://192.168.0.159/",
+            "referer": "http://localhost/",
             "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
             "sec-ch-ua-mobile": "?0",
             "sec-ch-ua-platform": "\"Windows\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "2804:14d:6885:42f0:7c6f:e956:4848:f19b",
+            "x-forwarded-for": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
             "x-forwarded-proto": "https"
           },
           "params": {},
           "query": {},
           "body": {
-            "reprinting_only": true,
-            "os_number": 25556,
-            "telefone": "(12) 98817-0487",
-            "nome": "Andreia",
-            "sobrenome": "Santana",
+            "reprinting": false,
+            "os_number": 25560,
+            "telefone": "(12) 99712-0666",
+            "nome": "Edir",
+            "sobrenome": "Franqueira",
             "aparelho": "Televisor",
-            "marca": "SEMP TOSHIBA",
-            "modelo": "32L2800",
-            "defeito": "Nao Liga ",
-            "observacoes": " Somente Standby",
-            "servicos": "",
-            "pecas": "",
-            "valor_total": 0,
-            "forma_pagamento": "Não informado"
+            "marca": "SAMSUNG",
+            "modelo": "UN65BU8000G",
+            "defeito": "Metade Da Tela Escura",
+            "observacoes": ""
           },
           "webhookUrl": "https://auto.kadovesh.com/webhook/form",
           "executionMode": "production"
@@ -2841,6 +2838,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-07T21:41:43.000Z",
-  "versionId": "9fdf8c61-5066-49c9-85f1-eabca072c01b"
+  "updatedAt": "2025-08-11T15:07:44.000Z",
+  "versionId": "645b1f01-5d3b-48d6-9b60-8e68d4788d01"
 }
