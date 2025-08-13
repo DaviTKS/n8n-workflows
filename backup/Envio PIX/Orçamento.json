@@ -21,13 +21,7 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Z-API1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Z-API1": {
@@ -92,13 +86,7 @@
     },
     "Z-API3": {
       "main": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "servicos_executados1": {
@@ -147,13 +135,7 @@
     },
     "If1": {
       "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Z-API3",
@@ -181,7 +163,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1232,
+        -1328,
         -240
       ],
       "id": "c39c7070-88bf-441f-b2ce-3955662d644c",
@@ -200,10 +182,10 @@
           "conditions": [
             {
               "id": "e707e13f-9bd2-4c87-9fe5-9f3e65644d68",
-              "leftValue": "={{ $json.body.dados_orcamento }}",
+              "leftValue": "={{ $json.body.message }}",
               "rightValue": "",
               "operator": {
-                "type": "object",
+                "type": "string",
                 "operation": "notEmpty",
                 "singleValue": true
               }
@@ -541,7 +523,7 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "=5512982113000"
+              "value": "={{ $json.body.phone }}"
             },
             {
               "name": "message",
@@ -558,8 +540,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -192,
-        -368
+        -384,
+        -304
       ],
       "id": "f8480423-f429-4b18-9181-d826c4c2656b",
       "name": "Z-API3",
@@ -720,6 +702,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-06T01:49:58.000Z",
-  "versionId": "3b3d070c-884f-46ba-821c-d0ff7b2b2415"
+  "updatedAt": "2025-08-12T18:22:11.000Z",
+  "versionId": "311c9f7a-d9b8-4ee9-b544-b226fed7f207"
 }
