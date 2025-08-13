@@ -980,7 +980,8 @@
             "Marca": "={{ $('Edit Fields').item.json.Marca }}",
             "Modelo": "={{ $('Edit Fields').item.json.Modelo }}",
             "Defeito": "={{ $('Edit Fields').item.json.Defeito }}",
-            "Observações": "={{ $('Edit Fields').item.json['Observações'] }}"
+            "Observações": "={{ $('Edit Fields').item.json['Observações'] }}",
+            "Data Entrada": "={{ $('Sauda2').item.json.dataFormatada }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -1055,7 +1056,7 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true,
-              "removed": false
+              "removed": true
             },
             {
               "id": "Observações",
@@ -1065,6 +1066,26 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data Entrada",
+              "displayName": "Data Entrada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data Saída",
+              "displayName": "Data Saída",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -2268,6 +2289,10 @@
             {
               "fieldId": "telefone",
               "fieldValue": "={{ $('Webhook').item.json.body.telefone }}"
+            },
+            {
+              "fieldId": "entrada",
+              "fieldValue": "={{ $('Sauda2').item.json.dataFormatada }}"
             }
           ]
         }
@@ -2787,44 +2812,44 @@
         "json": {
           "headers": {
             "host": "auto.kadovesh.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
-            "content-length": "220",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+            "content-length": "224",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
+            "cf-connecting-ip": "2804:14d:6885:42f0:2080:8101:d244:73b3",
             "cf-ipcountry": "BR",
-            "cf-ray": "96d8a3df2a2ac288-MIA",
+            "cf-ray": "96e0b2296e96a52d-MIA",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
             "connection": "keep-alive",
             "content-type": "application/json",
-            "origin": "http://localhost",
+            "origin": "http://192.168.0.159",
             "priority": "u=1, i",
-            "referer": "http://localhost/",
-            "sec-ch-ua": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\"",
+            "referer": "http://192.168.0.159/",
+            "sec-ch-ua": "\"Not;A=Brand\";v=\"99\", \"Google Chrome\";v=\"139\", \"Chromium\";v=\"139\"",
             "sec-ch-ua-mobile": "?0",
             "sec-ch-ua-platform": "\"Windows\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
+            "x-forwarded-for": "2804:14d:6885:42f0:2080:8101:d244:73b3",
             "x-forwarded-proto": "https"
           },
           "params": {},
           "query": {},
           "body": {
             "reprinting": false,
-            "os_number": 25560,
-            "telefone": "(12) 99712-0666",
-            "nome": "Edir",
-            "sobrenome": "Franqueira",
+            "os_number": 25562,
+            "telefone": "(12) 98205-7114",
+            "nome": "Armando",
+            "sobrenome": "Carvalho",
             "aparelho": "Televisor",
-            "marca": "SAMSUNG",
-            "modelo": "UN65BU8000G",
-            "defeito": "Metade Da Tela Escura",
-            "observacoes": ""
+            "marca": "LG",
+            "modelo": "42pj350",
+            "defeito": "não liga ",
+            "observacoes": "aprovado reparo 450,00"
           },
           "webhookUrl": "https://auto.kadovesh.com/webhook/form",
           "executionMode": "production"
@@ -2838,6 +2863,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-11T15:07:44.000Z",
-  "versionId": "645b1f01-5d3b-48d6-9b60-8e68d4788d01"
+  "updatedAt": "2025-08-12T14:55:59.000Z",
+  "versionId": "eea90e1d-d570-482e-bcc7-05d34707bae4"
 }
