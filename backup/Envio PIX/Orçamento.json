@@ -21,7 +21,13 @@
             "index": 0
           }
         ],
-        []
+        [
+          {
+            "node": "Z-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Z-API1": {
@@ -183,11 +189,10 @@
             {
               "id": "e707e13f-9bd2-4c87-9fe5-9f3e65644d68",
               "leftValue": "={{ $json.body.message }}",
-              "rightValue": "",
+              "rightValue": "Teste PIX",
               "operator": {
                 "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
+                "operation": "notEquals"
               }
             }
           ],
@@ -695,13 +700,56 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "auto.kadovesh.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+            "content-length": "64",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "2804:14d:6885:42f0:d4ed:e4c2:b1b7:9be9",
+            "cf-ipcountry": "BR",
+            "cf-ray": "96eb01375f44dfa0-MIA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "origin": "http://192.168.0.159",
+            "priority": "u=1, i",
+            "referer": "http://192.168.0.159/",
+            "sec-ch-ua": "\"Not;A=Brand\";v=\"99\", \"Google Chrome\";v=\"139\", \"Chromium\";v=\"139\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "2804:14d:6885:42f0:d4ed:e4c2:b1b7:9be9",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "phone": "5512982572746",
+            "message": "Teste PIX",
+            "valor": "295,00"
+          },
+          "webhookUrl": "https://auto.kadovesh.com/webhook/pix",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-12T18:22:11.000Z",
-  "versionId": "311c9f7a-d9b8-4ee9-b544-b226fed7f207"
+  "updatedAt": "2025-08-13T20:38:54.000Z",
+  "versionId": "0eae2fd3-0890-403c-9b1a-4a9dbdeb3706"
 }
