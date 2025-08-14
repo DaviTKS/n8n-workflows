@@ -723,6 +723,17 @@
           }
         ]
       ]
+    },
+    "Z-API": {
+      "main": [
+        [
+          {
+            "node": "Z-API2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-02T01:26:38.571Z",
@@ -2804,65 +2815,41 @@
           "name": "Supabase account"
         }
       }
-    }
-  ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "auto.kadovesh.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
-            "content-length": "224",
-            "accept": "*/*",
-            "accept-encoding": "gzip, br",
-            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
-            "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "2804:14d:6885:42f0:2080:8101:d244:73b3",
-            "cf-ipcountry": "BR",
-            "cf-ray": "96e0b2296e96a52d-MIA",
-            "cf-visitor": "{\"scheme\":\"https\"}",
-            "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
-            "connection": "keep-alive",
-            "content-type": "application/json",
-            "origin": "http://192.168.0.159",
-            "priority": "u=1, i",
-            "referer": "http://192.168.0.159/",
-            "sec-ch-ua": "\"Not;A=Brand\";v=\"99\", \"Google Chrome\";v=\"139\", \"Chromium\";v=\"139\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "2804:14d:6885:42f0:2080:8101:d244:73b3",
-            "x-forwarded-proto": "https"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "reprinting": false,
-            "os_number": 25562,
-            "telefone": "(12) 98205-7114",
-            "nome": "Armando",
-            "sobrenome": "Carvalho",
-            "aparelho": "Televisor",
-            "marca": "LG",
-            "modelo": "42pj350",
-            "defeito": "não liga ",
-            "observacoes": "aprovado reparo 450,00"
-          },
-          "webhookUrl": "https://auto.kadovesh.com/webhook/form",
-          "executionMode": "production"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/contacts/add",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n{\n    \"firstName\": \"{{ $('Edit Fields').item.json.Nome}}\",\n    \"lastName\": \"{{ $('Telefone').item.json.OS }}\",\n    \"phone\": \"{{ $('Add OS Cliente').item.json.numero }}\"\n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6640,
+        1248
+      ],
+      "id": "b28e5418-ad9e-460a-942b-45c351950999",
+      "name": "Z-API2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
         }
       }
-    ]
-  },
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-12T14:55:59.000Z",
-  "versionId": "eea90e1d-d570-482e-bcc7-05d34707bae4"
+  "updatedAt": "2025-08-13T21:19:48.000Z",
+  "versionId": "c2804eaf-fe3b-4a89-a193-5bc7ce154155"
 }
