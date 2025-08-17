@@ -2303,7 +2303,7 @@
             },
             {
               "fieldId": "entrada",
-              "fieldValue": "={{ $('Sauda2').item.json.dataFormatada }}"
+              "fieldValue": "={{ $('Sauda2').item.json.dataFormatada.split(' ')[0] }}"
             }
           ]
         }
@@ -2843,13 +2843,63 @@
       }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "auto.kadovesh.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36",
+            "content-length": "238",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "2804:14d:6885:42f0:c914:d612:ba5d:5224",
+            "cf-ipcountry": "BR",
+            "cf-ray": "9701554dd9f6a57e-MIA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "origin": "http://192.168.0.159",
+            "priority": "u=1, i",
+            "referer": "http://192.168.0.159/",
+            "sec-ch-ua": "\"Not;A=Brand\";v=\"99\", \"Google Chrome\";v=\"139\", \"Chromium\";v=\"139\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "2804:14d:6885:42f0:c914:d612:ba5d:5224",
+            "x-forwarded-proto": "https"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "reprinting": false,
+            "os_number": 25571,
+            "telefone": "(12) 99638-3351",
+            "nome": "Silvio",
+            "sobrenome": "Varejão",
+            "aparelho": "Notebook",
+            "marca": "ACER",
+            "modelo": "aspire 3a315",
+            "defeito": "Upgrade",
+            "observacoes": "Moldura quebrada, manchas na tampa"
+          },
+          "webhookUrl": "https://auto.kadovesh.com/webhook/form",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-13T21:19:48.000Z",
-  "versionId": "c2804eaf-fe3b-4a89-a193-5bc7ce154155"
+  "updatedAt": "2025-08-16T13:40:37.000Z",
+  "versionId": "ec0a435d-941a-45cf-956f-0370cc078147"
 }
