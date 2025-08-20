@@ -1195,8 +1195,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        6896,
-        2000
+        6912,
+        2016
       ],
       "id": "65234518-b55a-48ea-b25c-0ac09aad40d0",
       "name": "Loop Over Items"
@@ -3725,6 +3725,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-06T01:45:53.000Z",
-  "versionId": "e2a4665f-32ca-4b1d-9308-00f4e43b287e"
+  "updatedAt": "2025-08-19T22:13:10.000Z",
+  "versionId": "c08ee697-f784-409a-bde8-12d2d7615349"
 }
