@@ -642,6 +642,15 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2025-08-02T01:07:06.350Z",
+      "updatedAt": "2025-08-02T01:07:06.350Z",
+      "role": "workflow:owner",
+      "workflowId": "oL2FL1o5pMcjXguh",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
   "staticData": {
     "node:Schedule Trigger": {
       "recurrenceRules": []
