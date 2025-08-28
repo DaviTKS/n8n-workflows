@@ -229,6 +229,10 @@
             {
               "name": "type",
               "value": "CNPJ"
+            },
+            {
+              "name": "merchantName",
+              "value": "Claudinei Bittencourt"
             }
           ]
         },
@@ -716,6 +720,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-15T15:31:01.000Z",
-  "versionId": "d15fbba4-f749-422b-844c-d6dc13c3bce8"
+  "updatedAt": "2025-08-27T17:00:38.000Z",
+  "versionId": "d9527cc0-6209-4dd5-9463-5d039ca79058"
 }
