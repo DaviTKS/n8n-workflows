@@ -1,18 +1,7 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
-    "Config": {
-      "main": [
-        [
-          {
-            "node": "Get Workflows",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter": {
+    "Return": {
       "main": [
         [
           {
@@ -23,7 +12,40 @@
         ]
       ]
     },
-    "Return": {
+    "isDiffOrNew": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create new file": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit existing file": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
       "main": [
         [
           {
@@ -59,39 +81,6 @@
         ]
       ]
     },
-    "Get a file": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge Items": {
-      "main": [
-        [
-          {
-            "node": "isDiffOrNew",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "isDiffOrNew": {
-      "main": [
-        [
-          {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get Workflows": {
       "main": [
         [
@@ -103,11 +92,22 @@
         ]
       ]
     },
-    "Create new file": {
+    "Config": {
       "main": [
         [
           {
-            "node": "Return",
+            "node": "Get Workflows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Data",
             "type": "main",
             "index": 0
           }
@@ -119,19 +119,54 @@
         [],
         [
           {
-            "node": "Get a file",
+            "node": "Search files and folders2",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Merge Items",
-            "type": "main",
-            "index": 1
           }
         ]
       ]
     },
-    "Schedule Trigger": {
+    "Create folder1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create folder1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders": {
       "main": [
         [
           {
@@ -142,11 +177,44 @@
         ]
       ]
     },
-    "Edit existing file": {
+    "Data": {
       "main": [
         [
           {
-            "node": "Return",
+            "node": "Mes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mes1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create folder": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders3",
             "type": "main",
             "index": 0
           }
@@ -157,14 +225,36 @@
       "main": [
         [
           {
-            "node": "Merge Items",
+            "node": "Search files and folders3",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Merge Items",
+            "node": "Create folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders1",
             "type": "main",
             "index": 0
           }
@@ -172,12 +262,10 @@
       ]
     }
   },
-  "createdAt": "2025-08-02T01:07:06.345Z",
-  "id": "oL2FL1o5pMcjXguh",
+  "createdAt": "2025-08-29T18:57:15.439Z",
+  "id": "SFifw1YEpm1nMkzn",
   "isArchived": false,
-  "meta": {
-    "templateCredsSetupCompleted": true
-  },
+  "meta": null,
   "name": "Backup Workflows",
   "nodes": [
     {
@@ -194,36 +282,25 @@
         },
         "options": {}
       },
-      "id": "2b89afa2-0f6a-44dc-8a96-a43bc46fca38",
+      "id": "0df996d2-3a6b-4c0d-9edb-e3463ab7be29",
       "name": "Return",
       "type": "n8n-nodes-base.set",
       "position": [
-        1152,
-        464
+        544,
+        320
       ],
       "typeVersion": 3.3
-    },
-    {
-      "parameters": {},
-      "id": "105a7106-edcd-4cc2-8d7d-0ad78c7fa2f5",
-      "name": "Merge Items",
-      "type": "n8n-nodes-base.merge",
-      "position": [
-        272,
-        272
-      ],
-      "typeVersion": 2
     },
     {
       "parameters": {
         "jsCode": "const orderJsonKeys = (jsonObj) => {\n  const ordered = {};\n  Object.keys(jsonObj).sort().forEach(key => {\n    ordered[key] = jsonObj[key];\n  });\n  return ordered;\n}\n\n// Check if file returned with content\nif (Object.keys($input.all()[0].json).includes(\"content\")) {\n  // Decode base64 content and parse JSON\n  const origWorkflow = JSON.parse(Buffer.from($input.all()[0].json.content, 'base64').toString());\n  const n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON objects\n  const orderedOriginal = orderJsonKeys(origWorkflow);\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n\n  // Determine difference\n  if (JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual)) {\n    $input.all()[0].json.github_status = \"same\";\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n  $input.all()[0].json.content_decoded = orderedOriginal;\n// No file returned / new workflow\n} else if (Object.keys($input.all()[0].json).includes(\"data\")) {\n  const origWorkflow = JSON.parse($input.all()[0].json.data);\n  const n8nWorkflow = $input.all()[1].json;\n  \n  // Order JSON objects\n  const orderedOriginal = orderJsonKeys(origWorkflow);\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n\n  // Determine difference\n  if (JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual)) {\n    $input.all()[0].json.github_status = \"same\";\n  } else {\n    $input.all()[0].json.github_status = \"different\";\n    $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n  $input.all()[0].json.content_decoded = orderedOriginal;\n\n} else {\n  // Order JSON object\n  const n8nWorkflow = $input.all()[1].json;\n  const orderedActual = orderJsonKeys(n8nWorkflow);\n  \n  // Proper formatting\n  $input.all()[0].json.github_status = \"new\";\n  $input.all()[0].json.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n\n// Return items\nreturn $input.all();\n"
       },
-      "id": "0aed2ba7-de32-4447-8f2a-50a0d912ca26",
+      "id": "ed725839-8d1f-4fd0-ac64-a376aa36ccc0",
       "name": "isDiffOrNew",
       "type": "n8n-nodes-base.code",
       "position": [
-        480,
-        272
+        -128,
+        128
       ],
       "typeVersion": 1
     },
@@ -245,12 +322,12 @@
         "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
         "commitMessage": "={{$('Loop Over Items').item.json.name}} ({{$json.github_status}})"
       },
-      "id": "3f500102-9228-415a-bac9-0325d3bc029a",
+      "id": "9f4edd7c-b168-44f0-a9fb-bd7ee153e890",
       "name": "Create new file",
       "type": "n8n-nodes-base.github",
       "position": [
-        928,
-        272
+        320,
+        128
       ],
       "webhookId": "b440dead-fad0-4546-8ca7-201aa2ea2936",
       "typeVersion": 1,
@@ -280,12 +357,12 @@
         "fileContent": "={{$('isDiffOrNew').item.json[\"n8n_data_stringy\"]}}",
         "commitMessage": "={{$('Loop Over Items').item.json.name}} ({{$json.github_status}})"
       },
-      "id": "9cb7d39d-4640-4bc5-a589-04cff846a181",
+      "id": "70702a59-1aa3-4ad4-b863-59e7a089becb",
       "name": "Edit existing file",
       "type": "n8n-nodes-base.github",
       "position": [
-        928,
-        64
+        320,
+        -96
       ],
       "webhookId": "1dfc4103-7c23-4814-a0b5-dd4f5a96d36b",
       "typeVersion": 1,
@@ -313,51 +390,21 @@
                 "operation": "afterOrEquals"
               },
               "leftValue": "={{ $json.updatedAt }}",
-              "rightValue": "={{ $now.minus(100, 'days') }}"
+              "rightValue": "={{ $now.minus(1, 'days') }}"
             }
           ],
           "combinator": "and"
         },
         "options": {}
       },
-      "id": "d1bce865-866c-491b-ab1a-21a51335e8db",
+      "id": "808bd4f5-2e3a-43e6-b1f8-6c7735e11e2f",
       "name": "Filter",
       "type": "n8n-nodes-base.filter",
       "position": [
-        -1280,
-        272
+        -1888,
+        128
       ],
       "typeVersion": 2.2
-    },
-    {
-      "parameters": {
-        "content": "# Links\n- ## [Github Folder](https://github.com/AndrewBoichenko/n8n-workflows/)",
-        "height": 120,
-        "width": 400
-      },
-      "id": "71fd2651-675d-4d99-b929-f8cbec979100",
-      "name": "Sticky Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -2640,
-        112
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "# How it works \nThis workflow will backup all instance workflows to GitHub every 24 hours.\n\nThe files are saved into folders using `repo_path` for the directory path and `ID.json` for the filename.\nThe Repo Owner, Repo Name and Main folder are set using the `Config` node in the subworkflow. \n\nThe workflow runs calls itself to help reduce memory usage, Once the workflow has completed it will send an optional notification to Slack.\n\nPlease check out my other items on [gumroad](https://boanse.gumroad.com/?section=k_Sn6LcT_dzJFnp5jmsM5A%3D%3D)\nYou might also like something else☺️",
-        "height": 340,
-        "width": 400
-      },
-      "id": "31ee9db5-b5f3-4821-af34-4ae81669f52d",
-      "name": "Sticky Note4",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -2640,
-        272
-      ],
-      "typeVersion": 1
     },
     {
       "parameters": {
@@ -441,12 +488,12 @@
         },
         "options": {}
       },
-      "id": "476174cb-ada9-4e13-a126-b19b22a6f5c4",
+      "id": "a71db645-84e4-473a-bd66-67622780e67f",
       "name": "Switch",
       "type": "n8n-nodes-base.switch",
       "position": [
-        704,
-        272
+        96,
+        128
       ],
       "typeVersion": 3.2
     },
@@ -455,12 +502,12 @@
         "filters": {},
         "requestOptions": {}
       },
-      "id": "b7dff27e-ce00-46a4-adf0-59035c5cfc5a",
+      "id": "f396afa6-64d3-4dec-846b-695631e36c84",
       "name": "Get Workflows",
       "type": "n8n-nodes-base.n8n",
       "position": [
-        -1504,
-        272
+        -2032,
+        128
       ],
       "typeVersion": 1,
       "credentials": {
@@ -503,12 +550,12 @@
         "includeOtherFields": true,
         "options": {}
       },
-      "id": "936b8328-8c4b-4b4c-8fb7-7d7c9bad9381",
+      "id": "aee09b23-243c-4db5-907a-eb28a9841fc4",
       "name": "Config",
       "type": "n8n-nodes-base.set",
       "position": [
-        -1728,
-        272
+        -2176,
+        128
       ],
       "typeVersion": 3.4
     },
@@ -520,63 +567,26 @@
           ]
         }
       },
-      "id": "d5fb0b11-06f2-4b8e-99f4-2ec71b082546",
+      "id": "2fa45cd1-c6ac-4619-8003-a2096850f17f",
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "position": [
-        -2160,
-        272
+        -3840,
+        128
       ],
       "typeVersion": 1.2
-    },
-    {
-      "parameters": {
-        "authentication": "oAuth2",
-        "resource": "file",
-        "operation": "get",
-        "owner": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $('Config').item.json.repo_owner }}"
-        },
-        "repository": {
-          "__rl": true,
-          "mode": "name",
-          "value": "={{ $('Config').item.json.repo_name }}"
-        },
-        "filePath": "={{ $('Config').item.json.sub_path }}/{{$('Loop Over Items').item.json.name}}.json",
-        "asBinaryProperty": false,
-        "additionalParameters": {}
-      },
-      "id": "e71baf33-8e86-4b86-914b-fb8a3269b80e",
-      "name": "Get a file",
-      "type": "n8n-nodes-base.github",
-      "position": [
-        -848,
-        64
-      ],
-      "webhookId": "c12420d3-b858-4ee4-81c4-9adc03e30865",
-      "typeVersion": 1.1,
-      "alwaysOutputData": true,
-      "credentials": {
-        "githubOAuth2Api": {
-          "id": "cudddw6XIvtNsVXV",
-          "name": "GitHub account"
-        }
-      },
-      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
         "url": "={{ $json.download_url }}",
         "options": {}
       },
-      "id": "e7e2ff00-fe00-472d-8508-5d7a38201b93",
+      "id": "4f01ac7c-b596-4eca-bc03-bbddd64826d5",
       "name": "Get File",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        0,
-        0
+        -608,
+        -160
       ],
       "typeVersion": 4.2
     },
@@ -584,43 +594,66 @@
       "parameters": {
         "options": {}
       },
-      "id": "bf3bafd9-951c-4e9a-8f9b-0713787fd5f2",
+      "id": "27c9a3c4-9809-4343-b498-3a6d9bee3695",
       "name": "Loop Over Items",
       "type": "n8n-nodes-base.splitInBatches",
       "position": [
-        -1056,
-        272
+        -1664,
+        128
       ],
       "typeVersion": 3
     },
     {
       "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Mes1').item.json.mes_extenso }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+          "mode": "list",
+          "cachedResultName": "N8N",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2672,
+        240
+      ],
+      "id": "21f6945c-1343-4f32-bd0f-f38bdbb09737",
+      "name": "Create folder1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
         "conditions": {
           "options": {
-            "version": 2,
-            "leftValue": "",
             "caseSensitive": true,
-            "typeValidation": "strict"
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
           },
           "conditions": [
             {
-              "id": "628f6e8f-d817-4c53-89ec-b1acbb3dfef8",
+              "id": "75f9532a-cbe0-4f5f-9333-6f0e3037b075",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $('Mes1').item.json.mes_extenso }}",
               "operator": {
                 "type": "string",
-                "operation": "empty",
-                "singleValue": true
-              },
-              "leftValue": "={{ $json.content }}",
-              "rightValue": ""
-            },
-            {
-              "id": "9d850ae0-38d5-4ae4-bed7-bc40586b9056",
-              "leftValue": "={{ $json.error }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notExists",
-                "singleValue": true
+                "operation": "equals",
+                "name": "filter.operator.equals"
               }
             }
           ],
@@ -628,14 +661,262 @@
         },
         "options": {}
       },
-      "id": "006e7e64-5b53-4aa1-98a4-5b6353916097",
-      "name": "If",
       "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
       "position": [
-        -288,
-        64
+        -2800,
+        128
       ],
-      "typeVersion": 2.2
+      "id": "b9558e57-f684-4b92-b96a-5e53267f8a4d",
+      "name": "If1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+            "mode": "list",
+            "cachedResultName": "N8N",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2976,
+        128
+      ],
+      "id": "02293e55-636b-414c-b2d4-d203ebbaf2f9",
+      "name": "Search files and folders1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+            "mode": "list",
+            "cachedResultName": "N8N",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -2528,
+        128
+      ],
+      "id": "aac91ff1-6bb7-4fa4-b226-15033e0a137c",
+      "name": "Search files and folders",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -3664,
+        128
+      ],
+      "id": "7aaaed29-ebe9-465c-bef8-1a1bb372d323",
+      "name": "Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3504,
+        128
+      ],
+      "id": "3450da45-0097-4596-9dc5-92579bf172ad",
+      "name": "Mes1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3328,
+        128
+      ],
+      "id": "17d6dc3a-212a-4ced-88c2-f04080565142",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Mes1').item.json.mes_extenso }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+          "mode": "list",
+          "cachedResultName": "N8N",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1136,
+        256
+      ],
+      "id": "8100bf09-e423-4226-af3f-2bf9df9de87b",
+      "name": "Create folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75f9532a-cbe0-4f5f-9333-6f0e3037b075",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $('Mes1').item.json.mes_extenso }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1264,
+        144
+      ],
+      "id": "b3988ade-a617-440e-8508-ce598d5ad58d",
+      "name": "If",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "={{ $('Search files and folders').item.json.id }}",
+            "mode": "id"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1440,
+        144
+      ],
+      "id": "3b602322-7a38-49e9-8777-6cd383be91ef",
+      "name": "Search files and folders2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+            "mode": "list",
+            "cachedResultName": "N8N",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -992,
+        144
+      ],
+      "id": "e092df92-6048-4c0d-a665-40458b38eef4",
+      "name": "Search files and folders3",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3152,
+        128
+      ],
+      "id": "7b7e6df1-34e1-4f06-a308-d860b009a43f",
+      "name": "Code"
     }
   ],
   "pinData": {},
@@ -644,20 +925,16 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-02T01:07:06.350Z",
-      "updatedAt": "2025-08-02T01:07:06.350Z",
+      "createdAt": "2025-08-29T18:57:15.448Z",
+      "updatedAt": "2025-08-29T18:57:15.448Z",
       "role": "workflow:owner",
-      "workflowId": "oL2FL1o5pMcjXguh",
+      "workflowId": "SFifw1YEpm1nMkzn",
       "projectId": "O2voI4XYg26wWumH"
     }
   ],
-  "staticData": {
-    "node:Schedule Trigger": {
-      "recurrenceRules": []
-    }
-  },
+  "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2025-08-06T01:46:35.000Z",
-  "versionId": "fe322aaa-5dbf-41e6-ba75-7d1e7a713c3f"
+  "triggerCount": 0,
+  "updatedAt": "2025-08-29T19:08:27.000Z",
+  "versionId": "f454fe18-4bc8-4750-b3fd-492fc19ff0f0"
 }
