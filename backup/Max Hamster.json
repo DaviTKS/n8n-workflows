@@ -1,17 +1,6 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "Telegram Trigger": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "OpenAI Chat Model": {
       "ai_languageModel": [
         [
@@ -162,31 +151,27 @@
           }
         ]
       ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-02T01:35:41.561Z",
   "id": "3lrNFbKExsC7Drep",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Max Hamster",
   "nodes": [
-    {
-      "parameters": {
-        "updates": [
-          "message"
-        ],
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.telegramTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        -6112,
-        -32
-      ],
-      "id": "8a024216-2324-4142-93f1-c5f42bf11c95",
-      "name": "Telegram Trigger",
-      "webhookId": "0cd6a441-c59f-4dc6-b61d-c74f8f643afb"
-    },
     {
       "parameters": {
         "promptType": "define",
@@ -222,7 +207,13 @@
         176
       ],
       "id": "7aa9cccb-7fe0-4078-96c4-2c0a74036fbc",
-      "name": "OpenAI Chat Model"
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -240,7 +231,13 @@
       ],
       "id": "0f5c881f-e4dd-420c-80c2-a637ea018ddc",
       "name": "Send a text message",
-      "webhookId": "2de4971a-eb6d-4db4-96c5-f8555ce82e16"
+      "webhookId": "2de4971a-eb6d-4db4-96c5-f8555ce82e16",
+      "credentials": {
+        "telegramApi": {
+          "id": "8OesCp11e73bKqo4",
+          "name": "Max"
+        }
+      }
     },
     {
       "parameters": {
@@ -314,19 +311,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
-      "typeVersion": 1.1,
-      "position": [
-        -5328,
-        320
-      ],
-      "id": "fd716fe6-da83-418e-b4f8-b866fc4eb87c",
-      "name": "Default Data Loader"
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -358,24 +342,6 @@
       ],
       "id": "7463caa7-f5d6-4954-b076-109cae21fb33",
       "name": "If"
-    },
-    {
-      "parameters": {
-        "model": {
-          "__rl": true,
-          "mode": "list",
-          "value": "gpt-4.1-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        -5168,
-        256
-      ],
-      "id": "675c5a81-e171-4543-b08e-c5c140834cab",
-      "name": "OpenAI Chat Model1"
     },
     {
       "parameters": {
@@ -438,6 +404,29 @@
       ],
       "id": "6a3270ad-59a7-4c97-87b2-e10b55319253",
       "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -6112,
+        -32
+      ],
+      "id": "f62cb9fa-edbf-48de-a38a-538e8f79cfd2",
+      "name": "Telegram Trigger",
+      "webhookId": "7cb2d74b-e507-4af0-b894-d205b55f2e89",
+      "credentials": {
+        "telegramApi": {
+          "id": "8OesCp11e73bKqo4",
+          "name": "Max"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -455,7 +444,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-08-06T01:45:37.000Z",
-  "versionId": "e9a64353-ed9d-4a18-b19f-154094107718"
+  "triggerCount": 1,
+  "updatedAt": "2025-08-28T19:56:39.000Z",
+  "versionId": "95df6883-f8a0-4c53-ba47-dce7f9878f8b"
 }
