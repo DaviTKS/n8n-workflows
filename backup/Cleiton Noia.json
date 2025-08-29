@@ -1,101 +1,280 @@
 {
   "active": false,
   "connections": {
-    "AI Agent1": {
+    "Webhook": {
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Criar": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Many": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calculator": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Mem": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "LLM": {
+    "OpenAI Chat Model": {
       "ai_languageModel": [
         [
           {
-            "node": "AI Agent1",
+            "node": "AI Agent",
             "type": "ai_languageModel",
             "index": 0
           }
         ]
       ]
     },
-    "Start": {
+    "Filter": {
       "main": [
         [
           {
-            "node": "AI Agent1",
+            "node": "Lead",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "(Z-API) Enviar Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "(Z-API) Enviar Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Estrutura": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse AI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
             "index": 0
           }
         ]
       ]
     }
   },
-  "createdAt": "2025-08-02T01:37:50.754Z",
-  "id": "2Zpk5F0YQDPeC5VM",
-  "isArchived": false,
-  "meta": null,
-  "name": "Produtos",
+  "createdAt": "2025-08-02T01:25:27.818Z",
+  "id": "0Ix2NA3lLsJENjd2",
+  "isArchived": true,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Cleiton Noia",
   "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "davi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        112,
+        -144
+      ],
+      "id": "eb08ca35-9c63-4cf1-8677-0abf938b9fe5",
+      "name": "Webhook",
+      "webhookId": "500a7aff-d381-4a34-9e4d-c8ec89221f72"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message }}",
+        "options": {
+          "systemMessage": "=Você é um agente de IA que simula perfeitamente Davi Moraes em conversas. Use o seguinte perfil de personalidade e estilo para responder todas as mensagens: [{\n  \"identidade\": {\n    \"nome\": \"Davi Moraes\",\n    \"apelidos_comuns\": [\"man\", \"Zé\", \"fi\", \"ksksksk\", \"ouou\", \"barru\"],\n    \"idade_aproximada\": \"jovem adulto\",\n    \"cristão\": true,\n    \"valores\": [\"fé\", \"família\", \"respeito\", \"honestidade\", \"trabalho\"]\n  },\n  \"comunicacao\": {\n    \"tom_geral\": \"amistoso, espirituoso e respeitoso\",\n    \"estilo\": \"coloquial inteligente\",\n    \"caracteristicas\": {\n      \"média_de_caracteres_por_mensagem\": 120,\n      \"usa_emojis\": true,\n      \"usa_figurinhas\": sim,\n      \"quebra_de_linha_para_efeito\": true,\n      \"abreviações\": [\"tá\", \"blz\", \"vamo\", \"q\", \"pq\", \"mano\", \"bora\", \"mt\"],\n      \"respostas_com_timing\": true,\n      \"reação_a_piadas\": \"riso leve ou sarcástico (ex: 'kkk', 'hahaha', 'hauahua')\",\n      \"nunca_usa_palavrões\": true,\n      \"evita_duplo_sentido\": true,\n      \"não_faz_insinuações\": true,\n      \"gírias_com_contexto_afetivo\": [\"man\", \"Zé\", \"fi\", \"ouou\"]\n    },\n    \"humor\": {\n      \"percentual_na_conversa\": \"35%\",\n      \"tipo\": [\"irônico leve\", \"auto-depreciativo cômico\", \"referencial (cultura pop e cotidiano)\", \"lúdico-afetivo (especialmente com família e amigos próximos)\"]\n    },\n    \"seriedade\": {\n      \"percentual_na_conversa\": \"65%\",\n      \"tipo\": [\"respeitoso\", \"prático\", \"direto\", \"afetuoso com limites claros\", \"voltado à fé e responsabilidade\"]\n    },\n    \"exemplos_de_expressões_comuns\": [\n      \"Fechooou\",\n      \"Tô tirando fi kkkkkk\",\n      \"Vish conta uma novidade\",\n      \"Rapidão\",\n      \"Tentei, mas deu ruim ksksksk\",\n      \"Fica com Deus!\",\n      \"Maior rolê\",\n      \"Zerei a prova hehehehe\",\n      \"Vou ver isso aí man\",\n      \"Kkk essa foi boa\",\n      \"Sério mesmo?\",\n      \"Salve papa doooooog\"\n    ]\n  },\n  \"contexto_social\": {\n    \"funções\": [\"atendente e técnico em assistência\", \"aluno de cursinho\", \"servo na igreja\", \"cuida da avó\"],\n    \"relações\": {\n      \"com_família\": \"respeitoso, carinhoso, brincalhão moderado\",\n      \"com_amigos\": \"parceiro, engraçado, protetor, sarcástico leve\",\n      \"com_clientes\": \"educado, prestativo, direto\",\n      \"com_estranhos\": \"respeitoso e objetivo\"\n    }\n  },\n  \"linguagem_emocional\": {\n    \"empatia\": \"alta\",\n    \"ironia\": \"moderada, sem ofensa\",\n    \"reação_a_conflito\": \"acalmar ou mudar de assunto com leveza\",\n    \"espiritualidade\": \"presente e integrada em valores e decisões\",\n    \"validações\": [\"beleza\", \"entendi\", \"tá certo\", \"amém\", \"vou tentar sim\"]\n  },\n  \"respostas_condicionais\": {\n    \"mensagem_com_emoji\": \"provável resposta também com emoji\",\n    \"piada_recebida\": \"resposta com riso ou piada complementar\",\n    \"mensagem_séria\": \"resposta direta, sem brincadeiras\",\n    \"referência_bíblica\": \"resposta com respeito e possível complementação\"\n  },\n  \"padrões_de_fluxo\": {\n    \"iniciação_de_conversa\": [\"Opa\", \"Salve\", \"E aí\", \"Oi mãe\"],\n    \"respostas_longas\": \"quebra de linha natural para fluidez\",\n    \"interação_áspera\": \"não responde com agressividade\",\n    \"encerramento\": [\"Fica com Deus!\", \"Tchau\", \"Valeu man\", \"Falou fi\"]\n  },\n  \"restricoes\": {\n    \"proibido_uso_de_palavras_de_baixo_calao\": true,\n    \"proibido_duplo_sentido\": true,\n    \"proibido_tom_sensual\": true,\n    \"proibido_ironia_ofensiva\": true\n  }\n}\n\n].\n\nSuas respostas devem:\n- Ter o mesmo tom irônico, espirituoso e realista.\n- Usar expressões típicas como “man”, “ksksksk”, “tlg”, “barro”.\n- Incluir emojis quando apropriado.\n- Escrever de forma informal, com abreviações e frases naturais.\n- Refletir emoção com autenticidade e toque cômico leve.\n- Manter mensagens curtas, porém com personalidade marcante.\n\n\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1152,
+        -144
+      ],
+      "id": "b4f5c086-20f3-4266-a59d-82bcae5329ba",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1136,
+        64
+      ],
+      "id": "81ace29c-1756-4360-b0c7-aae2a2220b4b",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bbce9ee4-f994-4601-83ba-88fb1632ae44",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "55129971997521",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "30408cb4-c52c-44b8-8681-33a6241eb484",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "551239313000",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "122403cc-0009-471b-a58e-012cb0c2293f",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "5512996742205",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        336,
+        -144
+      ],
+      "id": "e4fd0af2-8b72-43c7-b3f5-51f65cfe2e81",
+      "name": "Filter"
+    },
     {
       "parameters": {
         "method": "POST",
@@ -107,173 +286,120 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "={{ $('Start').item.json.body.phone }}"
+              "value": "={{ $('Lead').item.json.phone }}"
             },
             {
               "name": "message",
-              "value": "={{ $json.output }}"
+              "value": "={{ $json['output.mensagens'] }}"
+            },
+            {
+              "name": "delayTyping",
+              "value": "5"
             }
           ]
         },
         "options": {}
       },
+      "id": "366a1c51-48a1-4b97-8ec0-fcf0e8bf7bb8",
+      "name": "(Z-API) Enviar Mensagem",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1024,
-        -64
+        2624,
+        16
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        16
       ],
-      "id": "ee0c4250-5204-4387-9370-36cd4ce00598",
-      "name": "HTTP Request",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "Gx5XA9roLVkNIKBs",
-          "name": "Z-API"
-        }
-      }
+      "id": "ca05e15b-2230-49dc-81c0-77c6d44f3c21",
+      "name": "Auto-fixing Output Parser"
     },
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $json.body.text.message }}",
-        "options": {
-          "systemMessage": "=\n##PERSONA:\nVocê é um assistente digital EXTREMAMENTE PROFISSIONAL, que não oferece ajuda ou alteraçoes sem pedido explicito do usuario, você é especializado na gestão e manutenção do banco de dados de produtos e serviços da Leão de Judá Assistência Técnica, localizada no bairro Jardim das Indústrias. A loja atua no ramo de informática e manutenção técnica, oferecendo consertos e vendas de peças para notebooks, computadores, monitores e micro-ondas.\n\nSeu papel inclui:\n\nEdição e Atualização do Banco de Dados: Corrigir, padronizar e atualizar valores, descrições e categorias de produtos e serviços.\nCálculos e Análises: Realizar cálculos de lucro, margem, descontos, projeções de venda, entre outros, com base nos dados fornecidos.\nOrientação Técnica e Comercial: Auxiliar os donos da loja em decisões estratégicas e operacionais, respondendo dúvidas técnicas sobre produtos, precificação e boas práticas de organização do estoque e atendimento.\nPesquisa de Mercado: Quando necessário, sugerir faixas de preço ou padrões de mercado para comparação, com base no segmento e tipo de produto.\nRespostas Assertivas: Ser direto, objetivo e claro, priorizando respostas úteis e contextualizadas. Se a informação não estiver disponível, sugira o que pode ser feito para obtê-la.\nLimitações:\n\nNão invente dados. Caso algum dado esteja ausente, solicite ou informe que não é possível concluir sem ele.\n\nVocê também é especialista em criar tabela para o usuario caso ele precise.\n\n##PERSONA:\nNÃO PERGUNTE se o usuário precisa de algo mais, seja suscinto e direto apenas na informação necessária.\nNão oferece mais informações ou alteraçoes, espere explicitamente o pedido do usuário.\n\n##Formatação:\n-Não use asteriscos(*), exceto para negritar os topicos importantes e titulos/nomes de produtos\n\n\nUse a tool Get Many para puxar os dados, a tool Update para atualizar os dados e a tool Create para criar novas entradas\n"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2,
-      "position": [
-        656,
-        -64
-      ],
-      "id": "fc94bdb9-bccc-485c-814e-2d9bc3bb8ca6",
-      "name": "AI Agent1"
-    },
-    {
-      "parameters": {
-        "tableId": "produtos",
-        "fieldsUi": {
-          "fieldValues": [
+        "text": "=<mensagem_do_usuario>\n{{ $json.output }}\n</mensagem_do_usuario>",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
             {
-              "fieldId": "=produto",
-              "fieldValue": "={{ $fromAI(\"produto\") }}"
-            },
-            {
-              "fieldId": "valor",
-              "fieldValue": "={{ $fromAI(\"valor\")}}"
-            },
-            {
-              "fieldId": "Categoria",
-              "fieldValue": "={{ $fromAI(\"categoria\") }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabaseTool",
-      "typeVersion": 1,
-      "position": [
-        1136,
-        128
-      ],
-      "id": "adcd313f-a90c-4f0d-b00b-49ee1a487d83",
-      "name": "Criar",
-      "credentials": {
-        "supabaseApi": {
-          "id": "r7qiHeLbj3sFTwB4",
-          "name": "Supabase account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "tableId": "produtos",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "produto",
-              "condition": "eq",
-              "keyValue": "={{ $fromAI(\"produto\") }}"
+              "message": "=#Apenas estruture o XML <mensagem_do_usuario> no formato JSON solicitado no output parser Estrutura e seguindo as instruções de formatação abaixo. \nNão altere nada mais na mensagem \n\n## Formatação \n- Divida as mensagens para que fiquem naturais e humanizadas; \n- Divida as mensagens conforme estrutura do output parser para que não fiquem muito longas (maiores que 240 caracteres); \n- Não separe mensagens vazias; \n- Apenas separe sentenças completas;\n- Para negrito (bold) use apenas um nunca duas * (exemplo: negrito).\n\n\nExemplo de formato JSON:\n{\n\"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}"
             }
           ]
         },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "produto",
-              "fieldValue": "={{ $fromAI(\"produto\") }}"
-            },
-            {
-              "fieldId": "valor",
-              "fieldValue": "={{ $fromAI(\"Valor\") }}"
-            },
-            {
-              "fieldId": "Categoria",
-              "fieldValue": "={{ $fromAI(\"categoria\") }}"
-            }
-          ]
-        }
+        "batching": {}
       },
-      "type": "n8n-nodes-base.supabaseTool",
-      "typeVersion": 1,
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
       "position": [
-        1024,
-        128
+        1632,
+        -144
       ],
-      "id": "0b07274d-8457-48e7-ab2d-63dfc1a3d9ec",
-      "name": "Update",
-      "credentials": {
-        "supabaseApi": {
-          "id": "r7qiHeLbj3sFTwB4",
-          "name": "Supabase account"
-        }
-      }
+      "id": "a0102da0-7d09-4258-a34e-e2160eb36283",
+      "name": "Basic LLM Chain"
     },
     {
       "parameters": {
-        "operation": "getAll",
-        "tableId": "produtos"
+        "fieldToSplitOut": "output.mensagens",
+        "options": {}
       },
-      "type": "n8n-nodes-base.supabaseTool",
+      "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        896,
-        128
+        2192,
+        -144
       ],
-      "id": "04d5364d-02fc-4999-be98-f7ae74987783",
-      "name": "Get Many",
-      "credentials": {
-        "supabaseApi": {
-          "id": "r7qiHeLbj3sFTwB4",
-          "name": "Supabase account"
-        }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
-      "typeVersion": 1,
-      "position": [
-        1264,
-        128
-      ],
-      "id": "4736aeab-2649-47a5-81bc-3b100f86349e",
-      "name": "Calculator"
+      "id": "4ec01cb5-f993-4c53-b102-797e7b3d7056",
+      "name": "Split Out"
     },
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $json.body.phone }}",
-        "contextWindowLength": 7
+        "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
       "position": [
-        640,
-        176
+        2432,
+        -144
       ],
-      "id": "f59a5a2f-4057-4c29-8da3-adbb919e6f78",
-      "name": "Mem"
+      "id": "3c67a233-caa3-4ab6-96ef-902698fe544f",
+      "name": "Loop Over Items",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2272,
+        16
+      ],
+      "id": "a46b403e-febd-4b17-897a-8f64b1a7c5fe",
+      "name": "Wait",
+      "webhookId": "39955354-d054-4960-be7b-d15d7fa5da79"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"mensagens\": {\n\t\t\t\"type\": \"array\",\n\t\t\t\"items\": {\n\t\t\t\t\"type\": \"string\"\n\t\t\t}\n\t\t}\n\t},\n  \"required\": [\"mensagens\"]\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        1824,
+        224
+      ],
+      "id": "05041534-68b4-476c-8432-19836a66eceb",
+      "name": "Estrutura"
     },
     {
       "parameters": {
@@ -287,30 +413,54 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        528,
-        176
+        1712,
+        224
       ],
-      "id": "01df230b-12d7-4744-a583-5801449575c6",
-      "name": "LLM",
-      "credentials": {
-        "openAiApi": {
-          "id": "sB9sHBeXxAJCJTEo",
-          "name": "OpenAi account"
-        }
-      }
+      "id": "658fce53-0f3c-4a34-a259-68be39823250",
+      "name": "Parse AI"
     },
     {
       "parameters": {
-        "inputSource": "passthrough"
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aa7479e5-733f-4534-bc0a-676a31c534dc",
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "a843540a-3b22-4319-bc4a-de2dde8c05c1",
+              "name": "message",
+              "value": "={{ $json.body.text.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
       },
-      "type": "n8n-nodes-base.executeWorkflowTrigger",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        256,
-        -64
+        560,
+        -144
       ],
-      "id": "aa677ced-86ac-43cf-853d-d28174ee69af",
-      "name": "Start"
+      "id": "1501205e-5e90-4aef-8831-502119674f96",
+      "name": "Lead"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Lead').item.json.phone }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1232,
+        80
+      ],
+      "id": "fcfdb483-4065-49c1-b34a-1b3d254bc869",
+      "name": "Simple Memory"
     }
   ],
   "pinData": {},
@@ -319,16 +469,16 @@
   },
   "shared": [
     {
-      "createdAt": "2025-08-02T01:37:50.761Z",
-      "updatedAt": "2025-08-02T01:37:50.761Z",
+      "createdAt": "2025-08-02T01:25:27.822Z",
+      "updatedAt": "2025-08-02T01:25:27.822Z",
       "role": "workflow:owner",
-      "workflowId": "2Zpk5F0YQDPeC5VM",
+      "workflowId": "0Ix2NA3lLsJENjd2",
       "projectId": "O2voI4XYg26wWumH"
     }
   ],
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-06T01:46:15.000Z",
-  "versionId": "2d2293bb-6c15-4450-9c41-edfe5d91f15f"
+  "updatedAt": "2025-08-02T01:26:10.000Z",
+  "versionId": "af3bc7ee-3433-48bd-a16e-d93464b19964"
 }
