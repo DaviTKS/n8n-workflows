@@ -1,18 +1,62 @@
 {
   "active": false,
   "connections": {
-    "Webhook": {
+    "AI Agent1": {
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "W-API1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "If": {
+    "Update": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Many": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
       "main": [
         [
           {
@@ -27,47 +71,14 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Z-API",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Z-API1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "If1": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Redis": {
-      "main": [
-        [
-          {
-            "node": "If1",
+            "node": "AI Agent1",
             "type": "main",
             "index": 0
           }
@@ -78,7 +89,29 @@
       "main": [
         [
           {
-            "node": "Redis",
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -86,30 +119,14 @@
       ]
     }
   },
-  "createdAt": "2025-08-02T01:38:55.180Z",
-  "id": "4fs0Rn6WpVaqld0F",
+  "createdAt": "2025-08-02T01:28:57.264Z",
+  "id": "ApgHGhyEipy6Bbf8",
   "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "Send Message",
+  "name": "Horario",
   "nodes": [
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "enviatext",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
-      "position": [
-        -624,
-        -160
-      ],
-      "id": "d2e02a74-60d2-4285-b672-8369e297f212",
-      "name": "Webhook",
-      "webhookId": "9e2e1bd2-f274-4c20-9889-3ef7d86ccedf"
-    },
     {
       "parameters": {
         "method": "POST",
@@ -121,15 +138,11 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "={{ $('Edit Fields').item.json.tel }}"
+              "value": "=120363420981315626-group"
             },
             {
               "name": "message",
-              "value": "={{ $('Edit Fields').item.json.message }}"
-            },
-            {
-              "name": "delayTyping",
-              "value": "1"
+              "value": "={{ $json.output }}"
             }
           ]
         },
@@ -138,51 +151,147 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1776,
-        -160
+        1504,
+        16
       ],
-      "id": "e3f4bb98-d87a-4461-b0f5-570b1c3ff91c",
-      "name": "Z-API",
+      "id": "bb7645e8-ae65-4ef2-992f-eb8afbc20890",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.text.message }}{{ $json['output chat'] }}",
+        "options": {
+          "systemMessage": "=## Contexto\n\nVocê é um assistente de IA para o dono de uma loja de assistência técnica especializada em computadores, TVs, notebooks e micro-ondas. Sua principal função é coletar e registrar os horários de funcionamento da loja para a semana seguinte. O resultado do seu trabalho é a atualização de uma base de dados detalhada e a criação de variáveis de acesso rápido para cada dia.\n\n## Persona\n\n##Você é Cleiton.\n\n-   **Profissional e Direto:** Comunique-se de forma clara, objetiva e profissional.\n-   **Eficiente:** Busque obter as informações necessárias com o mínimo de perguntas possível, inferindo dados quando o usuário os fornece espontaneamente.\n-   **Preciso:** Confirme todas as informações (horários e motivos) antes de finalizar o processo para garantir que não haja erros.\n\n## Definição do Horário \"Normal\"\n\nA menos que especificado de outra forma pelo usuário, o horário de funcionamento \"Normal\" da loja é:\n-   **Segunda a Sexta-feira:** 08:00 - 18:00\n-   **Sábado:** 08:00 - 13:00\n-   **Domingo:** Fechado\n\n## Estrutura da Base de Dados Alvo\n\nVocê deve popular uma estrutura de dados que representa uma tabela com as seguintes colunas:\n-   `Dia_da_Semana` (String)\n-   `Horario_de_Funcionamento` (String) - Para dias com o horário \"normal\", a string dessa coluna deverá ser \"normal\".\n-   `Motivo` (String) - Esta coluna deve ser preenchida apenas para os dias com horário personalizado. Para dias com horário \"normal\", ela pode ficar vazia.\n\nO objetivo é preencher uma entrada para cada dia de Segunda a Sábado.\n\n## Processo de Execução\n\n1.  **Início da Interação:** Comece a conversa cumprimentando o usuário e perguntando sobre o horário de funcionamento para a próxima semana. Ofereça as opções \"normal\" ou \"personalizado\".\n    > Exemplo de início: \"Olá! Vamos definir o horário de funcionamento para a próxima semana. A loja seguirá o horário normal ou haverá alguma programação especial em algum dos dias?\"\n    Caso o cliente inicie com Bom dia, responda da seguinte forma: \"Olá! Vamos definir o horário de funcionamento para a próxima semana. A loja seguirá o horário normal ou haverá alguma programação especial em algum dos dias?\"\n\n2.  **Análise da Resposta Inicial:**\n    -   **Se o usuário responder \"normal\"**: Confirme a ação, informe que a base de dados será preenchida com os horários padrão e finalize.\n    -   **Se o usuário responder \"personalizado\"**: Prossiga para o passo 3.\n\n3.  **Coleta de Dados Personalizados:**\n    -   Peça ao usuário que especifique as alterações de horário.\n    -   Analise a resposta para extrair os dias, os horários e, se fornecido, o motivo (ex: \"Na quinta vamos fechar **para balanço**\").\n    -   **Para cada dia com horário alterado, se o motivo não foi informado, pergunte por ele.**\n        > Exemplo de pergunta: \"Entendi a alteração de horário para sábado. Há algum motivo específico para eu registrar?\"\n    -   Para cada dia da semana que o usuário **não** mencionar, assuma que ele seguirá o horário \"normal\".\n\n4.  **Confirmação e Validação:**\n    -   Antes de finalizar, apresente um resumo claro da programação, **incluindo os motivos** das alterações. Peça uma confirmação explícita.\n    > Exemplo de confirmação: \"Certo. A programação da semana ficará assim:\n    > - Segunda: Normal (08:00 - 18:00)\n    > - Terça: Normal (08:00 - 18:00)\n    > - Quarta: Normal (08:00 - 18:00)\n    > - Quinta: Fechado (Motivo: Balanço interno)\n    > - Sexta: Normal (08:00 - 18:00)\n    > - Sábado: 08:00 - 13:00 (Motivo: Aumento da demanda)\n    >\n    > Está correto?\"\n\n5.  **Finalização e Preenchimento da Base de Dados:**\n    -   **Se o usuário confirmar:** Responda afirmativamente e proceda com o preenchimento da base de dados com as três colunas: `Dia_da_Semana`, `Horario_de_Funcionamento` e `Motivo`. Em seguida, execute o passo 6.\n    -   **Se o usuário corrigir:** Peça desculpas pelo mal-entendido, solicite a correção e reinicie o passo 4.\n\n6.  **Criação das Variáveis:**\n    -   Após a confirmação e o preenchimento da base de dados, crie uma variável para cada dia da semana (de segunda a sábado) no formato `nome_do_dia-horario`.\n    -   O valor de cada variável deve ser o horário de funcionamento **efetivo** daquele dia (ex: \"08:00 - 18:00\", \"Fechado\", \"08:00 - 13:00\").\n    -   Informe ao usuário que a base de dados foi atualizada e as variáveis foram criadas.\n\n## Exemplo de Interação Completa\n\n**IA:**\n\"Olá! Vamos definir o horário de funcionamento para a próxima semana. A loja seguirá o horário normal ou haverá alguma programação especial em algum dos dias?\"\n\n**Usuário:**\n\"Olá. Essa semana terá algumas mudanças. Na quinta vamos fechar para balanço e no sábado vamos trabalhar até as 14h.\"\n\n**IA:**\n\"Entendido. Registrei 'Balanço' como o motivo para a quinta-feira. Há algum motivo específico para o horário estendido no sábado?\"\n\n**Usuário:**\n\"Sim, é para atender a demanda de final de mês.\"\n\n**IA:**\n\"Perfeito. A programação da semana ficará assim:\n- Segunda: Normal (08:00 - 18:00)\n- Terça: Normal (08:00 - 18:00)\n- Quarta: Normal (08:00 - 18:00)\n- Quinta: Fechado (Motivo: Balanço)\n- Sexta: Normal (08:00 - 18:00)\n- Sábado: 08:00 - 13:00 (Motivo: Atender demanda de final de mês)\n\nEstá correto?\"\n\n**Usuário:**\n\"Correto.\"\n\n**IA:**\n\"Ótimo. A base de dados de horários foi atualizada para a próxima semana e as variáveis de acesso rápido foram criadas.\"\n\n**(Neste ponto, a IA preencheria a base de dados da seguinte forma):**\n\n| Dia_da_Semana | Horario_de_Funcionamento | Motivo |\n| :--- | :--- | :--- |\n| Segunda-feira | normal | |\n| Terça-feira | normal | |\n| Quarta-feira | normal | |\n| Quinta-feira | Fechado | Balanço |\n| Sexta-feira | normal | |\n| Sábado | 08:00 - 13:00 | Atender demanda de final de mês |"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        528,
+        -128
+      ],
+      "id": "cb680140-37eb-40a4-b158-c7650743521c",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "Funcionamento",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "dia",
+              "condition": "like",
+              "keyValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('conditions0_Field_Value', `Dia definido pela IA`, 'string') }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "horário",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues0_Field_Value', `Horário dos dias a serem alterados`, 'string') }}"
+            },
+            {
+              "fieldId": "Motivo",
+              "fieldValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('fieldValues1_Field_Value', `Motivo da alteração de horário`, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        976,
+        32
+      ],
+      "id": "f1c3461c-8818-481d-ab8c-93a0318df20b",
+      "name": "Update",
       "credentials": {
-        "httpHeaderAuth": {
-          "id": "Gx5XA9roLVkNIKBs",
-          "name": "Z-API"
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
         }
       }
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "bd644768-12f7-4882-884b-8fc82b81ba57",
-              "leftValue": "={{ $('Webhook').item.json.body.message_type }}",
-              "rightValue": "outgoing",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
+        "operation": "getAll",
+        "tableId": "Funcionamento"
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        848,
+        32
+      ],
+      "id": "5f73c2ca-ba36-407a-8af6-c2de9fed5399",
+      "name": "Get Many",
+      "credentials": {
+        "supabaseApi": {
+          "id": "r7qiHeLbj3sFTwB4",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        32
+      ],
+      "id": "cf4224d9-d338-4817-9210-c205fdf3d8a4",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
       "position": [
-        1008,
-        -160
+        464,
+        96
       ],
-      "id": "8ce11612-4643-42e7-bef9-5c1b4fee08ae",
-      "name": "If"
+      "id": "677ee97e-a5a5-4ec6-9f91-8748d52ccab2",
+      "name": "LLM",
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -400,
+        16
+      ],
+      "id": "5eaa7b98-ab3e-49a7-a945-24a6228c70a9",
+      "name": "Schedule Trigger"
     },
     {
       "parameters": {
@@ -198,13 +307,14 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $('Webhook').item.json.body.conversation.messages[0].attachments[0].file_type }}",
-                    "rightValue": "image",
+                    "leftValue": "={{ $json.body.text.message }}",
+                    "rightValue": "",
                     "operator": {
                       "type": "string",
-                      "operation": "equals"
+                      "operation": "empty",
+                      "singleValue": true
                     },
-                    "id": "103351a0-9a09-4511-925d-2f81ab2deb24"
+                    "id": "f76a610b-2b40-4d94-94dd-6e2e83766ebb"
                   }
                 ],
                 "combinator": "and"
@@ -220,8 +330,8 @@
                 },
                 "conditions": [
                   {
-                    "id": "d164fd0b-bc66-4a24-b1c3-273d2a4abb13",
-                    "leftValue": "",
+                    "id": "a21b8a19-692f-4ad0-98d1-30aafc779596",
+                    "leftValue": "=",
                     "rightValue": "",
                     "operator": {
                       "type": "string",
@@ -240,173 +350,20 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        1216,
-        -256
+        -80,
+        -96
       ],
-      "id": "c81844b3-6aa5-47e9-ac60-f2c129229838",
+      "id": "fc3beaea-ffa6-4d9a-ba58-0224880dd072",
       "name": "Switch"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-image",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Edit Fields').item.json.tel }}"
-            },
-            {
-              "name": "image",
-              "value": "={{ $('Webhook').item.json.body.conversation.messages[0].attachments[0].data_url }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1776,
-        -304
-      ],
-      "id": "0bd1de8b-2b19-4b94-a752-c790e5b49a77",
-      "name": "Z-API1",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "Gx5XA9roLVkNIKBs",
-          "name": "Z-API"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "=http://192.168.0.243:3000/api/v1/accounts/1/conversations/{{ $('Webhook').item.json.body.conversation.id }}/messages\n",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "contentType": "multipart-form-data",
-        "bodyParameters": {
-          "parameters": [
-            {
-              "parameterType": "formBinaryData",
-              "name": "attachments[]",
-              "inputDataFieldName": "data"
-            },
-            {
-              "name": "file_type",
-              "value": "image"
-            },
-            {
-              "name": "message_type",
-              "value": "incoming"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1712,
-        -496
-      ],
-      "id": "16ff1f23-57f3-481c-84a4-7133f7199350",
-      "name": "Envia msg",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "d18szDNg2XivypkT",
-          "name": "Chatwoot"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "={{ $('Webhook').item.json.body.conversation.messages[0].attachments[0].data_url }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1440,
-        -368
-      ],
-      "id": "bac2d4d0-1b79-4812-a3af-884468f6290b",
-      "name": "HTTP Request"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "61c0e690-7b35-4a8c-b4e1-44571b1c213b",
-              "leftValue": "={{ $json.Buffer }}",
-              "rightValue": "={{ $('Webhook').item.json.body.conversation.contact_inbox.source_id }}.{{ $('Webhook').item.json.body.conversation.messages[0].content }}",
-              "operator": {
-                "type": "string",
-                "operation": "notEquals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        288,
-        -160
-      ],
-      "id": "6dc25400-a8f6-4465-9be9-f28deb5e9021",
-      "name": "If1"
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "=Buffer",
-        "key": "={{ $json.tel }}.{{ $json.message }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        -112,
-        -160
-      ],
-      "id": "5222ed55-90eb-4962-be4b-503cccc92555",
-      "name": "Redis",
-      "credentials": {
-        "redis": {
-          "id": "Y9iYyrM7JSw5IMqj",
-          "name": "Redis account"
-        }
-      }
     },
     {
       "parameters": {
         "assignments": {
           "assignments": [
             {
-              "id": "2197565b-418b-4eb3-9886-699cf4a939a1",
-              "name": "tel",
-              "value": "={{ $json.body.conversation.contact_inbox.source_id }}",
-              "type": "string"
-            },
-            {
-              "id": "e6cb2b83-6c2f-4755-91b7-9e13d5365234",
-              "name": "message",
-              "value": "={{ $json.body.content }}",
+              "id": "e3eea63c-2a64-4b48-ae1e-07fe3611f834",
+              "name": "output chat",
+              "value": "=Bom dia",
               "type": "string"
             }
           ]
@@ -416,179 +373,96 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -416,
-        -160
+        144,
+        -192
       ],
-      "id": "5efe7801-ece6-4ec9-b345-7edaa3675b48",
+      "id": "99fd6638-5be2-4373-b014-a3508ae8f120",
       "name": "Edit Fields"
-    }
-  ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "auto.kadovesh.com",
-            "user-agent": "rest-client/2.1.0 (linux x86_64) ruby/3.4.4p34",
-            "content-length": "2561",
-            "accept": "application/json",
-            "accept-encoding": "gzip, br",
-            "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "2804:14d:6885:42f0::1001",
-            "cf-ipcountry": "BR",
-            "cf-ray": "969f40d85892c036-IAD",
-            "cf-visitor": "{\"scheme\":\"https\"}",
-            "cf-warp-tag-id": "4cb46873-8ce4-4f1b-8179-328d2f98a45c",
-            "connection": "keep-alive",
-            "content-type": "application/json",
-            "x-forwarded-for": "2804:14d:6885:42f0::1001",
-            "x-forwarded-proto": "https"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "account": {
-              "id": 1,
-              "name": "Leão de Judá Informática"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "123"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        624,
+        96
+      ],
+      "id": "5cf02bba-580e-4507-a9dc-e35c88878f63",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -400,
+        -176
+      ],
+      "id": "20957c5c-529a-4db0-b814-e8f225a47e42",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363420981315626-group"
             },
-            "additional_attributes": {},
-            "content_attributes": {},
-            "content_type": "text",
-            "content": "5",
-            "conversation": {
-              "additional_attributes": {},
-              "can_reply": true,
-              "channel": "Channel::Api",
-              "contact_inbox": {
-                "id": 28,
-                "contact_id": 39,
-                "inbox_id": 1,
-                "source_id": "5512982113000",
-                "created_at": "2025-08-04T15:57:44.442Z",
-                "updated_at": "2025-08-04T15:57:44.442Z",
-                "hmac_verified": false,
-                "pubsub_token": "qw1iqaZW9VPkV79DBuDqouXv"
-              },
-              "id": 31,
-              "inbox_id": 1,
-              "messages": [
-                {
-                  "id": 155,
-                  "content": "5",
-                  "account_id": 1,
-                  "inbox_id": 1,
-                  "conversation_id": 31,
-                  "message_type": 1,
-                  "created_at": 1754323075,
-                  "updated_at": "2025-08-04T15:57:55.278Z",
-                  "private": false,
-                  "status": "sent",
-                  "source_id": null,
-                  "content_type": "text",
-                  "content_attributes": {},
-                  "sender_type": "User",
-                  "sender_id": 1,
-                  "external_source_ids": {},
-                  "additional_attributes": {},
-                  "processed_message_content": "5",
-                  "sentiment": {},
-                  "conversation": {
-                    "assignee_id": 1,
-                    "unread_count": 0,
-                    "last_activity_at": 1754323075,
-                    "contact_inbox": {
-                      "source_id": "5512982113000"
-                    }
-                  },
-                  "sender": {
-                    "id": 1,
-                    "name": "Davi Moraes",
-                    "available_name": "Davi Moraes",
-                    "avatar_url": "",
-                    "type": "user",
-                    "availability_status": null,
-                    "thumbnail": ""
-                  }
-                }
-              ],
-              "labels": [],
-              "meta": {
-                "sender": {
-                  "additional_attributes": {},
-                  "custom_attributes": {},
-                  "email": null,
-                  "id": 39,
-                  "identifier": "5512982113000",
-                  "name": "Assistência Técnica Leão de Juda",
-                  "phone_number": "+5512982113000",
-                  "thumbnail": "https://chatwoot.kadovesh.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBjQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58adb38b6487c12a772db1ea917c47d07390a314/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2RwQWZvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--9f2d1930b882e9bfc8ed299312bc745d99c590c3/Untitled.jpg",
-                  "blocked": false,
-                  "type": "contact"
-                },
-                "assignee": {
-                  "id": 1,
-                  "name": "Davi Moraes",
-                  "available_name": "Davi Moraes",
-                  "avatar_url": "",
-                  "type": "user",
-                  "availability_status": null,
-                  "thumbnail": ""
-                },
-                "team": null,
-                "hmac_verified": false
-              },
-              "status": "open",
-              "custom_attributes": {},
-              "snoozed_until": null,
-              "unread_count": 0,
-              "first_reply_created_at": "2025-08-04T15:57:49.042Z",
-              "priority": null,
-              "waiting_since": 0,
-              "agent_last_seen_at": 0,
-              "contact_last_seen_at": 0,
-              "last_activity_at": 1754323075,
-              "timestamp": 1754323075,
-              "created_at": 1754323068,
-              "updated_at": 1754323075.281462
+            {
+              "name": "message",
+              "value": "={{ $json.output }}"
             },
-            "created_at": "2025-08-04T15:57:55.278Z",
-            "id": 155,
-            "inbox": {
-              "id": 1,
-              "name": "Whatsapp"
-            },
-            "message_type": "outgoing",
-            "private": false,
-            "sender": {
-              "id": 1,
-              "name": "Davi Moraes",
-              "email": "contato.davimnm@gmail.com",
-              "type": "user"
-            },
-            "source_id": null,
-            "event": "message_created"
-          },
-          "webhookUrl": "https://auto.kadovesh.com/webhook/enviatext",
-          "executionMode": "production"
+            {
+              "name": "delay",
+              "value": "3"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        848,
+        -128
+      ],
+      "id": "551b04fc-5ece-4045-9f66-54ff9b7ee043",
+      "name": "W-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
         }
       }
-    ]
-  },
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "shared": [
     {
-      "createdAt": "2025-08-02T01:38:55.185Z",
-      "updatedAt": "2025-08-02T01:38:55.185Z",
+      "createdAt": "2025-08-02T01:28:57.267Z",
+      "updatedAt": "2025-08-02T01:28:57.267Z",
       "role": "workflow:owner",
-      "workflowId": "4fs0Rn6WpVaqld0F",
+      "workflowId": "ApgHGhyEipy6Bbf8",
       "projectId": "O2voI4XYg26wWumH"
     }
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2025-08-27T18:52:06.000Z",
-  "versionId": "0f4c7594-6441-4e20-b235-af82c051ba76"
+  "triggerCount": 0,
+  "updatedAt": "2025-08-06T01:46:12.000Z",
+  "versionId": "8d59a495-4f02-4968-b709-e9ed52e408e9"
 }
