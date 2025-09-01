@@ -41,11 +41,6 @@
         ]
       ]
     },
-    "Z-API2": {
-      "main": [
-        []
-      ]
-    },
     "servicos_executados": {
       "ai_tool": [
         [
@@ -88,11 +83,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Z-API3": {
-      "main": [
-        []
       ]
     },
     "servicos_executados1": {
@@ -169,10 +159,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1328,
-        -240
+        -2048,
+        608
       ],
-      "id": "c39c7070-88bf-441f-b2ce-3955662d644c",
+      "id": "12a2e790-8e0b-4109-b140-6c486b8a6bb7",
       "name": "Webhook",
       "webhookId": "b963b45b-dde2-44ee-9599-414715fe0865"
     },
@@ -203,10 +193,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1040,
-        -240
+        -1760,
+        608
       ],
-      "id": "a603d340-ec4a-4587-896e-8a5456b65d5e",
+      "id": "e71483f5-3595-4c90-8de5-e14eaf428434",
       "name": "If"
     },
     {
@@ -241,10 +231,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -720,
-        -112
+        -1440,
+        736
       ],
-      "id": "f4e56ab5-c11a-48b5-bebb-fa98134b3792",
+      "id": "3faf6cfc-7199-4642-9bf5-2fb534dc8b37",
       "name": "Z-API1",
       "credentials": {
         "httpHeaderAuth": {
@@ -281,10 +271,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -544,
-        -112
+        -1264,
+        736
       ],
-      "id": "7936bf4c-2b02-4ed1-9678-024fb05ad463",
+      "id": "0c2ba862-1707-4933-ad44-93dd5427124f",
       "name": "Z-API2",
       "credentials": {
         "httpHeaderAuth": {
@@ -333,10 +323,10 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        16,
-        176
+        -704,
+        1024
       ],
-      "id": "740e1f5e-332b-4b40-8540-98b99563ff79",
+      "id": "6148836e-8b03-4e0e-850b-1abc599562f7",
       "name": "Insert rows in a table",
       "credentials": {
         "postgres": {
@@ -356,10 +346,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.1,
       "position": [
-        -48,
-        -800
+        -768,
+        48
       ],
-      "id": "f78a9138-c3f3-4cb3-a666-a3b94e96938c",
+      "id": "95168457-54c7-41ac-b7d8-09316949fddd",
       "name": "AI Agent"
     },
     {
@@ -385,10 +375,10 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        256,
-        -688
+        -464,
+        160
       ],
-      "id": "83a8ff4c-543b-4fd5-b565-e1825479168a",
+      "id": "372fc9f4-406f-4bb6-a92f-47a7bcf2b54e",
       "name": "servicos_executados",
       "credentials": {
         "supabaseApi": {
@@ -416,10 +406,10 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        368,
-        -688
+        -352,
+        160
       ],
-      "id": "b2057dee-e496-4749-b520-62cc2fab7e2b",
+      "id": "1f3d300a-f8f3-4308-a55d-0a23262c3e22",
       "name": "defeitos_identificados",
       "credentials": {
         "supabaseApi": {
@@ -451,10 +441,10 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        480,
-        -688
+        -240,
+        160
       ],
-      "id": "2452b99f-50d7-4c1a-84c3-fc675ee9dd38",
+      "id": "756571ce-a3cc-43e1-b0f6-6f14084f94e3",
       "name": "pecas_utilizadas",
       "credentials": {
         "supabaseApi": {
@@ -475,10 +465,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -48,
-        -672
+        -768,
+        176
       ],
-      "id": "4fec1a62-87d4-4a40-b055-850b0cc113ae",
+      "id": "a9cf2d85-1d6e-4dd8-b405-92989c216f11",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -515,10 +505,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -544,
-        -384
+        -1264,
+        464
       ],
-      "id": "fcb29374-4951-427e-87f7-d875f576440c",
+      "id": "26bb059e-ca32-4e63-9fcd-f56760b208fc",
       "name": "If1"
     },
     {
@@ -549,10 +539,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -384,
-        -304
+        -1104,
+        544
       ],
-      "id": "f8480423-f429-4b18-9181-d826c4c2656b",
+      "id": "c64470c4-627f-452f-93c0-14c5d5d4f1e4",
       "name": "Z-API3",
       "credentials": {
         "httpHeaderAuth": {
@@ -572,10 +562,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.1,
       "position": [
-        -16,
-        -368
+        -736,
+        480
       ],
-      "id": "8479ed19-4e8a-4e7c-b5b5-c9db7acae46f",
+      "id": "99adf949-780f-4ee7-b568-a00a1f47999a",
       "name": "AI Agent1"
     },
     {
@@ -601,10 +591,10 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        512,
-        -256
+        -208,
+        592
       ],
-      "id": "2ab8ac1d-2827-4356-8ad1-b54c057f83d7",
+      "id": "10c27b3b-3ba3-44b1-939e-e0aedfa29a96",
       "name": "servicos_executados1",
       "credentials": {
         "supabaseApi": {
@@ -632,10 +622,10 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        384,
-        -256
+        -336,
+        592
       ],
-      "id": "aa648a73-5051-4273-a43a-10a7b7b29a80",
+      "id": "488d5a03-0419-4173-918a-39638850f9f1",
       "name": "defeitos_identificados1",
       "credentials": {
         "supabaseApi": {
@@ -667,10 +657,10 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        256,
-        -256
+        -464,
+        592
       ],
-      "id": "9ef83926-01fd-42bc-826d-bfafe8aa1ed4",
+      "id": "0ab49130-a85a-480c-89b5-d8f1cade4839",
       "name": "pecas_utilizadas1",
       "credentials": {
         "supabaseApi": {
@@ -691,10 +681,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -16,
-        -208
+        -736,
+        640
       ],
-      "id": "4d3e5bd9-8970-44fd-be85-79fd03e0ffea",
+      "id": "359b4700-7c45-421a-8c59-19ee6f4bcc73",
       "name": "OpenAI Chat Model1",
       "credentials": {
         "openAiApi": {
@@ -720,6 +710,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-27T17:00:38.000Z",
-  "versionId": "d9527cc0-6209-4dd5-9463-5d039ca79058"
+  "updatedAt": "2025-09-01T19:11:33.000Z",
+  "versionId": "b1fd98d7-f4f6-4227-b8dd-c938079a9b1d"
 }
