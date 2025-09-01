@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -184,10 +184,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        -4320,
-        -48
+        -1920,
+        -32
       ],
-      "id": "dbd02ea2-6736-4ce0-8614-35be19cc22fd",
+      "id": "0e2304c0-9b2f-4f56-92bd-7afe5438a74e",
       "name": "AI Agent",
       "alwaysOutputData": true
     },
@@ -203,10 +203,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -4352,
-        176
+        -1952,
+        192
       ],
-      "id": "7aa9cccb-7fe0-4078-96c4-2c0a74036fbc",
+      "id": "8f4a4d71-e5ed-4fc3-8e57-b7e4a43020cd",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
@@ -226,10 +226,10 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -2656,
-        -32
+        -256,
+        -16
       ],
-      "id": "0f5c881f-e4dd-420c-80c2-a637ea018ddc",
+      "id": "3d422e0b-100b-4609-a1f5-67e1a16ac180",
       "name": "Send a text message",
       "webhookId": "2de4971a-eb6d-4db4-96c5-f8555ce82e16",
       "credentials": {
@@ -247,10 +247,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -3168,
-        -128
+        -768,
+        -112
       ],
-      "id": "27c696b3-14f2-44ef-8e33-a2766209ac39",
+      "id": "a88d389d-2b2d-49ca-9978-fa5b1160fdae",
       "name": "Split Out",
       "alwaysOutputData": true
     },
@@ -261,10 +261,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -2816,
-        -128
+        -416,
+        -112
       ],
-      "id": "46a5b205-ad77-4352-9e9b-c9f10a72f4ce",
+      "id": "35cb2412-35c6-42f8-b3a6-749c85aa4d7f",
       "name": "Loop Over Items"
     },
     {
@@ -274,10 +274,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -2960,
-        0
+        -560,
+        16
       ],
-      "id": "15227890-82f0-47ab-a5e5-323c0d908651",
+      "id": "7a0962f9-0d48-438d-9699-05866b2ebb57",
       "name": "Wait",
       "webhookId": "0a0fbddb-34c1-4975-be3f-51b6552a2bc0"
     },
@@ -289,10 +289,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -5616,
-        80
+        -3216,
+        96
       ],
-      "id": "da3a6974-d138-44fb-9868-f8a5a97a7c9f",
+      "id": "f71b78f2-1778-44b3-8ced-c2fd0216904f",
       "name": "HTTP Request"
     },
     {
@@ -303,10 +303,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -5408,
-        80
+        -3008,
+        96
       ],
-      "id": "fb6e0ebc-2ccc-4651-8dae-d6539830f518",
+      "id": "5c00196a-e450-4400-84c1-4309ade0dd67",
       "name": "HTTP Request1"
     },
     {
@@ -337,10 +337,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5888,
-        -32
+        -3488,
+        -16
       ],
-      "id": "7463caa7-f5d6-4954-b076-109cae21fb33",
+      "id": "455dc5df-9d7d-4b77-9df7-5e676450715e",
       "name": "If"
     },
     {
@@ -351,10 +351,10 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        -5200,
-        80
+        -2800,
+        96
       ],
-      "id": "e22d6bb7-2ead-48d2-9b6d-de06be6b0f67",
+      "id": "e4145f9e-99fc-4a54-bd6d-a10a98c4060f",
       "name": "Extract from File"
     },
     {
@@ -362,10 +362,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -4928,
-        -32
+        -2528,
+        -16
       ],
-      "id": "f4aac1c4-7521-46b3-810a-e2a535aee2ae",
+      "id": "7f02e22b-d708-4e45-bcc8-cc6e175582b1",
       "name": "Merge"
     },
     {
@@ -385,10 +385,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4720,
-        -32
+        -2320,
+        -16
       ],
-      "id": "63a8b695-de88-47e8-9db2-4c8761855847",
+      "id": "4e040ef1-e184-4084-8993-2e6373031fd9",
       "name": "Edit Fields"
     },
     {
@@ -399,10 +399,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        -4240,
-        176
+        -1840,
+        192
       ],
-      "id": "6a3270ad-59a7-4c97-87b2-e10b55319253",
+      "id": "90dac746-811c-41d0-b136-09f38548c283",
       "name": "Simple Memory"
     },
     {
@@ -415,10 +415,10 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -6112,
-        -32
+        -3712,
+        -16
       ],
-      "id": "f62cb9fa-edbf-48de-a38a-538e8f79cfd2",
+      "id": "29dfb4d9-e2c8-400f-ab85-180b4774b631",
       "name": "Telegram Trigger",
       "webhookId": "7cb2d74b-e507-4af0-b894-d205b55f2e89",
       "credentials": {
@@ -444,7 +444,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2025-08-28T19:56:39.000Z",
-  "versionId": "95df6883-f8a0-4c53-ba47-dce7f9878f8b"
+  "triggerCount": 0,
+  "updatedAt": "2025-09-01T17:01:07.000Z",
+  "versionId": "1a358a0b-b959-4a3a-8f63-0ce7ccb5ae3f"
 }
