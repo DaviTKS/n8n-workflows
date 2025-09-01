@@ -118,10 +118,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -576,
-        112
+        -1456,
+        208
       ],
-      "id": "9e67aa3d-08b8-4afd-b651-619be56488e1",
+      "id": "27aa9771-25ba-4bd8-962c-ee147a70ea14",
       "name": "Webhook",
       "webhookId": "dba71045-10a5-49ba-9a5b-7299158d4a92"
     },
@@ -135,10 +135,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -224,
-        112
+        -1104,
+        208
       ],
-      "id": "42a91268-cf39-46e7-910e-b27b5fd846ac",
+      "id": "ce3ef9fa-4f67-44e3-b336-5a2e23bdd5fa",
       "name": "Redis",
       "credentials": {
         "redis": {
@@ -277,10 +277,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        0,
-        112
+        -880,
+        208
       ],
-      "id": "07fe34f1-ce29-4cf5-93e7-00bd73d842fd",
+      "id": "14bf38a4-135e-432d-b211-c4f8c00717b3",
       "name": "Switch"
     },
     {
@@ -292,10 +292,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        880,
-        -96
+        0,
+        0
       ],
-      "id": "ebfb4941-2108-472c-acb4-b54ee1584d64",
+      "id": "54b68685-cbee-4f79-b6dd-5a2085d75eb5",
       "name": "Redis1",
       "credentials": {
         "redis": {
@@ -313,10 +313,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        880,
-        64
+        0,
+        160
       ],
-      "id": "be030767-9647-4983-9456-336c39c0c244",
+      "id": "fff9b12a-e474-4e24-87c3-3e55335d2dee",
       "name": "Redis2",
       "credentials": {
         "redis": {
@@ -336,10 +336,10 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1616,
-        128
+        736,
+        224
       ],
-      "id": "891819d1-c95f-4303-8184-4cebb716a751",
+      "id": "121b88d7-0e04-4816-a423-4bd974f4795a",
       "name": "Send a text message",
       "webhookId": "2de4971a-eb6d-4db4-96c5-f8555ce82e16",
       "credentials": {
@@ -354,10 +354,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        160,
-        352
+        -720,
+        448
       ],
-      "id": "c9b973c2-41d6-4e38-941f-d7d04c3b2025",
+      "id": "95876624-b93c-44db-bd1d-57f4c858634b",
       "name": "No Operation, do nothing"
     },
     {
@@ -377,10 +377,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        880,
-        320
+        0,
+        416
       ],
-      "id": "bad10b7e-e6ba-4840-9279-427fb82890f5",
+      "id": "cbfa9d2e-0f10-4ad5-b1e1-f2f5e38d3d20",
       "name": "Edit Fields"
     },
     {
@@ -400,10 +400,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1088,
-        -16
+        208,
+        80
       ],
-      "id": "8e018381-2004-4f99-817e-7696d904c785",
+      "id": "a9dac60f-afa3-4400-9cb1-102af2638f3d",
       "name": "Edit Fields1"
     }
   ],
@@ -456,6 +456,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-06T01:46:17.000Z",
-  "versionId": "6b8be5ae-5a02-44d5-b651-440fb9be7af8"
+  "updatedAt": "2025-09-01T19:13:35.000Z",
+  "versionId": "b325cc2b-f743-4755-834a-dd945d9f0600"
 }
