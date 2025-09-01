@@ -1085,7 +1085,9 @@
   "createdAt": "2025-08-02T01:36:18.113Z",
   "id": "ZJhekDsrE4hWhX5f",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "MAX",
   "nodes": [
     {
@@ -1096,13 +1098,13 @@
           "systemMessage": "=## 🚨 Regra de Prioridade Máxima\n\n* **PARA QUALQUER SAUDAÇÃO USE **EXATAMENTE** A REGRA #a1 ABAIXO.\n\n $a1 **SEMPRE ENVIE ESTE TEXTO [{{ $json.output }}] JUNTAMENTE COM A SUA RESPOSTA AO USUÁRIO, ISTO SERÁ SUA TAG DE ATENDIMENTO.\n\n* **Gatilho de Comando Específico:**\n\n  * **SE** a mensagem do usuário for **exatamente** \"falacomigobb\":\n\n    * **Responda APENAS E UNICAMENTE** com o texto: \"Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\"\n    * Ignore todas as outras instruções e personas. Não adicione nenhuma outra palavra ou saudação.\n  * **CASO CONTRÁRIO**, siga todas as instruções abaixo.\n\n\n## 🎯 Papel Principal (Persona)\n\n## Seu nome é Max, o agente de atendimento humano.\n\n* **Você é Max:** Um agente de atendimento humano e profissional para a assistência técnica Leão de Judá.\n* **Seu Local de Trabalho:** Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n* **Objetivo:** Atender clientes, entender suas necessidades, coletar informações e direcionar para um técnico especialista quando necessário.\n* **Comportamento Chave:** Aja como humano em um ambiente empresarial. **Evite deixar claro que você é uma IA.**\n\n## ⚙️ Diretrizes Gerais de Comportamento\n\n### Tom e Estilo\n\n* **Cordialidade Profissional:** Atenda sempre com cordialidade.\n\n* **Adaptação:** Adapte seu tom ao cliente, mantendo registro formal e profissional.\n\n* **Conciso:** Frases curtas e diretas.\n\n* **Uso do Nome:** Cite o primeiro nome do cliente (`{{ $('1o Nome').item.json.primeiroNome }}`) somente na primeira mensagem.\n\n### Contexto e Continuidade\n\n* Sempre considere o histórico prévio para evitar repetição.\n\n## 📋 Escopo de Serviços e Produtos\n\nInforme que a assistência trabalha com:\n\n* **A assistência NÃO trabalha com retirada de aparelhos a domicilio**\n\n* **Manutenção e Consertos:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All in Ones, MacBooks (exceto celulares).\n\n* **Vendas:** Peças, componentes, periféricos, Montagem de PCs Gamer/Profissional(Encaminhe para o técnico para consultar disponibilidade.)\n\n* **Vendas Aparelhos:** TVs, Notebooks, Monitores(Encaminhe para o técnico para consultar disponibilidade.)\n\n## Fluxo de Atendimento\n\n### 1. Saudação \n\n* PARA QUALQUER SAUDAÇÃO USE **EXATAMENTE** A REGRA $a1.\n\n### 2. Entendimento\n\n* Deixe o cliente descrever o problema sem solicitar detalhes técnicos inicialmente.\n\n### 3. Cenários Específicos\n\n* **Retirada de Aparelhos:**\n\n  * Informe que o técnico entrará em contato e desative o atendimento.\n\n* **Dúvida Técnica:**\n\n  * Direcione imediatamente ao especialista, coletando antes modelo e descrição do problema ou peça.\n\n\n* **Pedido de Peças:**\n\n  * (Encaminhe para o técnico para consultar disponibilidade.)\n\n\n* **Consulta de disponibilidade de peças, componentes o periféricos:**\n\n  * Peça para o cliente checar nosso catálogo\n  * Informe que se ele tiver alguma dúvida você pode encaminhar o pedido para o técnico.\n\n* **Pedido de Venda de PCs, Notebooks ou TVs:**\n\n  * Direcione ao especialista, dizendo que o técnico vai consultar a disponibilidade.\n    * NUNCA diga que não temos algo, apenas redirecione para o técnico e diga que irá consultar a disponibilidade\n\n* **Consulta de Preços:**\n\n  * NUNCA diga que não temos algo, apenas redirecione para o técnico e diga que irá consultar a disponibilidade\n\n\n* **Pedido de Desconto:**\n\n  * Informe que consultará o técnico sobre desconto via PIX ou encaminhe ao técnico.\n\n* **Consulta por OS:**\n\n  * Informe que irá verificar com o técnico e retornará o status.\n\n* **Pergunta sobre Endereço:**\n\n  * Informe apenas se solicitado, indicando localização ao lado da lotérica.\n\n* **Pergunta sobre Horário:**\n\n  * Consulte a `tool(Funcionamento)`:\n\n    * Horário normal: Segunda a sexta das 08h-18h, sábado das 08h-13h.\n    * Informe horários alterados com motivos se houver.\n    * Se houver pergunta sobre retirada de aparelho, informe horário e encaminhe ao técnico para verificação.\n\n\n## ⚠️ Regras de Escalada\n\n*Sempre qualifique a lead: \nEx: caso o cliente queira comprar uma tela, pergunte para qual aparelho antes de encaminhar para o técnico.\n\n  *Transfira para o técnico se: dúvida técnica, busca por peças, clima negativo, serviço/produto indisponível, situação não prevista ou perguntas sobre sua identidade (IA).\n  *Caso transferir para o técnico, diga de forma explicita estar transferindo o atendimento E ENCERRE O ATENDIMENTO IMEDIATAMENTE.\n   -Não prolongue ou ofereça ajuda posteriormente.\n\n\n\n## 🛠️ Ferramentas e Variáveis\n\n* **Nome do Cliente:** `{{ $('1o Nome').item.json.primeiroNome }}`\n* **Telefone do Cliente:** `{{ $('Lead').item.json.Telefone }}`\n* **Tool (valores):** Apenas para consultas específicas de preço.\n* **Tool (Status):** Controle interno após encaminhar atendimento ao técnico."
         }
       },
-      "id": "de868ba8-0d0a-4f15-9e5a-37973d514a4b",
+      "id": "3645f013-6308-4f2f-8da6-e2b458600619",
       "name": "AI Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        8688,
-        1504
+        -2768,
+        -848
       ],
       "alwaysOutputData": true
     },
@@ -1112,13 +1114,13 @@
         "path": "recebetext1",
         "options": {}
       },
-      "id": "6d3bb8b3-c3f8-4e05-8ff9-f24b5c58d9f4",
+      "id": "8086922d-989b-46bd-82d1-d2393830b725",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        16,
-        1872
+        -11440,
+        -480
       ],
       "webhookId": "bc978142-377f-4daf-b31e-3390dc1be1df"
     },
@@ -1131,10 +1133,10 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        8848,
-        1712
+        -2608,
+        -640
       ],
-      "id": "8597305f-7c5e-4705-be76-690e243984c3",
+      "id": "c508dc6e-f92c-4012-8466-5c0c03835b11",
       "name": "valores"
     },
     {
@@ -1144,10 +1146,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
       "typeVersion": 1,
       "position": [
-        9216,
-        1664
+        -2240,
+        -688
       ],
-      "id": "71ab255f-da2d-42ea-9c24-5f56e65e602b",
+      "id": "33915451-16f6-46cb-a942-4a66cb7976b0",
       "name": "Auto-fixing Output Parser"
     },
     {
@@ -1167,10 +1169,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        9104,
-        1504
+        -2352,
+        -848
       ],
-      "id": "96df88ac-9ece-4b66-87da-ae068c19c12a",
+      "id": "48a666d5-0581-4140-9c89-c581e8c8f5bb",
       "name": "Basic LLM Chain"
     },
     {
@@ -1181,10 +1183,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        9488,
-        1584
+        -1968,
+        -768
       ],
-      "id": "6851d7e2-2a6b-47e6-ad8b-c7b057e92ea8",
+      "id": "68dcf40c-b3f0-4e70-90ed-c7d7c9ae93b7",
       "name": "Split Out",
       "alwaysOutputData": true
     },
@@ -1195,10 +1197,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        6912,
-        2016
+        -4544,
+        -336
       ],
-      "id": "65234518-b55a-48ea-b25c-0ac09aad40d0",
+      "id": "9588c559-a130-46e3-87b4-630275301816",
       "name": "Loop Over Items"
     },
     {
@@ -1208,10 +1210,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        6768,
-        2144
+        -4688,
+        -208
       ],
-      "id": "d541f550-a240-475d-85a2-7ddfef10c53f",
+      "id": "ec476676-fdfe-451a-b566-14e090245184",
       "name": "Wait",
       "webhookId": "39955354-d054-4960-be7b-d15d7fa5da79"
     },
@@ -1223,10 +1225,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        9296,
-        1872
+        -2160,
+        -480
       ],
-      "id": "ea8ba370-2926-4c0e-b95f-f947bdce11dd",
+      "id": "c34aa3d3-173b-48bb-9c51-21b9fb2ce3ef",
       "name": "Estrutura"
     },
     {
@@ -1237,10 +1239,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4704,
-        1968
+        -6752,
+        -384
       ],
-      "id": "ac1fdc08-5979-4fd9-b16c-4ec31a1a8a82",
+      "id": "58be5e4d-525b-4b50-90b6-10bb86c4727f",
       "name": "HTTP Request",
       "alwaysOutputData": true
     },
@@ -1255,10 +1257,10 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        4896,
-        1968
+        -6560,
+        -384
       ],
-      "id": "e6948445-25d2-4929-b746-78edd889f968",
+      "id": "31b4e0b5-d48e-4bbd-ad65-1325e333bc66",
       "name": "OpenAI",
       "executeOnce": true,
       "onError": "continueRegularOutput"
@@ -1273,10 +1275,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4896,
-        1808
+        -6560,
+        -544
       ],
-      "id": "2182fb03-2ed5-4a59-a7b3-32922e049fb1",
+      "id": "01543d1e-2d09-42c3-a98f-8eec6035a374",
       "name": "Redis",
       "executeOnce": true
     },
@@ -1290,10 +1292,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5120,
-        1968
+        -6336,
+        -384
       ],
-      "id": "f6cd5491-afdf-42b0-8632-dc031ecd77b9",
+      "id": "3c98cc00-871b-4d64-8291-94c135fa699d",
       "name": "Redis3",
       "executeOnce": true
     },
@@ -1320,10 +1322,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        736,
-        1872
+        -10720,
+        -480
       ],
-      "id": "94b9de63-fe94-404a-a9e0-62e02ec91bac",
+      "id": "2d1b61f8-046d-4c93-a4b4-7c6d4a4fdd8c",
       "name": "Lead"
     },
     {
@@ -1343,10 +1345,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        880,
-        1872
+        -10576,
+        -480
       ],
-      "id": "99365359-3932-45d3-a7b7-5ac46837a73e",
+      "id": "725e50bc-7b89-465c-80d0-65ab7534cf0a",
       "name": "Mensagem Lead"
     },
     {
@@ -1372,10 +1374,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1248,
-        2384
+        -10208,
+        32
       ],
-      "id": "1367b3a0-0cad-4491-ba14-9a25d8c0a279",
+      "id": "9688c387-b4d0-42ac-90f7-a76b3dd87ffc",
       "name": "Execute Workflow"
     },
     {
@@ -1435,10 +1437,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        400,
-        1872
+        -11056,
+        -480
       ],
-      "id": "5c682f34-5785-4d98-b4df-ecf32f29fb75",
+      "id": "ca671a45-ec2c-4a7b-b6fa-055a12ee04df",
       "name": "Grp ou Msg"
     },
     {
@@ -1522,10 +1524,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        800,
-        2544
+        -10656,
+        192
       ],
-      "id": "e43b1daf-db03-4458-bf11-1d43d07db636",
+      "id": "bab218f7-c7fb-45f7-8201-dbe5d55c2ec6",
       "name": "Que Grp?",
       "alwaysOutputData": true
     },
@@ -1587,10 +1589,10 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        608,
-        1872
+        -10848,
+        -480
       ],
-      "id": "b91e635b-d51d-41d0-8c55-718f8987d52e",
+      "id": "6d360c63-89e1-4737-a39e-d151a85fdb15",
       "name": "Filtro Davi"
     },
     {
@@ -1648,10 +1650,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        4544,
-        1888
+        -6912,
+        -464
       ],
-      "id": "1f8ca622-11c7-4415-bcfe-5b60e440af86",
+      "id": "ff9e7cb2-3117-43ae-9b4b-578a90cf7cb1",
       "name": "TXT or AUD",
       "alwaysOutputData": false
     },
@@ -1669,10 +1671,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        8608,
-        1712
+        -2848,
+        -640
       ],
-      "id": "8b77eda3-0dc5-436c-9739-262960b23088",
+      "id": "f7c56792-cdbe-4822-9719-7c4da1dfbe84",
       "name": "LLM"
     },
     {
@@ -1687,10 +1689,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        9184,
-        1872
+        -2272,
+        -480
       ],
-      "id": "86b040b7-fce6-47d6-ab36-232810c89372",
+      "id": "07c0f050-22b2-470b-8f31-3f62cce71c19",
       "name": "Parse AI"
     },
     {
@@ -1701,10 +1703,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        10096,
-        1760
+        -1360,
+        -592
       ],
-      "id": "9bb748cf-ac5c-4bda-9412-f64ccff4054f",
+      "id": "aad0f26e-2ed5-400e-9e6b-235b49ca6f3a",
       "name": "MEM 2"
     },
     {
@@ -1719,10 +1721,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        9984,
-        1760
+        -1472,
+        -592
       ],
-      "id": "878cc47b-9e11-4015-8c0b-a1ea0c038f6d",
+      "id": "df87cb87-39c0-44c7-9d08-7277ec800a5c",
       "name": "OpenAI Chat Model"
     },
     {
@@ -1736,10 +1738,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        10016,
-        1504
+        -1440,
+        -848
       ],
-      "id": "60424be4-7460-46b0-afb2-a8132cd93d30",
+      "id": "1c5a8c5e-33ef-420b-8575-78ffbf88a124",
       "name": "Avaliador"
     },
     {
@@ -1846,10 +1848,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        3504,
-        1872
+        -7952,
+        -480
       ],
-      "id": "e4415e1a-dc2d-48a9-8aae-502a7d7be8f8",
+      "id": "0e95471f-4db8-479b-928a-fbf60c8cb268",
       "name": "Switch"
     },
     {
@@ -1863,10 +1865,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4064,
-        1680
+        -7392,
+        -672
       ],
-      "id": "b1c56e5b-c7a5-41fa-a1a9-9a61acf3ce3f",
+      "id": "3763a335-a444-43de-9b52-24f436976d3d",
       "name": "Redis5"
     },
     {
@@ -1879,10 +1881,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3808,
-        1680
+        -7648,
+        -672
       ],
-      "id": "3d9dce8f-8403-449a-9d1d-26be9da7908a",
+      "id": "3f372ee6-8b26-4f92-945c-dcd10009946a",
       "name": "status"
     },
     {
@@ -1896,10 +1898,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3344,
-        1888
+        -8112,
+        -464
       ],
-      "id": "127fc7e8-f89f-4a6f-984b-cb094e1d9f73",
+      "id": "ec1e5a03-f925-4065-835e-b5616a7c4298",
       "name": "GetStat"
     },
     {
@@ -1914,10 +1916,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        10368,
-        1504
+        -1088,
+        -848
       ],
-      "id": "af5620ab-3868-477c-a69a-95ac26fff652",
+      "id": "ea580b0a-ede7-4874-b4de-469b2265e260",
       "name": "Redis6"
     },
     {
@@ -1927,10 +1929,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        6064,
-        1840
+        -5392,
+        -512
       ],
-      "id": "770fd851-e32d-4070-8f20-9bb8b8f0fced",
+      "id": "6f5cc3a6-e10e-4b17-9c1b-6a47245a2d9e",
       "name": "Wait2",
       "webhookId": "57eac84a-ce2d-4739-a3fc-f76dc268657e",
       "executeOnce": true
@@ -1944,10 +1946,10 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        8944,
-        1712
+        -2512,
+        -640
       ],
-      "id": "8a2cd013-cf18-458b-8863-1defdfccf7f8",
+      "id": "506ead90-fcbd-472e-9294-9d8f722e5827",
       "name": "Funcionamento"
     },
     {
@@ -1971,10 +1973,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1248,
-        2544
+        -10208,
+        192
       ],
-      "id": "9b74ae4f-4863-4181-a7ce-7f820f35a771",
+      "id": "ddd4f45c-02e0-4b8a-bb55-cca591f23448",
       "name": "Execute Workflow1"
     },
     {
@@ -1985,10 +1987,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        6720,
-        1520
+        -4736,
+        -832
       ],
-      "id": "6e428289-5fbd-43c4-ba6e-3b0c3c69b037",
+      "id": "6e17560d-0d7b-4ac9-a671-a48f61a65e7c",
       "name": "Deleta Buffer",
       "executeOnce": true
     },
@@ -2002,10 +2004,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5904,
-        1840
+        -5552,
+        -512
       ],
-      "id": "91d7f8e5-5e89-45a3-b297-db82429a7c36",
+      "id": "f70c5a82-425e-4ed8-a385-ee943ba319a8",
       "name": "Get Buffer 1",
       "executeOnce": true
     },
@@ -2019,22 +2021,22 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        6240,
-        1840
+        -5216,
+        -512
       ],
-      "id": "f4fee150-21dc-4889-bae6-fd47e61f6a31",
+      "id": "b4a24190-1424-4426-9070-3e14527b6818",
       "name": "Get Buffer 2",
       "executeOnce": true
     },
     {
       "parameters": {},
-      "id": "6b51d2da-234a-4b00-9f29-c9ddd5ce6534",
+      "id": "182c3295-e4ec-4422-8dc1-5a65e6556057",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        3056,
-        1888
+        -8400,
+        -464
       ]
     },
     {
@@ -2050,13 +2052,13 @@
           ]
         }
       },
-      "id": "5370e89a-63ea-4223-931f-5dd25de1dbff",
+      "id": "947a04f9-094b-41f7-b351-6426b41cac77",
       "name": "Encontrar Cliente",
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2608,
-        1888
+        -8848,
+        -464
       ],
       "alwaysOutputData": true
     },
@@ -2076,13 +2078,13 @@
           ]
         }
       },
-      "id": "4d4d922e-00d2-4298-9d6b-d54fc05a364a",
+      "id": "3691686f-2cef-4578-8e51-48b04102cd05",
       "name": "Criar Cliente",
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2896,
-        1920
+        -8560,
+        -432
       ],
       "alwaysOutputData": true
     },
@@ -2144,10 +2146,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        2736,
-        1888
+        -8720,
+        -464
       ],
-      "id": "c480574a-89e2-4d1c-a57f-a88e0e409e2f",
+      "id": "891e8129-97ee-4558-8243-689ed99efd39",
       "name": "Switch1",
       "alwaysOutputData": true
     },
@@ -2156,10 +2158,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        3920,
-        2064
+        -7536,
+        -288
       ],
-      "id": "5e854058-4e3d-4ee6-b589-ab83f2112a65",
+      "id": "83ea6687-b453-4546-a68d-42224863dd0c",
       "name": "Merge1"
     },
     {
@@ -2190,10 +2192,10 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        1040,
-        2384
+        -10416,
+        32
       ],
-      "id": "35ed5e26-9b98-4f40-b362-2a2ceb0434c0",
+      "id": "5d6fcf6a-52e3-49a3-b4ab-fbe0183162d4",
       "name": "Ger. Produtos"
     },
     {
@@ -2232,10 +2234,10 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        1040,
-        2544
+        -10416,
+        192
       ],
-      "id": "ab7ca493-a667-472c-a675-8e97eef33cea",
+      "id": "755468e7-70c5-4ea3-b1d3-0aae2aa679a2",
       "name": "Horário"
     },
     {
@@ -2245,10 +2247,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2464,
-        1888
+        -8992,
+        -464
       ],
-      "id": "b9dd65d9-99b6-465b-b2b7-951f34357d7c",
+      "id": "9fbf7da9-cb30-4ab5-aeca-8bf581bf7da9",
       "name": "1o Nome"
     },
     {
@@ -2259,10 +2261,10 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        7008,
-        1520
+        -4448,
+        -832
       ],
-      "id": "1ef7d029-083c-42a5-9ad9-0513d1c1d5bb",
+      "id": "9ba3f280-e06f-4f0a-bc53-d7c4a3314790",
       "name": "Data"
     },
     {
@@ -2272,10 +2274,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        7136,
-        1520
+        -4320,
+        -832
       ],
-      "id": "842f8305-a7bb-494b-b551-4434401b165b",
+      "id": "597c166c-844c-4b15-aab3-b9a81f7b4276",
       "name": "Mes1"
     },
     {
@@ -2285,10 +2287,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        7280,
-        1520
+        -4176,
+        -832
       ],
-      "id": "57faeb0f-134d-49fb-b0ad-9929b65e7edc",
+      "id": "3c4a3c8b-7f3f-417f-a308-0f63bf51195e",
       "name": "Code1"
     },
     {
@@ -2298,10 +2300,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        7424,
-        1520
+        -4032,
+        -832
       ],
-      "id": "13c36c5a-acdd-4fc2-92ca-205d9c03b585",
+      "id": "efcc19e3-0b9b-47cb-b7db-ac5ba8872642",
       "name": "Sauda2"
     },
     {
@@ -2321,10 +2323,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        6864,
-        1520
+        -4592,
+        -832
       ],
-      "id": "71fcf180-bbc7-472b-821a-1e44b7519dd6",
+      "id": "20639ee9-c79e-4605-a7c8-76343c28c391",
       "name": "Join",
       "alwaysOutputData": true
     },
@@ -2339,10 +2341,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        7776,
-        1520
+        -3680,
+        -832
       ],
-      "id": "03a0aee3-856e-4706-9944-839400cd953a",
+      "id": "3011dd7e-1e80-43c4-8db9-b83b18b201b5",
       "name": "AI Agent2"
     },
     {
@@ -2357,10 +2359,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        7776,
-        1728
+        -3680,
+        -624
       ],
-      "id": "790376b5-3df3-4b09-80dd-d224675507f6",
+      "id": "f565fdd3-aefd-441e-b55e-4e5ffd07f953",
       "name": "OpenAI Chat Model1"
     },
     {
@@ -2411,10 +2413,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        8096,
-        1520
+        -3360,
+        -832
       ],
-      "id": "e8a3d017-6107-41dc-8494-1418896ac842",
+      "id": "19a04ef4-a097-491f-8060-ee0df0cd6126",
       "name": "If1"
     },
     {
@@ -2434,10 +2436,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        8288,
-        1584
+        -3168,
+        -768
       ],
-      "id": "01e017e4-9e31-4f98-80cf-9cbfbbfa8297",
+      "id": "1c644a44-1f59-4c54-99ea-98c737721b21",
       "name": "Edit Fields"
     },
     {
@@ -2478,10 +2480,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        688,
-        464
+        -10768,
+        -1888
       ],
-      "id": "e42977df-853f-4e44-acff-9ddfa14909ed",
+      "id": "082685e9-2cf7-418a-83b4-e810e8eb2106",
       "name": "If Redis OK1"
     },
     {
@@ -2491,10 +2493,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        448,
-        32
+        -11008,
+        -2320
       ],
-      "id": "cfb00291-2af2-42d8-90ae-00b42df42de6",
+      "id": "2d6e21a1-ffd3-43bb-90bb-b5be7050a6dd",
       "name": "Wait3",
       "webhookId": "57eac84a-ce2d-4739-a3fc-f76dc268657e",
       "executeOnce": true
@@ -2527,10 +2529,10 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        400,
-        464
+        -11056,
+        -1888
       ],
-      "id": "de308e5f-9877-458d-af6a-28b95b8f33fd",
+      "id": "59e98b8c-a524-4534-b481-d3e89a03642c",
       "name": "Não encaminhada1"
     },
     {
@@ -2561,10 +2563,10 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        400,
-        288
+        -11056,
+        -2064
       ],
-      "id": "0513a290-eece-4b7e-b041-3dcc60bebb30",
+      "id": "2edcd30d-5c2d-416b-9ff4-2cc377ecfdc2",
       "name": "Encaminhada1"
     },
     {
@@ -2574,10 +2576,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        864,
-        480
+        -10592,
+        -1872
       ],
-      "id": "c7870adb-4488-418e-803e-88181b56b19a",
+      "id": "39567045-d734-450f-aced-81457cb5d57b",
       "name": "Loop1"
     },
     {
@@ -2591,10 +2593,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        816,
-        272
+        -10640,
+        -2080
       ],
-      "id": "7ba4bda6-cbf1-4653-9275-dca6d3dbb059",
+      "id": "f5bc153b-b8a3-4734-8343-db1dd2b65515",
       "name": "Lock process1"
     },
     {
@@ -2626,10 +2628,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        224,
-        384
+        -11232,
+        -1968
       ],
-      "id": "f375eb4f-e91d-4bca-89dd-79ba6382b7e5",
+      "id": "7c63bd51-5503-445c-9d60-2458337b25ba",
       "name": "If2"
     },
     {
@@ -2642,10 +2644,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        16,
-        -80
+        -11440,
+        -2432
       ],
-      "id": "64a19657-7478-43b5-8e39-a3f7956d62dd",
+      "id": "3a6a1f50-15b7-4c40-ad40-feccfd26ff32",
       "name": "Sticky Note10"
     },
     {
@@ -2656,10 +2658,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        960,
-        272
+        -10496,
+        -2080
       ],
-      "id": "62b28cf0-7508-47cd-bd8c-f7b96fb5819e",
+      "id": "772cabbd-02ed-41d7-8c3f-6bf9eb64a25e",
       "name": "Deleta Buffer1",
       "executeOnce": true
     },
@@ -2673,10 +2675,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        544,
-        288
+        -10912,
+        -2064
       ],
-      "id": "433442f5-9ac9-4bc3-b49b-f0e62777a63c",
+      "id": "e90fca42-e7c5-473f-b8d4-eafa9432de0a",
       "name": "Check Lock1"
     },
     {
@@ -2689,10 +2691,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        160,
-        32
+        -11296,
+        -2320
       ],
-      "id": "fbf254f6-17f3-47b8-b7a8-f92cac4ed5cc",
+      "id": "0c54a7ed-7ab0-4233-ae9d-58a045e056d6",
       "name": "Get Buffer ",
       "executeOnce": true
     },
@@ -2706,10 +2708,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        736,
-        32
+        -10720,
+        -2320
       ],
-      "id": "88b31790-5706-45b5-9508-b99db2f54ad3",
+      "id": "8150d5ce-69ec-42a5-82ba-7486de40770f",
       "name": "Get Buffer 3",
       "executeOnce": true
     },
@@ -2723,10 +2725,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        544,
-        464
+        -10912,
+        -1888
       ],
-      "id": "3ba11f98-2122-4c11-b992-742dc450e004",
+      "id": "0bc8a4e9-4239-4855-81e0-fdb17057263f",
       "name": "Check Lock Too1"
     },
     {
@@ -2741,10 +2743,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        8736,
-        2368
+        -2720,
+        16
       ],
-      "id": "3fb0ac55-ceb8-44f0-bf14-3984853b3101",
+      "id": "941d0c53-e06b-4d4e-936b-0e53812ced79",
       "name": "Redis7"
     },
     {
@@ -2756,10 +2758,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1968,
-        2032
+        -9488,
+        -320
       ],
-      "id": "be91c6e8-7e20-4064-a07a-0de43de64a5a",
+      "id": "d0eaf092-594d-4234-8f4f-69fe608cd99a",
       "name": "Redis1"
     },
     {
@@ -2772,10 +2774,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1424,
-        1920
+        -10032,
+        -432
       ],
-      "id": "4ffa3b3c-a095-4150-b73d-0661549d8150",
+      "id": "e5d9bce9-304e-4392-9f9a-e9bb88b95433",
       "name": "Get Buffer1",
       "executeOnce": true,
       "retryOnFail": false
@@ -2808,10 +2810,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1744,
-        1920
+        -9712,
+        -432
       ],
-      "id": "a113e3ed-3b6f-4412-916b-c5edd4a99238",
+      "id": "3177ebde-0476-4263-b8ea-26e282530230",
       "name": "If3"
     },
     {
@@ -2823,10 +2825,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        8736,
-        1712
+        -2720,
+        -640
       ],
-      "id": "bdd02e6a-17d8-4265-8c79-1618a173e131",
+      "id": "ce1436aa-ada1-4101-8b73-1056e6f4ac91",
       "name": "Redis Chat Memory"
     },
     {
@@ -2857,10 +2859,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        6400,
-        1840
+        -5056,
+        -512
       ],
-      "id": "e05dfc9e-c882-4166-8fa8-f27a5c44c7b3",
+      "id": "a2fa32e0-a93c-4f1c-9ec4-35f24613f5cb",
       "name": "If4"
     },
     {
@@ -2873,10 +2875,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        7696,
-        2048
+        -3760,
+        -304
       ],
-      "id": "52b76612-ab50-485a-8f6a-3b4bdc1f8c0f",
+      "id": "050de248-477c-486e-a9ed-100304c5d231",
       "name": "Get Buffer 4",
       "executeOnce": true
     },
@@ -2908,10 +2910,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        7856,
-        2048
+        -3600,
+        -304
       ],
-      "id": "4c9b5129-1617-470d-919e-5d80f21af568",
+      "id": "eea20015-a95e-4a86-8d80-cc779eb62888",
       "name": "If5"
     },
     {
@@ -2919,10 +2921,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        8064,
-        2224
+        -3392,
+        -128
       ],
-      "id": "03d51f0a-8e4b-4b98-a8f3-f062122903cb",
+      "id": "71d88d96-2308-4ca4-9d2d-64aac674ab25",
       "name": "Organização3"
     },
     {
@@ -2933,10 +2935,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3920,
-        1872
+        -7536,
+        -480
       ],
-      "id": "c8072648-5f25-4893-bf7e-60903769c7f4",
+      "id": "01e8e31c-50b3-4060-8c63-5109bb11c2d8",
       "name": "Delete Msg ID Buffer 1"
     },
     {
@@ -2947,10 +2949,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        7536,
-        2048
+        -3920,
+        -304
       ],
-      "id": "3891c785-7573-45bf-8a72-251c23d4717c",
+      "id": "14e1ce83-9862-41cb-95f0-bf590755c8af",
       "name": "Delete MSG ID Buffer"
     },
     {
@@ -2967,10 +2969,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        7056,
-        2144
+        -4400,
+        -208
       ],
-      "id": "7984405f-489a-41d1-a5d9-c50f59353c22",
+      "id": "3f2f0300-c23f-44c7-b6f7-31c867db170a",
       "name": "Z-API"
     },
     {
@@ -2982,10 +2984,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        7376,
-        2048
+        -4080,
+        -304
       ],
-      "id": "17da323f-968f-4273-bc70-9398cd9f4dc2",
+      "id": "0e5a9a01-5b15-4c06-8f9f-a7a9d877da30",
       "name": "Redis2",
       "retryOnFail": false,
       "maxTries": 2
@@ -3003,10 +3005,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        7248,
-        2048
+        -4208,
+        -304
       ],
-      "id": "86a44a10-ac9d-4478-8b5e-d94e34dd1131",
+      "id": "e894c161-9e0b-47f4-8767-438813e8ccca",
       "name": "Redis4"
     },
     {
@@ -3021,10 +3023,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        9600,
-        2384
+        -1856,
+        32
       ],
-      "id": "804fddf2-3f45-42c5-8350-f96af382302f",
+      "id": "e31606a3-ab71-4f96-a5ff-dd781a10cca7",
       "name": "Redis9",
       "retryOnFail": false,
       "maxTries": 2
@@ -3040,10 +3042,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        11344,
-        1504
+        -112,
+        -848
       ],
-      "id": "ef463881-77a8-4ad8-be2d-2b02288b8b35",
+      "id": "9f86e030-9689-44d4-9eca-b7d3e9dfe5bc",
       "name": "AI Agent3"
     },
     {
@@ -3058,10 +3060,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        11344,
-        1712
+        -112,
+        -640
       ],
-      "id": "fb0e0617-40b0-4e91-801c-5bd1f78ec820",
+      "id": "3f2b02cd-5986-4dda-a1ec-68b445fdf16a",
       "name": "OpenAI Chat Model2"
     },
     {
@@ -3074,10 +3076,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        11120,
-        1440
+        -336,
+        -912
       ],
-      "id": "4041ee16-30e3-48bb-8ab8-299646208a22",
+      "id": "c0a3c7ca-d832-4025-be6d-f266521c47b5",
       "name": "Redis10"
     },
     {
@@ -3088,10 +3090,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        11664,
-        1504
+        208,
+        -848
       ],
-      "id": "166ba9a1-636c-459c-bb6b-a22c73421437",
+      "id": "90bebd7a-2ff1-4b14-b7fd-1153972a7714",
       "name": "Del DB Tmp"
     },
     {
@@ -3171,10 +3173,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        11856,
-        1504
+        400,
+        -848
       ],
-      "id": "745ddff4-fc03-492d-8aa7-376b23335485",
+      "id": "3820557d-4314-4b43-a408-6cdce098a8a0",
       "name": "Switch2"
     },
     {
@@ -3201,10 +3203,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        12176,
-        1344
+        720,
+        -1008
       ],
-      "id": "a71e280c-6309-4b71-9dd9-c28f29a6099c",
+      "id": "3b639237-d5f2-4637-b817-7d674adad96b",
       "name": "Relat. Cesar"
     },
     {
@@ -3231,10 +3233,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        12176,
-        1504
+        720,
+        -848
       ],
-      "id": "28f95847-b5de-4099-bb21-ad5835ab5fc2",
+      "id": "29e91a38-fa65-4607-95a3-8e25d94c858d",
       "name": "Relat. Nei"
     },
     {
@@ -3261,10 +3263,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        12176,
-        1664
+        720,
+        -688
       ],
-      "id": "003ff670-fec3-4fc1-8f1f-9fa65007433a",
+      "id": "a3d98e36-2bf8-4bdf-ae71-93ac40b2674c",
       "name": "Relat. Davi"
     },
     {
@@ -3295,10 +3297,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        10896,
-        1504
+        -560,
+        -848
       ],
-      "id": "b364269f-8251-4931-beee-40e45b7febae",
+      "id": "f08b9153-a018-41f2-bf2b-416bac588dce",
       "name": "If7"
     },
     {
@@ -3312,10 +3314,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        10736,
-        1504
+        -720,
+        -848
       ],
-      "id": "0acd0935-662e-4a84-b4f1-42e3cb818fbc",
+      "id": "f3813777-d481-4417-a6be-c2806c22af0a",
       "name": "GetStat1"
     },
     {
@@ -3327,10 +3329,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        9920,
-        1424
+        -1536,
+        -928
       ],
-      "id": "d23e1cca-8176-47c0-b6f8-4d8bf361024a",
+      "id": "97f60836-19b8-4396-990f-29ddd2de3311",
       "name": "Sticky Note"
     },
     {
@@ -3343,10 +3345,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        10656,
-        1312
+        -800,
+        -1040
       ],
-      "id": "6a8876ac-4640-4e1a-aa31-fbcdf0afca2b",
+      "id": "79dd5778-a7cd-466a-acae-9a9d58da8b45",
       "name": "Sticky Note1"
     },
     {
@@ -3354,10 +3356,10 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        9664,
-        1824
+        -1792,
+        -528
       ],
-      "id": "61050f95-36fc-462d-9e95-45b2071909c6",
+      "id": "4bdbb946-bfe9-4ccf-b8c2-e7ac32131f2a",
       "name": "No Operation, do nothing"
     },
     {
@@ -3369,10 +3371,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        6688,
-        1408
+        -4768,
+        -944
       ],
-      "id": "62e49e6b-3497-4876-9e3e-c3aad5f486ef",
+      "id": "85f17d12-c492-4732-b305-56b31e4866ce",
       "name": "Sticky Note2"
     },
     {
@@ -3384,10 +3386,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        7664,
-        1408
+        -3792,
+        -944
       ],
-      "id": "bb149580-05d8-494f-b5e0-3a924c0719a3",
+      "id": "b6ab6486-5846-4df7-b7a6-db4e9075daf5",
       "name": "Sticky Note3"
     },
     {
@@ -3400,10 +3402,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        8560,
-        1408
+        -2896,
+        -944
       ],
-      "id": "f3419fae-a15b-4d6b-b77d-b855294a965b",
+      "id": "efe555e9-a04d-45e1-a37a-b61f6593bb37",
       "name": "Sticky Note4"
     },
     {
@@ -3416,10 +3418,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        6688,
-        1888
+        -4768,
+        -464
       ],
-      "id": "6d8c0ae4-20f2-48dd-b0fc-33d0f38f92a6",
+      "id": "aa8a4528-db56-444c-91cb-b1829a2d9ced",
       "name": "Sticky Note5"
     },
     {
@@ -3432,10 +3434,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        5824,
-        1760
+        -5632,
+        -592
       ],
-      "id": "e05d7f83-08b1-4bc6-b516-3b8350c32e0f",
+      "id": "98c6eace-d3c2-4517-950b-71deed0fbdef",
       "name": "Sticky Note6"
     },
     {
@@ -3448,10 +3450,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3296,
-        1648
+        -8160,
+        -704
       ],
-      "id": "ac457744-f44d-4330-b787-d6cd141a323e",
+      "id": "904a3a32-d491-4fa5-9059-aadbf8c2b176",
       "name": "Sticky Note7"
     },
     {
@@ -3464,10 +3466,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4480,
-        1728
+        -6976,
+        -624
       ],
-      "id": "8876d6df-813d-4c61-bfe6-cd9cb116b815",
+      "id": "d877a775-f2e4-4b66-bf18-7f12b8c600fb",
       "name": "Sticky Note8"
     },
     {
@@ -3480,10 +3482,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1120,
-        1648
+        -10336,
+        -704
       ],
-      "id": "35e76a16-5884-4be6-85a7-0f67af46aa72",
+      "id": "b21f5c5d-8661-4b3f-ab95-cec9e81663a1",
       "name": "Sticky Note9"
     },
     {
@@ -3516,10 +3518,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1200,
-        1872
+        -10256,
+        -480
       ],
-      "id": "671cd7f9-7708-4f13-93c4-8da4bbeacaa8",
+      "id": "03c76287-058c-4215-862c-9b5213273e9a",
       "name": "IF FromMe"
     },
     {
@@ -3551,10 +3553,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1424,
-        1760
+        -10032,
+        -592
       ],
-      "id": "207d5e43-fe4c-4dec-926f-fe70c28c62f3",
+      "id": "9d5922ac-57ce-4edd-91f5-178600a621cc",
       "name": "IF Not From Max"
     },
     {
@@ -3569,10 +3571,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1728,
-        1744
+        -9728,
+        -608
       ],
-      "id": "c2f1c12c-c214-4d97-b833-03fc8c5cdf87",
+      "id": "ffd3a647-5708-42bb-85ef-f7cde1eab260",
       "name": "Block Agente"
     },
     {
@@ -3584,10 +3586,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2416,
-        1792
+        -9040,
+        -560
       ],
-      "id": "9a043d98-b019-4977-8ade-dc2396d3ab94",
+      "id": "c712b9d2-31fe-40da-ba3f-14eb82c4e043",
       "name": "Sticky Note11"
     },
     {
@@ -3600,10 +3602,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        5344,
-        1872
+        -6112,
+        -480
       ],
-      "id": "2c619bdd-93f6-4bc3-91f1-a6d56c87c1b0",
+      "id": "b43ff570-51d8-461e-bba8-faa3b39be66f",
       "name": "Get MsgID",
       "executeOnce": true
     },
@@ -3645,10 +3647,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        5568,
-        1872
+        -5888,
+        -480
       ],
-      "id": "65f05b50-2919-40fa-8a00-10eb19192bd2",
+      "id": "001055b1-10d8-4d28-ae23-6da944151817",
       "name": "If MsgID OK"
     },
     {
@@ -3661,10 +3663,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -32,
-        1760
+        -11488,
+        -592
       ],
-      "id": "055efa55-6be6-494e-9122-3853c6c843d8",
+      "id": "9bd8470e-fb61-40cb-b92e-1d77484f6edd",
       "name": "Sticky Note12"
     },
     {
@@ -3677,10 +3679,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        768,
-        2304
+        -10688,
+        -48
       ],
-      "id": "7a7f5360-b165-4f85-b83f-2f0fa68c5295",
+      "id": "1102fbeb-0575-4e0b-bd12-c71162602dc7",
       "name": "Sticky Note13"
     },
     {
@@ -3711,10 +3713,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        208,
-        1872
+        -11248,
+        -480
       ],
-      "id": "fce48cb3-33f6-49b8-b93d-23100ac88bbd",
+      "id": "20752cc5-3167-4f6f-a868-bbfa90415d59",
       "name": "If9"
     }
   ],
@@ -3734,6 +3736,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-08-19T22:13:10.000Z",
-  "versionId": "c08ee697-f784-409a-bde8-12d2d7615349"
+  "updatedAt": "2025-09-01T19:14:54.000Z",
+  "versionId": "abc0a74e-388c-498e-947c-14150cdebb97"
 }
