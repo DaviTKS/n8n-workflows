@@ -1,0 +1,673 @@
+{
+  "active": false,
+  "connections": {
+    "Create folder1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create folder1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Mes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mes1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create folder": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders3": {
+      "main": [
+        [
+          {
+            "node": "Get a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-01T19:28:14.427Z",
+  "id": "wyXBRT1xpKqvGCHt",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Backup Workflow Drive",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -704,
+        -16
+      ],
+      "id": "81cd6e8e-4f9f-4fb6-b61d-c0e92e744e46",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Mes1').item.json.mes_extenso }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+          "mode": "list",
+          "cachedResultName": "N8N",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        576,
+        96
+      ],
+      "id": "a7e04bbd-ce56-4b1d-ac89-b6d33ba333c2",
+      "name": "Create folder1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75f9532a-cbe0-4f5f-9333-6f0e3037b075",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $('Mes1').item.json.mes_extenso }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        448,
+        -16
+      ],
+      "id": "da35cc9b-cd4d-43f1-91e5-c9d7ef0fdfdb",
+      "name": "If1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+            "mode": "list",
+            "cachedResultName": "N8N",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        256,
+        -16
+      ],
+      "id": "61cf40a9-d8c9-4cc3-ac33-6da456cdb08d",
+      "name": "Search files and folders1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+            "mode": "list",
+            "cachedResultName": "N8N",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        720,
+        -16
+      ],
+      "id": "657ed5e2-db40-4040-8e14-c5d6275e16ea",
+      "name": "Search files and folders",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        -16
+      ],
+      "id": "dfb29dce-5f6f-497b-b3d1-5d0e31f64e26",
+      "name": "Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "const meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -160,
+        -16
+      ],
+      "id": "4045db52-a779-4464-926a-fa8f2ceebb93",
+      "name": "Mes1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        -16
+      ],
+      "id": "cd6467af-c5bd-48b5-9966-53714de77ead",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Code1').item.json.dataFormatada }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Search files and folders').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1248,
+        96
+      ],
+      "id": "65da67f0-fbef-4096-9ebe-2baccfd08086",
+      "name": "Create folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75f9532a-cbe0-4f5f-9333-6f0e3037b075",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $('Code1').item.json.dataFormatada }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        -16
+      ],
+      "id": "112b0f3c-0988-4ada-b3bc-bf8f34967463",
+      "name": "If",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Code1').item.json.dataFormatada }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "={{ $json.id }}",
+            "mode": "id"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        928,
+        -16
+      ],
+      "id": "e7745705-29dc-4272-91ca-3073ec2ca5d6",
+      "name": "Search files and folders2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('Code1').item.json.dataFormatada }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "={{ $('Search files and folders').item.json.id }}",
+            "mode": "id"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1392,
+        -32
+      ],
+      "id": "0212af75-6e1d-4087-9c57-cfed426a50a8",
+      "name": "Search files and folders3",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "get",
+        "owner": {
+          "__rl": true,
+          "value": "={{ $('Config').item.json.repo_owner }}",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "={{ $('Config').item.json.repo_name }}",
+          "mode": "name"
+        },
+        "filePath": "={{ $('Config').item.json.path }}{{ $('Config').item.json.content.path }}",
+        "additionalParameters": {}
+      },
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [
+        1568,
+        -32
+      ],
+      "id": "fe7a3a2e-a772-4f23-938e-eeb19e00f537",
+      "name": "Get a file",
+      "webhookId": "3ef1c9da-9694-4e4f-a39c-8198968729f3",
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "cudddw6XIvtNsVXV",
+          "name": "GitHub account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "03f51f9c-4681-4423-91d2-d32f4c18d6bc",
+              "name": "repo_owner",
+              "type": "string",
+              "value": "DaviTKS"
+            },
+            {
+              "id": "0c9b521a-b698-4b43-9eb0-bbf744760158",
+              "name": "repo_name",
+              "type": "string",
+              "value": "n8n-workflows"
+            },
+            {
+              "id": "91627e70-a71a-4be0-a6f6-b04d5c8469d8",
+              "name": "repo_path",
+              "type": "string",
+              "value": "n8n-workflows"
+            },
+            {
+              "id": "983a2c87-9d69-4d64-ab88-ec1b1117c6e6",
+              "name": "sub_path",
+              "type": "string",
+              "value": "backup"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "9d5c2cdf-ed39-4b4c-b9d1-9d5e147eb5bd",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -544,
+        -16
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Config').item.json.name }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Search files and folders3').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1776,
+        -32
+      ],
+      "id": "464fe996-04e7-4ab7-b384-ed8e2db5099e",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {
+          "content": {
+            "name": "Backup Workflows.json",
+            "path": "backup/Backup Workflows.json",
+            "sha": "b795148ac547062b765e6882ed562e32a56cdefc",
+            "size": 18811,
+            "url": "https://api.github.com/repos/DaviTKS/n8n-workflows/contents/backup/Backup%20Workflows.json?ref=main",
+            "html_url": "https://github.com/DaviTKS/n8n-workflows/blob/main/backup/Backup%20Workflows.json",
+            "git_url": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/blobs/b795148ac547062b765e6882ed562e32a56cdefc",
+            "download_url": "https://raw.githubusercontent.com/DaviTKS/n8n-workflows/main/backup/Backup%20Workflows.json",
+            "type": "file",
+            "_links": {
+              "self": "https://api.github.com/repos/DaviTKS/n8n-workflows/contents/backup/Backup%20Workflows.json?ref=main",
+              "git": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/blobs/b795148ac547062b765e6882ed562e32a56cdefc",
+              "html": "https://github.com/DaviTKS/n8n-workflows/blob/main/backup/Backup%20Workflows.json"
+            }
+          },
+          "commit": {
+            "sha": "b73c3806283772dedf73e3fbc6a6a825642310c2",
+            "node_id": "C_kwDOPRrYSNoAKGI3M2MzODA2MjgzNzcyZGVkZjczZTNmYmM2YTZhODI1NjQyMzEwYzI",
+            "url": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/commits/b73c3806283772dedf73e3fbc6a6a825642310c2",
+            "html_url": "https://github.com/DaviTKS/n8n-workflows/commit/b73c3806283772dedf73e3fbc6a6a825642310c2",
+            "author": {
+              "name": "UserKdosh",
+              "email": "82321794+DaviTKS@users.noreply.github.com",
+              "date": "2025-09-05T17:44:31Z"
+            },
+            "committer": {
+              "name": "UserKdosh",
+              "email": "82321794+DaviTKS@users.noreply.github.com",
+              "date": "2025-09-05T17:44:31Z"
+            },
+            "tree": {
+              "sha": "0df9078c01cb7e85634384b4cd6b91cfe1aa8ad7",
+              "url": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/trees/0df9078c01cb7e85634384b4cd6b91cfe1aa8ad7"
+            },
+            "message": "Backup Workflows (different)",
+            "parents": [
+              {
+                "sha": "c1e426df9aabc0093e7182aa5d6633c962b4ef40",
+                "url": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/commits/c1e426df9aabc0093e7182aa5d6633c962b4ef40",
+                "html_url": "https://github.com/DaviTKS/n8n-workflows/commit/c1e426df9aabc0093e7182aa5d6633c962b4ef40"
+              }
+            ],
+            "verification": {
+              "verified": false,
+              "reason": "unsigned",
+              "signature": null,
+              "payload": null,
+              "verified_at": null
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-01T19:28:14.451Z",
+      "updatedAt": "2025-09-01T19:28:14.451Z",
+      "role": "workflow:owner",
+      "workflowId": "wyXBRT1xpKqvGCHt",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-05T17:45:57.000Z",
+  "versionId": "3841dc23-24cb-4b9c-b29c-32309931f6f7"
+}
