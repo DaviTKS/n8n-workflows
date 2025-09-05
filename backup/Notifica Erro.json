@@ -1,0 +1,304 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Z-API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-05T17:16:43.690Z",
+  "id": "hayrMe7QpDgBDUbE",
+  "isArchived": false,
+  "meta": null,
+  "name": "Notifica Erro",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "5512982113000"
+            },
+            {
+              "name": "message",
+              "value": "=⚠️ Davi, encontramos um erro no Workflow *{{ $json.workflow.name }}*.\n\n\n➡️ Nó com erro: *{{ $json.execution.lastNodeExecuted }}*\n\n➡️ Problema: _{{ $json.execution.error.description }}_\n\n➡️ Descrição: _{{ $json.execution.error.message }}_"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        192,
+        0
+      ],
+      "id": "1b9065e5-8f4c-4f93-8763-57f273ae1090",
+      "name": "Z-API",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2807f17d-f155-432d-a91c-ee4af624bab1",
+      "name": "Error Trigger"
+    }
+  ],
+  "pinData": {
+    "Error Trigger": [
+      {
+        "json": {
+          "execution": {
+            "id": "1912",
+            "url": "https://auto.kadovesh.com/workflow/Ux9gNIxJfGnNvNGV/executions/1912",
+            "error": {
+              "level": "warning",
+              "tags": {},
+              "description": "Key (os_number)=(25611) already exists.",
+              "timestamp": 1757093160051,
+              "context": {},
+              "functionality": "regular",
+              "name": "NodeOperationError",
+              "node": {
+                "parameters": {
+                  "resource": "database",
+                  "operation": "insert",
+                  "schema": {
+                    "__rl": true,
+                    "mode": "list",
+                    "value": "public"
+                  },
+                  "table": {
+                    "__rl": true,
+                    "value": "ordens_servico",
+                    "mode": "list",
+                    "cachedResultName": "ordens_servico"
+                  },
+                  "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                      "os_number": "={{ $('Telefone').item.json.OS }}",
+                      "entrada": "={{ $('Sauda2').item.json.dataFormatada.split(' ')[0] }}",
+                      "telefone": "={{ $('Webhook').item.json.body.telefone }}",
+                      "nome": "={{ $('dados').item.json.body.nome }}",
+                      "sobrenome": "={{ $('dados').item.json.body.sobrenome }}",
+                      "aparelho": "={{ $('dados').item.json.body.aparelho }}",
+                      "marca": "={{ $('dados').item.json.body.marca }}",
+                      "modelo": "={{ $('dados').item.json.body.modelo }}",
+                      "defeito": "={{ $('dados').item.json.body.defeito }}",
+                      "observacoes": "={{ $('dados').item.json.body.observacoes }}",
+                      "created_at": "={{ $json.created_at }}",
+                      "status": "Aguardando Orçamento"
+                    },
+                    "matchingColumns": [
+                      "id"
+                    ],
+                    "schema": [
+                      {
+                        "id": "id",
+                        "displayName": "id",
+                        "required": false,
+                        "defaultMatch": true,
+                        "display": true,
+                        "type": "number",
+                        "canBeUsedToMatch": true,
+                        "removed": true
+                      },
+                      {
+                        "id": "os_number",
+                        "displayName": "os_number",
+                        "required": true,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "number",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "telefone",
+                        "displayName": "telefone",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "nome",
+                        "displayName": "nome",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "sobrenome",
+                        "displayName": "sobrenome",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "aparelho",
+                        "displayName": "aparelho",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "marca",
+                        "displayName": "marca",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "modelo",
+                        "displayName": "modelo",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "defeito",
+                        "displayName": "defeito",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "observacoes",
+                        "displayName": "observacoes",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "entrada",
+                        "displayName": "entrada",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "created_at",
+                        "displayName": "created_at",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "dateTime",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "status",
+                        "displayName": "status",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "saida",
+                        "displayName": "saida",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      }
+                    ],
+                    "attemptToConvertTypes": false,
+                    "convertFieldsToString": false
+                  },
+                  "options": {}
+                },
+                "type": "n8n-nodes-base.postgres",
+                "typeVersion": 2.6,
+                "position": [
+                  -1488,
+                  816
+                ],
+                "id": "5f19ecce-0115-4b16-bed9-4b87a6699868",
+                "name": "Salve Histórico",
+                "credentials": {
+                  "postgres": {
+                    "id": "ZEobhMYEeazW7SRl",
+                    "name": "Postgres account"
+                  }
+                }
+              },
+              "messages": [],
+              "message": "duplicate key value violates unique constraint \"ordens_servico_os_number_key\"",
+              "stack": "NodeOperationError: duplicate key value violates unique constraint \"ordens_servico_os_number_key\"\n    at parsePostgresError (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_1af219c3f47f2a1223ec4ccec249a974/node_modules/n8n-nodes-base/nodes/Postgres/v2/helpers/utils.ts:124:9)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_1af219c3f47f2a1223ec4ccec249a974/node_modules/n8n-nodes-base/nodes/Postgres/v2/helpers/utils.ts:279:19\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_1af219c3f47f2a1223ec4ccec249a974/node_modules/n8n-nodes-base/nodes/Postgres/v2/actions/database/insert.operation.ts:253:9)\n    at ExecuteContext.router (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_1af219c3f47f2a1223ec4ccec249a974/node_modules/n8n-nodes-base/nodes/Postgres/v2/actions/router.ts:41:17)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_1af219c3f47f2a1223ec4ccec249a974/node_modules/n8n-nodes-base/nodes/Postgres/v2/PostgresV2.node.ts:26:10)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_5aee33ef851c7de341eb325c6a25e0ff/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1253:8)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_5aee33ef851c7de341eb325c6a25e0ff/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1427:11)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_5aee33ef851c7de341eb325c6a25e0ff/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1727:27\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+sdk-trace-base@1.30_5aee33ef851c7de341eb325c6a25e0ff/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:2303:11"
+            },
+            "lastNodeExecuted": "Salve Histórico",
+            "mode": "webhook"
+          },
+          "workflow": {
+            "id": "Ux9gNIxJfGnNvNGV",
+            "name": "Gerar OS"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-05T17:16:43.696Z",
+      "updatedAt": "2025-09-05T17:16:43.696Z",
+      "role": "workflow:owner",
+      "workflowId": "hayrMe7QpDgBDUbE",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-05T17:35:16.000Z",
+  "versionId": "fb1e3a55-40b7-449e-9c22-df14597be590"
+}
