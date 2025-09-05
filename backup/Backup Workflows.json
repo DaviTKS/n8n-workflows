@@ -52,7 +52,7 @@
         ],
         [
           {
-            "node": "Return",
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
@@ -64,11 +64,6 @@
         [
           {
             "node": "If",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Execute Workflow",
             "type": "main",
             "index": 0
           }
@@ -112,7 +107,7 @@
       "main": [
         [
           {
-            "node": "Return",
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
@@ -151,7 +146,7 @@
       "main": [
         [
           {
-            "node": "Return",
+            "node": "No Operation, do nothing",
             "type": "main",
             "index": 0
           }
@@ -170,6 +165,22 @@
         [
           {
             "node": "Merge Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Return",
             "type": "main",
             "index": 0
           }
@@ -203,8 +214,8 @@
       "name": "Return",
       "type": "n8n-nodes-base.set",
       "position": [
-        1152,
-        464
+        1440,
+        496
       ],
       "typeVersion": 3.3
     },
@@ -560,8 +571,8 @@
       "name": "Get File",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        0,
-        0
+        96,
+        -192
       ],
       "typeVersion": 4.2
     },
@@ -643,11 +654,22 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -656,
-        -64
+        1440,
+        304
       ],
       "id": "a0e01145-b4d8-4b6d-a998-2eb27e8a3312",
       "name": "Execute Workflow"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1184,
+        368
+      ],
+      "id": "bcaa540a-3799-41ae-9bde-0979e9cba5d4",
+      "name": "No Operation, do nothing"
     }
   ],
   "pinData": {},
@@ -670,6 +692,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-05T17:39:44.000Z",
-  "versionId": "cb44d1aa-d633-4c2c-8eaf-47f7d9829210"
+  "updatedAt": "2025-09-05T17:44:19.000Z",
+  "versionId": "4570af4d-c9c5-48d6-b7fe-cebe90896aae"
 }
