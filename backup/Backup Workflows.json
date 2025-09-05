@@ -318,7 +318,17 @@
                 "operation": "afterOrEquals"
               },
               "leftValue": "={{ $json.updatedAt }}",
-              "rightValue": "={{ $now.minus(100, 'days') }}"
+              "rightValue": "={{ $now.minus(1, 'days') }}"
+            },
+            {
+              "id": "0ef17efa-d70c-4288-b8c0-410fbfa04f7e",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
             }
           ],
           "combinator": "and"
@@ -333,36 +343,6 @@
         272
       ],
       "typeVersion": 2.2
-    },
-    {
-      "parameters": {
-        "content": "# Links\n- ## [Github Folder](https://github.com/AndrewBoichenko/n8n-workflows/)",
-        "height": 120,
-        "width": 400
-      },
-      "id": "71fd2651-675d-4d99-b929-f8cbec979100",
-      "name": "Sticky Note3",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -2640,
-        112
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "content": "# How it works \nThis workflow will backup all instance workflows to GitHub every 24 hours.\n\nThe files are saved into folders using `repo_path` for the directory path and `ID.json` for the filename.\nThe Repo Owner, Repo Name and Main folder are set using the `Config` node in the subworkflow. \n\nThe workflow runs calls itself to help reduce memory usage, Once the workflow has completed it will send an optional notification to Slack.\n\nPlease check out my other items on [gumroad](https://boanse.gumroad.com/?section=k_Sn6LcT_dzJFnp5jmsM5A%3D%3D)\nYou might also like something else☺️",
-        "height": 340,
-        "width": 400
-      },
-      "id": "31ee9db5-b5f3-4821-af34-4ae81669f52d",
-      "name": "Sticky Note4",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -2640,
-        272
-      ],
-      "typeVersion": 1
     },
     {
       "parameters": {
@@ -690,6 +670,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-01T19:40:24.000Z",
-  "versionId": "6e0fe818-b687-43d2-b14e-9ce55ed683a4"
+  "updatedAt": "2025-09-05T17:39:44.000Z",
+  "versionId": "cb44d1aa-d633-4c2c-8eaf-47f7d9829210"
 }
