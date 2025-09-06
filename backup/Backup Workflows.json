@@ -353,7 +353,8 @@
         -1280,
         272
       ],
-      "typeVersion": 2.2
+      "typeVersion": 2.2,
+      "disabled": true
     },
     {
       "parameters": {
@@ -674,7 +675,9 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "hayrMe7QpDgBDUbE"
   },
   "shared": [
     {
@@ -692,6 +695,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-05T17:44:19.000Z",
-  "versionId": "4570af4d-c9c5-48d6-b7fe-cebe90896aae"
+  "updatedAt": "2025-09-05T17:52:28.000Z",
+  "versionId": "29668710-bc28-4543-a6ab-5366dcb48c84"
 }
