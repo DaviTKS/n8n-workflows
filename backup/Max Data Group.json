@@ -3398,7 +3398,9 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "hayrMe7QpDgBDUbE"
   },
   "shared": [
     {
@@ -3412,6 +3414,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-06T01:45:50.000Z",
-  "versionId": "2e9fc4be-a76e-4ece-8061-d560d9831ad4"
+  "updatedAt": "2025-09-05T18:56:50.000Z",
+  "versionId": "aa38a3b4-a35b-4eb3-bcf3-6c69020acf51"
 }
