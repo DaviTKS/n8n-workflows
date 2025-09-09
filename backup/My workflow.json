@@ -68,9 +68,9 @@
       ]
     }
   },
-  "createdAt": "2025-09-02T14:07:04.220Z",
-  "id": "M0DM7jV1qLsunShZ",
-  "isArchived": true,
+  "createdAt": "2025-09-08T14:28:43.112Z",
+  "id": "w8yd5hqGXUAi2pAW",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -89,33 +89,33 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [
-        0,
-        0
+        -608,
+        16
       ],
-      "id": "c2755a74-2d9a-4a8c-91ec-2caf1b2a8549",
+      "id": "b1348e01-d9a0-4d0a-bb6b-9eb95dd5d2e2",
       "name": "Schedule Trigger"
     },
     {
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1t5KP0Vqp9s9t9CMLTBFBS3LuKNp1IGVflFA-FvL05qA",
+          "value": "1tf4rSHmhZilWwAWzpa8ScvhkRf62at96ynG3mAn-qgA",
           "mode": "list",
-          "cachedResultName": "Planilha Controle Leads - M Molde",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1t5KP0Vqp9s9t9CMLTBFBS3LuKNp1IGVflFA-FvL05qA/edit?usp=drivesdk"
+          "cachedResultName": "Controle Gestão",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tf4rSHmhZilWwAWzpa8ScvhkRf62at96ynG3mAn-qgA/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 145359463,
+          "value": 1394882912,
           "mode": "list",
-          "cachedResultName": "val",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1t5KP0Vqp9s9t9CMLTBFBS3LuKNp1IGVflFA-FvL05qA/edit#gid=145359463"
+          "cachedResultName": "Controle",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tf4rSHmhZilWwAWzpa8ScvhkRf62at96ynG3mAn-qgA/edit#gid=1394882912"
         },
         "filtersUI": {
           "values": [
             {
-              "lookupColumn": "ANUNCIO APARECEU",
-              "lookupValue": "641"
+              "lookupColumn": "AUTO",
+              "lookupValue": "*"
             }
           ]
         },
@@ -124,10 +124,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        544,
-        0
+        -112,
+        16
       ],
-      "id": "01294cc7-bba7-4ab7-99ad-add134c9a132",
+      "id": "3721b41d-d300-4cb2-ba27-5be48c2526e6",
       "name": "Get row(s) in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -144,10 +144,10 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        160,
-        0
+        -432,
+        16
       ],
-      "id": "43a80796-f749-44e8-887c-7094eaa7ce8c",
+      "id": "e051588e-10c6-4519-8b40-4277f0c49744",
       "name": "Data",
       "executeOnce": true
     },
@@ -158,10 +158,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        336,
-        0
+        -272,
+        16
       ],
-      "id": "517f8cf8-5676-498d-a8a2-9c070c3d5cbe",
+      "id": "eef12b0b-fecc-4ce8-a01e-68fcf8bc35fe",
       "name": "Code1"
     },
     {
@@ -171,7 +171,7 @@
             {
               "conditions": {
                 "options": {
-                  "caseSensitive": true,
+                  "caseSensitive": false,
                   "leftValue": "",
                   "typeValidation": "loose",
                   "version": 2
@@ -179,7 +179,7 @@
                 "conditions": [
                   {
                     "id": "cf80730c-c59d-4f39-902b-2f6998e733c9",
-                    "leftValue": "={{ $json['DIAS PARA ESGOTAR'] }}",
+                    "leftValue": "={{ $json['DIAS PARA ESGOTAR'].round()}}",
                     "rightValue": 3,
                     "operator": {
                       "type": "number",
@@ -195,14 +195,14 @@
             {
               "conditions": {
                 "options": {
-                  "caseSensitive": true,
+                  "caseSensitive": false,
                   "leftValue": "",
                   "typeValidation": "loose",
                   "version": 2
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json['DIAS PARA ESGOTAR'] }}",
+                    "leftValue": "={{ $json['DIAS PARA ESGOTAR'].round()}}",
                     "rightValue": 7,
                     "operator": {
                       "type": "number",
@@ -226,10 +226,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        1168,
-        0
+        464,
+        16
       ],
-      "id": "2364365f-1962-4e53-aaf0-7891bd21c167",
+      "id": "474a6013-eb84-4295-acc7-836868df6dc4",
       "name": "Switch"
     },
     {
@@ -251,10 +251,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        944,
-        0
+        208,
+        16
       ],
-      "id": "2afa2a66-8314-4119-a71f-982e34fd5615",
+      "id": "cc2470af-ad32-4c72-9574-39efeb059691",
       "name": "Edit Fields"
     },
     {
@@ -265,10 +265,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        752,
-        0
+        48,
+        16
       ],
-      "id": "2fc8f4b4-55fc-44c1-abd4-0db252fea453",
+      "id": "43471ef8-26b1-465d-9195-8e64a662b873",
       "name": "Split Out"
     }
   ],
@@ -278,16 +278,16 @@
   },
   "shared": [
     {
-      "createdAt": "2025-09-02T14:07:04.225Z",
-      "updatedAt": "2025-09-02T14:07:04.225Z",
+      "createdAt": "2025-09-08T14:28:43.119Z",
+      "updatedAt": "2025-09-08T14:28:43.119Z",
       "role": "workflow:owner",
-      "workflowId": "M0DM7jV1qLsunShZ",
+      "workflowId": "w8yd5hqGXUAi2pAW",
       "projectId": "O2voI4XYg26wWumH"
     }
   ],
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-02T14:24:24.000Z",
-  "versionId": "2e54b1bf-adfb-4f09-b684-f90d98d37cbb"
+  "updatedAt": "2025-09-08T14:28:43.112Z",
+  "versionId": "dd586ef9-9330-4c35-9aff-de8b95e29d8d"
 }
