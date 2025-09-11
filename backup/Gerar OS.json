@@ -2982,9 +2982,9 @@
         },
         "table": {
           "__rl": true,
-          "value": "Usuarios",
+          "value": "usuarios",
           "mode": "list",
-          "cachedResultName": "Usuarios"
+          "cachedResultName": "usuarios"
         },
         "limit": 1,
         "where": {
@@ -3054,16 +3054,16 @@
           "headers": {
             "host": "auto.kadovesh.com",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-            "content-length": "249",
+            "content-length": "367",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "2804:14d:6885:42f0:c444:8b2d:1f93:df3d",
+            "cf-connecting-ip": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
             "cf-ipcountry": "BR",
-            "cf-ray": "97bf3984597d917b-EWR",
+            "cf-ray": "97d0ee0f0c00cb2a-GRU",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "cf-warp-tag-id": "42307c0d-188b-44c7-a833-eac619e96f7e",
+            "cf-warp-tag-id": "2d84a549-2298-4221-ae4e-39b4e28492eb",
             "connection": "keep-alive",
             "content-type": "application/json",
             "origin": "http://192.168.0.159",
@@ -3075,22 +3075,26 @@
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "2804:14d:6885:42f0:c444:8b2d:1f93:df3d",
+            "x-forwarded-for": "2804:14d:6885:42f0:9082:354e:d652:ddbb",
             "x-forwarded-proto": "https"
           },
           "params": {},
           "query": {},
           "body": {
-            "reprinting": false,
-            "os_number": "25629",
-            "telefone": "(12) 98102-0201",
-            "nome": "fernando",
-            "sobrenome": "moura",
-            "aparelho": "PC",
-            "marca": "BEMATECH",
-            "modelo": "MINI",
-            "defeito": "FORMATAÇÃO COMPLETA SEM BACKUP",
-            "observacoes": "FORMATAR WINDOWS 10 - CLIENTE"
+            "reprinting_only": true,
+            "os_number": "25536",
+            "telefone": "(12) 98827-6010",
+            "nome": "Edson",
+            "sobrenome": "Luiz",
+            "aparelho": "Notebook",
+            "marca": "DELL",
+            "modelo": "5vch",
+            "defeito": "Não Liga \\ Para Avaliação Venda Como Sucata",
+            "observacoes": "Sem Dvd Sem Fonte Ou Cabos",
+            "servicos": "Compra Aparelho (R$ 50,00)",
+            "pecas": "",
+            "valor_total": 50,
+            "forma_pagamento": "Não informado"
           },
           "webhookUrl": "https://auto.kadovesh.com/webhook/form",
           "executionMode": "production"
@@ -3115,6 +3119,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-08T14:50:14.000Z",
-  "versionId": "e2f0e8ae-16ac-40d4-826c-a8f49e17a36f"
+  "updatedAt": "2025-09-10T18:20:43.000Z",
+  "versionId": "b723b68d-a987-4e82-94c4-66d2ab920688"
 }
