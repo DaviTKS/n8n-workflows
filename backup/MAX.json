@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "AI Agent": {
       "main": [
@@ -423,17 +423,6 @@
         ]
       ]
     },
-    "Encontrar Cliente": {
-      "main": [
-        [
-          {
-            "node": "Switch1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Criar Cliente": {
       "main": [
         [
@@ -465,13 +454,7 @@
     },
     "Merge": {
       "main": [
-        [
-          {
-            "node": "GetStat",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Merge1": {
@@ -511,7 +494,7 @@
       "main": [
         [
           {
-            "node": "Encontrar Cliente",
+            "node": "Select rows from a table",
             "type": "main",
             "index": 0
           }
@@ -993,6 +976,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Redis8",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -1075,6 +1065,17 @@
         [
           {
             "node": "Grp ou Msg",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select rows from a table": {
+      "main": [
+        [
+          {
+            "node": "GetStat",
             "type": "main",
             "index": 0
           }
@@ -2135,38 +2136,9 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -8400,
-        -464
+        -8416,
+        -784
       ]
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "tableId": "Usuarios",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "numero",
-              "keyValue": "={{ $('Lead').item.json.Telefone }}"
-            }
-          ]
-        }
-      },
-      "id": "947a04f9-094b-41f7-b351-6426b41cac77",
-      "name": "Encontrar Cliente",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        -8848,
-        -464
-      ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "r7qiHeLbj3sFTwB4",
-          "name": "Supabase account"
-        }
-      }
     },
     {
       "parameters": {
@@ -2189,8 +2161,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -8560,
-        -432
+        -8576,
+        -752
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -2258,8 +2230,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -8720,
-        -464
+        -8736,
+        -784
       ],
       "id": "891e8129-97ee-4558-8243-689ed99efd39",
       "name": "Switch1",
@@ -3854,7 +3826,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -9040,
+        -9024,
         -560
       ],
       "id": "c712b9d2-31fe-40da-ba3f-14eb82c4e043",
@@ -3895,7 +3867,7 @@
           "conditions": [
             {
               "id": "a0ba33dd-8d0b-4673-bf52-ba7954e29370",
-              "leftValue": "={{ $json.mensagens }}",
+              "leftValue": "={{ $json.msgID }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -3905,7 +3877,7 @@
             },
             {
               "id": "f6b79ed2-cb77-402a-b3a4-f8d5b179f4ba",
-              "leftValue": "={{ $json.mensagens }}",
+              "leftValue": "={{ $json.msgID }}",
               "rightValue": "={{ $('Webhook').item.json.body.messageId }}",
               "operator": {
                 "type": "string",
@@ -3992,9 +3964,131 @@
       ],
       "id": "20752cc5-3167-4f6f-a868-bbfa90415d59",
       "name": "If9"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list",
+          "cachedResultName": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "usuarios",
+          "mode": "list",
+          "cachedResultName": "usuarios"
+        },
+        "limit": 1,
+        "where": {
+          "values": [
+            {
+              "column": "numero",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -8752,
+        -464
+      ],
+      "id": "bd8d7265-59ed-4cfc-b00b-5497249a29f5",
+      "name": "Select rows from a table",
+      "credentials": {
+        "postgres": {
+          "id": "ZEobhMYEeazW7SRl",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('If9').item.json.body.phone }}_DB.tmp",
+        "keyType": "list",
+        "expire": true,
+        "ttl": 86400
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        -752
+      ],
+      "id": "aaff278a-6e4f-4ec1-b56c-fecf1f125143",
+      "name": "Redis8",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "auto.kadovesh.com",
+            "user-agent": "Mozilla/5.0 (iPad; CPU OS 16_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/111.0.5563.101 Mobile/15E148 Safari/604.1",
+            "content-length": "770",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "129.148.53.212",
+            "cf-ipcountry": "BR",
+            "cf-ray": "984ad1dacff3a4bc-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-warp-tag-id": "6098b144-6d17-4766-8305-fbcd87538e2d",
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "origin": "https://api.z-api.io",
+            "server": "Z-API",
+            "x-forwarded-for": "129.148.53.212",
+            "x-forwarded-proto": "https",
+            "z-api-token": "771E4BE1F789AB112E4831D6"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "isStatusReply": false,
+            "chatLid": "90164332388418@lid",
+            "connectedPhone": "551239313000",
+            "waitingMessage": false,
+            "isEdit": false,
+            "isGroup": false,
+            "isNewsletter": false,
+            "instanceId": "3E29DB01364090EFDC8006E9A5181015",
+            "messageId": "3EB0D6D2F1F37B60CB0CBC",
+            "phone": "5512982113000",
+            "fromMe": false,
+            "momment": 1758806434000,
+            "status": "RECEIVED",
+            "chatName": "Davi Moraes 25611",
+            "senderPhoto": null,
+            "senderName": "Davi Moraes",
+            "photo": "https://pps.whatsapp.net/v/t61.24694-24/484873030_9628712110531731_5581350847859461709_n.jpg?ccb=11-4&oh=01_Q5Aa2gF8u4-6Rj7MxTVJwPfiqwKDvEwq-pKguosYVzEhuWzFhA&oe=68E26921&_nc_sid=5e03e0&_nc_cat=102",
+            "broadcast": false,
+            "participantLid": null,
+            "messageExpirationSeconds": 0,
+            "forwarded": false,
+            "type": "ReceivedCallback",
+            "fromApi": false,
+            "text": {
+              "message": "Teste"
+            }
+          },
+          "webhookUrl": "https://auto.kadovesh.com/webhook-test/recebetext1",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -4012,6 +4106,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-22T20:49:16.000Z",
-  "versionId": "09ece3d1-5374-42d9-a5db-ae7ed24f818e"
+  "updatedAt": "2025-09-26T23:07:30.000Z",
+  "versionId": "7f91407c-dad8-4c2c-ba23-4624c2195e41"
 }
