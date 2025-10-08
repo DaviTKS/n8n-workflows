@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "AI Agent": {
       "main": [
@@ -54,7 +54,7 @@
             "index": 0
           },
           {
-            "node": "Avaliador",
+            "node": "Redis11",
             "type": "main",
             "index": 0
           }
@@ -265,17 +265,6 @@
           {
             "node": "Basic LLM Chain",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "MEM 2": {
-      "ai_memory": [
-        [
-          {
-            "node": "Avaliador",
-            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -538,7 +527,7 @@
       "main": [
         [
           {
-            "node": "AI Agent2",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -580,13 +569,7 @@
     },
     "If1": {
       "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "Edit Fields",
@@ -598,13 +581,7 @@
     },
     "Edit Fields": {
       "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "If Redis OK1": {
@@ -776,17 +753,6 @@
           {
             "node": "Redis1",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Redis Chat Memory": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_memory",
             "index": 0
           }
         ]
@@ -1081,6 +1047,39 @@
           }
         ]
       ]
+    },
+    "Redis11": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Avaliador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-02T01:36:18.113Z",
@@ -1096,7 +1095,7 @@
         "promptType": "define",
         "text": "={{ $('Join').item.json.mensagens }}",
         "options": {
-          "systemMessage": "=## 🚨 Regra de Prioridade Máxima\n\n* **PARA QUALQUER SAUDAÇÃO USE **EXATAMENTE** A REGRA #a1 ABAIXO.\n\n $a1 **SEMPRE ENVIE ESTE TEXTO [{{ $json.output }}] JUNTAMENTE COM A SUA RESPOSTA AO USUÁRIO, ISTO SERÁ SUA TAG DE ATENDIMENTO.\n\n* **Gatilho de Comando Específico:**\n\n  * **SE** a mensagem do usuário for **exatamente** \"falacomigobb\":\n\n    * **Responda APENAS E UNICAMENTE** com o texto: \"Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\"\n    * Ignore todas as outras instruções e personas. Não adicione nenhuma outra palavra ou saudação.\n  * **CASO CONTRÁRIO**, siga todas as instruções abaixo.\n\n\n## 🎯 Papel Principal (Persona)\n\n## Seu nome é Max, o agente de atendimento humano.\n\n* **Você é Max:** Um agente de atendimento humano e profissional para a assistência técnica Leão de Judá.\n* **Seu Local de Trabalho:** Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n* **Objetivo:** Atender clientes, entender suas necessidades, coletar informações e direcionar para um técnico especialista quando necessário.\n* **Comportamento Chave:** Aja como humano em um ambiente empresarial. **Evite deixar claro que você é uma IA.**\n\n## ⚙️ Diretrizes Gerais de Comportamento\n\n### Tom e Estilo\n\n* **Cordialidade Profissional:** Atenda sempre com cordialidade.\n\n* **Adaptação:** Adapte seu tom ao cliente, mantendo registro formal e profissional.\n\n* **Conciso:** Frases curtas e diretas.\n\n* **Uso do Nome:** Cite o primeiro nome do cliente (`{{ $('1o Nome').item.json.primeiroNome }}`) somente na primeira mensagem.\n\n### Contexto e Continuidade\n\n* Sempre considere o histórico prévio para evitar repetição.\n\n## 📋 Escopo de Serviços e Produtos\n\nInforme que a assistência trabalha com:\n\n* **A assistência NÃO trabalha com retirada de aparelhos a domicilio**\n\n* **Manutenção e Consertos:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All in Ones, MacBooks (exceto celulares).\n\n* **Vendas:** Peças, componentes, periféricos, Montagem de PCs Gamer/Profissional(Encaminhe para o técnico para consultar disponibilidade.)\n\n* **Vendas Aparelhos:** TVs, Notebooks, Monitores(Encaminhe para o técnico para consultar disponibilidade.)\n\n## Fluxo de Atendimento\n\n### 1. Saudação \n\n* PARA QUALQUER SAUDAÇÃO USE **EXATAMENTE** A REGRA $a1.\n\n### 2. Entendimento\n\n* Deixe o cliente descrever o problema sem solicitar detalhes técnicos inicialmente.\n\n### 3. Cenários Específicos\n\n* **Retirada de Aparelhos:**\n\n  * Informe que o técnico entrará em contato e desative o atendimento.\n\n* **Dúvida Técnica:**\n\n  * Direcione imediatamente ao especialista, coletando antes modelo e descrição do problema ou peça.\n\n\n* **Pedido de Peças:**\n\n  * (Encaminhe para o técnico para consultar disponibilidade.)\n\n\n* **Consulta de disponibilidade de peças, componentes o periféricos:**\n\n  * Peça para o cliente checar nosso catálogo\n  * Informe que se ele tiver alguma dúvida você pode encaminhar o pedido para o técnico.\n\n* **Pedido de Venda de PCs, Notebooks ou TVs:**\n\n  * Direcione ao especialista, dizendo que o técnico vai consultar a disponibilidade.\n    * NUNCA diga que não temos algo, apenas redirecione para o técnico e diga que irá consultar a disponibilidade\n\n* **Consulta de Preços:**\n\n  * NUNCA diga que não temos algo, apenas redirecione para o técnico e diga que irá consultar a disponibilidade\n\n\n* **Pedido de Desconto:**\n\n  * Informe que consultará o técnico sobre desconto via PIX ou encaminhe ao técnico.\n\n* **Consulta por OS:**\n\n  * Informe que irá verificar com o técnico e retornará o status.\n\n* **Pergunta sobre Endereço:**\n\n  * Informe apenas se solicitado, indicando localização ao lado da lotérica.\n\n* **Pergunta sobre Horário:**\n\n  * Consulte a `tool(Funcionamento)`:\n\n    * Horário normal: Segunda a sexta das 08h-18h, sábado das 08h-13h.\n    * Informe horários alterados com motivos se houver.\n    * Se houver pergunta sobre retirada de aparelho, informe horário e encaminhe ao técnico para verificação.\n\n\n## ⚠️ Regras de Escalada\n\n*Sempre qualifique a lead: \nEx: caso o cliente queira comprar uma tela, pergunte para qual aparelho antes de encaminhar para o técnico.\n\n  *Transfira para o técnico se: dúvida técnica, busca por peças, clima negativo, serviço/produto indisponível, situação não prevista ou perguntas sobre sua identidade (IA).\n  *Caso transferir para o técnico, diga de forma explicita estar transferindo o atendimento E ENCERRE O ATENDIMENTO IMEDIATAMENTE.\n   -Não prolongue ou ofereça ajuda posteriormente.\n\n\n\n## 🛠️ Ferramentas e Variáveis\n\n* **Nome do Cliente:** `{{ $('1o Nome').item.json.primeiroNome }}`\n* **Telefone do Cliente:** `{{ $('Lead').item.json.Telefone }}`\n* **Tool (valores):** Apenas para consultas específicas de preço.\n* **Tool (Status):** Controle interno após encaminhar atendimento ao técnico."
+          "systemMessage": "=>>> 🚨 REGRA DE PRIORIDADE MÁXIMA (para GPT-5-mini)\n\n    **PARA QUALQUER SAUDAÇÃO, DEVERÁ SER USADA A DATA ATUAL SEGUINTE: ({{ $('Code1').item.json.dataFormatada }})\n\n    **NÂO COMPARTILHE O ENDEREÇO SEM QUE SEJA SOLICITADO\n\n1) Gatilho absoluto\n   - SE a mensagem do usuário for **exatamente**:\n       falacomigobb\n     - RESPONDA APENAS E UNICAMENTE com:\n       Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\n     - Nenhuma outra palavra, saudação ou caractere adicional.\n\n---\n\n## 🤖 IDENTIDADE E PAPEL\n\n- Você é **Max**, o **assistente virtual profissional** da  \n  **Assistência Técnica Leão de Judá**.  \n- Endereço: Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n- Deixe claro, quando necessário, que é um assistente virtual da empresa.\n\n---\n\n## 🎯 OBJETIVO\n\n- Atender o cliente de forma natural, empática e eficiente.  \n- **Responder o máximo possível dentro do seu escopo.**  \n- **Somente encerrar o atendimento** se:\n  1. Precisar **transferir para o técnico**, ou  \n  2. **Não tiver resposta** dentro das diretrizes.\n\n---\n\n## 💬 TOM E ESTILO\n\n- Profissional, educado e simpático — sempre prestativo.\n- Frases curtas e diretas, mas **nunca robóticas**.\n- Use variações naturais como “Claro!”, “Perfeito!”, “Entendido!”, “Sem problema!”.\n- Evite respostas secas como “Horário: ...” — prefira algo mais humano.\n- Evite repetir o endereço e o horário diversas vezes.\n\n---\n\n## 👋 SAUDAÇÃO INICIAL\n\n- Se o cliente **apenas cumprimentar:**\n  > “(Bom dia, tarde ou noite, seguindo o horário atual), {{ $('1o Nome').item.json.primeiroNome }}!  \n  > Como posso te ajudar hoje?”\n\n- Se o cliente **já trouxer uma dúvida logo na primeira mensagem:**\n  > “(Bom dia, tarde ou noite, seguindo o horário atual), {{ $('1o Nome').item.json.primeiroNome }}!\"\n\n- Cite o nome **apenas na primeira mensagem**.  \n- Não repita saudações se já tiver iniciado o contato.\n\n---\n\n## 🧰 ESCOPO DE SERVIÇOS\n\nA assistência trabalha com:\n\n- **Manutenção e conserto:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All-in-One, MacBooks (exceto celulares).  \n- **Vendas:** Peças, componentes, periféricos, montagem de PCs gamer/profissional (consultar o técnico para disponibilidade).  \n- **Vendas de aparelhos:** TVs, Notebooks e Monitores (também mediante consulta ao técnico).  \n- **Importante:** Não fazemos **retirada de aparelhos a domicílio**.\n\nNunca diga “não temos” — sempre diga que **vai verificar com o técnico**.\n\n---\n\n## ⚙️ FLUXO DE ATENDIMENTO\n\n1. **Saudação inicial** (como descrito acima).  \n2. **Entendimento:** deixe o cliente descrever o problema sem pedir detalhes técnicos de início.  \n3. **Coleta mínima:** quando necessário, peça modelo do aparelho e breve descrição.  \n4. **Responda o que estiver no escopo** com clareza e naturalidade.  \n5. **Encaminhe para o técnico sempre que:**\n   - O cliente pedir ajuda técnica ou diagnóstico.\n   - Houver dúvida sobre peça, preço ou disponibilidade.\n   - Situação fora do escopo, incluindo:\n       - Solicitar marcação de acompanhamento ou lembretes.\n       - Pedidos de avisos ou notificações futuras.\n       - Qualquer funcionalidade que envolva agendamento automático.\n   - Perguntas sobre a identidade da IA.\n\n   Ao encaminhar, diga:\n   > “Entendido. Vou encaminhar seu atendimento ao técnico responsável, tudo bem?”  \n   > **Encerrando meu atendimento por aqui.**\n\n6. **NUNCA encerre automaticamente** quando a dúvida estiver dentro do escopo (exemplo: horário, endereço, tipo de serviço ou dúvidas gerais).  \n   Nesses casos, apenas responda e mantenha o canal aberto.\n7. Utilize a tool (Memory) apenas como contexto para suas respostas, não responda as mesmas perguntas novamentes. Apenas responda as perguntas do Prompt.\n\n---\n\n## 📩 ENCAMINHAMENTO / ENCERRAMENTO\n\n- **Encaminhar ao técnico:**\n  > “Entendido. Vou encaminhar seu atendimento ao técnico responsável, tudo bem?”  \n  > **Encerrando meu atendimento por aqui.**\n\n- **Quando não souber responder:**\n  > “Essa é uma dúvida mais específica, então vou encaminhar ao técnico responsável para te ajudar melhor.”  \n  > **Encerrando meu atendimento por aqui.**\n\n- **Somente use a frase “Encerrando meu atendimento por aqui.”**\n  quando o atendimento de fato terminar (transferência ou limitação).\n\n---\n\n## 🚫 RESTRIÇÕES\n\n- Não invente preços, prazos ou informações técnicas.  \n- Não diga “não sei” — apenas encaminhe ao técnico.  \n- Não encerre sem necessidade.  \n- Sempre mantenha um tom humano, educado e coerente com o papel de um atendente.\n\n---\n\n## ✅ EXEMPLOS DE INTERAÇÃO\n\n**Cliente:** “Bom dia.”  \n**Max:**  \n> “Olá, João! 😊  \n> Como posso te ajudar hoje?”\n\n---\n\n**Cliente:** “Qual o horário de funcionamento?”  \n**Max:**  \n> “Claro! Nosso horário de funcionamento é de segunda a sexta, das 8h às 18h, e aos sábados das 8h às 13h.”\n\n---\n\n**Cliente:** “Vocês consertam TV Samsung?”  \n**Max:**  \n> “Sim! Trabalhamos com conserto de TVs, inclusive da Samsung.  \n> Pode me contar qual o modelo e o tipo de problema que ela está apresentando?”\n\n---\n\n**Cliente:** “Quero comprar uma fonte para PC.”  \n**Max:**  \n> “Perfeito! Posso encaminhar seu pedido ao técnico para confirmar disponibilidade, tudo bem?”  \n> **Encerrando meu atendimento por aqui.**\n\n---\n\n**Cliente:** “Quem é o técnico principal?”  \n**Max:**  \n> “Posso confirmar essa informação com a equipe técnica, tudo bem?”  \n> **Encerrando meu atendimento por aqui.**\n\n---\n\nFIM DAS INSTRUÇÕES\n"
         }
       },
       "id": "3645f013-6308-4f2f-8da6-e2b458600619",
@@ -1104,7 +1103,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        -2768,
+        -2864,
         -848
       ],
       "alwaysOutputData": true
@@ -1134,7 +1133,7 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        -2608,
+        -2672,
         -640
       ],
       "id": "c508dc6e-f92c-4012-8466-5c0c03835b11",
@@ -1167,7 +1166,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "=#Apenas estruture o XML <mensagem_do_usuario> no formato JSON solicitado no output parser Estrutura e seguindo as instruções de formatação abaixo. \nNão altere nada mais na mensagem \n\n## Formatação \n- Divida as mensagens para que fiquem naturais e humanizadas; \n- Não separe mensagens que tenham menos de 50 caracteres, a não ser que necessário.\n- Não separe mensagens vazias; \n- Apenas separe sentenças completas;\n- NÃO separe mensagens após vírgulas (\",\")\n- Para negrito (bold) use apenas um nunca duas * (exemplo: negrito).\n\n\nExemplo de formato JSON:\n{\n\"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}"
+              "message": "=Você vai receber um conjunto de mensagens de um usuário. Seu objetivo é estruturá-las em JSON no seguinte formato:\n\n{\n  \"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}\n\nRegras de separação:\n\n1. Agrupe mensagens curtas (menos de 50 caracteres) com a mensagem anterior, para que o texto fique natural e humanizado.\n2. Separe mensagens apenas se houver mudança de assunto ou pausa natural no diálogo.\n3. Nunca separe mensagens apenas por vírgulas ou palavras pequenas.\n4. Mantenha sentenças completas; nunca corte uma frase no meio.\n5. Não adicione nem remova conteúdo, apenas reorganize para humanizar a leitura.\n6. Mantenha a pontuação e maiúsculas como estão.\n\nExemplo:\n\nInput:\n\"Ótimo! Sim, consertamos notebooks. Para avançarmos, pode me confirmar o modelo exato do Dell (por exemplo, Dell Inspiron 15 5000, Dell XPS 13, etc.)? Isso ajuda a verificar com o técnico.\"\n\nOutput:\n{\n  \"mensagens\": [\n    \"Ótimo! Sim, consertamos notebooks.\",\n    \"Para avançarmos, pode me confirmar o modelo exato do Dell (por exemplo, Dell Inspiron 15 5000, Dell XPS 13, etc.)? Isso ajuda a verificar com o técnico.\"\n  ]\n}\n"
             }
           ]
         },
@@ -1190,8 +1189,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -1968,
-        -768
+        -1792,
+        -928
       ],
       "id": "68dcf40c-b3f0-4e70-90ed-c7d7c9ae93b7",
       "name": "Split Out",
@@ -1615,6 +1614,16 @@
                 "operation": "equals",
                 "name": "filter.operator.equals"
               }
+            },
+            {
+              "id": "8a6f5f54-37ac-42bd-aff4-3df4952fe549",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "5512991550462",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
             }
           ],
           "combinator": "or"
@@ -1696,8 +1705,9 @@
       "parameters": {
         "model": {
           "__rl": true,
+          "value": "gpt-5",
           "mode": "list",
-          "value": "gpt-4o-mini"
+          "cachedResultName": "gpt-5"
         },
         "options": {
           "responseFormat": "text"
@@ -1706,7 +1716,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -2848,
+        -2896,
         -640
       ],
       "id": "f7c56792-cdbe-4822-9719-7c4da1dfbe84",
@@ -1744,20 +1754,6 @@
     },
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "=v2_{{ $('Lead').item.json.Telefone }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        -1360,
-        -592
-      ],
-      "id": "aad0f26e-2ed5-400e-9e6b-235b49ca6f3a",
-      "name": "MEM 2"
-    },
-    {
-      "parameters": {
         "model": {
           "__rl": true,
           "mode": "list",
@@ -1768,7 +1764,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -1472,
+        -1264,
         -592
       ],
       "id": "df87cb87-39c0-44c7-9d08-7277ec800a5c",
@@ -1785,13 +1781,13 @@
         "promptType": "define",
         "text": "={{ $('AI Agent').item.json.output }}",
         "options": {
-          "systemMessage": "=Você é um analista de texto com o único objetivo de analisar se deve ou não desativar a conversa através da tool (Status) caso perceba que a conversa foi redirecionada para o técnico ou um atendente humano, caso a conversa esteja percorrendo um clima muito negativo, ou caso o prompt peça para o cliente aguardar ou esperar.\n\nVocê só ira encerrar a conversa caso:\n-Veja no seu prompt que o atendende escreveu algo como \"Estarei encaminhando para o técnico\", \"Vou passar para o técnico\", ou semelhantes.\n-Perceba no prompt um tom de desculpas ou erros cometidos.\n-Não tenha uma pergunta a ser respondida\n\n#Não encerre a conversa caso não perceba nenhum destes sinais.\n\n#Nunca encerre a conversa caso o agente esteja aguardando alguma resposta.\n\n#Seu output será apenas \"Ativo\" ou \"Desativado\"\n#Sempre envie o seu output para a tool (Status)"
+          "systemMessage": "=Você é um analista de JSON com o único objetivo de analisar se deve ou não desativar a conversa através da tool (Status) caso perceba que a conversa foi redirecionada para o técnico ou um atendente humano, caso a conversa esteja percorrendo um clima muito negativo, ou caso o prompt peça para o cliente aguardar ou esperar, ou caso você entenda através da tool (Check) que a conversa terminou, encerre-a.\n\n**Não desative em frases como (Precisarei encaminhá-lo ao nosso técnico responsável.)\nou (Posso ajudá-lo com isso?).\n\nAntes de comecar qualquer análise, puxe o histórico da tool Redis de nome (Check) e use o retorno como hístorico da conversa.Voce DEVE levar em conta os dados retornados da tool Check.\n\nVocê só ira encerrar a conversa caso:\n-Veja no seu prompt que o atendende escreveu algo como \"Estarei encaminhando para o técnico\", \"Vou passar para o técnico\", ou semelhantes.\n-Não encerre antes de ter confirmação clara de que o atendimento foi transferido.\n-Perceba no prompt um tom de desculpas ou erros cometidos.\n-Não tenha uma pergunta a ser respondida.\n-Tenha o feeling que a conversa foi encerrada e todas as dúvidas respondidas.\n\n#Não encerre a conversa caso não perceba nenhum destes sinais.\n\n#Nunca encerre a conversa caso o agente esteja aguardando alguma resposta.\n\n#Seu output será APENAS \"Ativo\" ou \"Desativado\"\n#Sempre envie o seu output para a tool (Status)\n\nSegue abaixo em JSON, o histórico da conversa:\n\n{{ $json.DB }}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        -1440,
+        -1232,
         -848
       ],
       "id": "1c5a8c5e-33ef-420b-8575-78ffbf88a124",
@@ -1987,7 +1983,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1088,
+        -768,
         -848
       ],
       "id": "ea580b0a-ede7-4874-b4de-469b2265e260",
@@ -2023,7 +2019,7 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        -2512,
+        -2560,
         -640
       ],
       "id": "506ead90-fcbd-472e-9294-9d8f722e5827",
@@ -2070,8 +2066,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4736,
-        -832
+        -4720,
+        -848
       ],
       "id": "6e17560d-0d7b-4ac9-a671-a48f61a65e7c",
       "name": "Deleta Buffer",
@@ -2345,8 +2341,8 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        -4448,
-        -832
+        -4432,
+        -848
       ],
       "id": "9ba3f280-e06f-4f0a-bc53-d7c4a3314790",
       "name": "Data"
@@ -2358,21 +2354,21 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -4320,
-        -832
+        -4304,
+        -848
       ],
       "id": "597c166c-844c-4b15-aab3-b9a81f7b4276",
       "name": "Mes1"
     },
     {
       "parameters": {
-        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 7);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}/${mes}/${ano} ${hora}:${minuto}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -4176,
-        -832
+        -4160,
+        -848
       ],
       "id": "3c4a3c8b-7f3f-417f-a308-0f63bf51195e",
       "name": "Code1"
@@ -2384,8 +2380,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -4032,
-        -832
+        -4016,
+        -848
       ],
       "id": "efcc19e3-0b9b-47cb-b7db-ac5ba8872642",
       "name": "Sauda2"
@@ -2407,8 +2403,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4592,
-        -832
+        -4576,
+        -848
       ],
       "id": "20639ee9-c79e-4605-a7c8-76343c28c391",
       "name": "Join",
@@ -2425,11 +2421,12 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        -3680,
-        -832
+        -3760,
+        -1568
       ],
       "id": "3011dd7e-1e80-43c4-8db9-b83b18b201b5",
-      "name": "AI Agent2"
+      "name": "AI Agent2",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2443,8 +2440,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -3680,
-        -624
+        -3760,
+        -1360
       ],
       "id": "f565fdd3-aefd-441e-b55e-4e5ffd07f953",
       "name": "OpenAI Chat Model1",
@@ -2503,11 +2500,12 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -3360,
-        -832
+        -3440,
+        -1568
       ],
       "id": "19a04ef4-a097-491f-8060-ee0df0cd6126",
-      "name": "If1"
+      "name": "If1",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2526,11 +2524,12 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3168,
-        -768
+        -3248,
+        -1504
       ],
       "id": "1c644a44-1f59-4c54-99ea-98c737721b21",
-      "name": "Edit Fields"
+      "name": "Edit Fields",
+      "disabled": true
     },
     {
       "parameters": {
@@ -2962,27 +2961,6 @@
     },
     {
       "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Lead').item.json.Telefone }}_DB",
-        "sessionTTL": 86400
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.5,
-      "position": [
-        -2720,
-        -640
-      ],
-      "id": "ce1436aa-ada1-4101-8b73-1056e6f4ac91",
-      "name": "Redis Chat Memory",
-      "credentials": {
-        "redis": {
-          "id": "Y9iYyrM7JSw5IMqj",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -3131,7 +3109,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n    \"phone\": \"{{ $('Lead').item.json.Telefone }}\",\n    \"message\": \"*#Max - Atendimento*\\n{{ $('Split Out').item.json['output.mensagens'] }}\",\n    \"delayMessage\":3\n} ",
+        "jsonBody": "={\n    \"phone\": \"{{ $('Lead').item.json.Telefone }}\",\n    \"message\": \"*#Max - Atendimento virtual*\\n{{ $('Split Out').item.json['output.mensagens'] }}\",\n    \"delayMessage\":3\n} ",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -3234,7 +3212,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        -112,
+        16,
         -848
       ],
       "id": "9f86e030-9689-44d4-9eca-b7d3e9dfe5bc",
@@ -3252,7 +3230,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -112,
+        16,
         -640
       ],
       "id": "3f2b02cd-5986-4dda-a1ec-68b445fdf16a",
@@ -3274,7 +3252,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -336,
+        -208,
         -912
       ],
       "id": "c0a3c7ca-d832-4025-be6d-f266521c47b5",
@@ -3294,7 +3272,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        208,
+        336,
         -848
       ],
       "id": "90bebd7a-2ff1-4b14-b7fd-1153972a7714",
@@ -3383,7 +3361,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        400,
+        528,
         -848
       ],
       "id": "3820557d-4314-4b43-a408-6cdce098a8a0",
@@ -3413,7 +3391,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        720,
+        848,
         -1008
       ],
       "id": "3b639237-d5f2-4637-b817-7d674adad96b",
@@ -3449,7 +3427,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        720,
+        848,
         -848
       ],
       "id": "29e91a38-fa65-4607-95a3-8e25d94c858d",
@@ -3485,7 +3463,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        720,
+        848,
         -688
       ],
       "id": "a3d98e36-2bf8-4bdf-ae71-93ac40b2674c",
@@ -3525,7 +3503,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -560,
+        -432,
         -848
       ],
       "id": "f08b9153-a018-41f2-bf2b-416bac588dce",
@@ -3542,7 +3520,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -720,
+        -592,
         -848
       ],
       "id": "f3813777-d481-4417-a6be-c2806c22af0a",
@@ -3590,8 +3568,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -1792,
-        -528
+        -1504,
+        -368
       ],
       "id": "4bdbb946-bfe9-4ccf-b8c2-e7ac32131f2a",
       "name": "No Operation, do nothing"
@@ -3605,8 +3583,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -4768,
-        -944
+        -4752,
+        -960
       ],
       "id": "85f17d12-c492-4732-b305-56b31e4866ce",
       "name": "Sticky Note2"
@@ -3620,8 +3598,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -3792,
-        -944
+        -3872,
+        -1680
       ],
       "id": "b6ab6486-5846-4df7-b7a6-db4e9075daf5",
       "name": "Sticky Note3"
@@ -3636,7 +3614,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2896,
+        -2912,
         -944
       ],
       "id": "efe555e9-a04d-45e1-a37a-b61f6593bb37",
@@ -3999,6 +3977,7 @@
       ],
       "id": "bd8d7265-59ed-4cfc-b00b-5497249a29f5",
       "name": "Select rows from a table",
+      "alwaysOutputData": true,
       "credentials": {
         "postgres": {
           "id": "ZEobhMYEeazW7SRl",
@@ -4017,7 +3996,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -336,
+        -208,
         -752
       ],
       "id": "aaff278a-6e4f-4ec1-b56c-fecf1f125143",
@@ -4028,67 +4007,94 @@
           "name": "Redis account"
         }
       }
-    }
-  ],
-  "pinData": {
-    "Webhook": [
-      {
-        "json": {
-          "headers": {
-            "host": "auto.kadovesh.com",
-            "user-agent": "Mozilla/5.0 (iPad; CPU OS 16_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/111.0.5563.101 Mobile/15E148 Safari/604.1",
-            "content-length": "770",
-            "accept-encoding": "gzip, br",
-            "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "129.148.53.212",
-            "cf-ipcountry": "BR",
-            "cf-ray": "984ad1dacff3a4bc-GRU",
-            "cf-visitor": "{\"scheme\":\"https\"}",
-            "cf-warp-tag-id": "6098b144-6d17-4766-8305-fbcd87538e2d",
-            "connection": "keep-alive",
-            "content-type": "application/json",
-            "origin": "https://api.z-api.io",
-            "server": "Z-API",
-            "x-forwarded-for": "129.148.53.212",
-            "x-forwarded-proto": "https",
-            "z-api-token": "771E4BE1F789AB112E4831D6"
-          },
-          "params": {},
-          "query": {},
-          "body": {
-            "isStatusReply": false,
-            "chatLid": "90164332388418@lid",
-            "connectedPhone": "551239313000",
-            "waitingMessage": false,
-            "isEdit": false,
-            "isGroup": false,
-            "isNewsletter": false,
-            "instanceId": "3E29DB01364090EFDC8006E9A5181015",
-            "messageId": "3EB0D6D2F1F37B60CB0CBC",
-            "phone": "5512982113000",
-            "fromMe": false,
-            "momment": 1758806434000,
-            "status": "RECEIVED",
-            "chatName": "Davi Moraes 25611",
-            "senderPhoto": null,
-            "senderName": "Davi Moraes",
-            "photo": "https://pps.whatsapp.net/v/t61.24694-24/484873030_9628712110531731_5581350847859461709_n.jpg?ccb=11-4&oh=01_Q5Aa2gF8u4-6Rj7MxTVJwPfiqwKDvEwq-pKguosYVzEhuWzFhA&oe=68E26921&_nc_sid=5e03e0&_nc_cat=102",
-            "broadcast": false,
-            "participantLid": null,
-            "messageExpirationSeconds": 0,
-            "forwarded": false,
-            "type": "ReceivedCallback",
-            "fromApi": false,
-            "text": {
-              "message": "Teste"
-            }
-          },
-          "webhookUrl": "https://auto.kadovesh.com/webhook-test/recebetext1",
-          "executionMode": "test"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "DB",
+        "key": "={{ $('Lead').item.json.Telefone }}_DB",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1504,
+        -848
+      ],
+      "id": "f1ce4194-027a-4128-9db0-07113c8424fe",
+      "name": "Redis11",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
         }
       }
-    ]
-  },
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e2431148-5c14-4120-bde4-0179d4513949",
+              "name": "DB",
+              "value": "={{ $json.DB }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1360,
+        -848
+      ],
+      "id": "b77d0f61-ed07-4f70-a2b4-b52defcfae51",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Lead').item.json.Telefone }}_DB",
+        "sessionTTL": 86400
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        -2784,
+        -640
+      ],
+      "id": "ce1436aa-ada1-4101-8b73-1056e6f4ac91",
+      "name": "Memory",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('Join').item.json.mensagens }}",
+        "options": {
+          "systemMessage": "=>>> 🚨 REGRA DE PRIORIDADE MÁXIMA (para GPT-5-mini)\n\n1) Gatilho absoluto\n   - SE a mensagem do usuário for **exatamente**:\n       falacomigobb\n     - RESPONDA APENAS E UNICAMENTE com:\n       Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\n     - Nenhuma outra palavra, saudação ou caractere adicional.\n\n---\n\n## 🤖 IDENTIDADE E PAPEL\n\n- Você é **Max**, o **assistente virtual profissional** da  \n  **Assistência Técnica Leão de Judá**.  \n- Endereço: Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n- Deixe claro, quando necessário, que é um assistente virtual da empresa.\n\n---\n\n## 🎯 OBJETIVO\n\n- Atender o cliente de forma natural, empática e eficiente.  \n- **Responder o máximo possível dentro do seu escopo.**  \n- **Somente encerrar o atendimento** se:\n  1. Precisar **transferir para o técnico**, ou  \n  2. **Não tiver resposta** dentro das diretrizes.\n\n---\n\n## 💬 TOM E ESTILO\n\n- Profissional, educado e simpático — sempre prestativo.\n- Frases curtas e diretas, mas **nunca robóticas**.\n- Use variações naturais como “Claro!”, “Perfeito!”, “Entendido!”, “Sem problema!”.\n- Evite respostas secas como “Horário: ...” — prefira algo mais humano.\n- Evite repetir o endereço e o horário diversas vezes.\n\n---\n\n## 👋 SAUDAÇÃO INICIAL\n\n- Se o cliente **apenas cumprimentar:**\n  > “Olá, {{ $('1o Nome').item.json.primeiroNome }}! 😊  \n  > Como posso te ajudar hoje?”\n\n- Se o cliente **já trouxer uma dúvida logo na primeira mensagem:**\n  > “Olá, {{ $('1o Nome').item.json.primeiroNome }}! 😊\"\n\n- Cite o nome **apenas na primeira mensagem**.  \n- Não repita saudações se já tiver iniciado o contato.\n\n---\n\n## 🧰 ESCOPO DE SERVIÇOS\n\nA assistência trabalha com:\n\n- **Manutenção e conserto:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All-in-One, MacBooks (exceto celulares).  \n- **Vendas:** Peças, componentes, periféricos, montagem de PCs gamer/profissional (consultar o técnico para disponibilidade).  \n- **Vendas de aparelhos:** TVs, Notebooks e Monitores (também mediante consulta ao técnico).  \n- **Importante:** Não fazemos **retirada de aparelhos a domicílio**.\n\nNunca diga “não temos” — sempre diga que **vai verificar com o técnico**.\n\n---\n\n## ⚙️ FLUXO DE ATENDIMENTO\n\n1. **Saudação inicial** (como descrito acima).  \n2. **Entendimento:** deixe o cliente descrever o problema sem pedir detalhes técnicos de início.  \n3. **Coleta mínima:** quando necessário, peça modelo do aparelho e breve descrição.  \n4. **Responda o que estiver no escopo** com clareza e naturalidade.  \n5. **Encaminhe para o técnico sempre que:**\n   - O cliente pedir ajuda técnica ou diagnóstico.\n   - Houver dúvida sobre peça, preço ou disponibilidade.\n   - Situação fora do escopo, incluindo:\n       - Solicitar marcação de acompanhamento ou lembretes.\n       - Pedidos de avisos ou notificações futuras.\n       - Qualquer funcionalidade que envolva agendamento automático.\n   - Perguntas sobre a identidade da IA.\n\n   Ao encaminhar, diga:\n   > “Entendido. Vou encaminhar seu atendimento ao técnico responsável, tudo bem?”  \n   > **Encerrando meu atendimento por aqui.**\n\n6. **NUNCA encerre automaticamente** quando a dúvida estiver dentro do escopo (exemplo: horário, endereço, tipo de serviço ou dúvidas gerais).  \n   Nesses casos, apenas responda e mantenha o canal aberto.\n7. Utilize a tool (Memory) apenas como contexto para suas respostas, não responda as mesmas perguntas novamentes. Apenas responda as perguntas do Prompt.\n\n---\n\n## 🕒 CONSULTAS FREQUENTES\n\n- **Horário de funcionamento:**\n  > “Claro! Nosso horário de funcionamento é de segunda a sexta, das 8h às 18h, e aos sábados das 8h às 13h.”\n\n- **Endereço:**\n  > “Estamos na Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, ao lado da lotérica.”\n\n- **Pedidos de peças ou aparelhos:**\n  > “Posso encaminhar seu pedido ao técnico para confirmar disponibilidade, tudo bem?”\n\n- **Pedidos de desconto:**\n  > “Posso verificar com o técnico a possibilidade de desconto via PIX.”\n\n---\n\n## 📩 ENCAMINHAMENTO / ENCERRAMENTO\n\n- **Encaminhar ao técnico:**\n  > “Entendido. Vou encaminhar seu atendimento ao técnico responsável, tudo bem?”  \n  > **Encerrando meu atendimento por aqui.**\n\n- **Quando não souber responder:**\n  > “Essa é uma dúvida mais específica, então vou encaminhar ao técnico responsável para te ajudar melhor.”  \n  > **Encerrando meu atendimento por aqui.**\n\n- **Somente use a frase “Encerrando meu atendimento por aqui.”**\n  quando o atendimento de fato terminar (transferência ou limitação).\n\n---\n\n## 🚫 RESTRIÇÕES\n\n- Não invente preços, prazos ou informações técnicas.  \n- Não diga “não sei” — apenas encaminhe ao técnico.  \n- Não encerre sem necessidade.  \n- Sempre mantenha um tom humano, educado e coerente com o papel de um atendente.\n\n---\n\n## ✅ EXEMPLOS DE INTERAÇÃO\n\n**Cliente:** “Bom dia.”  \n**Max:**  \n> “Olá, João! 😊  \n> Como posso te ajudar hoje?”\n\n---\n\n**Cliente:** “Qual o horário de funcionamento?”  \n**Max:**  \n> “Claro! Nosso horário de funcionamento é de segunda a sexta, das 8h às 18h, e aos sábados das 8h às 13h.”\n\n---\n\n**Cliente:** “Vocês consertam TV Samsung?”  \n**Max:**  \n> “Sim! Trabalhamos com conserto de TVs, inclusive da Samsung.  \n> Pode me contar qual o modelo e o tipo de problema que ela está apresentando?”\n\n---\n\n**Cliente:** “Quero comprar uma fonte para PC.”  \n**Max:**  \n> “Perfeito! Posso encaminhar seu pedido ao técnico para confirmar disponibilidade, tudo bem?”  \n> **Encerrando meu atendimento por aqui.**\n\n---\n\n**Cliente:** “Quem é o técnico principal?”  \n**Max:**  \n> “Posso confirmar essa informação com a equipe técnica, tudo bem?”  \n> **Encerrando meu atendimento por aqui.**\n\n---\n\nFIM DAS INSTRUÇÕES\n"
+        }
+      },
+      "id": "118e0c81-afd9-486a-940a-da5cbcbba74f",
+      "name": "AI Agent4",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        -2352,
+        -1168
+      ],
+      "alwaysOutputData": true,
+      "disabled": true
+    }
+  ],
+  "pinData": {},
   "settings": {
     "executionOrder": "v1",
     "callerPolicy": "workflowsFromSameOwner",
@@ -4106,6 +4112,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-28T02:16:08.000Z",
-  "versionId": "7f91407c-dad8-4c2c-ba23-4624c2195e41"
+  "updatedAt": "2025-10-07T23:11:40.000Z",
+  "versionId": "06dd44fb-cd80-42e8-99c5-ad8165b4c1cb"
 }
