@@ -175,11 +175,6 @@
       "main": [
         [
           {
-            "node": "Execute Workflow",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Return",
             "type": "main",
             "index": 0
@@ -442,8 +437,8 @@
       "name": "Switch",
       "type": "n8n-nodes-base.switch",
       "position": [
-        704,
-        272
+        688,
+        320
       ],
       "typeVersion": 3.2
     },
@@ -635,33 +630,6 @@
       "typeVersion": 2.2
     },
     {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "wyXBRT1xpKqvGCHt",
-          "mode": "list",
-          "cachedResultName": "My workflow"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": true
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.executeWorkflow",
-      "typeVersion": 1.2,
-      "position": [
-        1440,
-        304
-      ],
-      "id": "a0e01145-b4d8-4b6d-a998-2eb27e8a3312",
-      "name": "Execute Workflow"
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
@@ -695,6 +663,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-05T17:52:28.000Z",
-  "versionId": "29668710-bc28-4543-a6ab-5366dcb48c84"
+  "updatedAt": "2025-10-08T14:36:19.000Z",
+  "versionId": "3ae7549c-1cb8-46b3-8438-fa5b6412beb7"
 }
