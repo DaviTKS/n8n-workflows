@@ -1,40 +1,18 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
-    "Create folder1": {
-      "main": [
-        [
-          {
-            "node": "Search files and folders",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If1": {
       "main": [
         [
           {
-            "node": "Search files and folders",
+            "node": "Get Folder ID - Month",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Create folder1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Search files and folders1": {
-      "main": [
-        [
-          {
-            "node": "If1",
+            "node": "Create Month Folder",
             "type": "main",
             "index": 0
           }
@@ -45,51 +23,7 @@
       "main": [
         [
           {
-            "node": "Mes1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Mes1": {
-      "main": [
-        [
-          {
-            "node": "Code1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        [
-          {
-            "node": "Config",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code1": {
-      "main": [
-        [
-          {
-            "node": "Search files and folders1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create folder": {
-      "main": [
-        [
-          {
-            "node": "Search files and folders3",
+            "node": "Mês",
             "type": "main",
             "index": 0
           }
@@ -100,21 +34,88 @@
       "main": [
         [
           {
-            "node": "Search files and folders3",
+            "node": "Get Folder ID - Day",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Create folder",
+            "node": "Create Day Folder",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Search files and folders2": {
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Parser and Binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DataFormatada": {
+      "main": [
+        [
+          {
+            "node": "Search Month Folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mês": {
+      "main": [
+        [
+          {
+            "node": "DataFormatada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Month Folder": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Month Folder": {
+      "main": [
+        [
+          {
+            "node": "Get Folder ID - Month",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Day Folder": {
       "main": [
         [
           {
@@ -125,44 +126,66 @@
         ]
       ]
     },
-    "Search files and folders": {
+    "Create Day Folder": {
       "main": [
         [
           {
-            "node": "Search files and folders2",
+            "node": "Get Folder ID - Day",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Search files and folders3": {
+    "Get Folder ID - Day": {
       "main": [
         [
           {
-            "node": "Get a file",
+            "node": "Get all workflows",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Config": {
+    "Get Folder ID - Month": {
       "main": [
         [
           {
-            "node": "Data",
+            "node": "Search Day Folder",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get a file": {
+    "Get all workflows": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parser and Binary": {
       "main": [
         [
           {
             "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Data",
             "type": "main",
             "index": 0
           }
@@ -179,50 +202,6 @@
   "name": "Backup Workflow Drive",
   "nodes": [
     {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -704,
-        -16
-      ],
-      "id": "81cd6e8e-4f9f-4fb6-b61d-c0e92e744e46",
-      "name": "When clicking ‘Execute workflow’"
-    },
-    {
-      "parameters": {
-        "resource": "folder",
-        "name": "={{ $('Mes1').item.json.mes_extenso }}",
-        "driveId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "My Drive"
-        },
-        "folderId": {
-          "__rl": true,
-          "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
-          "mode": "list",
-          "cachedResultName": "N8N",
-          "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        576,
-        96
-      ],
-      "id": "a7e04bbd-ce56-4b1d-ac89-b6d33ba333c2",
-      "name": "Create folder1",
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "1ib4QgSSisyBlll3",
-          "name": "Google Drive account"
-        }
-      }
-    },
-    {
       "parameters": {
         "conditions": {
           "options": {
@@ -235,7 +214,7 @@
             {
               "id": "75f9532a-cbe0-4f5f-9333-6f0e3037b075",
               "leftValue": "={{ $json.name }}",
-              "rightValue": "={{ $('Mes1').item.json.mes_extenso }}",
+              "rightValue": "={{ $('Mês').item.json.mes_extenso }}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -259,8 +238,126 @@
     },
     {
       "parameters": {
+        "outputFieldName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -272,
+        -16
+      ],
+      "id": "dfb29dce-5f6f-497b-b3d1-5d0e31f64e26",
+      "name": "Data"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75f9532a-cbe0-4f5f-9333-6f0e3037b075",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $('DataFormatada').item.json.dataFormatada }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        -32
+      ],
+      "id": "112b0f3c-0988-4ada-b3bc-bf8f34967463",
+      "name": "If",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "name": "={{ $json.filename }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Get Folder ID - Day').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2432,
+        -32
+      ],
+      "id": "464fe996-04e7-4ab7-b384-ed8e2db5099e",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1824,
+        -48
+      ],
+      "id": "f7084014-a822-426e-b9fa-3f42aec0c478",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        64,
+        -16
+      ],
+      "id": "cd6467af-c5bd-48b5-9966-53714de77ead",
+      "name": "DataFormatada"
+    },
+    {
+      "parameters": {
+        "jsCode": "//If you want the months in English, just change the values below.\nconst meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -112,
+        -16
+      ],
+      "id": "4045db52-a779-4464-926a-fa8f2ceebb93",
+      "name": "Mês"
+    },
+    {
+      "parameters": {
         "resource": "fileFolder",
-        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "queryString": "={{ $('Mês').item.json.mes_extenso }}",
         "filter": {
           "folderId": {
             "__rl": true,
@@ -280,7 +377,131 @@
         -16
       ],
       "id": "61cf40a9-d8c9-4cc3-ac33-6da456cdb08d",
-      "name": "Search files and folders1",
+      "name": "Search Month Folder",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('Mês').item.json.mes_extenso }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y",
+          "mode": "list",
+          "cachedResultName": "N8N",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1kQwcj-KfD3PoV2CXdGE9VlKUW0qOM03y"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        576,
+        96
+      ],
+      "id": "a7e04bbd-ce56-4b1d-ac89-b6d33ba333c2",
+      "name": "Create Month Folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('DataFormatada').item.json.dataFormatada }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "={{ $json.id }}",
+            "mode": "id"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        928,
+        -32
+      ],
+      "id": "e7745705-29dc-4272-91ca-3073ec2ca5d6",
+      "name": "Search Day Folder",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $('DataFormatada').item.json.dataFormatada }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Get Folder ID - Month').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1248,
+        80
+      ],
+      "id": "65da67f0-fbef-4096-9ebe-2baccfd08086",
+      "name": "Create Day Folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $('DataFormatada').item.json.dataFormatada }}",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "={{ $('Get Folder ID - Month').item.json.id }}",
+            "mode": "id"
+          },
+          "whatToSearch": "folders"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1392,
+        -48
+      ],
+      "id": "0212af75-6e1d-4087-9c57-cfed426a50a8",
+      "name": "Get Folder ID - Day",
       "alwaysOutputData": true,
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -292,7 +513,7 @@
     {
       "parameters": {
         "resource": "fileFolder",
-        "queryString": "={{ $('Mes1').item.json.mes_extenso }}",
+        "queryString": "={{ $('Mês').item.json.mes_extenso }}",
         "filter": {
           "folderId": {
             "__rl": true,
@@ -309,10 +530,10 @@
       "typeVersion": 3,
       "position": [
         720,
-        -16
+        -32
       ],
       "id": "657ed5e2-db40-4040-8e14-c5d6275e16ea",
-      "name": "Search files and folders",
+      "name": "Get Folder ID - Month",
       "alwaysOutputData": true,
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -323,336 +544,120 @@
     },
     {
       "parameters": {
-        "outputFieldName": "data",
-        "options": {}
+        "filters": {},
+        "requestOptions": {}
       },
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
+      "type": "n8n-nodes-base.n8n",
+      "typeVersion": 1,
       "position": [
-        -320,
-        -16
+        1616,
+        -48
       ],
-      "id": "dfb29dce-5f6f-497b-b3d1-5d0e31f64e26",
-      "name": "Data"
-    },
-    {
-      "parameters": {
-        "jsCode": "const meses = [\n  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',\n  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'\n];\n\nreturn items.map(item => {\n  const data = new Date(item.json.data);\n\n  // Ajuste de fuso se necessário:\n  // data.setHours(data.getHours() - 4);\n\n  const mesExtenso = meses[data.getMonth()];\n  const mesCapitalizado = mesExtenso.charAt(0).toUpperCase() + mesExtenso.slice(1);\n\n  item.json.mes_extenso = mesCapitalizado;\n  return item;\n});\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -160,
-        -16
-      ],
-      "id": "4045db52-a779-4464-926a-fa8f2ceebb93",
-      "name": "Mes1"
-    },
-    {
-      "parameters": {
-        "jsCode": "// Obtém a data original em string e converte para objeto Date\nconst inputDateStr = $('Data').first().json.data;\nconst inputDate = new Date(inputDateStr);\n\n// Subtrai 1 hora manualmente (ajuste de -04:00 para -03:00)\ninputDate.setHours(inputDate.getHours() - 3);\n\n// Formata a data no padrão brasileiro\nconst dia = String(inputDate.getDate()).padStart(2, '0');\nconst mes = String(inputDate.getMonth() + 1).padStart(2, '0');\nconst ano = inputDate.getFullYear();\nconst hora = String(inputDate.getHours()).padStart(2, '0');\nconst minuto = String(inputDate.getMinutes()).padStart(2, '0');\n\nconst dataFormatada = `${dia}`;\n\n// Retorna resultado\nreturn [\n  {\n    json: {\n      dataFormatada\n    }\n  }\n];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        16,
-        -16
-      ],
-      "id": "cd6467af-c5bd-48b5-9966-53714de77ead",
-      "name": "Code1"
-    },
-    {
-      "parameters": {
-        "resource": "folder",
-        "name": "={{ $('Code1').item.json.dataFormatada }}",
-        "driveId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "My Drive"
-        },
-        "folderId": {
-          "__rl": true,
-          "value": "={{ $('Search files and folders').item.json.id }}",
-          "mode": "id"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        1248,
-        96
-      ],
-      "id": "65da67f0-fbef-4096-9ebe-2baccfd08086",
-      "name": "Create folder",
+      "id": "256359f4-b24c-47a2-8f29-f9969008e397",
+      "name": "Get all workflows",
       "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "1ib4QgSSisyBlll3",
-          "name": "Google Drive account"
+        "n8nApi": {
+          "id": "PhzAMHGr91UsyfXp",
+          "name": "n8n account"
         }
       }
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "75f9532a-cbe0-4f5f-9333-6f0e3037b075",
-              "leftValue": "={{ $json.name }}",
-              "rightValue": "={{ $('Code1').item.json.dataFormatada }}",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
+        "jsCode": "// Function node (NOT \"Function Item\")\n\n/**\n * Ordena chaves de um objeto de forma recursiva.\n * Também tenta ordenar arrays de objetos por campos comuns (name, id, key).\n */\nconst deepOrder = (val) => {\n  if (Array.isArray(val)) {\n    // Tenta ordenar arrays de objetos por campos determinísticos\n    const allObjects = val.every(v => v && typeof v === 'object' && !Array.isArray(v));\n    if (allObjects) {\n      const sortKey = (o) => {\n        if (o.name !== undefined) return `name:${String(o.name)}`;\n        if (o.id !== undefined) return `id:${String(o.id)}`;\n        if (o.key !== undefined) return `key:${String(o.key)}`;\n        // fallback estável: JSON com chaves ordenadas\n        return JSON.stringify(deepOrder(o));\n      };\n      return [...val].sort((a, b) => sortKey(a).localeCompare(sortKey(b))).map(deepOrder);\n    }\n    // Arrays primitivos: mantém ordem de entrada\n    return val.map(deepOrder);\n  }\n\n  if (val && typeof val === 'object') {\n    const ordered = {};\n    Object.keys(val).sort().forEach(k => {\n      ordered[k] = deepOrder(val[k]);\n    });\n    return ordered;\n  }\n\n  return val; // primitivos\n};\n\n/**\n * Normalizações leves específicas de n8n para consistência visual:\n * - Ordena \"nodes\" por name -> id\n * - Ordena \"credentials\" por nome da credencial\n * - Ordena \"pinData\" por chave\n * - Ordena \"meta\" e \"settings\" (já coberto pelo deepOrder)\n */\nconst normalizeN8n = (wf) => {\n  const w = { ...wf };\n\n  if (Array.isArray(w.nodes)) {\n    w.nodes = [...w.nodes].sort((a, b) => {\n      const ak = `${a.name ?? ''}#${a.id ?? ''}`;\n      const bk = `${b.name ?? ''}#${b.id ?? ''}`;\n      return ak.localeCompare(bk);\n    });\n  }\n\n  if (w.credentials && typeof w.credentials === 'object') {\n    const keys = Object.keys(w.credentials).sort();\n    const newCreds = {};\n    for (const k of keys) newCreds[k] = w.credentials[k];\n    w.credentials = newCreds;\n  }\n\n  if (w.pinData && typeof w.pinData === 'object') {\n    const keys = Object.keys(w.pinData).sort();\n    const newPin = {};\n    for (const k of keys) newPin[k] = w.pinData[k];\n    w.pinData = newPin;\n  }\n\n  return w;\n};\n\n// 1) Obter a fonte do workflow (objeto direto ou string JSON em \"data\")\nconst in0 = $input.all()[0];\nlet workflowRaw = in0.json;\n\n// Se veio como string crua em \"data\", parseia\nif (typeof in0.json?.data === 'string') {\n  try {\n    workflowRaw = JSON.parse(in0.json.data);\n  } catch (e) {\n    throw new Error('Campo \"data\" não é um JSON válido.');\n  }\n}\n\n// 2) Normalização + ordenação profunda\nconst normalized = normalizeN8n(workflowRaw);\nconst ordered = deepOrder(normalized);\n\n// 3) Pretty-print\nconst pretty = JSON.stringify(ordered, null, 2);\n\n// 4) Saída em JSON legível e também como binário para download\nconst filename = (ordered.meta?.name || ordered.name || 'workflow') + '.json';\n\nconst item = {\n  json: {\n    formatted_workflow: pretty,\n    filename,\n    note: 'Use esta string para salvar/baixar ou importar no n8n.'\n  },\n  binary: {\n    data: {\n      data: Buffer.from(pretty).toString('base64'),\n      fileName: filename,\n      mimeType: 'application/json'\n    }\n  }\n};\n\nreturn [item];\n"
       },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        1120,
-        -16
-      ],
-      "id": "112b0f3c-0988-4ada-b3bc-bf8f34967463",
-      "name": "If",
-      "alwaysOutputData": false
-    },
-    {
-      "parameters": {
-        "resource": "fileFolder",
-        "queryString": "={{ $('Code1').item.json.dataFormatada }}",
-        "filter": {
-          "folderId": {
-            "__rl": true,
-            "value": "={{ $json.id }}",
-            "mode": "id"
-          },
-          "whatToSearch": "folders"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        928,
-        -16
-      ],
-      "id": "e7745705-29dc-4272-91ca-3073ec2ca5d6",
-      "name": "Search files and folders2",
-      "alwaysOutputData": true,
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "1ib4QgSSisyBlll3",
-          "name": "Google Drive account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resource": "fileFolder",
-        "queryString": "={{ $('Code1').item.json.dataFormatada }}",
-        "filter": {
-          "folderId": {
-            "__rl": true,
-            "value": "={{ $('Search files and folders').item.json.id }}",
-            "mode": "id"
-          },
-          "whatToSearch": "folders"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        1392,
+        2160,
         -32
       ],
-      "id": "0212af75-6e1d-4087-9c57-cfed426a50a8",
-      "name": "Search files and folders3",
-      "alwaysOutputData": true,
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "1ib4QgSSisyBlll3",
-          "name": "Google Drive account"
-        }
-      }
+      "id": "955fa80f-87ee-4ab0-9b25-815f578c3299",
+      "name": "Parser and Binary"
     },
     {
       "parameters": {
-        "authentication": "oAuth2",
-        "resource": "file",
-        "operation": "get",
-        "owner": {
-          "__rl": true,
-          "value": "={{ $('Config').item.json.repo_owner }}",
-          "mode": "name"
-        },
-        "repository": {
-          "__rl": true,
-          "value": "={{ $('Config').item.json.repo_name }}",
-          "mode": "name"
-        },
-        "filePath": "={{ $('Config').item.json.path }}{{ $('Config').item.json.content.path }}",
-        "additionalParameters": {}
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
       },
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -464,
+        -16
+      ],
+      "id": "63f6e4e2-6bc2-487e-b6f3-4bba151dfd8f",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "content": "🟡 INÍCIO & DATA - Manual Trigger → dispara backup on-demand. \nData → gera timestamp base.\n→ extrai Mês (por extenso) e Dia (DD) com ajuste de fuso (-3h).",
+        "height": 268,
+        "width": 684,
+        "color": null
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -496,
+        -112
+      ],
+      "id": "35364b18-5e14-4a2e-b910-f69d4a4507cd",
+      "name": "NOTE • Início & Data"
+    },
+    {
+      "parameters": {
+        "content": "🟦 ESTRUTURA DE PASTAS (Google Drive)\nBusca pasta do MÊS\nSe não existir, cria.\nDepois busca/cria subpasta do DIA.",
+        "height": 384,
+        "width": 1320,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        224,
+        -128
+      ],
+      "id": "3c712103-682a-44fa-a290-e6da5a903326",
+      "name": "NOTE • Pastas no Drive"
+    },
+    {
+      "parameters": {
+        "content": "🟩 COLETA & LOTEAMENTO (n8n API)\nGet many workflows → lista todos os workflows.\nLoop Over Items → processa em lotes seguros.",
+        "height": 276,
+        "width": 496,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
       "position": [
         1568,
-        -32
+        -144
       ],
-      "id": "fe7a3a2e-a772-4f23-938e-eeb19e00f537",
-      "name": "Get a file",
-      "webhookId": "3ef1c9da-9694-4e4f-a39c-8198968729f3",
-      "credentials": {
-        "githubOAuth2Api": {
-          "id": "cudddw6XIvtNsVXV",
-          "name": "GitHub account"
-        }
-      }
+      "id": "e18d54c5-49f5-4be8-a9d5-f761d0da6346",
+      "name": "NOTE • Coleta & Lotes"
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "03f51f9c-4681-4423-91d2-d32f4c18d6bc",
-              "name": "repo_owner",
-              "type": "string",
-              "value": "DaviTKS"
-            },
-            {
-              "id": "0c9b521a-b698-4b43-9eb0-bbf744760158",
-              "name": "repo_name",
-              "type": "string",
-              "value": "n8n-workflows"
-            },
-            {
-              "id": "91627e70-a71a-4be0-a6f6-b04d5c8469d8",
-              "name": "repo_path",
-              "type": "string",
-              "value": "n8n-workflows"
-            },
-            {
-              "id": "983a2c87-9d69-4d64-ab88-ec1b1117c6e6",
-              "name": "sub_path",
-              "type": "string",
-              "value": "backup"
-            }
-          ]
-        },
-        "includeOtherFields": true,
-        "options": {}
+        "content": "🟥 NORMALIZAÇÃO & UPLOAD \nParser → ordena chaves/arrays (determinístico) e gera JSON bonito.\\\nUpload file → salva <nome>.json na pasta do DIA.",
+        "height": 284,
+        "width": 488,
+        "color": 6
       },
-      "id": "9d5c2cdf-ed39-4b4c-b9d1-9d5e147eb5bd",
-      "name": "Config",
-      "type": "n8n-nodes-base.set",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
       "position": [
-        -544,
-        -16
+        2096,
+        -144
       ],
-      "typeVersion": 3.4
-    },
-    {
-      "parameters": {
-        "name": "={{ $('Config').item.json.name }}",
-        "driveId": {
-          "__rl": true,
-          "mode": "list",
-          "value": "My Drive"
-        },
-        "folderId": {
-          "__rl": true,
-          "value": "={{ $('Search files and folders3').item.json.id }}",
-          "mode": "id"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDrive",
-      "typeVersion": 3,
-      "position": [
-        1776,
-        -32
-      ],
-      "id": "464fe996-04e7-4ab7-b384-ed8e2db5099e",
-      "name": "Upload file",
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "1ib4QgSSisyBlll3",
-          "name": "Google Drive account"
-        }
-      }
+      "id": "67c394b2-49bd-44fe-83c6-9c1490901343",
+      "name": "NOTE • Normalização & Upload"
     }
   ],
-  "pinData": {
-    "When clicking ‘Execute workflow’": [
-      {
-        "json": {
-          "content": {
-            "name": "Backup Workflows.json",
-            "path": "backup/Backup Workflows.json",
-            "sha": "b795148ac547062b765e6882ed562e32a56cdefc",
-            "size": 18811,
-            "url": "https://api.github.com/repos/DaviTKS/n8n-workflows/contents/backup/Backup%20Workflows.json?ref=main",
-            "html_url": "https://github.com/DaviTKS/n8n-workflows/blob/main/backup/Backup%20Workflows.json",
-            "git_url": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/blobs/b795148ac547062b765e6882ed562e32a56cdefc",
-            "download_url": "https://raw.githubusercontent.com/DaviTKS/n8n-workflows/main/backup/Backup%20Workflows.json",
-            "type": "file",
-            "_links": {
-              "self": "https://api.github.com/repos/DaviTKS/n8n-workflows/contents/backup/Backup%20Workflows.json?ref=main",
-              "git": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/blobs/b795148ac547062b765e6882ed562e32a56cdefc",
-              "html": "https://github.com/DaviTKS/n8n-workflows/blob/main/backup/Backup%20Workflows.json"
-            }
-          },
-          "commit": {
-            "sha": "b73c3806283772dedf73e3fbc6a6a825642310c2",
-            "node_id": "C_kwDOPRrYSNoAKGI3M2MzODA2MjgzNzcyZGVkZjczZTNmYmM2YTZhODI1NjQyMzEwYzI",
-            "url": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/commits/b73c3806283772dedf73e3fbc6a6a825642310c2",
-            "html_url": "https://github.com/DaviTKS/n8n-workflows/commit/b73c3806283772dedf73e3fbc6a6a825642310c2",
-            "author": {
-              "name": "UserKdosh",
-              "email": "82321794+DaviTKS@users.noreply.github.com",
-              "date": "2025-09-05T17:44:31Z"
-            },
-            "committer": {
-              "name": "UserKdosh",
-              "email": "82321794+DaviTKS@users.noreply.github.com",
-              "date": "2025-09-05T17:44:31Z"
-            },
-            "tree": {
-              "sha": "0df9078c01cb7e85634384b4cd6b91cfe1aa8ad7",
-              "url": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/trees/0df9078c01cb7e85634384b4cd6b91cfe1aa8ad7"
-            },
-            "message": "Backup Workflows (different)",
-            "parents": [
-              {
-                "sha": "c1e426df9aabc0093e7182aa5d6633c962b4ef40",
-                "url": "https://api.github.com/repos/DaviTKS/n8n-workflows/git/commits/c1e426df9aabc0093e7182aa5d6633c962b4ef40",
-                "html_url": "https://github.com/DaviTKS/n8n-workflows/commit/c1e426df9aabc0093e7182aa5d6633c962b4ef40"
-              }
-            ],
-            "verification": {
-              "verified": false,
-              "reason": "unsigned",
-              "signature": null,
-              "payload": null,
-              "verified_at": null
-            }
-          }
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
@@ -665,9 +670,13 @@
       "projectId": "O2voI4XYg26wWumH"
     }
   ],
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-09-09T23:42:08.000Z",
-  "versionId": "dfc4314a-70d9-4562-9a95-57080e11cd38"
+  "triggerCount": 1,
+  "updatedAt": "2025-10-08T15:10:26.000Z",
+  "versionId": "73cbb156-3eae-4c63-8d36-355ac378e25a"
 }
