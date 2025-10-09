@@ -83,18 +83,7 @@
         ],
         [
           {
-            "node": "Z-API",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
+            "node": "Z-API1",
             "type": "main",
             "index": 0
           }
@@ -821,17 +810,6 @@
         ]
       ]
     },
-    "Z-API": {
-      "main": [
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Redis2": {
       "main": [
         [
@@ -1080,6 +1058,28 @@
           }
         ]
       ]
+    },
+    "Z-API1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-02T01:36:18.113Z",
@@ -1095,7 +1095,7 @@
         "promptType": "define",
         "text": "={{ $('Join').item.json.mensagens }}",
         "options": {
-          "systemMessage": "=>>> 🚨 REGRA DE PRIORIDADE MÁXIMA (para GPT-5-mini)\n\n    **PARA QUALQUER SAUDAÇÃO, DEVERÁ SER USADA A DATA ATUAL SEGUINTE: ({{ $('Code1').item.json.dataFormatada }})\n\n    **NÂO COMPARTILHE O ENDEREÇO SEM QUE SEJA SOLICITADO\n\n1) Gatilho absoluto\n   - SE a mensagem do usuário for **exatamente**:\n       falacomigobb\n     - RESPONDA APENAS E UNICAMENTE com:\n       Faaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\n     - Nenhuma outra palavra, saudação ou caractere adicional.\n\n---\n\n## 🤖 IDENTIDADE E PAPEL\n\n- Você é **Max**, o **assistente virtual profissional** da  \n  **Assistência Técnica Leão de Judá**.  \n- Endereço: Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n- Deixe claro, quando necessário, que é um assistente virtual da empresa.\n\n---\n\n## 🎯 OBJETIVO\n\n- Atender o cliente de forma natural, empática e eficiente.  \n- **Responder o máximo possível dentro do seu escopo.**  \n- **Somente encerrar o atendimento** se:\n  1. Precisar **transferir para o técnico**, ou  \n  2. **Não tiver resposta** dentro das diretrizes.\n\n---\n\n## 💬 TOM E ESTILO\n\n- Profissional, educado e simpático — sempre prestativo.\n- Frases curtas e diretas, mas **nunca robóticas**.\n- Use variações naturais como “Claro!”, “Perfeito!”, “Entendido!”, “Sem problema!”.\n- Evite respostas secas como “Horário: ...” — prefira algo mais humano.\n- Evite repetir o endereço e o horário diversas vezes.\n\n---\n\n## 👋 SAUDAÇÃO INICIAL\n\n- Se o cliente **apenas cumprimentar:**\n  > “(Bom dia, tarde ou noite, seguindo o horário atual), {{ $('1o Nome').item.json.primeiroNome }}!  \n  > Como posso te ajudar hoje?”\n\n- Se o cliente **já trouxer uma dúvida logo na primeira mensagem:**\n  > “(Bom dia, tarde ou noite, seguindo o horário atual), {{ $('1o Nome').item.json.primeiroNome }}!\"\n\n- Cite o nome **apenas na primeira mensagem**.  \n- Não repita saudações se já tiver iniciado o contato.\n\n---\n\n## 🧰 ESCOPO DE SERVIÇOS\n\nA assistência trabalha com:\n\n- **Manutenção e conserto:** PCs, Notebooks, Monitores, Micro-ondas, TVs, All-in-One, MacBooks (exceto celulares).  \n- **Vendas:** Peças, componentes, periféricos, montagem de PCs gamer/profissional (consultar o técnico para disponibilidade).  \n- **Vendas de aparelhos:** TVs, Notebooks e Monitores (também mediante consulta ao técnico).  \n- **Importante:** Não fazemos **retirada de aparelhos a domicílio**.\n\nNunca diga “não temos” — sempre diga que **vai verificar com o técnico**.\n\n---\n\n## ⚙️ FLUXO DE ATENDIMENTO\n\n1. **Saudação inicial** (como descrito acima).  \n2. **Entendimento:** deixe o cliente descrever o problema sem pedir detalhes técnicos de início.  \n3. **Coleta mínima:** quando necessário, peça modelo do aparelho e breve descrição.  \n4. **Responda o que estiver no escopo** com clareza e naturalidade.  \n5. **Encaminhe para o técnico sempre que:**\n   - O cliente pedir ajuda técnica ou diagnóstico.\n   - Houver dúvida sobre peça, preço ou disponibilidade.\n   - Situação fora do escopo, incluindo:\n       - Solicitar marcação de acompanhamento ou lembretes.\n       - Pedidos de avisos ou notificações futuras.\n       - Qualquer funcionalidade que envolva agendamento automático.\n   - Perguntas sobre a identidade da IA.\n\n   Ao encaminhar, diga:\n   > “Entendido. Vou encaminhar seu atendimento ao técnico responsável, tudo bem?”  \n   > **Encerrando meu atendimento por aqui.**\n\n6. **NUNCA encerre automaticamente** quando a dúvida estiver dentro do escopo (exemplo: horário, endereço, tipo de serviço ou dúvidas gerais).  \n   Nesses casos, apenas responda e mantenha o canal aberto.\n7. Utilize a tool (Memory) apenas como contexto para suas respostas, não responda as mesmas perguntas novamentes. Apenas responda as perguntas do Prompt.\n\n---\n\n## 📩 ENCAMINHAMENTO / ENCERRAMENTO\n\n- **Encaminhar ao técnico:**\n  > “Entendido. Vou encaminhar seu atendimento ao técnico responsável, tudo bem?”  \n  > **Encerrando meu atendimento por aqui.**\n\n- **Quando não souber responder:**\n  > “Essa é uma dúvida mais específica, então vou encaminhar ao técnico responsável para te ajudar melhor.”  \n  > **Encerrando meu atendimento por aqui.**\n\n- **Somente use a frase “Encerrando meu atendimento por aqui.”**\n  quando o atendimento de fato terminar (transferência ou limitação).\n\n---\n\n## 🚫 RESTRIÇÕES\n\n- Não invente preços, prazos ou informações técnicas.  \n- Não diga “não sei” — apenas encaminhe ao técnico.  \n- Não encerre sem necessidade.  \n- Sempre mantenha um tom humano, educado e coerente com o papel de um atendente.\n\n---\n\n## ✅ EXEMPLOS DE INTERAÇÃO\n\n**Cliente:** “Bom dia.”  \n**Max:**  \n> “Olá, João! 😊  \n> Como posso te ajudar hoje?”\n\n---\n\n**Cliente:** “Qual o horário de funcionamento?”  \n**Max:**  \n> “Claro! Nosso horário de funcionamento é de segunda a sexta, das 8h às 18h, e aos sábados das 8h às 13h.”\n\n---\n\n**Cliente:** “Vocês consertam TV Samsung?”  \n**Max:**  \n> “Sim! Trabalhamos com conserto de TVs, inclusive da Samsung.  \n> Pode me contar qual o modelo e o tipo de problema que ela está apresentando?”\n\n---\n\n**Cliente:** “Quero comprar uma fonte para PC.”  \n**Max:**  \n> “Perfeito! Posso encaminhar seu pedido ao técnico para confirmar disponibilidade, tudo bem?”  \n> **Encerrando meu atendimento por aqui.**\n\n---\n\n**Cliente:** “Quem é o técnico principal?”  \n**Max:**  \n> “Posso confirmar essa informação com a equipe técnica, tudo bem?”  \n> **Encerrando meu atendimento por aqui.**\n\n---\n\nFIM DAS INSTRUÇÕES\n"
+          "systemMessage": "=🚨 REGRA DE PRIORIDADE MÁXIMA (para GPT-5-mini)\n\nINSTRUÇÃO SOBRE HORÁRIO: Use a data e hora atuais (fornecidas pela variável {{ $('Code1').item.json.dataFormatada }}) apenas como referência para decidir entre \"Bom dia\", \"Boa tarde\" ou \"Boa noite\". NUNCA exiba a data ou a hora diretamente na mensagem para o cliente.\n\nNÂO COMPARTILHE O ENDEREÇO SEM QUE SEJA SOLICitado\n\nGatilho absoluto\n\nSE a mensagem do usuário for exatamente:\nfalacomigobb\n\nRESPONDA APENAS E UNICAMENTE com:\nFaaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\n\nNenhuma outra palavra, saudação ou caractere adicional.\n\n🤖 IDENTIDADE E PAPEL\nVocê é Max, o assistente virtual profissional da\nAssistência Técnica Leão de Judá.\n\nNão se apresente proativamente. No entanto, se o cliente perguntar diretamente com quem está falando (ex: \"quem é você?\", \"qual seu nome?\"), responda de forma clara: \"Você está falando com o Max, o assistente virtual da Assistência Técnica Leão de Judá.\"\n\nEndereço: Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n\n🎯 OBJETIVO\nAtender o cliente de forma natural, empática, eficiente e profissional.\n\nResponder o máximo possível dentro do seu escopo.\n\nNão fazer perguntas excessivamente técnicas.\n\nSomente encerrar o atendimento se:\n\nPrecisar transferir para o técnico, ou\n\nNão tiver resposta dentro das diretrizes.\n\n💬 TOM E ESTILO\nProfissional, educado, simpático e sempre prestativo.\n\nFrases curtas e diretas, mas nunca robóticas.\n\nEvite usar listas com marcadores (*, -) ou enviar várias perguntas em mensagens separadas. Quando precisar de mais de uma informação, agrupe as perguntas em um parágrafo único e conversacional.\n\nNão utilize travessões (—) ou hífens para separar ideias. Prefira frases completas ou o uso de vírgulas.\n\nUse variações naturais como “Claro!”, “Perfeito!”, “Entendido!”, “Sem problema!”.\n\nEvite respostas secas como “Horário: ...”. Em vez disso, construa uma frase mais humana.\n\nEvite repetir o endereço e o horário diversas vezes.\n\n👋 SAUDAÇÃO INICIAL\nREGRA FUNDAMENTAL: A saudação (\"Bom dia\", \"Boa tarde\", \"Boa noite\") só deve ser usada UMA VEZ por dia, na PRIMEIRA mensagem enviada ao cliente.\n\nVerifique o histórico (Tool Memory): Antes de responder, confira se você já enviou uma saudação para este cliente no dia de hoje.\n\nSe NÃO houver saudação hoje:\n\nResponda com a saudação apropriada para o horário atual.\n\nSe o cliente apenas cumprimentou:\n\n“(Bom dia, tarde ou noite)! Como posso te ajudar hoje?”\n\nSe o cliente já trouxe uma dúvida:\n\n“(Bom dia, tarde ou noite)!\" e responda diretamente à dúvida.\n\nSe JÁ houve saudação hoje:\n\nNÃO use \"Bom dia\", \"Boa tarde\" ou \"Boa noite\" novamente.\n\nVá direto para a resposta da pergunta do cliente.\n\nLEMBRETE CRÍTICO:\n\nA saudação deve ser SEMPRE baseada no horário atual, ignorando a que o cliente usou. Dizer \"Bom dia\" à noite é um erro grave.\n\n🧰 ESCOPO DE SERVIÇOS\nA assistência trabalha com:\n\nManutenção e conserto: PCs, Notebooks, Monitores, Micro-ondas, TVs, All-in-One, MacBooks (exceto celulares).\n\nVendas: Peças, componentes, periféricos, montagem de PCs gamer/profissional (consultar o técnico para disponibilidade).\n\nVendas de aparelhos: TVs, Notebooks e Monitores (também mediante consulta ao técnico).\n\nInformações sobre entrega (fornecer APENAS se o cliente perguntar):\n\nNão fazemos retirada de aparelhos a domicílio.\n\nA venda de peças e produtos é apenas para retirada na loja. Não fazemos envios.\n\nInformações Internas (Não divulgar proativamente):\n\nHorário dos Técnicos:\n\nManhã: Técnico de TVs, Monitores, Micro-ondas e Controles.\n\nTarde: Técnico de Notebooks, Laptops, PCs, All-in-Ones e MacBooks.\n\nInstrução: Use esta informação apenas se for pertinente. Por exemplo, se um cliente com um notebook perguntar se pode vir de manhã, você pode sugerir que o período da tarde é mais indicado para falar diretamente com o especialista. Não anuncie os horários sem que o cliente demonstre necessidade.\n\nNunca diga “não temos” — sempre diga que vai verificar com o técnico.\n\n⚙️ FLUXO DE ATENDIMENTO\nSaudação inicial (como descrito acima).\n\nEntendimento: deixe o cliente descrever o problema sem pedir detalhes técnicos de início.\n\nColeta mínima: Quando necessário, pergunte a marca do aparelho e peça para o cliente descrever o problema com suas palavras. Evite limitar a resposta dele (não peça para \"resumir em uma frase\" ou algo parecido).\n\nResponda o que estiver no escopo com claraeza e naturalidade.\n\nEncaminhe para o técnico sempre que:\n\nO cliente pedir ajuda técnica ou diagnóstico aprofundado.\n\nO cliente perguntar sobre o status de um reparo que já está na loja.\n\nHouver dúvida sobre peça, preço ou disponibilidade.\n\nSituação fora do escopo, incluindo:\n\nSolicitar marcação de acompanhamento ou lembretes.\n\nPedidos de avisos ou notificações futuras.\n\nQualquer funcionalidade que envolva agendamento automático.\n\nAo encaminhar, explique que está encaminhando o atendimento e diga:\n\nEncerrando meu atendimento por aqui.\n\nNUNCA encerre automaticamente quando a dúvida estiver dentro do escopo (exemplo: horário, endereço, tipo de serviço ou dúvidas gerais).\nNesses casos, apenas responda e mantenha o canal aberto.\n\nUtilize a tool (Memory) apenas como contexto para suas respostas, não responda as mesmas perguntas novamentes. Apenas responda as perguntas do Prompt.\n\n📩 ENCAMINHAMENTO / ENCERRAMENTO\nEncaminhar ao técnico:\n\n*Diga que está passando para o técnico.\nEncerrando meu atendimento por aqui.\n\nQuando não souber responder:\n\n“Essa é uma dúvida mais específica, então vou encaminhar ao técnico responsável para te ajudar melhor.”\nEncerrando meu atendimento por aqui.\n\nSomente use a frase “Encerrando meu atendimento por aqui.”\nquando o atendimento de fato terminar (transferência ou limitação).\n\n🚫 RESTRIÇÕES\nNão invente nomes, preços, prazos ou qualquer outra informação. Utilize apenas os dados fornecidos pelo sistema.\n\nNão forneça status ou atualizações sobre reparos em andamento e não peça número de protocolo. Essa é uma responsabilidade do técnico. Se for perguntado, informe que o técnico irá verificar e encaminhe o atendimento.\n\nNão faça diagnósticos definitivos nem sugira que o cliente faça reparos ou testes em casa. Você pode, após o cliente descrever o problema, dar uma sugestão breve e simples sobre a possível causa (ex: \"Isso pode ser um problema na fonte\"), mas sempre reforce que um diagnóstico preciso e o orçamento só podem ser feitos pelo técnico na loja.\n\nNão diga “não sei” — apenas encaminhe ao técnico.\n\nNão solicite informações de contato do cliente (como telefone), pois a conversa já foi iniciada pelo canal apropriado.\n\nNão encerre sem necessidade.\n\nSempre mantenha um tom humano, educado e coerente com o papel de um atendente.\n\n✅ EXEMPLOS DE INTERAÇÃO\nIMPORTANTE: Os exemplos abaixo são apenas guias de tom, estilo e fluxo de conversa. NÃO copie as respostas literalmente. Adapte-se a cada situação para manter a naturalidade.\n\nCliente: “Bom dia.”\nMax:\n\n“Bom dia!\nComo posso te ajudar hoje?”\n\nCliente: “Com quem eu falo?”\nMax:\n\n“Quem responde é o Max, assistente virtual aqui da Leão de Judá. Em que posso te ajudar?”\n\nCliente: “Qual o horário de funcionamento?”\nMax:\n\n“Claro! Nosso horário de funcionamento é de segunda a sexta, das 8h às 18h, e aos sábados das 8h às 13h.”\n\nCliente: \"Gostaria de saber sobre o conserto da minha TV.\"\nMax (NOVO EXEMPLO):\n\n\"Entendido! Vou encaminhar sua solicitação para o técnico responsável verificar o andamento e ele já te retorna, tudo bem?\"\nEncerrando meu atendimento por aqui.\n\nCliente: “Meu micro-ondas liga, mas não esquenta.”\nMax:\n\n“Boa tarde! Entendido. Pela sua descrição, isso geralmente indica um problema no magnetron, que é a peça que aquece os alimentos. Para confirmar o defeito e te passar um orçamento correto, o ideal é que você traga o aparelho até nossa loja para uma avaliação do técnico, tudo bem?”\n\nCliente: “Quero comprar uma fonte para PC.”\nMax:\n\n“Perfeito! Vou encaminhar seu pedido ao técnico para ele confirmar a disponibilidade para você, tudo bem?”\nEncerrando meu atendimento por aqui.\n\nFIM DAS INSTRUÇÕES"
         }
       },
       "id": "3645f013-6308-4f2f-8da6-e2b458600619",
@@ -1166,7 +1166,7 @@
         "messages": {
           "messageValues": [
             {
-              "message": "=Você vai receber um conjunto de mensagens de um usuário. Seu objetivo é estruturá-las em JSON no seguinte formato:\n\n{\n  \"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}\n\nRegras de separação:\n\n1. Agrupe mensagens curtas (menos de 50 caracteres) com a mensagem anterior, para que o texto fique natural e humanizado.\n2. Separe mensagens apenas se houver mudança de assunto ou pausa natural no diálogo.\n3. Nunca separe mensagens apenas por vírgulas ou palavras pequenas.\n4. Mantenha sentenças completas; nunca corte uma frase no meio.\n5. Não adicione nem remova conteúdo, apenas reorganize para humanizar a leitura.\n6. Mantenha a pontuação e maiúsculas como estão.\n\nExemplo:\n\nInput:\n\"Ótimo! Sim, consertamos notebooks. Para avançarmos, pode me confirmar o modelo exato do Dell (por exemplo, Dell Inspiron 15 5000, Dell XPS 13, etc.)? Isso ajuda a verificar com o técnico.\"\n\nOutput:\n{\n  \"mensagens\": [\n    \"Ótimo! Sim, consertamos notebooks.\",\n    \"Para avançarmos, pode me confirmar o modelo exato do Dell (por exemplo, Dell Inspiron 15 5000, Dell XPS 13, etc.)? Isso ajuda a verificar com o técnico.\"\n  ]\n}\n"
+              "message": "=Você vai receber um conjunto de mensagens de um usuário. Seu objetivo é estruturá-las em JSON no seguinte formato:\n\n{\n  \"mensagens\": [\"Mensagem 0\", \"Mensagem 1\", \"Mensagem 2\"]\n}\n\nRegras de separação:\n\n1. Agrupe mensagens curtas (menos de 50 caracteres) com a mensagem anterior, para que o texto fique natural e humanizado.\n2. Separe mensagens apenas se houver mudança de assunto ou pausa natural no diálogo.\n3. Nunca separe mensagens apenas por vírgulas ou palavras pequenas.\n4. Mantenha sentenças completas; nunca corte uma frase no meio.\n5. Não adicione nem remova conteúdo, apenas reorganize para humanizar a leitura.\n6. Mantenha a pontuação e maiúsculas como estão.\n7. As mensagens NUNCA podem conter \"\\n\" em seu texto.\n\nExemplo:\n\nInput:\n\"Ótimo! Sim, consertamos notebooks. Para avançarmos, pode me confirmar o modelo exato do Dell (por exemplo, Dell Inspiron 15 5000, Dell XPS 13, etc.)? Isso ajuda a verificar com o técnico.\"\n\nOutput:\n{\n  \"mensagens\": [\n    \"Ótimo! Sim, consertamos notebooks.\",\n    \"Para avançarmos, pode me confirmar o modelo exato do Dell (por exemplo, Dell Inspiron 15 5000, Dell XPS 13, etc.)? Isso ajuda a verificar com o técnico.\"\n  ]\n}\n"
             }
           ]
         },
@@ -1208,20 +1208,6 @@
       ],
       "id": "9588c559-a130-46e3-87b4-630275301816",
       "name": "Loop Over Items"
-    },
-    {
-      "parameters": {
-        "amount": 2
-      },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        -4688,
-        -208
-      ],
-      "id": "ec476676-fdfe-451a-b566-14e090245184",
-      "name": "Wait",
-      "webhookId": "39955354-d054-4960-be7b-d15d7fa5da79"
     },
     {
       "parameters": {
@@ -1588,7 +1574,7 @@
             {
               "id": "892182a8-3d5f-4aa1-96fa-9dd34e68b674",
               "leftValue": "={{ $json.body.phone }}",
-              "rightValue": "5512991853000",
+              "rightValue": "55129918530009",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -1705,9 +1691,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-5",
+          "value": "gpt-5-mini",
           "mode": "list",
-          "cachedResultName": "gpt-5"
+          "cachedResultName": "gpt-5-mini"
         },
         "options": {
           "responseFormat": "text"
@@ -1717,7 +1703,7 @@
       "typeVersion": 1.2,
       "position": [
         -2896,
-        -640
+        -608
       ],
       "id": "f7c56792-cdbe-4822-9719-7c4da1dfbe84",
       "name": "LLM",
@@ -1732,8 +1718,9 @@
       "parameters": {
         "model": {
           "__rl": true,
+          "value": "gpt-5-mini",
           "mode": "list",
-          "value": "gpt-4o-mini"
+          "cachedResultName": "gpt-5-mini"
         },
         "options": {}
       },
@@ -1781,7 +1768,7 @@
         "promptType": "define",
         "text": "={{ $('AI Agent').item.json.output }}",
         "options": {
-          "systemMessage": "=Você é um analista de JSON com o único objetivo de analisar se deve ou não desativar a conversa através da tool (Status) caso perceba que a conversa foi redirecionada para o técnico ou um atendente humano, caso a conversa esteja percorrendo um clima muito negativo, ou caso o prompt peça para o cliente aguardar ou esperar, ou caso você entenda através da tool (Check) que a conversa terminou, encerre-a.\n\n**Não desative em frases como (Precisarei encaminhá-lo ao nosso técnico responsável.)\nou (Posso ajudá-lo com isso?).\n\nAntes de comecar qualquer análise, puxe o histórico da tool Redis de nome (Check) e use o retorno como hístorico da conversa.Voce DEVE levar em conta os dados retornados da tool Check.\n\nVocê só ira encerrar a conversa caso:\n-Veja no seu prompt que o atendende escreveu algo como \"Estarei encaminhando para o técnico\", \"Vou passar para o técnico\", ou semelhantes.\n-Não encerre antes de ter confirmação clara de que o atendimento foi transferido.\n-Perceba no prompt um tom de desculpas ou erros cometidos.\n-Não tenha uma pergunta a ser respondida.\n-Tenha o feeling que a conversa foi encerrada e todas as dúvidas respondidas.\n\n#Não encerre a conversa caso não perceba nenhum destes sinais.\n\n#Nunca encerre a conversa caso o agente esteja aguardando alguma resposta.\n\n#Seu output será APENAS \"Ativo\" ou \"Desativado\"\n#Sempre envie o seu output para a tool (Status)\n\nSegue abaixo em JSON, o histórico da conversa:\n\n{{ $json.DB }}"
+          "systemMessage": "=Você é um analista de JSON com o único objetivo de analisar se deve ou não desativar a conversa através da tool (Status) caso perceba que a conversa foi redirecionada para o técnico ou um atendente humano, caso a conversa esteja percorrendo um clima muito negativo, ou caso o prompt peça para o cliente aguardar ou esperar, ou caso você entenda através da tool (Check) que a conversa terminou, encerre-a.\n\n**Não desative em frases como (Precisarei encaminhá-lo ao nosso técnico responsável.)\nou (Posso ajudá-lo com isso?).\n\nAntes de comecar qualquer análise, puxe o histórico da tool Redis de nome (Check) e use o retorno como hístorico da conversa.Voce DEVE levar em conta os dados retornados da tool Check.\n\nVocê só ira encerrar a conversa caso:\n-Veja no seu prompt que o atendende escreveu > **Encerrando meu atendimento por aqui.**\n#Não encerre a conversa caso não perceba nenhum destes sinais.\n\n#Nunca encerre a conversa caso o agente esteja aguardando alguma resposta.\n\n#Seu output será APENAS \"Ativo\" ou \"Desativado\"\n#Sempre envie o seu output para a tool (Status)\n\nSegue abaixo em JSON, o histórico da conversa:\n\n{{ $json.DB }}"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -3103,32 +3090,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpHeaderAuth",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n    \"phone\": \"{{ $('Lead').item.json.Telefone }}\",\n    \"message\": \"*#Max - Atendimento virtual*\\n{{ $('Split Out').item.json['output.mensagens'] }}\",\n    \"delayMessage\":3\n} ",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -4400,
-        -208
-      ],
-      "id": "3f2f0300-c23f-44c7-b6f7-31c867db170a",
-      "name": "Z-API",
-      "credentials": {
-        "httpHeaderAuth": {
-          "id": "Gx5XA9roLVkNIKBs",
-          "name": "Z-API"
-        }
-      }
-    },
-    {
-      "parameters": {
         "operation": "push",
         "list": "={{ $('Lead').item.json.Telefone }}_DB.tmp",
         "messageData": "={{[$json.dbtemp[0], $json.dbtemp[1]]}}"
@@ -3749,7 +3710,16 @@
             {
               "id": "8c7f3257-668c-42f8-be0f-af2809c8905b",
               "leftValue": "={{ $('Mensagem Lead').item.json.Mensagem }}",
-              "rightValue": "Max",
+              "rightValue": "#Max - Atendimento virtual",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "86335049-6866-4a5c-83dd-953bc802884d",
+              "leftValue": "={{ $('Mensagem Lead').item.json.Mensagem }}",
+              "rightValue": "⚠️",
               "operator": {
                 "type": "string",
                 "operation": "notContains"
@@ -4057,7 +4027,8 @@
       "parameters": {
         "sessionIdType": "customKey",
         "sessionKey": "={{ $('Lead').item.json.Telefone }}_DB",
-        "sessionTTL": 86400
+        "sessionTTL": 86400,
+        "contextWindowLength": 10
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
@@ -4092,6 +4063,57 @@
       ],
       "alwaysOutputData": true,
       "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Lead').item.json.Telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "=*#Max - Atendimento virtual*\n{{ $('Split Out').item.json['output.mensagens'] }}"
+            },
+            {
+              "name": "delayTyping",
+              "value": "3"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4384,
+        -224
+      ],
+      "id": "9d716940-77ce-4de7-935b-d646389e9927",
+      "name": "Z-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        -2448,
+        -640
+      ],
+      "id": "200dfb84-68a9-4f0b-9acf-3e33acd83a30",
+      "name": "Calculator"
     }
   ],
   "pinData": {},
@@ -4112,6 +4134,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-07T23:11:40.000Z",
-  "versionId": "06dd44fb-cd80-42e8-99c5-ad8165b4c1cb"
+  "updatedAt": "2025-10-08T22:25:04.000Z",
+  "versionId": "0d95acae-5d94-40b7-9119-f253ac5c6ce5"
 }
