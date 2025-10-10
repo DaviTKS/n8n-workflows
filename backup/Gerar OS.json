@@ -706,6 +706,17 @@
           }
         ]
       ]
+    },
+    "Z-API3": {
+      "main": [
+        [
+          {
+            "node": "Z-API4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-02T01:26:38.571Z",
@@ -2014,6 +2025,9 @@
       ],
       "id": "209424aa-41a2-4940-9aa8-0fb1bad7c029",
       "name": "Z-API",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5,
       "credentials": {
         "httpHeaderAuth": {
           "id": "Gx5XA9roLVkNIKBs",
@@ -2260,6 +2274,9 @@
       ],
       "id": "5c2179f4-6dbb-438d-bd67-005e78d67e94",
       "name": "Z-API2",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5,
       "credentials": {
         "httpHeaderAuth": {
           "id": "Gx5XA9roLVkNIKBs",
@@ -3045,6 +3062,72 @@
       ],
       "id": "70eb2047-b034-40a7-815f-17c0eb936759",
       "name": "If2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5512981818662"
+            },
+            {
+              "name": "message",
+              "value": "=Boa tarde Evandro! \nSua OS é a número 25685\n\nReferente ao seu *Televisor LG*\n\n_Modelo 49UJ6300._\n\nDefeito relatado: *Liga Com Uma Linha Na Tela, Parte Superior*\n\nObservações do técnico: Isolar Flat ? 380  , Aguardando Aprovação\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1648,
+        368
+      ],
+      "id": "fe691834-85e4-4e1e-8dd9-42acf45190de",
+      "name": "Z-API3",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/contacts/add",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=[\n{\n    \"firstName\": \"Evandro\",\n    \"lastName\": \"25685\",\n    \"phone\": \"5512981818662\"\n  }\n]",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1872,
+        368
+      ],
+      "id": "e5aa1549-34b5-47a5-b339-34928e3f025c",
+      "name": "Z-API4",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
     }
   ],
   "pinData": {
@@ -3119,6 +3202,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-01T17:18:05.000Z",
-  "versionId": "b723b68d-a987-4e82-94c4-66d2ab920688"
+  "updatedAt": "2025-10-09T21:16:20.000Z",
+  "versionId": "a4c35ff2-ab8c-4d23-a8cb-b9ee45926b36"
 }
