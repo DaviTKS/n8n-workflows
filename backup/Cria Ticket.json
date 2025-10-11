@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -18,17 +18,6 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "Switch1",
-            "type": "main",
             "index": 0
           }
         ]
@@ -778,6 +767,17 @@
           }
         ]
       ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-10-09T21:25:26.468Z",
@@ -840,22 +840,6 @@
       ],
       "id": "80ca7044-7373-478a-b8bf-2b36d1f36729",
       "name": "Calculator"
-    },
-    {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "recebetext2",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
-      "position": [
-        -3376,
-        -64
-      ],
-      "id": "5f2040d6-7e2b-4edc-a1b3-bb5d71ac676b",
-      "name": "Webhook",
-      "webhookId": "ea5b42ea-03f2-405a-b4ad-f2a04a356729"
     },
     {
       "parameters": {
@@ -1160,7 +1144,7 @@
       "parameters": {
         "operation": "set",
         "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_msg",
-        "value": "={{ $('Webhook').item.json.body.messageId }}"
+        "value": "={{ $('When Executed by Another Workflow').item.json.body.messageId }}"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
@@ -1355,7 +1339,7 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $('Webhook').item.json.body.msgContent.audioMessage.url }}",
+                    "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.msgContent.audioMessage.url }}",
                     "rightValue": "mmg",
                     "operator": {
                       "type": "string",
@@ -1378,7 +1362,7 @@
                 "conditions": [
                   {
                     "id": "cbad2218-264c-4a8c-ac39-7d6bfe8653d9",
-                    "leftValue": "={{ $('Webhook').item.json.body.msgContent.audioMessage.url }}",
+                    "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.msgContent.audioMessage.url }}",
                     "rightValue": "mmg",
                     "operator": {
                       "type": "string",
@@ -1449,7 +1433,7 @@
             {
               "id": "f6b79ed2-cb77-402a-b3a4-f8d5b179f4ba",
               "leftValue": "={{ $json.msgID }}",
-              "rightValue": "={{ $('Webhook').item.json.body.messageId }}",
+              "rightValue": "={{ $('When Executed by Another Workflow').item.json.body.messageId }}",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -2240,7 +2224,7 @@
           "conditions": [
             {
               "id": "ce44d552-db37-4741-b37a-9f8fc25c8990",
-              "leftValue": "={{ $('Webhook').item.json.body.fromMe }}",
+              "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.fromMe }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -2279,7 +2263,7 @@
                 "conditions": [
                   {
                     "leftValue": "={{ $json.body.phone }}",
-                    "rightValue": "120363419000321508-group",
+                    "rightValue": "120363405585257695-group",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
@@ -2344,7 +2328,7 @@
       "typeVersion": 3.2,
       "position": [
         -3056,
-        -80
+        -96
       ],
       "id": "158d0eea-0566-4487-8006-56ae47dda47c",
       "name": "Switch1"
@@ -2360,7 +2344,7 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "={{ $('Webhook').item.json.body.phone }}"
+              "value": "={{ $('Ticket').item.json.Telefone }}"
             },
             {
               "name": "message",
@@ -2396,7 +2380,7 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "={{ $('Webhook').item.json.body.phone }}"
+              "value": "={{ $('Ticket').item.json.Telefone }}"
             },
             {
               "name": "message",
@@ -2863,9 +2847,91 @@
       ],
       "id": "c279767f-42a6-4a7c-8f91-75c9f6a133c7",
       "name": "Sticky Note12"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -3584,
+        128
+      ],
+      "id": "e8807ea2-56c4-4d3c-99f5-e35697e1ff9d",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -3344,
+        -64
+      ],
+      "id": "ea8d9fd0-8ee3-497e-9e54-f66e99c63ebf",
+      "name": "When Executed by Another Workflow"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "headers": {
+            "host": "auto.kadovesh.com",
+            "user-agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:111.0) Gecko/20100101 Firefox/111.0",
+            "content-length": "759",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "137.131.203.164",
+            "cf-ipcountry": "BR",
+            "cf-ray": "98c65938ec32464c-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-warp-tag-id": "6098b144-6d17-4766-8305-fbcd87538e2d",
+            "connection": "keep-alive",
+            "content-type": "application/json",
+            "origin": "https://api.z-api.io",
+            "server": "Z-API",
+            "x-forwarded-for": "137.131.203.164",
+            "x-forwarded-proto": "https",
+            "z-api-token": "771E4BE1F789AB112E4831D6"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "isStatusReply": false,
+            "chatLid": null,
+            "connectedPhone": "551239313000",
+            "waitingMessage": false,
+            "isEdit": false,
+            "isGroup": true,
+            "isNewsletter": false,
+            "instanceId": "3E29DB01364090EFDC8006E9A5181015",
+            "messageId": "3EB0A86236905DF3178559",
+            "phone": "120363419000321508-group",
+            "fromMe": false,
+            "momment": 1760101727000,
+            "status": "RECEIVED",
+            "chatName": "Testes",
+            "senderPhoto": "https://pps.whatsapp.net/v/t61.24694-24/484873030_9628712110531731_5581350847859461709_n.jpg?ccb=11-4&oh=01_Q5Aa2wEuL0juGJxKO8iwVv2OO2wTz0rv8cZz7G6Q0c3hvoyymg&oe=68F62FA1&_nc_sid=5e03e0&_nc_cat=102",
+            "senderName": "Davi Moraes",
+            "photo": null,
+            "broadcast": false,
+            "participantPhone": "5512982113000",
+            "participantLid": null,
+            "forwarded": false,
+            "type": "ReceivedCallback",
+            "fromApi": false,
+            "text": {
+              "message": "Teste"
+            }
+          },
+          "webhookUrl": "https://auto.kadovesh.com/webhook-test/recebetext1",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
@@ -2881,6 +2947,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-10T01:03:52.000Z",
-  "versionId": "bd914f09-21c0-4cba-97a7-e252245df2f1"
+  "updatedAt": "2025-10-10T19:12:59.000Z",
+  "versionId": "42699e5a-07f6-4b63-9a6b-1b15a3c91d3e"
 }
