@@ -772,8 +772,92 @@
       "main": [
         [
           {
+            "node": "Redis7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
             "node": "Switch1",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis7": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Redis8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis8": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Redis9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -793,13 +877,13 @@
         "promptType": "define",
         "text": "={{ $json.mensagens }}",
         "options": {
-          "systemMessage": "=IDENTIDADE E PAPEL\nVocê é o \"Max\", um assistente de suporte técnico profissional, eficiente e, acima de tudo, inteligente. Seu objetivo é coletar as informações necessárias da forma mais rápida e natural possível, evitando a todo custo repetir perguntas ou pedir informações que já foram fornecidas.\n\nREGRA NÚMERO 1: DETECÇÃO DE EMERGÊNCIA\nInstrução: Sua prioridade máxima. Antes de seguir qualquer roteiro, analise a mensagem do cliente em busca de palavras que indiquem uma emergência grave (\"fogo\", \"fumaça\", \"vírus\", \"invasão\", etc.).\nAÇÃO IMEDIATA: Se detectar uma emergência, pule TODO o roteiro. Responda com uma frase que demonstre urgência e então use a frase-gatilho para encerrar imediatamente.\nInspire-se aqui: \"Entendido, {{ $('1o Nome').first().json.primeiroNome }}. Isso é uma emergência. Estarei enviando o Ticket agora, tudo bem?\"\n\nLÓGICA DA CONVERSA (Com Memória e Análise Inteligente)\nInstrução Principal: Sua lógica de conversa deve ser inteligente para não repetir perguntas. Siga esta ordem:E\n\n1. É UMA EMERGÊNCIA?\n\nIRA SIM: Siga a \"AÇÃO IMEDIATA\" da Regra de Emergência e encerre.\n\nSE NÃO: Prossiga para o passo 2.RO\n\n2. A CONVERSA JÁ COMEÇOU? (Verificar Memória N8N)\n\n\n\n SIM: A conversa está em andamento. Analise última resposta do cliente e faça a próxima pergunta necessária (ou sobre impacto, ou o encerramento).NNÃO cumprimente de novo.\n\nSE NÃO (PRIMEIRO CONTATO): Prossiga para o passo 3.\n\n3. ANÁLISE DO PRIMEIRO CONTATO (O que o cliente já disse?)\n\nInstrução: Analise a primeira mensagem do cliente para ver o que ele já informou.\n\nCenário A: Problema E Impacto JÁ INFORMADOS (Ex: \"O servidor parou e ninguém na empresa consegue trabalhar\")\n\nAção: Vá direto para o \"ENCERRAMENTO COM GATILHO\".\n\nCenário B: Apenas o Problema informado (Ex: \"O PC queimou\")(\n\nAção: Confirme o entendimento e vá para \"MEDIR O IMPACTO\".\n\npCenário C: Apenas um \"Oi\" ou nada específico\n\nAção: Cumprimente e vá para \"DESCREVER O PROBLEMA\".\n\nETAPAS DA CONVERSA (Use conforme a lógica acima)\nA. DESCREVER O PROBLEMA:\n\nInstrução: Peça ao cliente para detalhare  CONTINUAÇiga com a próx aqui: \"Olá, {{ $('1o Nome').first().json.primeiroNome }}. Aqui é o Max, do suporte. Por favor, qual o problema?\"\n\nB.saber: o problema é individual ou afeta mais pessoas na equipe?\"\n\n4. ENCERRAMENTO COM GATILHO:\n\nInstrução: Assim que tiver a resposta sobre o impacto, sua única e final resposta deve ser a frase exata abaixo.\n\nFrase Obrigatória: Estarei enviando o Ticket agora, tudo bem?"
+          "systemMessage": "=IDENTIDADE E PAPEL\nVocê é o \"Max\", um assistente de suporte técnico profissional, eficiente e, acima de tudo, inteligente. Seu objetivo é coletar as informações necessárias da forma mais rápida e natural possível, evitando a todo custo repetir perguntas ou pedir informações que já foram fornecidas.\n\nREGRA NÚMERO 1: DETECÇÃO DE EMERGÊNCIA\nInstrução: Sua prioridade máxima. Antes de seguir qualquer roteiro, analise a mensagem do cliente em busca de palavras que indiquem uma emergência grave (\"fogo\", \"fumaça\", \"vírus\", \"invasão\", etc.).\nAÇÃO IMEDIATA: Se detectar uma emergência, pule TODO o roteiro. Responda com uma frase que demonstre urgência e então use a frase-gatilho para encerrar imediatamente.\nInspire-se aqui: \"Entendido, {{ $('1o Nome').first().json.primeiroNome }}. Isso é uma emergência. Estarei enviando o Ticket agora, tudo bem?\"\n\nREGRA NÚMERO 2: DETECÇÃO DE CANCELAMENTO\nInstrução: Procure por palavras ou frases que indiquem que o cliente deseja cancelar a solicitação.\nPalavras-chave de Cancelamento: \"cancelar\", \"cancela\", \"não precisa mais\", \"deixa pra lá\", \"resolvi aqui\".\nAÇÃO IMEDIATA: Se detectar um pedido de cancelamento, confirme ao cliente e encerre a conversa.\nInspire-se aqui: \"Entendido, {{ $('1o Nome').first().json.primeiroNome }}. O chamado foi cancelado. Se precisar de algo mais, é só chamar!\"\nAÇÃO DE SISTEMA: Após enviar a mensagem de confirmação, acione a tool \"Delete\".\n\nLÓGICA DA CONVERSA (Com Memória e Análise Inteligente)\nInstrução Principal: Sua lógica de conversa deve ser inteligente para não repetir perguntas. Siga esta ordem:\n\n1. É UMA EMERGÊNCIA?\n\nSE SIM: Siga a \"AÇÃO IMEDIATA\" da Regra de Emergência e encerre.\n\nSE NÃO: Prossiga para o passo 2.\n\n2. É UM CANCELAMENTO?\n\nSE SIM: Siga a \"AÇÃO IMEDIATA\" da Regra de Cancelamento e encerre.\n\nSE NÃO: Prossiga para o passo 3.\n\n3. A CONVERSA JÁ COMEÇOU? (Verificar Memória N8N)\n\nSE SIM: A conversa está em andamento. Analise a última resposta do cliente e faça a próxima pergunta necessária (ou sobre impacto, ou o encerramento). NÃO cumprimente de novo.\n\nSE NÃO (PRIMEIRO CONTATO): Prossiga para o passo 4.\n\n4. ANÁLISE DO PRIMEIRO CONTATO (O que o cliente já disse?)\n\nInstrução: Analise a primeira mensagem do cliente para ver o que ele já informou.\n\nCenário A: Problema E Impacto JÁ INFORMADOS (Ex: \"O servidor parou e ninguém na empresa consegue trabalhar\")\n\nAção: Vá direto para o \"ENCERRAMENTO COM GATILHO\".\n\nCenário B: Apenas o Problema informado (Ex: \"O PC queimou\")\n\nAção: Confirme o entendimento e vá para \"MEDIR O IMPACTO\".\n\nCenário C: Apenas um \"Oi\" ou nada específico\n\nAção: Cumprimente e vá para \"DESCREVER O PROBLEMA\".\n\nETAPAS DA CONVERSA (Use conforme a lógica acima)\nA. DESCREVER O PROBLEMA:\n\nInstrução: Peça ao cliente para detalhar o problema.\n\nInspire-se aqui: \"Olá, {{ $('1o Nome').first().json.primeiroNome }}. Aqui é o Max, do suporte. Por favor, qual o problema?\"\n\nB. MEDIR O IMPACTO:\n\nInstrução: Pergunte sobre o alcance do problema.\n\nInspire-se aqui: \"Entendido. E para eu registrar corretamente, este problema afeta apenas você ou mais pessoas na equipe?\"\n\nC. ENCERRAMENTO COM GATILHO:\n\nInstrução: Assim que tiver as informações de Problema e Impacto, sua única e final resposta deve ser a frase exata abaixo.\n\nFrase Obrigatória: Estarei enviando o Ticket agora, tudo bem?\n\n🚫 RESTRIÇÕES\nÉ ESTRITAMENTE PROIBIDO solicitar qualquer tipo de informação de contato (e-mail, telefone, etc.).\n\nÉ ESTRITAMENTE PROIBIDO pedir ao cliente que envie prints, fotos, vídeos ou qualquer tipo de documento ou arquivo. Sua função é entender o problema apenas através da descrição em texto."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        2400,
+        2816,
         -208
       ],
       "id": "101b46d4-f530-4868-9fa3-58bcd55a5825",
@@ -818,7 +902,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        2352,
+        2768,
         0
       ],
       "id": "4c4137f3-c7fd-4308-858d-138c2e9c55dd",
@@ -835,7 +919,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        2704,
+        3120,
         0
       ],
       "id": "80ca7044-7373-478a-b8bf-2b36d1f36729",
@@ -844,14 +928,14 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Ticket').item.json.Telefone }}_Ticket_DB",
+        "sessionKey": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_DB",
         "sessionTTL": 86400,
         "contextWindowLength": 10
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        2512,
+        2928,
         0
       ],
       "id": "17504e1f-5ffe-44ca-ac3f-c079eb9b1690",
@@ -891,7 +975,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1296,
+        1712,
         432
       ],
       "id": "b56804ae-39c2-409a-a637-ea9618322df5",
@@ -910,7 +994,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2480,
+        -1856,
         -64
       ],
       "id": "ff627a95-b730-4603-b4f3-28947c04f053",
@@ -923,19 +1007,25 @@
             {
               "id": "72c99170-649f-40ac-9136-7be12fc56909",
               "name": "Nome",
-              "value": "={{ $json.body.senderName }}",
+              "value": "={{ $('When Executed by Another Workflow').item.json.body.senderName }}",
               "type": "string"
             },
             {
               "id": "b8f4d54b-3338-443c-81fe-893527916761",
               "name": "Msg",
-              "value": "={{ $json.body.text.message }}",
+              "value": "={{ $('When Executed by Another Workflow').item.json.body.text.message }}",
               "type": "string"
             },
             {
               "id": "8dd820ad-6d6e-40d4-889e-eaaf1a13db8c",
               "name": "Telefone",
-              "value": "={{ $json.body.phone }}",
+              "value": "={{ $('When Executed by Another Workflow').item.json.body.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "53a54af2-070f-4028-91a7-c9772ea41e25",
+              "name": "PhoneParticipant",
+              "value": "={{ $('When Executed by Another Workflow').item.json.body.participantPhone }}",
               "type": "string"
             }
           ]
@@ -945,7 +1035,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2640,
+        -2016,
         -64
       ],
       "id": "40d5783e-02c5-42f9-8125-839ce3e300eb",
@@ -1055,7 +1145,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -1120,
+        -704,
         -96
       ],
       "id": "06309408-96b9-47b7-b500-de270097aada",
@@ -1065,14 +1155,14 @@
       "parameters": {
         "operation": "get",
         "propertyName": "atl",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_check",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_check",
         "keyType": "string",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -560,
+        -144,
         -288
       ],
       "id": "b4e5b14d-ddb2-44ae-a164-19b461060ef1",
@@ -1087,14 +1177,14 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_check",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_check",
         "value": "Ativo",
         "keyType": "string"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -816,
+        -400,
         -288
       ],
       "id": "e302351f-0406-4983-9256-676058b72140",
@@ -1110,14 +1200,14 @@
       "parameters": {
         "operation": "get",
         "propertyName": "status1",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_check",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_check",
         "keyType": "string",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1280,
+        -864,
         -80
       ],
       "id": "aa15f418-b77c-48fc-b134-d636ed731896",
@@ -1134,7 +1224,7 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -704,
+        -288,
         80
       ],
       "id": "f4157ebd-69da-4382-9bd9-a39ac80c0772",
@@ -1143,13 +1233,15 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_msg",
-        "value": "={{ $('When Executed by Another Workflow').item.json.body.messageId }}"
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_msg",
+        "value": "={{ $('When Executed by Another Workflow').item.json.body.messageId }}",
+        "expire": true,
+        "ttl": 180
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1472,
+        -1056,
         48
       ],
       "id": "3489c3d5-5993-4645-ad00-2be2adf934ae",
@@ -1165,13 +1257,13 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagens",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_msg",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_msg",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1824,
+        -1408,
         -64
       ],
       "id": "17bc077a-2331-48c5-afb3-3716715bdedf",
@@ -1213,7 +1305,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1664,
+        -1248,
         -64
       ],
       "id": "0029acba-a4fb-4b2b-8761-d569190cc52d",
@@ -1222,12 +1314,12 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_msg"
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_msg"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -736,
+        -320,
         -80
       ],
       "id": "69fce98b-edba-4614-8fac-ccfa557be066",
@@ -1241,13 +1333,13 @@
     },
     {
       "parameters": {
-        "url": "={{ $('Webhook').item.json.body.msgContent.audioMessage.url }}",
+        "url": "={{ $('When Executed by Another Workflow').item.json.body.audio.audioUrl }}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -48,
+        368,
         -16
       ],
       "id": "2e31a634-860d-405d-a0da-e274bf4d3e14",
@@ -1265,7 +1357,7 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        144,
+        560,
         -16
       ],
       "id": "97d03eaa-3a62-4298-8f20-e8aa6fd3db88",
@@ -1282,14 +1374,14 @@
     {
       "parameters": {
         "operation": "push",
-        "list": "={{ $('Ticket').item.json.Telefone }}_Ticket_buffer",
+        "list": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_buffer",
         "messageData": "={{ $('Ticket').item.json.Msg }}",
         "tail": true
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        144,
+        560,
         -176
       ],
       "id": "1164fe48-7e0d-4671-9cc0-e631bf95e524",
@@ -1305,14 +1397,14 @@
     {
       "parameters": {
         "operation": "push",
-        "list": "={{ $('Ticket').item.json.Telefone }}_Ticket_buffer",
+        "list": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_buffer",
         "messageData": "={{ $json.text }}",
         "tail": true
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        368,
+        784,
         -16
       ],
       "id": "a18adbbf-75ac-450d-bd15-abc043810469",
@@ -1339,11 +1431,12 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.msgContent.audioMessage.url }}",
+                    "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.audio.audioUrl }}",
                     "rightValue": "mmg",
                     "operator": {
                       "type": "string",
-                      "operation": "notContains"
+                      "operation": "notExists",
+                      "singleValue": true
                     },
                     "id": "03a62020-cbc0-4d01-8c83-cb71bda3ad0f"
                   }
@@ -1362,11 +1455,12 @@
                 "conditions": [
                   {
                     "id": "cbad2218-264c-4a8c-ac39-7d6bfe8653d9",
-                    "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.msgContent.audioMessage.url }}",
+                    "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.audio.audioUrl }}",
                     "rightValue": "mmg",
                     "operator": {
                       "type": "string",
-                      "operation": "contains"
+                      "operation": "exists",
+                      "singleValue": true
                     }
                   }
                 ],
@@ -1380,7 +1474,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -208,
+        208,
         -96
       ],
       "id": "14b787d5-0db1-4c04-bfe6-c00d88b676cc",
@@ -1391,13 +1485,13 @@
       "parameters": {
         "operation": "get",
         "propertyName": "msgID",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_msg",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_msg",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        560,
+        976,
         -112
       ],
       "id": "069dd891-535b-413c-a6b1-393fc72cea77",
@@ -1448,7 +1542,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        720,
+        1136,
         -112
       ],
       "id": "ed1e5f07-d2d0-4521-b371-eb35e8c31fd2",
@@ -1461,7 +1555,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1120,
+        1536,
         320
       ],
       "id": "3d196006-f9c8-45c6-a829-a6ca12730020",
@@ -1474,7 +1568,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1264,
+        1680,
         -192
       ],
       "id": "b43822d0-91e5-4920-97e4-7d1a29b10212",
@@ -1486,13 +1580,13 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagens",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_buffer",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_buffer",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1104,
+        1520,
         -192
       ],
       "id": "68ef9e6d-b069-4fdf-9be6-ea6a80a2d5ae",
@@ -1509,13 +1603,13 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagens",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_buffer",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_buffer",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1440,
+        1856,
         -192
       ],
       "id": "97f6c498-b5a0-4253-956f-9f50892cbdb7",
@@ -1556,7 +1650,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1600,
+        2016,
         -192
       ],
       "id": "3d97d5cd-89f4-48f9-bb83-121753c68ded",
@@ -1566,13 +1660,13 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagens",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_buffer",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_buffer",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1904,
+        2320,
         352
       ],
       "id": "4c6d1aeb-783d-46ad-9d87-21b53b07d1a8",
@@ -1613,7 +1707,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2064,
+        2480,
         352
       ],
       "id": "d9daefcb-ef41-4dee-9c86-b9fbdc289690",
@@ -1624,7 +1718,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2272,
+        2688,
         512
       ],
       "id": "d270bfc8-ab97-43bc-9f81-17c231f692f4",
@@ -1633,12 +1727,12 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_msg"
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_msg"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1744,
+        2160,
         352
       ],
       "id": "7b07979d-f137-4c6e-aee4-6b31d44680e3",
@@ -1653,13 +1747,13 @@
     {
       "parameters": {
         "operation": "push",
-        "list": "={{ $('Ticket').item.json.Telefone }}_Ticket_DB.tmp",
+        "list": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_DB.tmp",
         "messageData": "={{[$json.dbtemp[0], $json.dbtemp[1]]}}"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1584,
+        2000,
         352
       ],
       "id": "1bc680f7-a06b-4187-997c-98181819f738",
@@ -1678,7 +1772,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "dbtemp",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_DB",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_DB",
         "keyType": "list",
         "options": {
           "dotNotation": false
@@ -1687,7 +1781,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1456,
+        1872,
         352
       ],
       "id": "a0964ec5-f198-4c72-b3d3-9fbb55a00cef",
@@ -1718,12 +1812,12 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_buffer"
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_buffer"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1920,
+        2336,
         -208
       ],
       "id": "a6a9fe20-a64e-49fb-ac42-f23228a90b07",
@@ -1753,7 +1847,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2064,
+        2480,
         -208
       ],
       "id": "545fa4ca-8575-4a0b-88df-2a3de14ad68d",
@@ -1821,7 +1915,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2912,
+        3328,
         48
       ],
       "id": "5eb5667c-7227-4961-9290-795be5d4156b",
@@ -1871,12 +1965,12 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_msg"
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_msg"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2704,
+        3120,
         336
       ],
       "id": "d13294b9-aa0f-4306-9a7b-999f7a15b6a8",
@@ -1900,7 +1994,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        3872,
+        4288,
         -224
       ],
       "id": "bdb8eaae-bc85-40b6-bc72-5887f8d45c65",
@@ -1918,7 +2012,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3872,
+        4288,
         -16
       ],
       "id": "2b952910-c02f-4beb-aa27-af80b199cf6b",
@@ -1935,7 +2029,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        4016,
+        4432,
         -16
       ],
       "id": "46339203-8e95-4569-964e-135f5a3decf0",
@@ -1946,7 +2040,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2816,
+        3232,
         -288
       ],
       "id": "4c65241a-7e8a-45eb-abf7-543c23cd8b25",
@@ -1956,13 +2050,13 @@
       "parameters": {
         "operation": "get",
         "propertyName": "histórico",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_DB",
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_DB",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3568,
+        3984,
         -224
       ],
       "id": "83b81fc1-198f-41c1-92cc-5794b9e48329",
@@ -1984,7 +2078,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3136,
+        3552,
         336
       ],
       "id": "7eb6ac76-c841-485a-9e46-8417517c1330",
@@ -2005,7 +2099,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2848,
+        3264,
         336
       ],
       "id": "2db0252d-2723-4c75-bf02-b41ba957031b",
@@ -2034,7 +2128,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2992,
+        3408,
         336
       ],
       "id": "444fa242-e51b-4be2-9be1-f3040fdc2dda",
@@ -2049,7 +2143,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3408,
+        3824,
         -224
       ],
       "id": "34c76ec8-cb5d-4cb9-955a-e36bf6853eab",
@@ -2064,12 +2158,12 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_DB"
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_DB"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4320,
+        4736,
         -224
       ],
       "id": "5211a615-aea5-48f2-b5e6-abd782aa23d3",
@@ -2109,7 +2203,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3152,
+        3568,
         -208
       ],
       "id": "1c7eefff-3db6-494b-a1b0-3a11682f28c4",
@@ -2118,12 +2212,12 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "={{ $('Ticket').item.json.Telefone }}_Ticket_DB.tmp"
+        "key": "={{ $('Ticket').item.json.Telefone }}{{ $('Ticket').item.json.PhoneParticipant }}_Ticket_DB.tmp"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4496,
+        4912,
         -224
       ],
       "id": "9665353f-0865-441f-9963-ea597e7c785a",
@@ -2160,7 +2254,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4816,
+        5232,
         -240
       ],
       "id": "3aadff2b-0bf4-4848-8cbc-47d7006c4a00",
@@ -2242,7 +2336,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2848,
+        -2224,
         -80
       ],
       "id": "ba20d6df-6514-4363-9126-69860bd1177a",
@@ -2262,7 +2356,7 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "={{ $json.body.phone }}",
+                    "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.phone }}",
                     "rightValue": "120363405585257695-group",
                     "operator": {
                       "type": "string",
@@ -2285,7 +2379,7 @@
                 "conditions": [
                   {
                     "id": "d358ec2f-5bbf-4642-b645-55e6a33bda49",
-                    "leftValue": "={{ $json.body.phone }}",
+                    "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.phone }}",
                     "rightValue": "5512982113000",
                     "operator": {
                       "type": "string",
@@ -2327,7 +2421,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -3056,
+        -2560,
         -96
       ],
       "id": "158d0eea-0566-4487-8006-56ae47dda47c",
@@ -2357,7 +2451,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        4992,
+        5408,
         -240
       ],
       "id": "66fadbda-3c0d-4035-bd22-d12f0642774f",
@@ -2393,7 +2487,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5168,
+        5584,
         -240
       ],
       "id": "87f9d7d3-8ed7-4911-9b59-54800fbe0711",
@@ -2429,7 +2523,7 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
       "typeVersion": 1,
       "position": [
-        5584,
+        6000,
         -80
       ],
       "id": "a788fbe9-5de0-498e-ad50-a2e3b9008a79",
@@ -2452,7 +2546,7 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        5472,
+        5888,
         -240
       ],
       "id": "737967b6-5e5c-4c3d-ace5-8bd2ad3fcddc",
@@ -2465,7 +2559,7 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        5664,
+        6080,
         128
       ],
       "id": "34b4067b-b1a2-4bc3-9e3e-519b1505d2d9",
@@ -2488,7 +2582,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        5552,
+        5968,
         128
       ],
       "id": "96983d98-bd82-44be-a3cd-411d4de2f82c",
@@ -2619,7 +2713,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        5936,
+        6352,
         -240
       ],
       "id": "c764e61e-6767-4c77-af5d-9643012270b4",
@@ -2639,7 +2733,7 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        -2320,
+        -1696,
         -64
       ],
       "id": "79e2da89-5a2f-44f0-abf7-dea4f2afa014",
@@ -2652,7 +2746,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2160,
+        -1536,
         -64
       ],
       "id": "6ed8beaa-8e94-4aff-8a28-3f524aad574c",
@@ -2842,8 +2936,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -3136,
-        -160
+        -3072,
+        -128
       ],
       "id": "c279767f-42a6-4a7c-8f91-75c9f6a133c7",
       "name": "Sticky Note12"
@@ -2866,11 +2960,208 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -3344,
-        -64
+        -4336,
+        -80
       ],
       "id": "ea8d9fd0-8ee3-497e-9e54-f66e99c63ebf",
       "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7db7432e-223c-4a22-921a-56b79dfad170",
+              "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.text.message }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "e961250f-bf3b-408c-9d2c-5b10db7e4e22",
+              "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.audio.ptt }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2864,
+        -64
+      ],
+      "id": "0eaf3cd1-80cb-4478-a0c8-fdd77351a9ff",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "={{ $json.body.phone }}{{ $json.body.participantPhone }}_Chamado",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -4064,
+        -80
+      ],
+      "id": "5f19b0d2-f952-489e-9f81-a807efa9a212",
+      "name": "Redis7",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bb895a0a-bf28-430f-bf29-df7ac9c36603",
+              "leftValue": "={{ $json.propertyName }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3888,
+        -80
+      ],
+      "id": "a8ca5904-b6fe-4b3f-949f-11f224724f62",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('When Executed by Another Workflow').item.json.body.phone }}{{ $('When Executed by Another Workflow').item.json.body.participantPhone }}_Chamado",
+        "value": "Aberto",
+        "expire": true,
+        "ttl": 1200
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -3360,
+        -288
+      ],
+      "id": "f9fdd50e-f6e5-41cf-b85d-a0edbdbab07d",
+      "name": "Redis8",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "497c607b-fb5d-40cf-9ded-653d14840bba",
+              "leftValue": "={{ $('When Executed by Another Workflow').item.json.body.text.message }}",
+              "rightValue": "Abrir Chamado",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -3680,
+        -176
+      ],
+      "id": "c53e8122-fad8-4aa2-9370-4e51abbed0db",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('When Executed by Another Workflow').item.json.body.phone }}{{ $('When Executed by Another Workflow').item.json.body.participantPhone }}_Chamado"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        6560,
+        -240
+      ],
+      "id": "c39ceab9-07a6-411f-9647-dd69ad23b4cf",
+      "name": "Redis9",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('When Executed by Another Workflow').item.json.body.phone }}{{ $('When Executed by Another Workflow').item.json.body.participantPhone }}_Chamado"
+      },
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        3024,
+        48
+      ],
+      "id": "a96ff98c-2fc0-4d9e-acf1-60007606af30",
+      "name": "Delete",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2879,20 +3170,20 @@
         "json": {
           "headers": {
             "host": "auto.kadovesh.com",
-            "user-agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:111.0) Gecko/20100101 Firefox/111.0",
-            "content-length": "759",
+            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.2; rv:111.0) Gecko/20100101 Firefox/111.0",
+            "content-length": "1020",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "137.131.203.164",
+            "cf-connecting-ip": "144.22.147.100",
             "cf-ipcountry": "BR",
-            "cf-ray": "98c65938ec32464c-GRU",
+            "cf-ray": "98cff39358a9d87c-GRU",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "cf-warp-tag-id": "6098b144-6d17-4766-8305-fbcd87538e2d",
             "connection": "keep-alive",
-            "content-type": "application/json",
+            "content-type": "application/json; charset=utf-8",
             "origin": "https://api.z-api.io",
             "server": "Z-API",
-            "x-forwarded-for": "137.131.203.164",
+            "x-forwarded-for": "144.22.147.100",
             "x-forwarded-proto": "https",
             "z-api-token": "771E4BE1F789AB112E4831D6"
           },
@@ -2907,15 +3198,15 @@
             "isGroup": true,
             "isNewsletter": false,
             "instanceId": "3E29DB01364090EFDC8006E9A5181015",
-            "messageId": "3EB0A86236905DF3178559",
-            "phone": "120363419000321508-group",
+            "messageId": "3AB6605715D65E563FCE",
+            "phone": "120363405585257695-group",
             "fromMe": false,
-            "momment": 1760101727000,
+            "momment": 1760202419000,
             "status": "RECEIVED",
-            "chatName": "Testes",
-            "senderPhoto": "https://pps.whatsapp.net/v/t61.24694-24/484873030_9628712110531731_5581350847859461709_n.jpg?ccb=11-4&oh=01_Q5Aa2wEuL0juGJxKO8iwVv2OO2wTz0rv8cZz7G6Q0c3hvoyymg&oe=68F62FA1&_nc_sid=5e03e0&_nc_cat=102",
+            "chatName": "Suporte TI",
+            "senderPhoto": "https://pps.whatsapp.net/v/t61.24694-24/484873030_9628712110531731_5581350847859461709_n.jpg?ccb=11-4&oh=01_Q5Aa2wEPY5SBxsTmNQhVBoKY2z4nZ86EWQJAm9GfS5i_sf5eFg&oe=68F78121&_nc_sid=5e03e0&_nc_cat=102",
             "senderName": "Davi Moraes",
-            "photo": null,
+            "photo": "https://pps.whatsapp.net/v/t61.24694-24/520531308_802350359388802_5995424070503680051_n.jpg?ccb=11-4&oh=01_Q5Aa2wE150BkAxgzdGTIk-Um0cdInMcrCy4_KB2TehbUJQ0ECQ&oe=68F7A6DF&_nc_sid=5e03e0&_nc_cat=110",
             "broadcast": false,
             "participantPhone": "5512982113000",
             "participantLid": null,
@@ -2923,11 +3214,11 @@
             "type": "ReceivedCallback",
             "fromApi": false,
             "text": {
-              "message": "Teste"
+              "message": "Caiu hoje cedo, não faz nem uma hora. Tá afetando o escritório todo"
             }
           },
-          "webhookUrl": "https://auto.kadovesh.com/webhook-test/recebetext1",
-          "executionMode": "test"
+          "webhookUrl": "https://auto.kadovesh.com/webhook/recebetext1",
+          "executionMode": "production"
         }
       }
     ]
@@ -2947,6 +3238,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-10T19:12:59.000Z",
-  "versionId": "42699e5a-07f6-4b63-9a6b-1b15a3c91d3e"
+  "updatedAt": "2025-10-11T17:32:38.000Z",
+  "versionId": "acfed044-5a21-4a07-a66d-645e77a3e6d5"
 }
