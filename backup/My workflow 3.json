@@ -1,36 +1,89 @@
 {
   "active": false,
-  "connections": {},
-  "createdAt": "2025-07-23T23:54:59.089Z",
-  "id": "uJ5mY9KImP5sdEnb",
-  "isArchived": true,
-  "meta": null,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-13T06:10:29.553Z",
+  "id": "2fSoXbBfxrY8yHzD",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "My workflow 3",
   "nodes": [
     {
-      "parameters": {
-        "httpMethod": "POST",
-        "path": "ML",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
       "position": [
         0,
         0
       ],
-      "id": "b9f5a1a9-1fa7-4f5e-a7bf-997ad76f49a9",
-      "name": "Webhook",
-      "webhookId": "7d6bb951-3bd7-4d7b-8a87-815f93d2bb1d"
+      "id": "75d359f8-c926-4151-9283-8978366a2d2f",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "review",
+        "account": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "location": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "review": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.googleBusinessProfile",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "8950e211-3fc4-4979-bc30-2a8f4c3a7ed0",
+      "name": "Get review",
+      "credentials": {
+        "googleBusinessProfileOAuth2Api": {
+          "id": "rE384upwVfyri4eP",
+          "name": "Google Business Profile account"
+        }
+      }
     }
   ],
   "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2025-10-13T06:10:29.556Z",
+      "updatedAt": "2025-10-13T06:10:29.556Z",
+      "role": "workflow:owner",
+      "workflowId": "2fSoXbBfxrY8yHzD",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2025-07-24T02:57:17.000Z",
-  "versionId": "9cd81c71-b56c-4947-b9ab-7d8821106782"
+  "triggerCount": 0,
+  "updatedAt": "2025-10-13T06:10:29.553Z",
+  "versionId": "62b0f37c-8194-47ae-b6a5-da61bf0942bc"
 }
