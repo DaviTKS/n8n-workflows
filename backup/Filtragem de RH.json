@@ -1,0 +1,612 @@
+{
+  "active": true,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Upload CV to google drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload CV to google drive": {
+      "main": [
+        [
+          {
+            "node": "applicant details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "applicant details": {
+      "main": [
+        [
+          {
+            "node": "download CV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "download CV": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "shortlisted?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "shortlisted?": {
+      "main": [
+        [
+          {
+            "node": "generate questionnaires",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate questionnaires": {
+      "main": [
+        [
+          {
+            "node": "questionnaires",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "questionnaires": {
+      "main": [
+        [
+          {
+            "node": "Personalize email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-13T06:05:16.622Z",
+  "id": "9jvw47HpVmwSJ9MP",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Filtragem de RH",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Job Application",
+        "formDescription": "=Fill this for to apply for the role Automation Specialist:\n\nLocation: Remote\nExperience: Minimum 3 years\nEmployment Type: Full-time\n\nJob Description:\nWe are seeking a highly skilled Automation Specialist with at least 3 years of experience in designing and implementing workflow automation solutions. The ideal candidate will have expertise in tools such as n8n, Zapier, Make.com, or similar platforms, and a strong background in integrating APIs, streamlining processes, and enhancing operational efficiency.\n\nKey Responsibilities:\n\n Develop and implement automated workflows to optimize business processes.\n Integrate third-party APIs and systems to create seamless data flow.\n Analyze, debug, and improve existing automation setups.\n Collaborate with cross-functional teams to identify automation opportunities.\n Monitor and maintain automation systems to ensure reliability.\n\nRequired Skills & Qualifications:\n\n Proven 3+ years of experience in workflow automation and integration.\n Proficiency with tools like n8n, Zapier, or Make.com.\n Strong understanding of APIs, webhooks, and data transformation.\n Familiarity with scripting languages (e.g., JavaScript or Python).\n Excellent problem-solving and communication skills.\n\nPreferred Qualifications:\n\n Experience with database management and cloud services.\n Background in business process analysis or RPA tools.\n\nWhy Join Us?\n\n Opportunity to work on cutting-edge automation projects.\n Supportive and collaborative team environment.\n Competitive salary and benefits package.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "First Name"
+            },
+            {
+              "fieldLabel": "Last Name"
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "Phone",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "Years of experience",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "Upload your CV",
+              "fieldType": "file",
+              "acceptFileTypes": ".pdf",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false,
+          "buttonLabel": "Submit",
+          "path": "automation-specialist-application",
+          "ignoreBots": false,
+          "useWorkflowTimezone": true
+        }
+      },
+      "id": "496fc9ea-ea54-4c0c-8b74-683039fd9b60",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        -1664,
+        464
+      ],
+      "webhookId": "18f7428c-9990-413f-aff3-bdcca1bbbe2d",
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "inputDataFieldName": "Upload_your_CV",
+        "name": "={{ $binary.Upload_your_CV.fileName }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1sgHDoJPfAANgwleWaNAPty0HwkzJ1bke",
+          "mode": "list",
+          "cachedResultName": "9-Automação",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1sgHDoJPfAANgwleWaNAPty0HwkzJ1bke"
+        },
+        "options": {}
+      },
+      "id": "d47f3972-70dc-4228-8a37-a5f1202b85e1",
+      "name": "Upload CV to google drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        -1440,
+        464
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bffff778-859a-4bb8-b973-39237ce7486e",
+              "name": "Name",
+              "type": "string",
+              "value": "={{ $('On form submission').item.json['First Name'] + \" \" + $('On form submission').item.json['Last Name'] }}"
+            },
+            {
+              "id": "cd6e7372-c65f-4e6f-9612-6ea513bb8e15",
+              "name": "Phone",
+              "type": "number",
+              "value": "={{ $('On form submission').item.json.Phone }}"
+            },
+            {
+              "id": "eb19138e-7ff3-4f0c-ad95-ac33f8835717",
+              "name": "email",
+              "type": "string",
+              "value": "={{ $('On form submission').item.json.Email }}"
+            },
+            {
+              "id": "25172db9-91fb-45da-b036-ee9aea1e8b09",
+              "name": "Experience",
+              "type": "number",
+              "value": "={{ $('On form submission').item.json[\"Years of experience\"] }}"
+            },
+            {
+              "id": "64393285-3770-47e0-bbbb-3c5d5e14f1f4",
+              "name": "Applied On",
+              "type": "string",
+              "value": "={{ $('On form submission').item.json.submittedAt }}"
+            },
+            {
+              "id": "dc052fd6-f57d-4da1-9976-67fcd9496e58",
+              "name": "CV link",
+              "type": "string",
+              "value": "={{ $json.webViewLink }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a3ba5f08-11bc-4c47-9dc1-54b532ff177b",
+      "name": "applicant details",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1216,
+        464
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "content": "## Grab User Details and Update in Airtable\n",
+        "height": 220,
+        "width": 760,
+        "color": 3
+      },
+      "id": "e3b9cf9e-1675-4a22-80b6-a46fc8093f6e",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1680,
+        384
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Download the CV and get the job description and requirements.\n- ### Send the details to ChatGPT to score the viability of the candidate",
+        "height": 460,
+        "width": 820
+      },
+      "id": "49b4bd31-93e3-48cd-8190-1cc837c178e7",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -848,
+        352
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json['CV link'] }}",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "id": "7d117b6f-cc55-49ac-9c76-5119d7f56273",
+      "name": "download CV",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        -816,
+        464
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "1ib4QgSSisyBlll3",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "id": "2246a9e3-4294-4ba4-a3d5-a9a943247a69",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "position": [
+        -608,
+        464
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Compare the following job description and resume. Assign a qualification score between 0 and 1, where 1 indicates the best match. Provide only the score and the reason for the score in less than 20 words.\nJob Description: To work on IT automation, have experience with IT, knows english, has good comunication, is able to cooperate in team and is extroverted\nResume: \n{{ $json.text }}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "6f7c3442-c136-444c-bfe6-4761d807859e",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -384,
+        464
+      ],
+      "typeVersion": 1.7
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "86f2e523-1b02-49db-872a-188b687c35d0",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        -464,
+        656
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n \"score\": 0.8,\n \"reason\": \"Does not meet required number of experience in years\"\n}"
+      },
+      "id": "c3054f92-3e75-4eeb-a2f1-9b427c5c7a31",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        -144,
+        656
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "content": "## Update Airtable with score and reason for the score\n\n- ### if score is above 0.7, shortlist and continue flow.\n\n## Get questionnaires based on the JD and CV\n\n- ### Update the responses in Airtable",
+        "height": 600,
+        "width": 1200,
+        "color": 2
+      },
+      "id": "fe8ce1eb-189b-4cb1-aaa5-dc97c21a04a6",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        192
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "7b4950b2-d218-4911-89cd-22a60b7465d8",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              },
+              "leftValue": "={{ $json.output.score }}",
+              "rightValue": 0.7
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5e348a20-0b71-471d-b449-b49d0c567725",
+      "name": "shortlisted?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        0,
+        464
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Com base na descrição da vaga e no currículo do candidato a seguir, crie 5 perguntas de entrevista perspicazes para coletar mais informações sobre a adequação do candidato para a vaga. As perguntas devem focar em:\n\nProjetos específicos nos quais o candidato trabalhou.\n\nPrincipais responsabilidades e conquistas em suas funções anteriores.\n\nHabilidades relevantes para a descrição da vaga.\n\nCapacidade de resolução de problemas e como lidaram com desafios.\n\nAlinhamento com os objetivos e valores da empresa.\n\nForneça as perguntas em um formato claro e conciso.\n\nDescrição da Vaga:\nUse a ferramenta Airtable para obter a descrição da vaga\n\nCurrículo do Candidato:\n{{ $('Extract from File').item.json.text }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "id": "4b688305-5d04-413a-a5c4-a91665bf4625",
+      "name": "generate questionnaires",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        512,
+        400
+      ],
+      "typeVersion": 1.7,
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "={{ $json.message.content.perguntas[0].pergunta }}",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "={{ $json.message.content.perguntas[1].pergunta }}",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "={{ $json.message.content.perguntas[2].pergunta }}",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "={{ $json.message.content.perguntas[3].pergunta }}",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "={{ $json.message.content.perguntas[4].pergunta }}",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "formTitle": "Questionnaires",
+          "formDescription": "Kindly fill in the following questions to proceed.",
+          "buttonLabel": "Submit"
+        }
+      },
+      "id": "6d468474-4795-4c7e-b05e-585a90749ec5",
+      "name": "questionnaires",
+      "type": "n8n-nodes-base.form",
+      "position": [
+        864,
+        400
+      ],
+      "webhookId": "3f654280-b5d0-4392-824f-bc384d91a1df",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o",
+          "cachedResultName": "GPT-4O"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Craft a personalized email to the interviewee, expressing interest in continuing the conversation over a phone call. The email should mention strengths or achievements from their CV or questionnaire responses, and include a polite request to have the phone conversation. Ensure the tone is professional and warm.\n\nProvide an output of \nTo:\nSubject:\nEmail Content:\n\nInputs:\n\n The candidate's CV.\n The job description.\n The candidate's questionnaire responses stored in Airtable.\n\n\nExample email:\nDear [Candidate's Name],\n\nThank you for submitting your application and responses to the questionnaire for the [Job Title] position. We were impressed by [specific strength or achievement from their CV or questionnaire, e.g., \"your experience in automating workflows using n8n, which aligns closely with our goals\"].\n\nWe’d love to continue the conversation to discuss your experience further. \n\nLooking forward to speaking with you soon.\n\n\n\nNOTE: \nSign off the email with\n\nRegards,\nFrancis"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "id": "b3040a52-fa2e-4dfb-8d26-f97b7e66c859",
+      "name": "Personalize email",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "position": [
+        1312,
+        400
+      ],
+      "typeVersion": 1.7,
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Personalize email and send\n\n## Schedule Meeting and update meeting time in AIrtable",
+        "height": 480,
+        "width": 1340,
+        "color": 5
+      },
+      "id": "ef4a52d2-bda1-4f45-b3b9-25e1935bc273",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1264,
+        256
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Generate Screening Questions and post to Airtable",
+        "height": 420,
+        "width": 720
+      },
+      "id": "fb03a3f3-0929-40af-9b81-a9deea6a34a2",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2688,
+        336
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Actions\n- ### Change the `Form Description` with the job description you are hiring for.\n- ### Make sure to check and change the prompts if need be to suit your use case.\n- ### Use the Simple Applicant Tracker template on Airtable to set up the tables required.",
+        "height": 460,
+        "width": 580
+      },
+      "id": "2bd1177a-0238-490e-88f6-fa1bd66d0ab3",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2256,
+        224
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-10-13T06:05:16.625Z",
+      "updatedAt": "2025-10-13T06:05:16.625Z",
+      "role": "workflow:owner",
+      "workflowId": "9jvw47HpVmwSJ9MP",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-13T06:54:11.000Z",
+  "versionId": "e2eb2880-6f52-4ac8-839f-901203c90549"
+}
