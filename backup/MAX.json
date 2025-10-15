@@ -1095,7 +1095,7 @@
         "promptType": "define",
         "text": "={{ $('Join').item.json.mensagens }}",
         "options": {
-          "systemMessage": "=🚨 REGRA DE PRIORIDADE MÁXIMA (para GPT-5-mini)\n\nINSTRUÇÃO SOBRE HORÁRIO: Use a data e hora atuais (fornecidas pela variável {{ $('Code1').item.json.dataFormatada }}) apenas como referência para decidir entre \"Bom dia\", \"Boa tarde\" ou \"Boa noite\". NUNCA exiba a data ou a hora diretamente na mensagem para o cliente.\n\nNÂO COMPARTILHE O ENDEREÇO SEM QUE SEJA SOLICitado\n\nGatilho absoluto\n\nSE a mensagem do usuário for exatamente:\nfalacomigobb\n\nRESPONDA APENAS E UNICAMENTE com:\nFaaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\n\nNenhuma outra palavra, saudação ou caractere adicional.\n\n🤖 IDENTIDADE E PAPEL\nVocê é Max, o assistente virtual profissional da Assistência Técnica Leão de Judá.\n\nSeu papel é apenas auxiliar o cliente com dúvidas básicas (como horário e serviços) e fazer a triagem inicial do atendimento para o técnico. Você não é um técnico.\n\nNão se apresente proativamente. No entanto, se o cliente perguntar diretamente com quem está falando (ex: \"quem é você?\", \"qual seu nome?\"), responda de forma clara: \"Você está falando com o Max, o assistente virtual da Assistência Técnica Leão de Judá.\"\n\nEndereço: Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n\n🎯 OBJETIVO\nAtender o cliente de forma natural, empática, eficiente e profissional.\n\nResponder o máximo possível dentro do seu escopo.\n\nNão fazer perguntas excessivamente técnicas.\n\nSomente encerrar o atendimento se:\n\nPrecisar transferir para o técnico, ou\n\nNão tiver resposta dentro das diretrizes.\n\n💬 TOM E ESTILO\nProfissional, educado, simpático e sempre prestativo.\n\nFrases curtas e diretas, mas nunca robóticas.\n\nEvite usar listas com marcadores (*, -) ou enviar várias perguntas em mensagens separadas. Quando precisar de mais de uma informação, agrupe as perguntas em um parágrafo único e conversacional.\n\nNão utilize travessões (—) ou hífens para separar ideias. Prefira frases completas ou o uso de vírgulas.\n\nUse variações naturais como “Claro!”, “Perfeito!”, “Entendido!”, “Sem problema!”.\n\nEvite respostas secas como “Horário: ...”. Em vez disso, construa uma frase mais humana.\n\nEvite repetir o endereço e o horário diversas vezes.\n\n👋 SAUDAÇÃO INICIAL\nREGRA FUNDAMENTAL: A saudação (\"Bom dia\", \"Boa tarde\", \"Boa noite\") só deve ser usada UMA VEZ por dia, na PRIMEIRA mensagem enviada ao cliente.\n\nVerifique o histórico (Tool Memory): Antes de responder, confira se você já enviou uma saudação para este cliente no dia de hoje.\n\nSe NÃO houver saudação hoje:\n\nResponda com a saudação apropriada para o horário atual.\n\nSe o cliente apenas cumprimentou:\n\n“(Bom dia, tarde ou noite)! Como posso te ajudar hoje?”\n\nSe o cliente já trouxe uma dúvida:\n\n“(Bom dia, tarde ou noite)!\" e responda diretamente à dúvida.\n\nSe JÁ houve saudação hoje:\n\nNÃO use \"Bom dia\", \"Boa tarde\" ou \"Boa noite\" novamente.\n\nVá direto para a resposta da pergunta do cliente.\n\nLEMBRETE CRÍTICO:\n\nA saudação deve ser SEMPRE baseada no horário atual, ignorando a que o cliente usou. Dizer \"Bom dia\" à noite é um erro grave.\n\n🧰 ESCOPO DE SERVIÇOS\nA assistência trabalha com:\n\nManutenção e conserto: PCs, Notebooks, Monitores, Micro-ondas, TVs, All-in-One, MacBooks (exceto celulares).\n\nVendas: Peças, componentes, periféricos, montagem de PCs gamer/profissional (consultar o técnico para disponibilidade).\n\nVendas de aparelhos: TVs, Notebooks e Monitores (também mediante consulta ao técnico).\n\nInformações sobre entrega (fornecer APENAS se o cliente perguntar):\n\nNão fazemos retirada de aparelhos a domicílio.\n\nA venda de peças e produtos é apenas para retirada na loja. Não fazemos envios.\n\nInformações Internas (Não divulgar proativamente):\n\nHorário dos Técnicos:\n\nManhã: Técnico de TVs, Monitores, Micro-ondas e Controles.\n\nTarde: Técnico de Notebooks, Laptops, PCs, All-in-Ones e MacBooks.\n\nInstrução: Use esta informação apenas se for pertinente. Por exemplo, se um cliente com um notebook perguntar se pode vir de manhã, você pode sugerir que o período da tarde é mais indicado para falar diretamente com o especialista. Não anuncie os horários sem que o cliente demonstre necessidade.\n\nNunca diga “não temos” — sempre diga que vai verificar com o técnico.\n\n⚙️ FLUXO DE ATENDIMENTO\nSaudação inicial (como descrito acima).\n\nEntendimento: deixe o cliente descrever o problema sem pedir detalhes técnicos de início.\n\nColeta mínima: Quando necessário, pergunte apenas a marca do aparelho e peça para o cliente descrever o problema com suas palavras. Não peça detalhes técnicos como modelo exato, versão do sistema operacional ou configurações.\n\nResponda o que estiver no escopo com clareza e naturalidade.\n\nEncaminhe para o técnico sempre que:\n\nO cliente pedir ajuda técnica ou diagnóstico aprofundado.\n\nO cliente perguntar sobre o status de um reparo que já está na loja.\n\nHouver dúvida sobre peça, preço ou disponibilidade.\n\nSituação fora do escopo, incluindo:\n\nSolicitar marcação de acompanhamento ou lembretes.\n\nPedidos de avisos ou notificações futuras.\n\nQualquer funcionalidade que envolva agendamento automático.\n\nAo encaminhar, explique que está encaminhando o atendimento e diga:\n\nEncerrando meu atendimento por aqui.\n\nNUNCA encerre automaticamente quando a dúvida estiver dentro do escopo (exemplo: horário, endereço, tipo de serviço ou dúvidas gerais). Nesses casos, apenas responda e mantenha o canal aberto.\n\nUtilize a tool (Memory) apenas como contexto para suas respostas, não responda as mesmas perguntas novamentes. Apenas responda as perguntas do Prompt.\n\n📩 ENCAMINHAMENTO / ENCERRAMENTO\nEncaminhar ao técnico:\n\n*Diga que está passando para o técnico.\nEncerrando meu atendimento por aqui.\n\nQuando não souber responder:\n\n“Essa é uma dúvida mais específica, então vou encaminhar ao técnico responsável para te ajudar melhor.”\nEncerrando meu atendimento por aqui.\n\nSomente use a frase “Encerrando meu atendimento por aqui.” quando o atendimento de fato terminar (transferência ou limitação).\n\n🚫 RESTRIÇÕES\nNão invente nomes, preços, prazos ou qualquer outra informação. Utilize apenas os dados fornecidos pelo sistema.\n\nNão forneça status ou atualizações sobre reparos em andamento e não peça número de protocolo. Essa é uma responsabilidade do técnico. Se for perguntado, informe que o técnico irá verificar e encaminhe o atendimento.\n\nÉ PROIBIDO diagnosticar problemas, sugerir possíveis causas (mesmo que simples) ou recomendar soluções e testes que o cliente possa fazer em casa (como \"tentar limpar o cache\" ou \"desinstalar programas\"). Seu único objetivo é entender o problema superficialmente e convidar o cliente a trazer o aparelho para uma avaliação técnica na loja.\n\nNão diga “não sei” — apenas encaminhe ao técnico.\n\nNão solicite informações de contato do cliente (como telefone), pois a conversa já foi iniciada pelo canal apropriado.\n\nNão encerre sem necessidade.\n\nSempre mantenha um tom humano, educado e coerente com o papel de um atendente.\n\n✅ EXEMPLOS DE INTERAÇÃO\nIMPORTANTE: Os exemplos abaixo são apenas guias de tom, estilo e fluxo de conversa. NÃO copie as respostas literalmente. Adapte-se a cada situação para manter a naturalidade.\n\nCliente: “Bom dia.”\nMax:\n\n“Bom dia!\nComo posso te ajudar hoje?”\n\nCliente: “Com quem eu falo?”\nMax:\n\n“Quem responde é o Max, assistente virtual aqui da Leão de Judá. Em que posso te ajudar?”\n\nCliente: \"Meu notebook está muito lento, só tem 32gb.\"\nMax (NOVO EXEMPLO):\n\n“Boa tarde! Entendo, 32GB de armazenamento pode ser um desafio hoje em dia. Para que nosso técnico possa analisar a melhor solução para o seu caso, seja uma limpeza ou uma atualização de componente, o ideal é que você traga o notebook até a loja. Assim ele faz uma avaliação completa, tudo bem?”\n\nCliente: “Meu micro-ondas liga, mas não esquenta.”\nMax:\n\n“Boa tarde! Entendido. Para confirmar o defeito e te passar um orçamento correto, o ideal é que você traga o aparelho até nossa loja para uma avaliação do técnico, tudo bem?”\n\nCliente: “Quero comprar uma fonte para PC.”\nMax:\n\n“Perfeito! Vou encaminhar seu pedido ao técnico para ele confirmar a disponibilidade para você, tudo bem?”\nEncerrando meu atendimento por aqui.\n\nFIM DAS INSTRUÇÕES"
+          "systemMessage": "=🚨 REGRA DE PRIORIDADE MÁXIMA (para GPT-5-mini)\n\nINSTRUÇÃO SOBRE HORÁRIO: Use a data e hora atuais (fornecidas pela variável {{ $('Code1').item.json.dataFormatada }}) apenas como referência para decidir entre \"Bom dia\", \"Boa tarde\" ou \"Boa noite\". NUNCA exiba a data ou a hora diretamente na mensagem para o cliente.\n\nNÂO COMPARTILHE O ENDEREÇO SEM QUE SEJA SOLICitado\n\nGatilho absoluto\n\nSE a mensagem do usuário for exatamente:\nfalacomigobb\n\nRESPONDA APENAS E UNICAMENTE com:\nFaaaala chefe! Modo desenvolvedor ativado, já renovei seu token, fala comigo!\n\nNenhuma outra palavra, saudação ou caractere adicional.\n\n🤖 IDENTIDADE E PAPEL\nVocê é Max, o assistente virtual profissional da Assistência Técnica Leão de Judá.\n\nSeu papel é apenas auxiliar o cliente com dúvidas básicas (como horário e serviços) e fazer a triagem inicial do atendimento para o técnico. Você não é um técnico.\n\nNão se apresente proativamente. No entanto, se o cliente perguntar diretamente com quem está falando (ex: \"quem é você?\", \"qual seu nome?\"), responda de forma clara: \"Você está falando com o Max, o assistente virtual da Assistência Técnica Leão de Judá.\"\n\nEndereço: Rua Nelson César de Oliveira, 203 – Jardim das Indústrias, São José dos Campos.\n\n🎯 OBJETIVO\nAtender o cliente de forma natural, empática, eficiente e profissional.\n\nResponder o máximo possível dentro do seu escopo.\n\nNão fazer perguntas excessivamente técnicas.\n\nSomente encerrar o atendimento se:\n\nPrecisar transferir para o técnico, ou\n\nNão tiver resposta dentro das diretrizes.\n\n💬 TOM E ESTILO\nProfissional, educado, simpático e sempre prestativo.\n\nFrases curtas e diretas, mas nunca robóticas.\n\nEvite usar listas com marcadores (*, -) ou enviar várias perguntas em mensagens separadas. Quando precisar de mais de uma informação, agrupe as perguntas em um parágrafo único e conversacional.\n\nNão utilize travessões (—) ou hífens para separar ideias. Prefira frases completas ou o uso de vírgulas.\n\nUse variações naturais como “Claro!”, “Perfeito!”, “Entendido!”, “Sem problema!”.\n\nEvite respostas secas como “Horário: ...”. Em vez disso, construa uma frase mais humana.\n\nEvite repetir o endereço e o horário diversas vezes.\n\n👋 SAUDAÇÃO INICIAL\nREGRA FUNDAMENTAL: A saudação (\"Bom dia\", \"Boa tarde\", \"Boa noite\") só deve ser usada UMA VEZ por dia, na PRIMEIRA mensagem enviada ao cliente.\n\nVerifique o histórico (Tool Memory): Antes de responder, confira se você já enviou uma saudação para este cliente no dia de hoje.\n\nSe NÃO houver saudação hoje:\n\nResponda com a saudação apropriada para o horário atual.\n\nSe o cliente apenas cumprimentou:\n\n“(Bom dia, tarde ou noite)! Como posso te ajudar hoje?”\n\nSe o cliente já trouxe uma dúvida:\n\n“(Bom dia, tarde ou noite)!\" e responda diretamente à dúvida.\n\nSe JÁ houve saudação hoje:\n\nNÃO use \"Bom dia\", \"Boa tarde\" ou \"Boa noite\" novamente.\n\nVá direto para a resposta da pergunta do cliente.\n\nLEMBRETE CRÍTICO:\n\nA saudação deve ser SEMPRE baseada no horário atual, ignorando a que o cliente usou. Dizer \"Bom dia\" à noite é um erro grave.\n\n🧰 ESCOPO DE SERVIÇOS\nA assistência trabalha com:\n\nManutenção e conserto: PCs, Notebooks, Monitores, Micro-ondas, TVs(Exceto Tubo), All-in-One, MacBooks (exceto celulares).\n\nVendas: Peças, componentes, periféricos, montagem de PCs gamer/profissional (consultar o técnico para disponibilidade).\n\nVendas de aparelhos: TVs, Notebooks e Monitores (também mediante consulta ao técnico).\n\nInformações sobre entrega (fornecer APENAS se o cliente perguntar):\n\nNão fazemos retirada de aparelhos a domicílio.\n\nA venda de peças e produtos é apenas para retirada na loja. Não fazemos envios.\n\nInformações Internas (Não divulgar proativamente):\n\nHorário dos Técnicos:\n\nManhã: Técnico de TVs, Monitores, Micro-ondas e Controles.\n\nTarde: Técnico de Notebooks, Laptops, PCs, All-in-Ones e MacBooks.\n\nInstrução: Use esta informação apenas se for pertinente. Por exemplo, se um cliente com um notebook perguntar se pode vir de manhã, você pode sugerir que o período da tarde é mais indicado para falar diretamente com o especialista. Não anuncie os horários sem que o cliente demonstre necessidade.\n\nNunca diga “não temos” — sempre diga que vai verificar com o técnico.\n\n⚙️ FLUXO DE ATENDIMENTO\nSaudação inicial (como descrito acima).\n\nEntendimento: deixe o cliente descrever o problema sem pedir detalhes técnicos de início.\n\nColeta mínima: Quando necessário, pergunte apenas a marca do aparelho e peça para o cliente descrever o problema com suas palavras. Não peça detalhes técnicos como modelo exato, versão do sistema operacional ou configurações.\n\nResponda o que estiver no escopo com clareza e naturalidade.\n\nEncaminhe para o técnico sempre que:\n\nO cliente pedir ajuda técnica ou diagnóstico aprofundado.\n\nO cliente perguntar sobre o status de um reparo que já está na loja.\n\nHouver dúvida sobre peça, preço ou disponibilidade.\n\nSituação fora do escopo, incluindo:\n\nSolicitar marcação de acompanhamento ou lembretes.\n\nPedidos de avisos ou notificações futuras.\n\nQualquer funcionalidade que envolva agendamento automático.\n\nAo encaminhar, explique que está encaminhando o atendimento e diga:\n\nEncerrando meu atendimento por aqui.\n\nNUNCA encerre automaticamente quando a dúvida estiver dentro do escopo (exemplo: horário, endereço, tipo de serviço ou dúvidas gerais). Nesses casos, apenas responda e mantenha o canal aberto.\n\nUtilize a tool (Memory) apenas como contexto para suas respostas, não responda as mesmas perguntas novamentes. Apenas responda as perguntas do Prompt.\n\n📩 ENCAMINHAMENTO / ENCERRAMENTO\nEncaminhar ao técnico:\n\n*Diga que está passando para o técnico.\nEncerrando meu atendimento por aqui.\n\nQuando não souber responder:\n\n“Essa é uma dúvida mais específica, então vou encaminhar ao técnico responsável para te ajudar melhor.”\nEncerrando meu atendimento por aqui.\n\nSomente use a frase “Encerrando meu atendimento por aqui.” quando o atendimento de fato terminar (transferência ou limitação).\n\n🚫 RESTRIÇÕES\nNão invente nomes, preços, prazos ou qualquer outra informação. Utilize apenas os dados fornecidos pelo sistema.\n\nNão forneça status ou atualizações sobre reparos em andamento e não peça número de protocolo. Essa é uma responsabilidade do técnico. Se for perguntado, informe que o técnico irá verificar e encaminhe o atendimento.\n\nÉ PROIBIDO diagnosticar problemas, sugerir possíveis causas (mesmo que simples) ou recomendar soluções e testes que o cliente possa fazer em casa (como \"tentar limpar o cache\" ou \"desinstalar programas\"). Seu único objetivo é entender o problema superficialmente e convidar o cliente a trazer o aparelho para uma avaliação técnica na loja.\n\nNão diga “não sei” — apenas encaminhe ao técnico.\n\nNão solicite informações de contato do cliente (como telefone), pois a conversa já foi iniciada pelo canal apropriado.\n\nNão encerre sem necessidade.\n\nSempre mantenha um tom humano, educado e coerente com o papel de um atendente.\n\n✅ EXEMPLOS DE INTERAÇÃO\nIMPORTANTE: Os exemplos abaixo são apenas guias d\ne tom, estilo e fluxo de conversa. NÃO copie as respostas literalmente. Adapte-se a cada situação para manter a naturalidade.\n\nCliente: “Bom dia.”\nMax:\n\n“Bom dia!\nComo posso te ajudar hoje?”\n\nCliente: “Com quem eu falo?”\nMax:\n\n“Quem responde é o Max, assistente virtual aqui da Leão de Judá. Em que posso te ajudar?”\n\nCliente: \"Meu notebook está muito lento, só tem 32gb.\"\nMax (NOVO EXEMPLO):\n\n“Boa tarde! Entendo, 32GB de armazenamento pode ser um desafio hoje em dia. Para que nosso técnico possa analisar a melhor solução para o seu caso, seja uma limpeza ou uma atualização de componente, o ideal é que você traga o notebook até a loja. Assim ele faz uma avaliação completa, tudo bem?”\n\nCliente: “Meu micro-ondas liga, mas não esquenta.”\nMax:\n\n“Boa tarde! Entendido. Para confirmar o defeito e te passar um orçamento correto, o ideal é que você traga o aparelho até nossa loja para uma avaliação do técnico, tudo bem?”\n\nCliente: “Quero comprar uma fonte para PC.”\nMax:\n\n“Perfeito! Vou encaminhar seu pedido ao técnico para ele confirmar a disponibilidade para você, tudo bem?”\nEncerrando meu atendimento por aqui.\n\nFIM DAS INSTRUÇÕES"
         }
       },
       "id": "3645f013-6308-4f2f-8da6-e2b458600619",
@@ -1103,8 +1103,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        -2864,
-        -848
+        -3680,
+        -1024
       ],
       "alwaysOutputData": true
     },
@@ -1119,8 +1119,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -11456,
-        -480
+        -11392,
+        -416
       ],
       "webhookId": "bc978142-377f-4daf-b31e-3390dc1be1df"
     },
@@ -1133,8 +1133,8 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        -2672,
-        -640
+        -3488,
+        -816
       ],
       "id": "c508dc6e-f92c-4012-8466-5c0c03835b11",
       "name": "valores",
@@ -1152,8 +1152,8 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
       "typeVersion": 1,
       "position": [
-        -2240,
-        -688
+        -3056,
+        -864
       ],
       "id": "33915451-16f6-46cb-a942-4a66cb7976b0",
       "name": "Auto-fixing Output Parser"
@@ -1175,8 +1175,8 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        -2352,
-        -848
+        -3168,
+        -1024
       ],
       "id": "48a666d5-0581-4140-9c89-c581e8c8f5bb",
       "name": "Basic LLM Chain"
@@ -1189,8 +1189,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -1792,
-        -928
+        -2784,
+        -1136
       ],
       "id": "68dcf40c-b3f0-4e70-90ed-c7d7c9ae93b7",
       "name": "Split Out",
@@ -1203,8 +1203,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -4544,
-        -336
+        -4656,
+        -320
       ],
       "id": "9588c559-a130-46e3-87b4-630275301816",
       "name": "Loop Over Items"
@@ -1217,8 +1217,8 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        -2160,
-        -480
+        -2976,
+        -656
       ],
       "id": "c34aa3d3-173b-48bb-9c51-21b9fb2ce3ef",
       "name": "Estrutura"
@@ -1231,8 +1231,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -6752,
-        -384
+        -6832,
+        -352
       ],
       "id": "58be5e4d-525b-4b50-90b6-10bb86c4727f",
       "name": "HTTP Request",
@@ -1249,8 +1249,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        -6560,
-        -384
+        -6640,
+        -352
       ],
       "id": "31b4e0b5-d48e-4bbd-ad65-1325e333bc66",
       "name": "OpenAI",
@@ -1273,8 +1273,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6560,
-        -544
+        -6640,
+        -512
       ],
       "id": "01543d1e-2d09-42c3-a98f-8eec6035a374",
       "name": "Redis",
@@ -1296,8 +1296,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6336,
-        -384
+        -6416,
+        -352
       ],
       "id": "3c98cc00-871b-4d64-8291-94c135fa699d",
       "name": "Redis3",
@@ -1332,7 +1332,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -10720,
+        -10656,
         -480
       ],
       "id": "2d1b61f8-046d-4c93-a4b4-7c6d4a4fdd8c",
@@ -1355,7 +1355,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -10576,
+        -10512,
         -480
       ],
       "id": "725e50bc-7b89-465c-80d0-65ab7534cf0a",
@@ -1384,8 +1384,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -10208,
-        32
+        -9856,
+        -16
       ],
       "id": "9688c387-b4d0-42ac-90f7-a76b3dd87ffc",
       "name": "Execute Workflow"
@@ -1447,8 +1447,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -11056,
-        -480
+        -10992,
+        -400
       ],
       "id": "ca671a45-ec2c-4a7b-b6fa-055a12ee04df",
       "name": "Grp ou Msg"
@@ -1512,8 +1512,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -10640,
-        176
+        -10288,
+        128
       ],
       "id": "bab218f7-c7fb-45f7-8201-dbe5d55c2ec6",
       "name": "Que Grp?",
@@ -1597,7 +1597,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -10848,
+        -10784,
         -480
       ],
       "id": "6d360c63-89e1-4737-a39e-d151a85fdb15",
@@ -1659,8 +1659,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -6912,
-        -464
+        -6992,
+        -432
       ],
       "id": "ff9e7cb2-3117-43ae-9b4b-578a90cf7cb1",
       "name": "TXT or AUD",
@@ -1681,8 +1681,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -2896,
-        -608
+        -3712,
+        -816
       ],
       "id": "f7c56792-cdbe-4822-9719-7c4da1dfbe84",
       "name": "LLM",
@@ -1706,8 +1706,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -2272,
-        -480
+        -3088,
+        -656
       ],
       "id": "07c0f050-22b2-470b-8f31-3f62cce71c19",
       "name": "Parse AI",
@@ -1730,8 +1730,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -1264,
-        -592
+        -2144,
+        -768
       ],
       "id": "df87cb87-39c0-44c7-9d08-7277ec800a5c",
       "name": "OpenAI Chat Model",
@@ -1753,8 +1753,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        -1232,
-        -848
+        -2112,
+        -1024
       ],
       "id": "1c5a8c5e-33ef-420b-8575-78ffbf88a124",
       "name": "Avaliador"
@@ -1863,8 +1863,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -7952,
-        -480
+        -8016,
+        -464
       ],
       "id": "0e95471f-4db8-479b-928a-fbf60c8cb268",
       "name": "Switch"
@@ -1880,8 +1880,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -7392,
-        -672
+        -7456,
+        -656
       ],
       "id": "3763a335-a444-43de-9b52-24f436976d3d",
       "name": "Redis5",
@@ -1902,8 +1902,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -7648,
-        -672
+        -7712,
+        -656
       ],
       "id": "3f372ee6-8b26-4f92-945c-dcd10009946a",
       "name": "status",
@@ -1925,8 +1925,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -8112,
-        -464
+        -8176,
+        -448
       ],
       "id": "ec1e5a03-f925-4065-835e-b5616a7c4298",
       "name": "GetStat",
@@ -1949,8 +1949,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -768,
-        -848
+        -1712,
+        -1024
       ],
       "id": "ea580b0a-ede7-4874-b4de-469b2265e260",
       "name": "Redis6",
@@ -1963,13 +1963,13 @@
     },
     {
       "parameters": {
-        "amount": 15
+        "amount": 35
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -5392,
-        -512
+        -5504,
+        -464
       ],
       "id": "6f5cc3a6-e10e-4b17-9c1b-6a47245a2d9e",
       "name": "Wait2",
@@ -1985,8 +1985,8 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        -2560,
-        -640
+        -3376,
+        -816
       ],
       "id": "506ead90-fcbd-472e-9294-9d8f722e5827",
       "name": "Funcionamento",
@@ -2018,8 +2018,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -10208,
-        192
+        -9856,
+        144
       ],
       "id": "ddd4f45c-02e0-4b8a-bb55-cca591f23448",
       "name": "Execute Workflow1"
@@ -2032,8 +2032,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4720,
-        -848
+        -4800,
+        -832
       ],
       "id": "6e17560d-0d7b-4ac9-a671-a48f61a65e7c",
       "name": "Deleta Buffer",
@@ -2055,8 +2055,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5552,
-        -512
+        -5664,
+        -464
       ],
       "id": "f70c5a82-425e-4ed8-a385-ee943ba319a8",
       "name": "Get Buffer 1",
@@ -2078,8 +2078,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5216,
-        -512
+        -5328,
+        -464
       ],
       "id": "b4a24190-1424-4426-9070-3e14527b6818",
       "name": "Get Buffer 2",
@@ -2098,8 +2098,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        -8416,
-        -784
+        -8528,
+        -928
       ]
     },
     {
@@ -2123,8 +2123,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -8576,
-        -752
+        -8688,
+        -896
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -2192,8 +2192,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -8736,
-        -784
+        -8848,
+        -928
       ],
       "id": "891e8129-97ee-4558-8243-689ed99efd39",
       "name": "Switch1",
@@ -2204,8 +2204,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -7536,
-        -288
+        -7600,
+        -272
       ],
       "id": "83ea6687-b453-4546-a68d-42224863dd0c",
       "name": "Merge1"
@@ -2238,8 +2238,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -10416,
-        32
+        -10064,
+        -16
       ],
       "id": "5d6fcf6a-52e3-49a3-b4ab-fbe0183162d4",
       "name": "Ger. Produtos"
@@ -2280,8 +2280,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
       "position": [
-        -10416,
-        192
+        -10064,
+        144
       ],
       "id": "755468e7-70c5-4ea3-b1d3-0aae2aa679a2",
       "name": "Horário"
@@ -2293,8 +2293,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -8992,
-        -464
+        -8944,
+        -448
       ],
       "id": "9fbf7da9-cb30-4ab5-aeca-8bf581bf7da9",
       "name": "1o Nome"
@@ -2307,8 +2307,8 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        -4432,
-        -848
+        -4512,
+        -832
       ],
       "id": "9ba3f280-e06f-4f0a-bc53-d7c4a3314790",
       "name": "Data"
@@ -2320,8 +2320,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -4304,
-        -848
+        -4384,
+        -832
       ],
       "id": "597c166c-844c-4b15-aab3-b9a81f7b4276",
       "name": "Mes1"
@@ -2333,8 +2333,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -4160,
-        -848
+        -4240,
+        -832
       ],
       "id": "3c4a3c8b-7f3f-417f-a308-0f63bf51195e",
       "name": "Code1"
@@ -2346,8 +2346,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -4016,
-        -848
+        -4096,
+        -832
       ],
       "id": "efcc19e3-0b9b-47cb-b7db-ac5ba8872642",
       "name": "Sauda2"
@@ -2369,8 +2369,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4576,
-        -848
+        -4656,
+        -832
       ],
       "id": "20639ee9-c79e-4605-a7c8-76343c28c391",
       "name": "Join",
@@ -2387,8 +2387,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        -3760,
-        -1568
+        -4096,
+        -2544
       ],
       "id": "3011dd7e-1e80-43c4-8db9-b83b18b201b5",
       "name": "AI Agent2",
@@ -2406,8 +2406,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -3760,
-        -1360
+        -4096,
+        -2336
       ],
       "id": "f565fdd3-aefd-441e-b55e-4e5ffd07f953",
       "name": "OpenAI Chat Model1",
@@ -2466,8 +2466,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -3440,
-        -1568
+        -3776,
+        -2544
       ],
       "id": "19a04ef4-a097-491f-8060-ee0df0cd6126",
       "name": "If1",
@@ -2490,8 +2490,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3248,
-        -1504
+        -3584,
+        -2480
       ],
       "id": "1c644a44-1f59-4c54-99ea-98c737721b21",
       "name": "Edit Fields",
@@ -2834,8 +2834,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2720,
-        16
+        -3008,
+        32
       ],
       "id": "941d0c53-e06b-4d4e-936b-0e53812ced79",
       "name": "Redis7",
@@ -2953,8 +2953,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5056,
-        -512
+        -5168,
+        -464
       ],
       "id": "a2fa32e0-a93c-4f1c-9ec4-35f24613f5cb",
       "name": "If4"
@@ -2969,8 +2969,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3760,
-        -304
+        -3872,
+        -288
       ],
       "id": "050de248-477c-486e-a9ed-100304c5d231",
       "name": "Get Buffer 4",
@@ -3010,8 +3010,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -3600,
-        -304
+        -3712,
+        -288
       ],
       "id": "eea20015-a95e-4a86-8d80-cc779eb62888",
       "name": "If5"
@@ -3021,8 +3021,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -3392,
-        -128
+        -3504,
+        -112
       ],
       "id": "71d88d96-2308-4ca4-9d2d-64aac674ab25",
       "name": "Organização3"
@@ -3035,8 +3035,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -7536,
-        -480
+        -7600,
+        -464
       ],
       "id": "01e8e31c-50b3-4060-8c63-5109bb11c2d8",
       "name": "Delete Msg ID Buffer 1",
@@ -3055,8 +3055,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3920,
-        -304
+        -4032,
+        -288
       ],
       "id": "14e1ce83-9862-41cb-95f0-bf590755c8af",
       "name": "Delete MSG ID Buffer",
@@ -3076,8 +3076,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4080,
-        -304
+        -4192,
+        -288
       ],
       "id": "0e5a9a01-5b15-4c06-8f9f-a7a9d877da30",
       "name": "Redis2",
@@ -3104,8 +3104,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4208,
-        -304
+        -4320,
+        -288
       ],
       "id": "e894c161-9e0b-47f4-8767-438813e8ccca",
       "name": "Redis4",
@@ -3128,8 +3128,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1856,
-        32
+        -2144,
+        48
       ],
       "id": "e31606a3-ab71-4f96-a5ff-dd781a10cca7",
       "name": "Redis9",
@@ -3153,8 +3153,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        16,
-        -848
+        -928,
+        -1024
       ],
       "id": "9f86e030-9689-44d4-9eca-b7d3e9dfe5bc",
       "name": "AI Agent3"
@@ -3171,8 +3171,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        16,
-        -640
+        -928,
+        -816
       ],
       "id": "3f2b02cd-5986-4dda-a1ec-68b445fdf16a",
       "name": "OpenAI Chat Model2",
@@ -3193,8 +3193,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -208,
-        -912
+        -1152,
+        -1088
       ],
       "id": "c0a3c7ca-d832-4025-be6d-f266521c47b5",
       "name": "Redis10",
@@ -3213,8 +3213,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        336,
-        -848
+        -608,
+        -1024
       ],
       "id": "90bebd7a-2ff1-4b14-b7fd-1153972a7714",
       "name": "Del DB Tmp",
@@ -3302,8 +3302,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        528,
-        -848
+        -416,
+        -1024
       ],
       "id": "3820557d-4314-4b43-a408-6cdce098a8a0",
       "name": "Switch2"
@@ -3319,7 +3319,7 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "5512982113000"
+              "value": "5512991853000"
             },
             {
               "name": "message",
@@ -3332,8 +3332,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        848,
-        -1008
+        -96,
+        -1152
       ],
       "id": "3b639237-d5f2-4637-b817-7d674adad96b",
       "name": "Relat. Cesar",
@@ -3355,7 +3355,7 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "5512982113000"
+              "value": "5512981637767"
             },
             {
               "name": "message",
@@ -3368,8 +3368,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        848,
-        -848
+        -96,
+        -1008
       ],
       "id": "29e91a38-fa65-4607-95a3-8e25d94c858d",
       "name": "Relat. Nei",
@@ -3404,8 +3404,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        848,
-        -688
+        -96,
+        -864
       ],
       "id": "a3d98e36-2bf8-4bdf-ae71-93ac40b2674c",
       "name": "Relat. Davi",
@@ -3444,8 +3444,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -432,
-        -848
+        -1376,
+        -1024
       ],
       "id": "f08b9153-a018-41f2-bf2b-416bac588dce",
       "name": "If7"
@@ -3461,8 +3461,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -592,
-        -848
+        -1536,
+        -1024
       ],
       "id": "f3813777-d481-4417-a6be-c2806c22af0a",
       "name": "GetStat1",
@@ -3482,8 +3482,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1536,
-        -928
+        -2464,
+        -1104
       ],
       "id": "97f60836-19b8-4396-990f-29ddd2de3311",
       "name": "Sticky Note"
@@ -3492,14 +3492,14 @@
       "parameters": {
         "content": "## Envia Relatório da Lead Pronta para o técnico",
         "height": 580,
-        "width": 1780,
+        "width": 1892,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -800,
-        -1040
+        -1744,
+        -1216
       ],
       "id": "79dd5778-a7cd-466a-acae-9a9d58da8b45",
       "name": "Sticky Note1"
@@ -3509,8 +3509,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -1504,
-        -368
+        -2416,
+        -544
       ],
       "id": "4bdbb946-bfe9-4ccf-b8c2-e7ac32131f2a",
       "name": "No Operation, do nothing"
@@ -3524,8 +3524,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -4752,
-        -960
+        -4864,
+        -944
       ],
       "id": "85f17d12-c492-4732-b305-56b31e4866ce",
       "name": "Sticky Note2"
@@ -3539,8 +3539,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -3872,
-        -1680
+        -4208,
+        -2656
       ],
       "id": "b6ab6486-5846-4df7-b7a6-db4e9075daf5",
       "name": "Sticky Note3"
@@ -3548,15 +3548,15 @@
     {
       "parameters": {
         "content": "## Agente Conversacional e Parser",
-        "height": 580,
+        "height": 660,
         "width": 1260,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2912,
-        -944
+        -3840,
+        -1200
       ],
       "id": "efe555e9-a04d-45e1-a37a-b61f6593bb37",
       "name": "Sticky Note4"
@@ -3571,8 +3571,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -4768,
-        -464
+        -4880,
+        -448
       ],
       "id": "aa8a4528-db56-444c-91cb-b1829a2d9ced",
       "name": "Sticky Note5"
@@ -3587,8 +3587,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -5632,
-        -592
+        -5744,
+        -544
       ],
       "id": "98c6eace-d3c2-4517-950b-71deed0fbdef",
       "name": "Sticky Note6"
@@ -3603,8 +3603,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -8160,
-        -704
+        -8224,
+        -688
       ],
       "id": "904a3a32-d491-4fa5-9059-aadbf8c2b176",
       "name": "Sticky Note7"
@@ -3619,8 +3619,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -6976,
-        -624
+        -7056,
+        -592
       ],
       "id": "d877a775-f2e4-4b66-bf18-7f12b8c600fb",
       "name": "Sticky Note8"
@@ -3754,7 +3754,7 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -9024,
+        -9072,
         -560
       ],
       "id": "c712b9d2-31fe-40da-ba3f-14eb82c4e043",
@@ -3770,8 +3770,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6112,
-        -480
+        -6192,
+        -448
       ],
       "id": "b43ff570-51d8-461e-bba8-faa3b39be66f",
       "name": "Get MsgID",
@@ -3821,24 +3821,24 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5888,
-        -480
+        -5968,
+        -448
       ],
       "id": "001055b1-10d8-4d28-ae23-6da944151817",
       "name": "If MsgID OK"
     },
     {
       "parameters": {
-        "content": "## WebHook + Definição de Dados",
-        "height": 300,
+        "content": "## Webhook + Definição de Dados",
+        "height": 348,
         "width": 1060,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -11488,
-        -592
+        -11440,
+        -544
       ],
       "id": "9bd8470e-fb61-40cb-b92e-1d77484f6edd",
       "name": "Sticky Note12"
@@ -3853,8 +3853,8 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -10688,
-        -48
+        -10336,
+        -96
       ],
       "id": "1102fbeb-0575-4e0b-bd12-c71162602dc7",
       "name": "Sticky Note13"
@@ -3887,8 +3887,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -11296,
-        -480
+        -11232,
+        -416
       ],
       "id": "20752cc5-3167-4f6f-a868-bbfa90415d59",
       "name": "If9"
@@ -3922,8 +3922,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 2.6,
       "position": [
-        -8752,
-        -464
+        -8528,
+        -448
       ],
       "id": "bd8d7265-59ed-4cfc-b00b-5497249a29f5",
       "name": "Select rows from a table",
@@ -3946,8 +3946,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -208,
-        -752
+        -1152,
+        -928
       ],
       "id": "aaff278a-6e4f-4ec1-b56c-fecf1f125143",
       "name": "Redis8",
@@ -3968,8 +3968,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1504,
-        -848
+        -2384,
+        -1024
       ],
       "id": "f1ce4194-027a-4128-9db0-07113c8424fe",
       "name": "Redis11",
@@ -3997,8 +3997,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1360,
-        -848
+        -2240,
+        -1024
       ],
       "id": "b77d0f61-ed07-4f70-a2b4-b52defcfae51",
       "name": "Edit Fields1"
@@ -4013,8 +4013,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        -2784,
-        -640
+        -3600,
+        -816
       ],
       "id": "ce1436aa-ada1-4101-8b73-1056e6f4ac91",
       "name": "Memory",
@@ -4038,8 +4038,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        -2736,
-        -1200
+        -3184,
+        -2480
       ],
       "alwaysOutputData": true,
       "disabled": true
@@ -4072,8 +4072,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -4384,
-        -224
+        -4496,
+        -208
       ],
       "id": "9d716940-77ce-4de7-935b-d646389e9927",
       "name": "Z-API1",
@@ -4089,8 +4089,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        -2448,
-        -640
+        -3264,
+        -816
       ],
       "id": "200dfb84-68a9-4f0b-9acf-3e33acd83a30",
       "name": "Calculator"
@@ -4116,8 +4116,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        -10416,
-        352
+        -10064,
+        304
       ],
       "id": "7f68ac53-91a2-4e91-903d-df33e06d4038",
       "name": "Execute Workflow2"
@@ -4141,6 +4141,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-11T17:26:24.000Z",
-  "versionId": "7cee79e3-4e9e-4721-8bb0-0db43022945b"
+  "updatedAt": "2025-10-14T18:41:48.000Z",
+  "versionId": "6d34c69a-1a46-4b21-99f4-235978ae5928"
 }
