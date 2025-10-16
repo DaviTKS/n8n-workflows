@@ -2641,6 +2641,16 @@
               "canBeUsedToMatch": true
             },
             {
+              "id": "Início de Atendimento",
+              "displayName": "Início de Atendimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
               "id": "Data de Fechamento",
               "displayName": "Data de Fechamento",
               "required": false,
@@ -2703,6 +2713,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "Aparelho",
+              "displayName": "Aparelho",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -3238,6 +3258,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-11T17:32:38.000Z",
-  "versionId": "acfed044-5a21-4a07-a66d-645e77a3e6d5"
+  "updatedAt": "2025-10-15T18:31:35.000Z",
+  "versionId": "97cc65a4-977e-49b7-8403-22378b1b667c"
 }
