@@ -3878,9 +3878,18 @@
                 "operation": "true",
                 "singleValue": true
               }
+            },
+            {
+              "id": "8d409fb1-80c3-470a-89fa-09c36a0a6794",
+              "leftValue": "={{ $json.body.phone }}",
+              "rightValue": "newsletter",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
             }
           ],
-          "combinator": "and"
+          "combinator": "or"
         },
         "options": {}
       },
@@ -4141,6 +4150,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-10-14T18:41:48.000Z",
-  "versionId": "6d34c69a-1a46-4b21-99f4-235978ae5928"
+  "updatedAt": "2025-10-15T14:19:46.000Z",
+  "versionId": "c9013495-8eb0-49a7-b5db-27a64079794e"
 }
