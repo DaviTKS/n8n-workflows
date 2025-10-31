@@ -1,0 +1,510 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select rows from a table": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Select rows from a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Z-API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-31T12:49:13.309Z",
+  "id": "zS8pWvJfL2ZW1ygK",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Resumo Semanal",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        0
+      ],
+      "id": "a7c4a7b6-13a6-40a3-824f-0cdaa6257d94",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "ordens_servico",
+          "mode": "list",
+          "cachedResultName": "ordens_servico"
+        },
+        "sort": {
+          "values": [
+            {
+              "column": "entrada",
+              "direction": "DESC"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        624,
+        0
+      ],
+      "id": "6e256ca5-2668-448e-9fb6-5cbbe4103eaf",
+      "name": "Select rows from a table",
+      "credentials": {
+        "postgres": {
+          "id": "ZEobhMYEeazW7SRl",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Campos que devem ser tratados como data\nconst DATE_FIELDS = [\n  'entrada'\n];\n\n// Zero-left\nconst pad = n => n.toString().padStart(2, '0');\n\n// Tenta converter valores diversos para Date\nfunction toDate(value) {\n  if (value === null || value === undefined || value === '') return null;\n\n  // número ou string numérica em ms\n  if (!isNaN(value)) {\n    const n = Number(value);\n    const d = new Date(n);\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // DD/MM/YYYY HH:mm\n  const m = String(value).match(/^(\\d{2})\\/(\\d{2})\\/(\\d{4})(?:\\s+(\\d{2}):(\\d{2})(?::(\\d{2}))?)?$/);\n  if (m) {\n    const [ , dd, MM, yyyy, HH = '00', mm = '00', ss = '00'] = m;\n    const d = new Date(Number(yyyy), Number(MM) - 1, Number(dd), Number(HH), Number(mm), Number(ss));\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // ISO ou formatos reconhecíveis pelo JS\n  const d = new Date(value);\n  return isNaN(d.getTime()) ? null : d;\n}\n\n// Formata para YYYY-MM-DD HH:mm:ss\nfunction formatSQL(d) {\n  if (!d) return null;\n  const yyyy = d.getFullYear();\n  const MM = pad(d.getMonth() + 1);\n  const dd = pad(d.getDate());\n  const HH = pad(d.getHours());\n  const mm = pad(d.getMinutes());\n  const ss = pad(d.getSeconds());\n  return `${yyyy}-${MM}-${dd}`;\n}\n\nconst out = items.map(item => {\n  const obj = { ...(item.json || {}) };\n\n  DATE_FIELDS.forEach(field => {\n    if (obj[field] !== undefined) {\n      const dt = toDate(obj[field]);\n      obj[`${field}_filter`] = formatSQL(dt); // ex: 2025-10-01 00:00:00\n    }\n  });\n\n  return { json: obj };\n});\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        864,
+        0
+      ],
+      "id": "aec923ae-7f60-4ab1-a384-ff9aa8e83994",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -64,
+        0
+      ],
+      "id": "384eaf45-31e4-4347-83c3-af9c2e709ff1",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 7,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        144,
+        0
+      ],
+      "id": "e417f0da-817f-4e30-8f0a-5fb1e1e3a880",
+      "name": "Date & Time1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ebd81216-15d2-4baa-9ffb-4d9a28a021a6",
+              "leftValue": "={{ $json.entrada_filter }}",
+              "rightValue": "={{ $('Code in JavaScript').item.json.newDate_filter }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "afterOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1072,
+        0
+      ],
+      "id": "94373866-ee7c-4b4e-a2bb-b512e7817d14",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Campos que devem ser tratados como data\nconst DATE_FIELDS = [\n  'newDate'\n];\n\n// Zero-left\nconst pad = n => n.toString().padStart(2, '0');\n\n// Tenta converter valores diversos para Date\nfunction toDate(value) {\n  if (value === null || value === undefined || value === '') return null;\n\n  // número ou string numérica em ms\n  if (!isNaN(value)) {\n    const n = Number(value);\n    const d = new Date(n);\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // DD/MM/YYYY HH:mm\n  const m = String(value).match(/^(\\d{2})\\/(\\d{2})\\/(\\d{4})(?:\\s+(\\d{2}):(\\d{2})(?::(\\d{2}))?)?$/);\n  if (m) {\n    const [ , dd, MM, yyyy, HH = '00', mm = '00', ss = '00'] = m;\n    const d = new Date(Number(yyyy), Number(MM) - 1, Number(dd), Number(HH), Number(mm), Number(ss));\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // ISO ou formatos reconhecíveis pelo JS\n  const d = new Date(value);\n  return isNaN(d.getTime()) ? null : d;\n}\n\n// Formata para YYYY-MM-DD HH:mm:ss\nfunction formatSQL(d) {\n  if (!d) return null;\n  const yyyy = d.getFullYear();\n  const MM = pad(d.getMonth() + 1);\n  const dd = pad(d.getDate());\n  const HH = pad(d.getHours());\n  const mm = pad(d.getMinutes());\n  const ss = pad(d.getSeconds());\n  return `${yyyy}-${MM}-${dd}`;\n}\n\nconst out = items.map(item => {\n  const obj = { ...(item.json || {}) };\n\n  DATE_FIELDS.forEach(field => {\n    if (obj[field] !== undefined) {\n      const dt = toDate(obj[field]);\n      obj[`${field}_filter`] = formatSQL(dt); // ex: 2025-10-01 00:00:00\n    }\n  });\n\n  return { json: obj };\n});\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        336,
+        0
+      ],
+      "id": "f417aaa3-ee32-44dd-a5f3-7846f2ce35d0",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=DADOS: {{ $json.data }}",
+        "options": {
+          "systemMessage": "=Persona: 🤖 Você é o \"Zap Resumo\", um assistente de operações sênior. Sua especialidade é transformar dados brutos de Ordens de Serviço (OS) em insights gerenciais claros, formatados para um relatório \"flash\" no WhatsApp.\n\nObjetivo: Analisar a lista de entradas de OS que chegaram esta semana (de [Data de Início] a [Data de Fim]). Você deve:\n\nQuantificar o volume único de OS (baseado no os_number).\n\nIdentificar os dias da semana com maior volume de entrada de OS únicas.\n\nCategorizar os serviços solicitados por essas OS únicas.\n\nPara cada categoria, identificar o problema específico mais comum.\n\nContabilizar os aparelhos/equipamentos mencionados nessas OS únicas.\n\nGerar um resumo executivo formatado com emojis.\n\nContexto: A gestão precisa de um relatório \"flash\" no WhatsApp toda sexta-feira. O foco não é apenas quantas entradas, mas quantas OS únicas tivemos, quando elas chegam (dias de pico) e por quê (problemas comuns por categoria), para otimizar a alocação da equipe.\n\nDados de Entrada: Uma lista de entradas do banco de dados. Cada entrada deve conter, no mínimo:\n\nos_number (O identificador único da OS. Ex: \"OS-1001\", \"OS-1002\")\n\nData_Abertura (Formato que permita extrair o dia da semana, ex: \"DD/MM/AAAA\")\n\nDescricao_Problema (Texto onde a IA pode extrair o problema e o aparelho)\n\nTarefa (Passo a Passo Mandatório):\n\nREGRA CRÍTICA DE CONTAGEM: Antes de tudo, analise o campo os_number. A contagem total de OS NÃO é o total de linhas. É o total de números de os_number únicos (distintos). Se \"OS-1001\" aparecer 5 vezes nas entradas, ela conta como uma (1) OS.\n\nLista Única: Crie mentalmente uma lista de OS únicas. Se uma OS (os_number) aparecer múltiplas vezes, use a entrada com a Data_Abertura mais antiga para determinar o \"dia de pico\" e a Descricao_Problema principal.\n\nAnalisar Volume Total: Contar o número total de os_number únicos.\n\nAnalisar Dias de Pico: Contar quantas OS únicas foram abertas em cada dia da semana (baseado na data de abertura da lista única).\n\nCategorizar por Serviço: Agrupar as OS únicas por Tipo de Solicitação (ex: Manutenção, Instalação, Suporte a Software, Rede).\n\nAnalisar Causa Raiz: Dentro de cada categoria acima, ler as descrições das OS únicas e identificar o problema específico mais frequente.\n\nContabilizar Aparelhos: Contar em quantas OS únicas cada aparelho é mencionado.\n\nGerar Relatório: Montar o relatório final usando exatamente o formato de WhatsApp abaixo.\n\nFormato de Saída Obrigatório (Modelo para WhatsApp):\n\n*📊 Resumo Gerencial de Ordens de Serviço*\n*(Semana de [Data Início] a [Data Fim])*\n\nBom dia, gestão! 🚀 Segue o diagnóstico da nossa semana:\n\n*Total de OS ÚNICAS Recebidas:* [Nº Total de os_number distintos] 📈\n\n---\n\n*🗓️ Distribuição da Semana (Dias de Pico):*\n(Contagem baseada no dia de abertura de cada OS única)\n\n*Segunda:* [Nº]\n*Terça:* [Nº]\n*Quarta:* [Nº]\n*Quinta:* [Nº]\n*Sexta:* [Nº]\n*Sábado/Domingo:* [Nº]\n\n🔥 *Dias de maior movimento:* [Ex: Terça e Quinta]\n\n---\n\n*🏷️ Análise por Categoria e Problema Comum:*\n(O que fizemos e por quê, baseado nas OS únicas)\n\n🔧 *Manutenção Corretiva:* [Nº de OS únicas]\n    *Problema Comum:* [Ex: \"Equipamento não liga\", \"Peça quebrada\"]\n\n🔌 *Instalação/Configuração:* [Nº de OS únicas]\n    *Problema Comum:* [Ex: \"Instalação de novo software\", \"Configurar impressora na rede\"]\n\n💻 *Suporte a Sistema/Software:* [Nº de OS únicas]\n    *Problema Comum:* [Ex: \"Usuário com senha bloqueada\", \"Sistema lento\"]\n\n🌐 *Problemas de Rede/Internet:* [Nº de OS únicas]\n    *Problema Comum:* [Ex: \"Wi-Fi caindo\", \"Sem acesso ao servidor\"]\n\n*(Outras categorias que identificar...)*\n\n---\n\n*🛠️ Aparelhos Mais Afetados:*\n(Contagem de quantas OS únicas mencionaram o aparelho)\n\n🖨️ *Impressoras:* [Nº de OS]\n💻 *Computadores (Desktop/Notebook):* [Nº de OS]\n☁️ *Servidores:* [Nº de OS]\n📡 *Equipamentos de Rede (Roteador/Switch):* [Nº de OS]\n*(Outros aparelhos...)*\n\n---\n\n*🚨 Insights e Ações Recomendadas:*\n\n1️⃣ *[Cruzamento de dados. Ex: \"Tivemos um pico de OS de 'Impressoras' (X chamados únicos) na Terça-feira, a maioria sobre 'falta de toner'.\"]*\n2️⃣ *[Problema crônico. Ex: \"O problema 'Senha bloqueada' em 'Suporte a Software' foi o mais comum (X casos únicos), sugerindo necessidade de treinamento.\"]*\n3. *[Alerta. Ex: \"Aparelhos 'Servidor' tiveram X chamados críticos. Precisamos monitor"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2768,
+        0
+      ],
+      "id": "6143d59e-f7f0-43b4-9ef5-2d4605aea88e",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2048,
+        0
+      ],
+      "id": "4ca57d80-2be3-4d59-8fed-189d642734a4",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6140bc42-e98e-4772-b0b3-78a7dfd6da9a",
+              "name": "os_number",
+              "value": "={{ $json.os_number }}",
+              "type": "string"
+            },
+            {
+              "id": "6df17b06-9f35-47ec-9efa-343b797c3fac",
+              "name": "nome",
+              "value": "={{ $json.nome }} {{ $json.sobrenome }}",
+              "type": "string"
+            },
+            {
+              "id": "096ed640-a166-4655-9975-d6c8a9495ae1",
+              "name": "aparelho",
+              "value": "={{ $json.aparelho }}",
+              "type": "string"
+            },
+            {
+              "id": "a0fdcf9f-2899-4d4e-b84b-ba407f69d615",
+              "name": "marca",
+              "value": "={{ $json.marca }}",
+              "type": "string"
+            },
+            {
+              "id": "f71a5e4a-9798-477c-a22a-9ff704ff88a1",
+              "name": "entrada",
+              "value": "={{ $json.entrada }}",
+              "type": "string"
+            },
+            {
+              "id": "aff0b862-e5e3-4e32-9bd6-374edbb2bcd7",
+              "name": "defeito",
+              "value": "={{ $json.defeito }}",
+              "type": "string"
+            },
+            {
+              "id": "972d041c-cc3e-4a08-beb5-6801daead71e",
+              "name": "status",
+              "value": "={{ $json.status }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1264,
+        0
+      ],
+      "id": "27b83b8b-c288-4ab7-8383-52dd6f89de2b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2640,
+        208
+      ],
+      "id": "afb9ab8c-4246-4d4b-a3a5-18dfd1547c28",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5512982113000"
+            },
+            {
+              "name": "message",
+              "value": "=*RESUMO SEMANAL*\n{{ $json.output }}"
+            },
+            {
+              "name": "delayTyping",
+              "value": "3"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3072,
+        0
+      ],
+      "id": "0d4a32cf-8ea3-4b28-8c0d-5357f61e17ef",
+      "name": "Z-API1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "72eedcdc-f283-44bd-95f5-9b597d268e41",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2256,
+        0
+      ],
+      "id": "8b486f1c-a286-41ba-9f5d-cd4871546b92",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "os_number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1472,
+        0
+      ],
+      "id": "28b68259-ca24-44f4-a83a-ed9b6741e91f",
+      "name": "Sort"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-10-31T12:49:13.317Z",
+      "updatedAt": "2025-10-31T12:49:13.317Z",
+      "role": "workflow:owner",
+      "workflowId": "zS8pWvJfL2ZW1ygK",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-31T13:30:23.000Z",
+  "versionId": "e68af6d1-2395-4712-b9c8-0bdc2edac5a1"
+}
