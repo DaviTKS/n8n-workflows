@@ -1,0 +1,551 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Tasks From List": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Chat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Período 1 month",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Período 1 month": {
+      "main": [
+        [
+          {
+            "node": "Get Tasks From List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-10-31T13:31:03.087Z",
+  "id": "uQ16MWg3bkOnzCLQ",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1856,
+        -208
+      ],
+      "id": "fb3f6b46-fb18-40a4-a639-6aea75031ef1",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://api.clickup.com/api/v2/list/901315191841/task?include_closed=true&subtasks=true",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "clickUpApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1008,
+        -16
+      ],
+      "id": "41e1a725-4f1a-4df2-9c50-d09aa2225486",
+      "name": "Get Tasks From List",
+      "credentials": {
+        "clickUpApi": {
+          "id": "RHQqZ5tTNzZR7ag1",
+          "name": "ClickUp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7a920442-b031-4396-82fb-9bb4c06de00c",
+              "name": "name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "e33c155e-fc94-4c89-b451-f4c6db452e39",
+              "name": "text_content",
+              "value": "={{ $json.text_content }}",
+              "type": "string"
+            },
+            {
+              "id": "dfaeaba8-63b8-4e4e-b451-32f067c380f2",
+              "name": "status.status",
+              "value": "={{ $json.status.status }}",
+              "type": "string"
+            },
+            {
+              "id": "071889ce-0376-47c6-b4d5-83073e20e666",
+              "name": "date_created",
+              "value": "={{ $json.date_created }}",
+              "type": "string"
+            },
+            {
+              "id": "9f481272-c3e5-495b-bb2d-ca5d45b011fb",
+              "name": "date_done",
+              "value": "={{ $json.date_done }}",
+              "type": "string"
+            },
+            {
+              "id": "01ab38e1-f371-4cdd-b11d-a3f48acdd98f",
+              "name": "due_date",
+              "value": "={{ $json.due_date }}",
+              "type": "string"
+            },
+            {
+              "id": "35f2835f-2289-472c-9c66-c37c251fb1b8",
+              "name": "start_date",
+              "value": "={{ $json.start_date }}",
+              "type": "string"
+            },
+            {
+              "id": "e71f8a2b-2358-4eb5-8018-08ea9e1e9c5a",
+              "name": "priority.priority",
+              "value": "={{ $json.priority.priority }}",
+              "type": "string"
+            },
+            {
+              "id": "c5ded618-00e0-4ea4-a01d-88a17331330a",
+              "name": "time_spent",
+              "value": "={{ $json.time_spent }}",
+              "type": "number"
+            },
+            {
+              "id": "19673244-0783-4ba9-a358-ecb03210468b",
+              "name": "parent",
+              "value": "={{ $json.parent }}",
+              "type": "string"
+            },
+            {
+              "id": "18bfdba0-a058-4c10-bf7d-5b9eb62403d7",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "146d8119-522b-458d-9aed-7995b95af9bd",
+              "name": "date_done_filter",
+              "value": "={{ $json.date_done_filter }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -272,
+        -16
+      ],
+      "id": "c71dc106-2645-4094-940a-524d9841cdc0",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "tasks",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        -16
+      ],
+      "id": "ba4b2b00-18b5-4bbf-9f17-22fe80168a93",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        160,
+        -16
+      ],
+      "id": "9870c689-cd40-41af-9971-efa00734fa97",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=Você é um Analista de Performance de Projetos. Sua tarefa é analisar os dados de tarefas fornecidos, avaliar a eficiência de um funcionário e gerar um relatório estruturado.\n\nContexto e Regras de Dados (MUITO IMPORTANTE):\n\n!! REGRA: Subtarefas e Agregação de Tempo !!\nA análise de performance NUNCA deve ser feita em subtarefas individualmente. A análise foca apenas nas \"Tarefas Principais\" (aquelas com parent: null).\n\nPasso 1 (Cálculo Interno): Antes de qualquer análise, você DEVE varrer todo o array. Para cada subtarefa (um objeto com parent não-nulo), pegue o valor do seu time_spent e some-o ao time_spent da sua \"Tarefa Principal\" (o objeto cujo id corresponde ao valor em parent).\n\nPasso 2 (Análise): Após somar os tempos, toda a sua análise (Nota de Eficiência, Análise Temporal, Tarefa de Maior Esforço) deve ser baseada APENAS nas Tarefas Principais (parent: null), usando seus novos valores de time_spent agregados.\n\n!! REGRA DE ANÁLISE (STATUS) !!\nSua análise de eficiência e prazos deve se basear EXCLUSIVAMENTE nas Tarefas Principais (parent: null) que possuem o campo status.status com o valor \"complete\".\n\n!! REGRA DE ANÁLISE (PRAZO E PRIORIDADE) !!\nA avaliação de \"atraso\" (comparação entre date_done e due_date) só deve ser considerada um fator negativo se AMBAS as condições a seguir forem verdadeiras:\na) A Tarefa Principal concluída tiver uma prioridade \"urgente\" ou \"high\".\nb) A data de conclusão (date_done) for em um dia posterior à data de vencimento (due_date).\n\nTolerância de Prazo: Se due_date é \"14/10/2025 07:00\" e date_done é \"14/10/2025 14:00\", NÃO É ATRASO.\n\nEstrutura dos Dados e Mapeamento de Campos:\n\nid: O ID único da tarefa.\n\nparent: O ID da tarefa principal. Se null, é uma Tarefa Principal.\n\nname: O nome ou título.\n\nstatus.status: O status da tarefa.\n\npriority.priority: O nível de prioridade (ex: \"urgent\", \"high\", \"normal\").\n\nData de Início: Use start_date se estiver preenchido (não-nulo). Se start_date for null, use date_created como data de início. (Usar apenas para referência de quando começou, não para calcular esforço).\n\nData de Conclusão: Use o campo date_done. (Usar apenas para referência de quando terminou, não para calcular esforço).\n\nData de Vencimento (Prazo): Use o campo due_date.\n\nTempo Gasto (Líquido): Use o campo time_spent. Atenção: Este é o único campo a ser usado para calcular o esforço ou tempo de trabalho. NUNCA calcule o tempo gasto subtraindo start_date de date_done.\n\n!! IMPORTANTE: Formato dos Dados !!\n\nDatas (Formato de Texto): Todos os campos de data (date_created, date_done, due_date, start_date) já estão em formato de texto legível (ex: \"DD/MM/YYYY HH:mm\").\n\nLógica de Comparação de Datas: Ao verificar atrasos, compare apenas a porção da data (Dia, Mês, Ano), ignorando as horas.\n\nTempo Gasto (Milissegundos): O campo time_spent está em milissegundos (ex: 602822). Este é o valor que deve ser somado (principal + subtarefas) para obter o esforço total.\n\nSuas Tarefas (Saída Obrigatória):\n\nSiga rigorosamente as quatro etapas abaixo para gerar sua resposta:\n\n1. Resumo de Execução (Máximo 1000 caracteres)\nAnalise o contexto de todas as tarefas. Sintetize quais foram as metas principais (focando nas Tarefas Principais, parent: null) e tudo o que foi executado e concluído pelo técnico.\n\n2. Nota de Eficiência do Técnico (Escala 1-10)\nAtribua uma nota de 1 a 10 para o Técnico de Automação, baseando-se apenas nas Tarefas Principais (parent: null) concluídas:\n\nCumprimento de Prazos Críticos: Verifique se tarefas marcadas como \"urgente\" ou \"high\" foram entregues no dia do due_date ou antes. Atrasos (D+1) impactam negativamente.\n\nIgnorar Prazos Não Críticos: Atrasos (D+1) em tarefas de prioridade \"normal\" ou \"baixa\" não devem reduzir a nota.\n\nEficiência do Esforço: Análise do time_spent AGREGADO (a soma dos valores em milissegundos) versus a complexidade da Tarefa Principal.\n\nVolume de Entregas: Quantidade total de Tarefas Principais com status \"complete\".\n\n3. Análise de Eficiência Temporal (Tempo de Demora)\nFocando apenas nas Tarefas Principais (parent: null) concluídas, analise a relação entre Data de Início e date_done (comparando apenas as datas, não a hora).\n\nDefina se o técnico foi eficiente, priorizando a regra de prazos urgentes.\n\nForneça exemplos:\n\nEficiente: Tarefas Principais concluídas no dia do due_date ou antes.\n\nIneficiente (Atraso Crítico): Tarefas Principais que estouraram o dia do due_date (D+1) E tinham prioridade \"urgente\" ou \"high\".\n\nPrazo Despriorizado: Tarefas Principais que estouraram o dia do due_date, mas NÃO eram urgentes/high.\n\n4. Análise da Tarefa de Maior Esforço\nIdentifique a Tarefa Principal (parent: null) concluída que mais tomou tempo, utilizando o time_spent AGREGADO TOTAL (a soma dos campos time_spent dela e de suas subtarefas).\n\nApresente os dados da seguinte forma:\n\nNome: (O name da Tarefa Principal)\n\nDetalhamento do Tempo (baseado no time_spent):\n\nAtenção: Os valores de tempo para cada item abaixo devem ser mostrados apenas no formato \"X horas, Y minutos\". NÃO MOSTRE os valores brutos em milissegundos nem o processo de soma matemática.\n\n(Nome da Tarefa Principal): (O valor final convertido da soma dos time_spent em \"X horas, Y minutos\")\n\n\n(Nome da Subtarefa 1): X horas, Y minutos\n\n(Nome da Subtarefa 2): X horas, Y minutos\n\nIniciada em: (de start_date ou date_created da tarefa principal)\n\nFinalizada em: (de date_done da tarefa principal)\n\n\nDADOS: {{ $json.data }}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        -16
+      ],
+      "id": "1e2a84bc-84f4-48db-afac-03f8ba5da5dc",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        640,
+        160
+      ],
+      "id": "b515cf76-61a4-4605-b059-7143ae95c2ee",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -1904,
+        -16
+      ],
+      "id": "48aa9998-c635-4cc1-b1f1-c5d4fadb7212",
+      "name": "When chat message received",
+      "webhookId": "a7da64e0-1663-4845-b924-43c008e806db"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "803b9eab-4c92-4bbe-85aa-e00eee606c44",
+              "name": "chatInput",
+              "value": "={{ $('When chat message received').item.json.chatInput }}",
+              "type": "string"
+            },
+            {
+              "id": "6541fcd0-68e9-423a-a5ce-573a0850ed88",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": true
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        -16
+      ],
+      "id": "d7b1cc3f-9961-46c1-ad11-c407e263da00",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Lista de campos que devem ser tratados como data\nconst DATE_FIELDS = [\n  'date_created',\n  'date_updated',\n  'date_closed',\n  'date_done',\n  'due_date',\n  'start_date'\n];\n\n// Função auxiliar para padronizar zero à esquerda\nconst pad = (n) => n.toString().padStart(2, '0');\n\n// Função para converter timestamp (em milissegundos) para formato DD/MM/YYYY HH:mm\nfunction formatDate(ts) {\n  if (ts === null || ts === undefined || ts === '') return null;\n  const num = Number(ts);\n  if (!Number.isFinite(num)) return null;\n  const d = new Date(num);\n  if (isNaN(d.getTime())) return null;\n\n  const dia = pad(d.getDate());\n  const mes = pad(d.getMonth() + 1);\n  const ano = d.getFullYear();\n  const hora = pad(d.getHours());\n  const min = pad(d.getMinutes());\n  return `${dia}/${mes}/${ano} ${hora}:${min}`;\n}\n\n// Mapeia todos os items de entrada\nconst out = items.map(item => {\n  const obj = { ...(item.json || {}) };\n\n  // Converte apenas os campos de data definidos\n  DATE_FIELDS.forEach(field => {\n    if (obj[field] !== undefined) {\n      obj[field] = formatDate(obj[field]);\n    }\n  });\n\n  return { json: obj };\n});\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -592,
+        -16
+      ],
+      "id": "801c3593-8dee-49ef-9641-46f5f99a6ee8",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "message": "={{ $json.output }}",
+        "waitUserReply": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -16
+      ],
+      "id": "2c584bf0-1892-4411-b709-bdc16ffd18ba",
+      "name": "Respond to Chat"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "06fc0cda-0390-4ff3-98fa-5ce82011696d",
+              "leftValue": "={{ $json.date_done_filter }}",
+              "rightValue": "={{ $('Período 1 month').item.json.newDate_filter }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "afterOrEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        -16
+      ],
+      "id": "d5601329-14af-458a-aeff-ff5203c3432e",
+      "name": "Filter1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Campos que devem ser tratados como data\nconst DATE_FIELDS = [\n  'date_created',\n  'date_done'\n];\n\n// Zero-left\nconst pad = n => n.toString().padStart(2, '0');\n\n// Tenta converter valores diversos para Date\nfunction toDate(value) {\n  if (value === null || value === undefined || value === '') return null;\n\n  // número ou string numérica em ms\n  if (!isNaN(value)) {\n    const n = Number(value);\n    const d = new Date(n);\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // DD/MM/YYYY HH:mm\n  const m = String(value).match(/^(\\d{2})\\/(\\d{2})\\/(\\d{4})(?:\\s+(\\d{2}):(\\d{2})(?::(\\d{2}))?)?$/);\n  if (m) {\n    const [ , dd, MM, yyyy, HH = '00', mm = '00', ss = '00'] = m;\n    const d = new Date(Number(yyyy), Number(MM) - 1, Number(dd), Number(HH), Number(mm), Number(ss));\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // ISO ou formatos reconhecíveis pelo JS\n  const d = new Date(value);\n  return isNaN(d.getTime()) ? null : d;\n}\n\n// Formata para YYYY-MM-DD HH:mm:ss\nfunction formatSQL(d) {\n  if (!d) return null;\n  const yyyy = d.getFullYear();\n  const MM = pad(d.getMonth() + 1);\n  const dd = pad(d.getDate());\n  const HH = pad(d.getHours());\n  const mm = pad(d.getMinutes());\n  const ss = pad(d.getSeconds());\n  return `${yyyy}-${MM}-${dd}`;\n}\n\nconst out = items.map(item => {\n  const obj = { ...(item.json || {}) };\n\n  DATE_FIELDS.forEach(field => {\n    if (obj[field] !== undefined) {\n      const dt = toDate(obj[field]);\n      obj[`${field}_filter`] = formatSQL(dt); // ex: 2025-10-01 00:00:00\n    }\n  });\n\n  return { json: obj };\n});\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -432,
+        -16
+      ],
+      "id": "41a13b1b-6ca7-432f-bd27-9e4689576a06",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -1696,
+        -16
+      ],
+      "id": "7fdcddc8-ee73-4427-8848-4caeac321e6d",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "timeUnit": "months",
+        "duration": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -1488,
+        -16
+      ],
+      "id": "3499cbf2-08ad-4e38-97f0-8ef5e4614e55",
+      "name": "Date & Time1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Campos que devem ser tratados como data\nconst DATE_FIELDS = [\n  'newDate'\n];\n\n// Zero-left\nconst pad = n => n.toString().padStart(2, '0');\n\n// Tenta converter valores diversos para Date\nfunction toDate(value) {\n  if (value === null || value === undefined || value === '') return null;\n\n  // número ou string numérica em ms\n  if (!isNaN(value)) {\n    const n = Number(value);\n    const d = new Date(n);\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // DD/MM/YYYY HH:mm\n  const m = String(value).match(/^(\\d{2})\\/(\\d{2})\\/(\\d{4})(?:\\s+(\\d{2}):(\\d{2})(?::(\\d{2}))?)?$/);\n  if (m) {\n    const [ , dd, MM, yyyy, HH = '00', mm = '00', ss = '00'] = m;\n    const d = new Date(Number(yyyy), Number(MM) - 1, Number(dd), Number(HH), Number(mm), Number(ss));\n    return isNaN(d.getTime()) ? null : d;\n  }\n\n  // ISO ou formatos reconhecíveis pelo JS\n  const d = new Date(value);\n  return isNaN(d.getTime()) ? null : d;\n}\n\n// Formata para YYYY-MM-DD HH:mm:ss\nfunction formatSQL(d) {\n  if (!d) return null;\n  const yyyy = d.getFullYear();\n  const MM = pad(d.getMonth() + 1);\n  const dd = pad(d.getDate());\n  const HH = pad(d.getHours());\n  const mm = pad(d.getMinutes());\n  const ss = pad(d.getSeconds());\n  return `${yyyy}-${MM}-${dd}`;\n}\n\nconst out = items.map(item => {\n  const obj = { ...(item.json || {}) };\n\n  DATE_FIELDS.forEach(field => {\n    if (obj[field] !== undefined) {\n      const dt = toDate(obj[field]);\n      obj[`${field}_filter`] = formatSQL(dt); // ex: 2025-10-01 00:00:00\n    }\n  });\n\n  return { json: obj };\n});\n\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1280,
+        -16
+      ],
+      "id": "dc3887b3-5372-439a-a3ad-f3a80a5afe1c",
+      "name": "Período 1 month"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-10-31T13:31:03.093Z",
+      "updatedAt": "2025-10-31T13:31:03.093Z",
+      "role": "workflow:owner",
+      "workflowId": "uQ16MWg3bkOnzCLQ",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-10-31T13:31:03.087Z",
+  "versionId": "2d7613e1-fff2-43c9-80ab-10c0e8aa8332"
+}
