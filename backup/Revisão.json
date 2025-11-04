@@ -1,0 +1,1289 @@
+{
+  "active": false,
+  "connections": {
+    "Stop Interview?": {
+      "main": [
+        [
+          {
+            "node": "Generate Row1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Answer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Row": {
+      "main": [
+        [
+          {
+            "node": "Update Session1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Row1": {
+      "main": [
+        [
+          {
+            "node": "Update Session2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clear For Next Interview": {
+      "main": [
+        [
+          {
+            "node": "Redirect to Completion Screen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Reply To Agent": {
+      "main": [
+        [
+          {
+            "node": "AI Researcher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start Interview": {
+      "main": [
+        [
+          {
+            "node": "UUID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Answer": {
+      "main": [
+        [
+          {
+            "node": "Generate Row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Interview Topic": {
+      "main": [
+        [
+          {
+            "node": "AI Researcher",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UUID": {
+      "main": [
+        [
+          {
+            "node": "Create Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Row2": {
+      "main": [
+        [
+          {
+            "node": "Update Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Session": {
+      "main": [
+        [
+          {
+            "node": "Generate Row2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Session": {
+      "main": [
+        [
+          {
+            "node": "Set Interview Topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Session1": {
+      "main": [
+        [
+          {
+            "node": "Send Reply To Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Session2": {
+      "main": [
+        [
+          {
+            "node": "Clear For Next Interview",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valid Session?": {
+      "main": [
+        [
+          {
+            "node": "Show Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "404 Not Found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Researcher",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Clear For Next Interview",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redirect to Completion Screen": {
+      "main": [
+        [
+          {
+            "node": "Get Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Query By Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "404 Not Found": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Researcher": {
+      "main": [
+        [
+          {
+            "node": "Parse Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Response": {
+      "main": [
+        [
+          {
+            "node": "Stop Interview?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Show Transcript": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Session to List": {
+      "main": [
+        [
+          {
+            "node": "Messages To JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Messages To JSON": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query By Session": {
+      "main": [
+        [
+          {
+            "node": "Valid Session?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Session": {
+      "main": [
+        [
+          {
+            "node": "Session to List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Researcher",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-04T14:47:40.453Z",
+  "id": "BUPzdADDsy6iSpCs",
+  "isArchived": false,
+  "meta": null,
+  "name": "Revisão",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "3cf788a6-94d0-4223-9caa-30b8e4df8e01",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.output.stop_interview }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "090ae7e8-e17e-4444-84ac-3fe5f6f7421c",
+      "name": "Stop Interview?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        -1264,
+        608
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06146a75-b67a-42cf-aa6f-241f23c47b9a",
+              "name": "timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "b0278c64-58a7-487d-b7ba-d102fb5d4a0c",
+              "name": "type",
+              "type": "string",
+              "value": "next_question"
+            },
+            {
+              "id": "ba034ca1-408e-422f-b071-dab0ef12fb48",
+              "name": "question",
+              "type": "string",
+              "value": "={{ $('Parse Response').item.json.output.question }}"
+            },
+            {
+              "id": "a2231f6e-f507-408e-b598-53888cf8d4b5",
+              "name": "answer",
+              "type": "string",
+              "value": "={{ $json.resposta }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "59d1e01a-1c80-4fdb-9dd8-1f4647e18d57",
+      "name": "Generate Row",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -896,
+        896
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06146a75-b67a-42cf-aa6f-241f23c47b9a",
+              "name": "timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "b0278c64-58a7-487d-b7ba-d102fb5d4a0c",
+              "name": "type",
+              "type": "string",
+              "value": "stop_interview"
+            },
+            {
+              "id": "ba034ca1-408e-422f-b071-dab0ef12fb48",
+              "name": "question",
+              "type": "string",
+              "value": "=None"
+            },
+            {
+              "id": "a2231f6e-f507-408e-b598-53888cf8d4b5",
+              "name": "answer",
+              "type": "string",
+              "value": "=None"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "db1e33b4-5eb0-4d4c-9959-31556bf7704d",
+      "name": "Generate Row1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1056,
+        448
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "mode": "delete",
+        "deleteMode": "all"
+      },
+      "id": "4fc06a73-7482-4a47-964a-17f56206928d",
+      "name": "Clear For Next Interview",
+      "type": "@n8n/n8n-nodes-langchain.memoryManager",
+      "position": [
+        -736,
+        448
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n### 🚨 Set Interview Topic Here!",
+        "height": 260,
+        "width": 180
+      },
+      "id": "ff3269fc-4779-4629-9d3e-3da6dd46a931",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2064,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06a9c730-4756-4bc8-a394-6ff249cf7117",
+              "name": "answer",
+              "type": "string",
+              "value": "={{ $json.answer }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bc5925b8-1193-449b-b533-9ac01f79b7aa",
+      "name": "Send Reply To Agent",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -576,
+        896
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "content": "## 1. Setup Interview\n[Learn more about the form trigger node](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.formtrigger)\n\nThe form trigger node will be our entry point into this workflow and to start, we'll just ask for the user's name to start the interview.\nOur session storage will be using Redis via Upstash.com (you can use regular redis btw!) - whichever way, this ensures a highly scalable system able to handle many users.",
+        "height": 220,
+        "width": 490,
+        "color": 7
+      },
+      "id": "4e47c02f-28f4-4549-9fe3-e565f80128b5",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -2752,
+        752
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "formTitle": "=Questionário",
+        "formDescription": "=Iniciando",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Qual seu nome?",
+              "placeholder": "Ex: Fulano Ciclano",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Qual tópico iremos revisar hoje?",
+              "placeholder": "Ex: Trigonometria",
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "lastNode",
+        "options": {
+          "appendAttribution": true,
+          "buttonLabel": "Começar Questionário",
+          "path": "driving-lessons-survey",
+          "ignoreBots": true,
+          "useWorkflowTimezone": true
+        }
+      },
+      "id": "8285354a-b947-4bf4-82e6-4ce286a35332",
+      "name": "Start Interview",
+      "type": "n8n-nodes-base.formTrigger",
+      "position": [
+        -2752,
+        576
+      ],
+      "webhookId": "8d849295-ed30-41ab-a17c-464227cec8fb",
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "content": "## 2. AI Researcher for Endless Interview Questions\n[Learn more about the AI Agent node](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/)\n\nAn AI interviewer is an interesting take on a role traditionally understood as expensive and time-consuming - both in preparation and execution. What if this could be handed off to an AI/LLM, which could perform when it suits the interviewee and ask a never-ending list of open and follow-on questions for deeper insights?\n\nThis is what this AI researcher agent is designed to do! Upon activation, a loop is created where the agent generates the question and the user answers via the form node. This continues until the user asks to stop the interview.",
+        "height": 280,
+        "width": 614,
+        "color": 7
+      },
+      "id": "41c6f697-7d93-4d89-869b-8ed6510b19ee",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1792,
+        288
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## 3. Record Answers and Prep for Next Question\n[Learn more about the n8n Form node](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.form/)\n\nThe interview is no good if we can't record the answers somewhere for later analysis! Using n8n form node to capture the answer, we can simple push our new question and answer pair to our Redis session to build our transcript before continuing the loop with the agent.",
+        "height": 202,
+        "width": 580,
+        "color": 7
+      },
+      "id": "9a16026b-04a2-4b18-a90a-914a298c14cb",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1056,
+        1088
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## 4. Graciously End the Interview\n[Read more about the Chat Manager node](https://docs.n8n.io/integrations/builtin/cluster-nodes/sub-nodes/n8n-nodes-langchain.memorymanager/)\n\nOnce the AI/LLM detects the user wishes to end the interview (which is done by the user explicitly saying in the form), then the loop breaks and we conclude the interview session and displaying the confirmation screen.\n\nFor this demo, I've created a special confirmation screen which also displays the transcript. This is done by redirecting to a webhook URL. If you don't need this, feel free to change this to \"show completion screen\" instead.\n",
+        "height": 253,
+        "width": 528,
+        "color": 7
+      },
+      "id": "dc4c570a-eea8-44c8-8066-4c14750d8e04",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -816,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "resposta",
+              "fieldType": "textarea",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "formTitle": "={{ $json.output.question }}",
+          "formDescription": "Responda a questão ou digite \"encerrar\" para finalizar o questionário.",
+          "buttonLabel": "Próxima Questão"
+        }
+      },
+      "id": "bb80a0cd-4192-4fbc-a333-acbaca685ec4",
+      "name": "Get Answer",
+      "type": "n8n-nodes-base.form",
+      "position": [
+        -1056,
+        896
+      ],
+      "webhookId": "d96bb88d-db84-4a68-8f02-bcff9cb8429e",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Try it out! \n\n### Conducting user interviews have been traditionally difficult due to preparation, timing and execution costs. What if we let an AI/LLM do it instead?\n\nThis template enables automated AI/LLM powered user interviews using n8n forms and an AI agent where the question and answers are recorded in a google sheet for later analysis. A powerful tool for any researcher.\n\n### Check out the full showcase post here: https://community.n8n.io/t/build-your-own-ai-interview-agents-with-n8n-forms/62312\n\n### How it works\n* A form trigger is used to start the interview and a new session is created in redis to capture the transcript.\n* An AI agent is then tasked to ask questions to the user regarding the topic of the interview. This is setup as a loop so the questions never stop unless the user wishes to end the interview.\n* Each answer is recorded in our session set up earlier between questions.\n* Finally, when the user requests to end the interview we break the loop and show the interview completion screen.\n\n### Why Redis?\nRedis is a fast key-value datastore which makes it ideal for sessions. This ensures the interview flow stays snappy between questions. For my live demo, I used Upstash.com which has a generous free tier.\n\n\n### Need Help?\nJoin the [Discord](https://discord.com/invite/XPKeKXeB7d) or ask in the [Forum](https://community.n8n.io/)!\n\nHappy Hacking!\n",
+        "height": 787.6241860465118,
+        "width": 522.6976744186048
+      },
+      "id": "071d2f0b-f125-40b1-91b4-ee29e3a8741a",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3360,
+        192
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "386f91e1-cc3e-4912-84e3-5ecdbf5412c8",
+              "name": "answer",
+              "type": "string",
+              "value": "=Hello, my name is {{ $('Generate Row2').item.json.answer }}"
+            },
+            {
+              "id": "492d5ecc-4e76-4297-b8a7-9ca4f801c855",
+              "name": "interview_topic",
+              "type": "string",
+              "value": "={{ $('Generate Row2').item.json.theme }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "53237b73-462a-4d9d-a99a-dac780db02a5",
+      "name": "Set Interview Topic",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -2016,
+        576
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "action": "generate",
+        "encodingType": "hex"
+      },
+      "id": "cbc2f116-82d0-43e7-a1ec-0fe23930ace3",
+      "name": "UUID",
+      "type": "n8n-nodes-base.crypto",
+      "position": [
+        -2624,
+        576
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06146a75-b67a-42cf-aa6f-241f23c47b9a",
+              "name": "timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "b0278c64-58a7-487d-b7ba-d102fb5d4a0c",
+              "name": "type",
+              "type": "string",
+              "value": "start_interview"
+            },
+            {
+              "id": "ba034ca1-408e-422f-b071-dab0ef12fb48",
+              "name": "question",
+              "type": "string",
+              "value": "=Qual seu nome?"
+            },
+            {
+              "id": "a2231f6e-f507-408e-b598-53888cf8d4b5",
+              "name": "answer",
+              "type": "string",
+              "value": "={{ $json['Qual seu nome?'] }}"
+            },
+            {
+              "id": "63191086-654d-41da-af6a-ce496196e9e5",
+              "name": "theme",
+              "value": "={{ $json['Qual tópico iremos revisar hoje?'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d640dcdd-9d6e-48ce-8407-63c31a5f776c",
+      "name": "Generate Row2",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -2336,
+        576
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "=session_{{ $('UUID').item.json.data }}",
+        "value": "={{ [] }}",
+        "keyType": "list",
+        "expire": true,
+        "ttl": "={{ 60 * 60 * 24 }}"
+      },
+      "id": "cbc9659e-c527-49b3-8e6e-6e037cb9263d",
+      "name": "Create Session",
+      "type": "n8n-nodes-base.redis",
+      "position": [
+        -2480,
+        576
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "=session_{{ $('UUID').first().json.data }}",
+        "messageData": "={{ $json.toJsonString() }}",
+        "tail": true
+      },
+      "id": "4292b3e1-a45c-4ade-b9c3-ef2a23796dbb",
+      "name": "Update Session",
+      "type": "n8n-nodes-base.redis",
+      "position": [
+        -2192,
+        576
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "=session_{{ $('UUID').first().json.data }}",
+        "messageData": "={{ $json.toJsonString() }}",
+        "tail": true
+      },
+      "id": "8f6f6792-ec8d-4b82-8af5-3cfb318922eb",
+      "name": "Update Session1",
+      "type": "n8n-nodes-base.redis",
+      "position": [
+        -736,
+        896
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "=session_{{ $('UUID').first().json.data }}",
+        "messageData": "={{ $json.toJsonString() }}",
+        "tail": true
+      },
+      "id": "4bde5032-c3be-4f35-a90f-315296fd0576",
+      "name": "Update Session2",
+      "type": "n8n-nodes-base.redis",
+      "position": [
+        -896,
+        448
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "500d6ca9-2a04-40f0-98e8-aa4290e6a30d",
+              "operator": {
+                "type": "array",
+                "operation": "exists",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.data }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ba641c30-6778-4890-aee6-c3960906567b",
+      "name": "Valid Session?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        448,
+        944
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html"
+              }
+            ]
+          }
+        }
+      },
+      "id": "a665c6aa-e1dd-4634-bdfd-24433de9e2c5",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        816,
+        944
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('UUID').first().json.data }}"
+      },
+      "id": "a4b93790-a233-48f7-b082-ef95aa00646c",
+      "name": "Window Buffer Memory2",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        -1664,
+        864
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('UUID').first().json.data }}"
+      },
+      "id": "d804f5e0-e939-4525-a5b3-2770970a0221",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        -736,
+        608
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n### 🚨 Set Your Webhook URL here!\nFor this demo, we want to show a customised completion screen with transcript so it's necessary to redirect to a webhook (see step 6).",
+        "height": 320.31553488372094,
+        "width": 276.4353488372094
+      },
+      "id": "60cf3b9a-4dd0-40e1-a4be-cd15d9250090",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -464,
+        432
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "respondWith": "redirect",
+        "redirectUrl": "=https://<host>/webhook/<uuid-if-using-n8n-cloud>/ai-interview-transcripts/{{ $('UUID').first().json.data }}",
+        "options": {}
+      },
+      "id": "525db574-d467-4f87-8c8c-33d5f123dec9",
+      "name": "Redirect to Completion Screen",
+      "type": "n8n-nodes-base.form",
+      "position": [
+        -384,
+        448
+      ],
+      "webhookId": "9fdedf1b-e413-4fc3-94a4-9cc24bffff8a",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n### 🚨 This is the webhook we want to redirect to!\nIf you're on n8n cloud, you may want to copy the webhook url generated here and use it as the form ending's redirect url.",
+        "height": 345.82027906976737,
+        "width": 236.3564651162793,
+        "color": 5
+      },
+      "id": "88ef10d6-660d-4fd3-9d23-b24a386dc5db",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        928
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## 6. Display the Transcript\n[Read more about the Webhook Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.webhook)\n\nThis step is totally optional. For a nicer user experience, I use this webhook mini-flow to display the user's transcript for the completion screen. It works by capturing the session_id in the webhook's url and searching for it in our redis database. If a match is found the transcript is fetched and rendered into a webpage using the HTML node and returned to the user. If no match is found, a 404 message is displayed instead.",
+        "height": 207,
+        "width": 588,
+        "color": 7
+      },
+      "id": "3e7cff16-9d8a-44e5-97ab-1411fc7cbde1",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -64,
+        672
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "path": "ai-interview-transcripts/:session_id",
+        "responseMode": "responseNode",
+        "options": {
+          "ignoreBots": true
+        }
+      },
+      "id": "dab2fdb6-9575-4b6e-9646-0a3f56a5b295",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        64,
+        944
+      ],
+      "webhookId": "78df12c4-ccd0-46dd-be0d-4445c2bd04f2",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "html": "\n<html lang='en'>\n\n\t<head>\n\t\t<meta charset='UTF-8' />\n\t\t<meta name='viewport' content='width=device-width, initial-scale=1.0' />\n\t\t<link rel='icon' type='image/png' href='https://n8n.io/favicon.ico' />\n\t\t<link\n\t\t\thref='https://fonts.googleapis.com/css?family=Open+Sans'\n\t\t\trel='stylesheet'\n\t\t\ttype='text/css'\n\t\t/>\n\n\t\t<title>Driving Practice Test 2024 Survey</title>\n\n\t\t<style>\n\t\t\t*, ::after, ::before { box-sizing: border-box; margin: 0; padding: 0; } body { font-family:\n\t\t\tOpen Sans, sans-serif; font-weight: 400; font-size: 12px; display: flex; flex-direction:\n\t\t\tcolumn; justify-content: start; background-color: #FBFCFE; } .container { margin: auto;\n\t\t\ttext-align: center; padding-top: 24px; width: 448px; } .card { padding: 24px;\n\t\t\tbackground-color: white; border: 1px solid #DBDFE7; border-radius: 8px; box-shadow: 0px 4px\n\t\t\t16px 0px #634DFF0F; margin-bottom: 16px; } .n8n-link a { color: #7E8186; font-weight: 600;\n\t\t\tfont-size: 12px; text-decoration: none; } .n8n-link svg { display: inline-block;\n\t\t\tvertical-align: middle; } .header h1 { color: #525356; font-size: 20px; font-weight: 400;\n\t\t\tpadding-bottom: 8px; } .header p { color: #7E8186; font-size: 14px; font-weight: 400; }\n\t\t</style>\n\t</head>\n\n\t<body>\n\t\t<div class='container'>\n\t\t\t<section>\n\t\t\t\t<div class='card'>\n\t\t\t\t\t<div class='header'>\n\t\t\t\t\t\t<h1>404 Not Found</h1>\n\t\t\t\t\t\t<p>The requested session does not exist.</p>\n <p>Your session may have expired.</p>\n </div>\n\t\t\t\t</div>\n\t\t\t\t\t<div class='n8n-link'>\n\t\t\t\t\t\t<a href=\"https://n8n.partnerlinks.io/ee7izbliiw0n\" target='_blank'>\n\t\t\t\t\t\t\tForm automated with\n\t\t\t\t\t\t\t<svg\n\t\t\t\t\t\t\t\twidth='73'\n\t\t\t\t\t\t\t\theight='20'\n\t\t\t\t\t\t\t\tviewBox='0 0 73 20'\n\t\t\t\t\t\t\t\tfill='none'\n\t\t\t\t\t\t\t\txmlns='http://www.w3.org/2000/svg'\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<path\n\t\t\t\t\t\t\t\t\tfill-rule='evenodd'\n\t\t\t\t\t\t\t\t\tclip-rule='evenodd'\n\t\t\t\t\t\t\t\t\td='M40.2373 4C40.2373 6.20915 38.4464 8 36.2373 8C34.3735 8 32.8074 6.72525 32.3633 5H26.7787C25.801 5 24.9666 5.70685 24.8059 6.6712L24.6415 7.6576C24.4854 8.59415 24.0116 9.40925 23.3417 10C24.0116 10.5907 24.4854 11.4058 24.6415 12.3424L24.8059 13.3288C24.9666 14.2931 25.801 15 26.7787 15H28.3633C28.8074 13.2747 30.3735 12 32.2373 12C34.4464 12 36.2373 13.7908 36.2373 16C36.2373 18.2092 34.4464 20 32.2373 20C30.3735 20 28.8074 18.7253 28.3633 17H26.7787C24.8233 17 23.1546 15.5864 22.8331 13.6576L22.6687 12.6712C22.508 11.7069 21.6736 11 20.6959 11H19.0645C18.5652 12.64 17.0406 13.8334 15.2373 13.8334C13.434 13.8334 11.9094 12.64 11.4101 11H9.06449C8.56519 12.64 7.04059 13.8334 5.2373 13.8334C3.02817 13.8334 1.2373 12.0424 1.2373 9.83335C1.2373 7.6242 3.02817 5.83335 5.2373 5.83335C7.16069 5.83335 8.76699 7.19085 9.15039 9H11.3242C11.7076 7.19085 13.3139 5.83335 15.2373 5.83335C17.1607 5.83335 18.767 7.19085 19.1504 9H20.6959C21.6736 9 22.508 8.29315 22.6687 7.3288L22.8331 6.3424C23.1546 4.41365 24.8233 3 26.7787 3H32.3633C32.8074 1.27478 34.3735 0 36.2373 0C38.4464 0 40.2373 1.79086 40.2373 4ZM38.2373 4C38.2373 5.10455 37.3419 6 36.2373 6C35.1327 6 34.2373 5.10455 34.2373 4C34.2373 2.89543 35.1327 2 36.2373 2C37.3419 2 38.2373 2.89543 38.2373 4ZM5.2373 11.8334C6.34189 11.8334 7.23729 10.9379 7.23729 9.83335C7.23729 8.72875 6.34189 7.83335 5.2373 7.83335C4.13273 7.83335 3.2373 8.72875 3.2373 9.83335C3.2373 10.9379 4.13273 11.8334 5.2373 11.8334ZM15.2373 11.8334C16.3419 11.8334 17.2373 10.9379 17.2373 9.83335C17.2373 8.72875 16.3419 7.83335 15.2373 7.83335C14.1327 7.83335 13.2373 8.72875 13.2373 9.83335C13.2373 10.9379 14.1327 11.8334 15.2373 11.8334ZM32.2373 18C33.3419 18 34.2373 17.1045 34.2373 16C34.2373 14.8954 33.3419 14 32.2373 14C31.1327 14 30.2373 14.8954 30.2373 16C30.2373 17.1045 31.1327 18 32.2373 18Z'\n\t\t\t\t\t\t\t\t\tfill='#EA4B71'\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t<path\n\t\t\t\t\t\t\t\t\td='M44.2393 15.0007H46.3277V10.5791C46.3277 9.12704 47.2088 8.49074 48.204 8.49074C49.183 8.49074 49.9498 9.14334 49.9498 10.4812V15.0007H52.038V10.057C52.038 7.91969 50.798 6.67969 48.8567 6.67969C47.633 6.67969 46.9477 7.16914 46.4582 7.80544H46.3277L46.1482 6.84284H44.2393V15.0007Z'\n\t\t\t\t\t\t\t\t\tfill='#101330'\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t<path\n\t\t\t\t\t\t\t\t\td='M60.0318 9.50205V9.40415C60.7498 9.0452 61.4678 8.4252 61.4678 7.20155C61.4678 5.43945 60.0153 4.37891 58.0088 4.37891C55.9528 4.37891 54.4843 5.5047 54.4843 7.23415C54.4843 8.4089 55.1698 9.0452 55.9203 9.40415V9.50205C55.0883 9.79575 54.0928 10.6768 54.0928 12.1452C54.0928 13.9237 55.5613 15.1637 57.9923 15.1637C60.4233 15.1637 61.8428 13.9237 61.8428 12.1452C61.8428 10.6768 60.8638 9.81205 60.0318 9.50205ZM57.9923 5.87995C58.8083 5.87995 59.4118 6.40205 59.4118 7.2831C59.4118 8.16415 58.7918 8.6863 57.9923 8.6863C57.1928 8.6863 56.5238 8.16415 56.5238 7.2831C56.5238 6.38575 57.1603 5.87995 57.9923 5.87995ZM57.9923 13.5974C57.0458 13.5974 56.2793 12.9937 56.2793 11.9658C56.2793 11.0358 56.9153 10.3342 57.9758 10.3342C59.0203 10.3342 59.6568 11.0195 59.6568 11.9984C59.6568 12.9937 58.9223 13.5974 57.9923 13.5974Z'\n\t\t\t\t\t\t\t\t\tfill='#101330'\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t<path\n\t\t\t\t\t\t\t\t\td='M63.9639 15.0007H66.0524V10.5791C66.0524 9.12704 66.9334 8.49074 67.9289 8.49074C68.9079 8.49074 69.6744 9.14334 69.6744 10.4812V15.0007H71.7629V10.057C71.7629 7.91969 70.5229 6.67969 68.5814 6.67969C67.3579 6.67969 66.6724 7.16914 66.1829 7.80544H66.0524L65.8729 6.84284H63.9639V15.0007Z'\n\t\t\t\t\t\t\t\t\tfill='#101330'\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t</section>\n\t\t</div>\n\t</body>\n\n</html>"
+      },
+      "id": "75fd84fc-4dbb-4093-aa0c-a310ba2c75a5",
+      "name": "404 Not Found",
+      "type": "n8n-nodes-base.html",
+      "position": [
+        624,
+        1024
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.answer }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=Você é um professor especialista em fazer questionários para testar o conhecimento do participante sobre o tema ”{{ $('Set Interview Topic').item.json.interview_topic }}”.\n\n\t•\tSua tarefa é fazer perguntas abertas relacionadas ao tema da entrevista.\n\t•\tFaça apenas uma pergunta por vez. Analise a pergunta anterior e, a cada vez, formule uma nova. Se houver oportunidade de se aprofundar em uma resposta anterior, faça isso, mas limite-se a uma pergunta de acompanhamento.\n\t•\tContinue fazendo perguntas até que o usuário solicite encerrar a entrevista. Quando o usuário pedir para encerrar e nenhuma pergunta for necessária, o campo \"question\" deve ser uma string vazia.\n\t•\tUse um tom amigável e educado ao fazer as perguntas.\n\t•\tSe as respostas do usuário forem irrelevantes para a pergunta, repita a pergunta ou siga para outra.\n\t•\tSe a resposta do usuário estiver fora do escopo da entrevista, ignore a resposta e pergunte se ele gostaria de encerrar a entrevista.\n\t•\tVocê deve formatar sua resposta usando o seguinte esquema JSON, pois ela passará por um pré-processamento antes de ser mostrada ao usuário:\n\n{\n \"type\": \"object\",\n \"properties\": {\n   \"stop_interview\": { \"type\": \"boolean\" },\n   \"question\": { \"type\": [\"string\", \"null\"] }\n }\n}\n\n•\tSaia apenas com o objeto JSON, sem adicionar texto antes ou depois."
+        }
+      },
+      "id": "9dab679c-fa7c-437a-9658-7d9d0408bfe8",
+      "name": "AI Researcher",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -1744,
+        608
+      ],
+      "typeVersion": 1.7
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bf61134c-e24c-453e-97ef-5edd25726148",
+              "name": "output",
+              "type": "object",
+              "value": "={{\n$json.output\n .replace('```json', '')\n .replace('```', '')\n .parseJson()\n}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0536a0bc-b64b-4699-a75e-4889e82982c0",
+      "name": "Parse Response",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1424,
+        608
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "html": "\n<html lang='en'>\n\n\t<head>\n\t\t<meta charset='UTF-8' />\n\t\t<meta name='viewport' content='width=device-width, initial-scale=1.0' />\n\t\t<link rel='icon' type='image/png' href='https://n8n.io/favicon.ico' />\n\t\t<link\n\t\t\thref='https://fonts.googleapis.com/css?family=Open+Sans'\n\t\t\trel='stylesheet'\n\t\t\ttype='text/css'\n\t\t/>\n\n\t\t<title>AI Interviewer Transcripts</title>\n\n\t\t<style>\n\t\t\t*, ::after, ::before { box-sizing: border-box; margin: 0; padding: 0; } body { font-family:\n\t\t\tOpen Sans, sans-serif; font-weight: 400; font-size: 12px; display: flex; flex-direction:\n\t\t\tcolumn; justify-content: start; background-color: #FBFCFE; } .container { margin: auto;\n\t\t\ttext-align: center; padding-top: 24px; width: 448px; } .card { padding: 24px;\n\t\t\tbackground-color: white; border: 1px solid #DBDFE7; border-radius: 8px; box-shadow: 0px 4px\n\t\t\t16px 0px #634DFF0F; margin-bottom: 16px; } .n8n-link a { color: #7E8186; font-weight: 600;\n\t\t\tfont-size: 12px; text-decoration: none; } .n8n-link svg { display: inline-block;\n\t\t\tvertical-align: middle; } .header h1 { color: #525356; font-size: 20px; font-weight: 400;\n\t\t\tpadding-bottom: 8px; } .header p { color: #7E8186; font-size: 14px; font-weight: 400; }\n\t\t</style>\n\t</head>\n\n\t<body>\n\t\t<div class='container' style=\"width:640px\">\n\t\t\t<section>\n\t\t\t\t<div class='card'>\n\t\t\t\t\t<div class='header'>\n\t\t\t\t\t\t<h1>Thanks for Completing the Interview!</h1>\n\t\t\t\t\t\t<p style=\"margin-bottom:12px;\">If you liked this demo, <br/>please follow me on <a href=\"http://linkedin.com/in/jimleuk\" target=\"_blank\">http://linkedin.com/in/jimleuk</a> and\n <a href=\"https://x.com/jimle_uk\" target=\"_blank\">https://x.com/jimle_uk</a>\n </p>\n <p>\n <a href=\"https://n8n.partnerlinks.io/ee7izbliiw0n\" target=\"_blank\">\n Support my work! Sign up to n8n using this link 🙏\n </a>\n </p>\n </div>\n\t\t\t\t</div>\n <div class='card' >\n\t\t\t\t\t<div class='header'>\n\t\t\t\t\t\t<h1>Transcript</h1>\n <p style=\"color:#ccc;margin-bottom:24px;font-size:0.8rem\">This session is deleted within 24 hours.</p>\n {{\n $json.data\n .map(item => JSON.parse(item))\n .filter(item => item.type === 'next_question')\n .map(item => `\n <div style=\"display:flex;flex-direction:row;margin-bottom: 16px;\">\n <div style=\"width: 60px;padding-right: 5px;text-align: left;color: #ccc;\">\n ${DateTime.fromISO(item.timestamp).format('dd MMM, hh:mm')}\n </div>\n <div style=\"width:100%\">\n <div style=\"\n border: 1px solid #ccc;\n padding: 10px;\n border-radius: 5px;\n background-color: #f8f7f7;\n text-align: right;\n margin-bottom: 5px;\n\">${item.question}</div>\n <div style=\"\n border: 1px solid #c7ccec;\n padding: 10px;\n border-radius: 5px;\n background-color: #f5f5fc;\n text-align: left;\n color: #2e2e84;\n\">${item.answer}</div>\n </div>\n </div>\n `)\n .join('\\n')\n }}\n \t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t\t<div class='n8n-link'>\n\t\t\t\t\t\t<a href=\"https://n8n.partnerlinks.io/ee7izbliiw0n\" target='_blank'>\n\t\t\t\t\t\t\tForm automated with\n\t\t\t\t\t\t\t<svg\n\t\t\t\t\t\t\t\twidth='73'\n\t\t\t\t\t\t\t\theight='20'\n\t\t\t\t\t\t\t\tviewBox='0 0 73 20'\n\t\t\t\t\t\t\t\tfill='none'\n\t\t\t\t\t\t\t\txmlns='http://www.w3.org/2000/svg'\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<path\n\t\t\t\t\t\t\t\t\tfill-rule='evenodd'\n\t\t\t\t\t\t\t\t\tclip-rule='evenodd'\n\t\t\t\t\t\t\t\t\td='M40.2373 4C40.2373 6.20915 38.4464 8 36.2373 8C34.3735 8 32.8074 6.72525 32.3633 5H26.7787C25.801 5 24.9666 5.70685 24.8059 6.6712L24.6415 7.6576C24.4854 8.59415 24.0116 9.40925 23.3417 10C24.0116 10.5907 24.4854 11.4058 24.6415 12.3424L24.8059 13.3288C24.9666 14.2931 25.801 15 26.7787 15H28.3633C28.8074 13.2747 30.3735 12 32.2373 12C34.4464 12 36.2373 13.7908 36.2373 16C36.2373 18.2092 34.4464 20 32.2373 20C30.3735 20 28.8074 18.7253 28.3633 17H26.7787C24.8233 17 23.1546 15.5864 22.8331 13.6576L22.6687 12.6712C22.508 11.7069 21.6736 11 20.6959 11H19.0645C18.5652 12.64 17.0406 13.8334 15.2373 13.8334C13.434 13.8334 11.9094 12.64 11.4101 11H9.06449C8.56519 12.64 7.04059 13.8334 5.2373 13.8334C3.02817 13.8334 1.2373 12.0424 1.2373 9.83335C1.2373 7.6242 3.02817 5.83335 5.2373 5.83335C7.16069 5.83335 8.76699 7.19085 9.15039 9H11.3242C11.7076 7.19085 13.3139 5.83335 15.2373 5.83335C17.1607 5.83335 18.767 7.19085 19.1504 9H20.6959C21.6736 9 22.508 8.29315 22.6687 7.3288L22.8331 6.3424C23.1546 4.41365 24.8233 3 26.7787 3H32.3633C32.8074 1.27478 34.3735 0 36.2373 0C38.4464 0 40.2373 1.79086 40.2373 4ZM38.2373 4C38.2373 5.10455 37.3419 6 36.2373 6C35.1327 6 34.2373 5.10455 34.2373 4C34.2373 2.89543 35.1327 2 36.2373 2C37.3419 2 38.2373 2.89543 38.2373 4ZM5.2373 11.8334C6.34189 11.8334 7.23729 10.9379 7.23729 9.83335C7.23729 8.72875 6.34189 7.83335 5.2373 7.83335C4.13273 7.83335 3.2373 8.72875 3.2373 9.83335C3.2373 10.9379 4.13273 11.8334 5.2373 11.8334ZM15.2373 11.8334C16.3419 11.8334 17.2373 10.9379 17.2373 9.83335C17.2373 8.72875 16.3419 7.83335 15.2373 7.83335C14.1327 7.83335 13.2373 8.72875 13.2373 9.83335C13.2373 10.9379 14.1327 11.8334 15.2373 11.8334ZM32.2373 18C33.3419 18 34.2373 17.1045 34.2373 16C34.2373 14.8954 33.3419 14 32.2373 14C31.1327 14 30.2373 14.8954 30.2373 16C30.2373 17.1045 31.1327 18 32.2373 18Z'\n\t\t\t\t\t\t\t\t\tfill='#EA4B71'\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t<path\n\t\t\t\t\t\t\t\t\td='M44.2393 15.0007H46.3277V10.5791C46.3277 9.12704 47.2088 8.49074 48.204 8.49074C49.183 8.49074 49.9498 9.14334 49.9498 10.4812V15.0007H52.038V10.057C52.038 7.91969 50.798 6.67969 48.8567 6.67969C47.633 6.67969 46.9477 7.16914 46.4582 7.80544H46.3277L46.1482 6.84284H44.2393V15.0007Z'\n\t\t\t\t\t\t\t\t\tfill='#101330'\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t<path\n\t\t\t\t\t\t\t\t\td='M60.0318 9.50205V9.40415C60.7498 9.0452 61.4678 8.4252 61.4678 7.20155C61.4678 5.43945 60.0153 4.37891 58.0088 4.37891C55.9528 4.37891 54.4843 5.5047 54.4843 7.23415C54.4843 8.4089 55.1698 9.0452 55.9203 9.40415V9.50205C55.0883 9.79575 54.0928 10.6768 54.0928 12.1452C54.0928 13.9237 55.5613 15.1637 57.9923 15.1637C60.4233 15.1637 61.8428 13.9237 61.8428 12.1452C61.8428 10.6768 60.8638 9.81205 60.0318 9.50205ZM57.9923 5.87995C58.8083 5.87995 59.4118 6.40205 59.4118 7.2831C59.4118 8.16415 58.7918 8.6863 57.9923 8.6863C57.1928 8.6863 56.5238 8.16415 56.5238 7.2831C56.5238 6.38575 57.1603 5.87995 57.9923 5.87995ZM57.9923 13.5974C57.0458 13.5974 56.2793 12.9937 56.2793 11.9658C56.2793 11.0358 56.9153 10.3342 57.9758 10.3342C59.0203 10.3342 59.6568 11.0195 59.6568 11.9984C59.6568 12.9937 58.9223 13.5974 57.9923 13.5974Z'\n\t\t\t\t\t\t\t\t\tfill='#101330'\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t<path\n\t\t\t\t\t\t\t\t\td='M63.9639 15.0007H66.0524V10.5791C66.0524 9.12704 66.9334 8.49074 67.9289 8.49074C68.9079 8.49074 69.6744 9.14334 69.6744 10.4812V15.0007H71.7629V10.057C71.7629 7.91969 70.5229 6.67969 68.5814 6.67969C67.3579 6.67969 66.6724 7.16914 66.1829 7.80544H66.0524L65.8729 6.84284H63.9639V15.0007Z'\n\t\t\t\t\t\t\t\t\tfill='#101330'\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</svg>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div>\n\t\t\t</section>\n\t\t</div>\n\t</body>\n\n</html>"
+      },
+      "id": "a0f35540-fc10-4f44-9086-cc5ed69a9757",
+      "name": "Show Transcript",
+      "type": "n8n-nodes-base.html",
+      "position": [
+        624,
+        832
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "1wKjVdm7HeufJkHrUJn_bW9bFI_blm0laoI_jgXKDe0Q",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wKjVdm7HeufJkHrUJn_bW9bFI_blm0laoI_jgXKDe0Q/edit?usp=drivesdk",
+          "cachedResultName": "AI Researcher with n8n Forms"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": 1695693704,
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1wKjVdm7HeufJkHrUJn_bW9bFI_blm0laoI_jgXKDe0Q/edit#gid=1695693704",
+          "cachedResultName": "transcripts"
+        },
+        "columns": {
+          "value": {
+            "name": "{{ $('Start Interview').first().json['What is your name?'] }}",
+            "session_id": "={{ $('UUID').first().json.data }}"
+          },
+          "schema": [
+            {
+              "id": "session_id",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "session_id",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "timestamp",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "timestamp",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "name",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "type",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "type",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "question",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "question",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "answer",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "answer",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "autoMapInputData",
+          "matchingColumns": []
+        },
+        "options": {
+          "useAppend": true
+        }
+      },
+      "id": "4973aa66-9be9-4f52-b8a1-3eddcb4da2de",
+      "name": "Save to Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        416,
+        448
+      ],
+      "typeVersion": 4.5,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "session",
+        "options": {}
+      },
+      "id": "dcb4c9cf-b4ef-4847-b761-4831875a7260",
+      "name": "Session to List",
+      "type": "n8n-nodes-base.splitOut",
+      "position": [
+        64,
+        448
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{\n{\n ...$json.session.parseJson(),\n session_id: `session_${$('UUID').first().json.data}`,\n name: $('Start Interview').first().json['What is your name?'],\n}\n}}",
+        "options": {}
+      },
+      "id": "b047c986-49ac-4282-9022-36adeb02ab0b",
+      "name": "Messages To JSON",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        224,
+        448
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "content": "## 5. Save the Interview to Sheets\n[Read more about the Google Sheets node](https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.googlesheets/)\n\nFor easier data-sharing, we can have the workflow upload the session messages into data analysis tools for our team members.\n\nFor this demo, Google Sheets is an easy option. We'll pull the entire session out of redis and upload the messages one by one to sheets.\n\n### Check out the example sheet here: https://docs.google.com/spreadsheets/d/1wKjVdm7HeufJkHrUJn_bW9bFI_blm0laoI_jgXKDe0Q/edit?usp=sharing",
+        "height": 293,
+        "width": 508,
+        "color": 7
+      },
+      "id": "d9ea0a4e-b014-4ba3-abf6-eaeb7d7d6622",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -96,
+        112
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "data",
+        "key": "=session_{{ $('Webhook').first().json.params.session_id }}",
+        "options": {}
+      },
+      "id": "571a176b-9548-4686-b310-5c9bdc756ec2",
+      "name": "Query By Session",
+      "type": "n8n-nodes-base.redis",
+      "position": [
+        288,
+        944
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "session",
+        "key": "=session_{{ $('UUID').first().json.data }}",
+        "keyType": "list",
+        "options": {}
+      },
+      "id": "577394d0-6357-487c-8b73-78b922190baa",
+      "name": "Get Session",
+      "type": "n8n-nodes-base.redis",
+      "position": [
+        -96,
+        448
+      ],
+      "executeOnce": true,
+      "typeVersion": 1,
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -1888,
+        816
+      ],
+      "id": "a37b3c5e-27f6-4b67-8127-d5148e74621e",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "sB9sHBeXxAJCJTEo",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-04T14:47:40.458Z",
+      "updatedAt": "2025-11-04T14:47:40.458Z",
+      "role": "workflow:owner",
+      "workflowId": "BUPzdADDsy6iSpCs",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-04T14:56:52.000Z",
+  "versionId": "ccfc5168-84d7-4472-873e-350f5364d41a"
+}
