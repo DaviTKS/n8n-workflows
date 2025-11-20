@@ -5,6 +5,17 @@
       "main": [
         [
           {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
             "node": "Z-API",
             "type": "main",
             "index": 0
@@ -16,9 +27,47 @@
   "createdAt": "2025-09-05T17:16:43.690Z",
   "id": "hayrMe7QpDgBDUbE",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Notifica Erro",
   "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2807f17d-f155-432d-a91c-ee4af624bab1",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "1295939520",
+        "text": "=⚠️ Davi, encontramos um erro no Workflow {{ $json.workflow.name }}.\n\n\n➡️ Nó com erro: {{ $json.execution.lastNodeExecuted }}\n\n➡️ Problema: {{ $json.execution.error.description }}\n\n➡️ Descrição: {{ $json.execution.error.message }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "1c1e765e-f61c-45da-8194-50dd557d8317",
+      "name": "Send a text message",
+      "webhookId": "5c2338ae-b9dc-4b4c-b4f0-cb58c483c021",
+      "credentials": {
+        "telegramApi": {
+          "id": "LnYyNU54LkNB79CH",
+          "name": "Server BOT"
+        }
+      }
+    },
     {
       "parameters": {
         "method": "POST",
@@ -47,7 +96,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        192,
+        608,
         0
       ],
       "id": "1b9065e5-8f4c-4f93-8763-57f273ae1090",
@@ -57,18 +106,8 @@
           "id": "Gx5XA9roLVkNIKBs",
           "name": "Z-API"
         }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.errorTrigger",
-      "typeVersion": 1,
-      "position": [
-        0,
-        0
-      ],
-      "id": "2807f17d-f155-432d-a91c-ee4af624bab1",
-      "name": "Error Trigger"
+      },
+      "disabled": true
     }
   ],
   "pinData": {
@@ -299,6 +338,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-05T17:35:16.000Z",
-  "versionId": "fb1e3a55-40b7-449e-9c22-df14597be590"
+  "updatedAt": "2025-11-19T15:58:28.000Z",
+  "versionId": "ea675ca7-caba-40e1-b7f7-5becbed16e61"
 }
