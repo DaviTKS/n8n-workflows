@@ -95,6 +95,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -717,6 +724,17 @@
           }
         ]
       ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "OS Central",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-02T01:26:38.571Z",
@@ -1035,12 +1053,14 @@
       "id": "c0611b42-c104-4821-8c4f-4cfeffdf39ca",
       "name": "OS Central",
       "executeOnce": true,
+      "retryOnFail": false,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "C5tPJjLRUqHdUk9C",
           "name": "Google Sheets account"
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -1119,7 +1139,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://192.168.0.159:5566/print",
+        "url": "http://192.168.0.173:5566/print",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -3128,6 +3148,20 @@
           "name": "Z-API"
         }
       }
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -944,
+        928
+      ],
+      "id": "0cd448a4-4a27-4900-8820-13ef459a810c",
+      "name": "Wait",
+      "webhookId": "ea84d883-3bfc-40af-9ce6-70039586c070"
     }
   ],
   "pinData": {
@@ -3136,44 +3170,44 @@
         "json": {
           "headers": {
             "host": "auto.kadovesh.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
-            "content-length": "209",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
+            "content-length": "247",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "2804:14d:6885:42f0:11d2:6a92:1eb9:b858",
+            "cf-connecting-ip": "2804:14d:6885:42f0:5dd0:252f:fe72:ef6e",
             "cf-ipcountry": "BR",
-            "cf-ray": "999438e5dd3ac757-GIG",
+            "cf-ray": "9a435acdad5f00f3-GRU",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "cf-warp-tag-id": "acaed75a-c7ec-49c1-a072-3df6ee1df6f2",
+            "cf-warp-tag-id": "264f4d5e-0a53-4c57-8d19-a26b7dd49590",
             "connection": "keep-alive",
             "content-type": "application/json",
-            "origin": "http://192.168.0.159",
+            "origin": "http://192.168.0.173",
             "priority": "u=1, i",
-            "referer": "http://192.168.0.159/",
-            "sec-ch-ua": "\"Google Chrome\";v=\"141\", \"Not?A_Brand\";v=\"8\", \"Chromium\";v=\"141\"",
+            "referer": "http://192.168.0.173/",
+            "sec-ch-ua": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\"",
             "sec-ch-ua-mobile": "?0",
             "sec-ch-ua-platform": "\"Windows\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "2804:14d:6885:42f0:11d2:6a92:1eb9:b858",
+            "x-forwarded-for": "2804:14d:6885:42f0:5dd0:252f:fe72:ef6e",
             "x-forwarded-proto": "https"
           },
           "params": {},
           "query": {},
           "body": {
             "reprinting": false,
-            "os_number": "25729",
-            "telefone": "(12) 98269-3721",
-            "nome": "Pamela ",
-            "sobrenome": "Xavier",
-            "aparelho": "Televisor",
-            "marca": "SAMSUNG",
-            "modelo": "un32f5500",
-            "defeito": "não liga ",
-            "observacoes": ""
+            "os_number": "25758",
+            "telefone": "(12) 98178-0258",
+            "nome": "Carlos",
+            "sobrenome": "Cioffi",
+            "aparelho": "Nobreak",
+            "marca": "SMS",
+            "modelo": "Linnus",
+            "defeito": "analise para troca de bateria",
+            "observacoes": "3 nobreaks, 2 ragtech e 1 sms"
           },
           "webhookUrl": "https://auto.kadovesh.com/webhook/form",
           "executionMode": "production"
@@ -3198,6 +3232,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-04T12:55:33.000Z",
-  "versionId": "2f604188-1e9f-4581-b0ee-952a601956b5"
+  "updatedAt": "2025-11-25T19:08:08.000Z",
+  "versionId": "10caa085-d15f-4ca7-8471-4acb3758fde2"
 }
