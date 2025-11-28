@@ -184,6 +184,17 @@
           }
         ]
       ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-11-19T21:36:55.501Z",
@@ -668,7 +679,7 @@
     },
     {
       "parameters": {
-        "chatId": "1295939520",
+        "chatId": "679597442",
         "text": "=*🌿 Nova Inscrição*\n\nPracticum Bosque 2025\n\n\n*{{ $('Webhook').item.json.body.adultos[0].nome }}* e família\n\nTelefone: {{ $('Webhook').item.json.body.adultos[0].telefone }}\n\n⸻\n\n👨‍👩‍👧‍👦 Participantes\n\t•\tAdultos: {{ $('Webhook').item.json.body.numAdultos }}\n\t•\tCrianças: {{ $('Webhook').item.json.body.numCriancas }}\n\n⸻\n\n💰 Valor Total\n\nR$ {{ $('Webhook').item.json.body.total }}\n\n🎟️ Convite\n\n|| {{ $('Webhook').item.json.body.invitationUUID }} ||\n",
         "additionalFields": {
           "appendAttribution": false,
@@ -683,6 +694,31 @@
       ],
       "id": "bdbca68b-1e31-437a-a0d0-f915665bd11a",
       "name": "Send a text message",
+      "webhookId": "7cee2ba4-cbb9-466d-aeb6-10644b66586c",
+      "credentials": {
+        "telegramApi": {
+          "id": "r0niBoKV15JH7jBd",
+          "name": "Notiform"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "1295939520",
+        "text": "=*🌿 Nova Inscrição*\n\nPracticum Bosque 2025\n\n\n*{{ $('Webhook').item.json.body.adultos[0].nome }}* e família\n\nTelefone: {{ $('Webhook').item.json.body.adultos[0].telefone }}\n\n⸻\n\n👨‍👩‍👧‍👦 Participantes\n\t•\tAdultos: {{ $('Webhook').item.json.body.numAdultos }}\n\t•\tCrianças: {{ $('Webhook').item.json.body.numCriancas }}\n\n⸻\n\n💰 Valor Total\n\nR$ {{ $('Webhook').item.json.body.total }}\n\n🎟️ Convite\n\n|| {{ $('Webhook').item.json.body.invitationUUID }} ||\n",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "MarkdownV2"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2336,
+        16
+      ],
+      "id": "5294b546-8d3c-4a31-8d03-2892c7d958f7",
+      "name": "Send a text message1",
       "webhookId": "7cee2ba4-cbb9-466d-aeb6-10644b66586c",
       "credentials": {
         "telegramApi": {
@@ -777,6 +813,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-20T02:37:54.000Z",
-  "versionId": "d51c7910-9a9f-44d0-9656-d7b56bbdd245"
+  "updatedAt": "2025-11-27T18:30:18.000Z",
+  "versionId": "2b697143-a11f-42ac-80fe-924002a55052"
 }
