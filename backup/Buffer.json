@@ -1,0 +1,557 @@
+{
+  "active": false,
+  "connections": {
+    "Get 5m": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait to 10m": {
+      "main": [
+        [
+          {
+            "node": "Get 10m",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait to 5m": {
+      "main": [
+        [
+          {
+            "node": "Get 5m",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get 10m": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait to 20h": {
+      "main": [
+        [
+          {
+            "node": "Get 20h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get 20h": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Wait to 5m",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Count 5m": {
+      "main": [
+        [
+          {
+            "node": "Count 10m",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Count 10m": {
+      "main": [
+        [
+          {
+            "node": "Count 20h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Count 20h": {
+      "main": [
+        [
+          {
+            "node": "Call 'Buffer'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Wait to 10m",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Wait to 20h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-04T17:10:20.551Z",
+  "id": "OgKbOzAaYMJIIw68",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Buffer",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "Buffer 10m",
+        "key": "12982113000_buffer_5m",
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        160,
+        576
+      ],
+      "id": "53d29910-2887-4f2b-a639-c25de6ac78d4",
+      "name": "Get 5m",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "Buffer 5m",
+        "key": "12982113000_buffer_10m",
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        784,
+        576
+      ],
+      "id": "8c1fbbe3-1824-46a7-868b-f7ffde157633",
+      "name": "Get 10m",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 9
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        608,
+        576
+      ],
+      "id": "0de872a1-5b95-4991-9516-ede1b657d61c",
+      "name": "Wait to 10m",
+      "webhookId": "f02d7dd9-7d66-4f5c-9909-e19f3c1d3efa"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        16,
+        576
+      ],
+      "id": "f712b5fd-d23c-49ca-a56b-5503c4881358",
+      "name": "Wait to 5m",
+      "webhookId": "f02d7dd9-7d66-4f5c-9909-e19f3c1d3efa"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1328,
+        576
+      ],
+      "id": "2b34543d-1ee8-45a4-a64c-11df209f5e4f",
+      "name": "Wait to 20h",
+      "webhookId": "f02d7dd9-7d66-4f5c-9909-e19f3c1d3efa"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "Buffer 20h",
+        "key": "12982113000_buffer_20h",
+        "options": {
+          "dotNotation": false
+        }
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        576
+      ],
+      "id": "7573d9b8-2d9d-4e1e-8d1e-1080f08ef7eb",
+      "name": "Get 20h",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "97ab46d4-cefe-4d0b-82b7-12fc6f54ebfc",
+              "leftValue": "={{ $json['Buffer 10m'] }}",
+              "rightValue": "True",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        320,
+        576
+      ],
+      "id": "40b39e14-17df-4240-8643-4f2814a39989",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "97ab46d4-cefe-4d0b-82b7-12fc6f54ebfc",
+              "leftValue": "={{ $json['Buffer 5m'] }}",
+              "rightValue": "True",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        960,
+        576
+      ],
+      "id": "3361b341-d85d-4f3f-9aa1-105a9529e76d",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "599ed6ec-bbec-4f37-894e-a4e20f080d58",
+              "leftValue": "={{ $json['Buffer 20h'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1632,
+        576
+      ],
+      "id": "0cc3b002-6b16-4210-85f6-700c1e04a838",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -192,
+        576
+      ],
+      "id": "e17a0805-0726-4859-b0a8-fc0ef9024e2a",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "12982113000_buffer_5m",
+        "value": "True",
+        "expire": true,
+        "ttl": 10
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        32,
+        1040
+      ],
+      "id": "e94c2ac3-6fb5-4a94-8123-654aa0568bfa",
+      "name": "Count 5m",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "12982113000_buffer_10m",
+        "value": "True",
+        "expire": true,
+        "ttl": 20
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        176,
+        1040
+      ],
+      "id": "0ec2ba2e-67ed-4f77-987f-fd77c9bc6d4c",
+      "name": "Count 10m",
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "12982113000_buffer_20h",
+        "value": "True",
+        "expire": true,
+        "ttl": 30
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        320,
+        1040
+      ],
+      "id": "cbff4657-7e2b-49cd-997d-fa593d84a5b6",
+      "name": "Count 20h",
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "Y9iYyrM7JSw5IMqj",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "OgKbOzAaYMJIIw68",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/OgKbOzAaYMJIIw68",
+          "cachedResultName": "Buffer"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {}
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        480,
+        1040
+      ],
+      "id": "5ecd779f-e6a1-48fe-a4b1-0b17272057b8",
+      "name": "Call 'Buffer'"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        464,
+        720
+      ],
+      "id": "3277acf0-2ccd-4ea4-9e8a-4458b1784d21",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1136,
+        688
+      ],
+      "id": "5b3457b4-8752-44ce-ad07-f445aaf281c0",
+      "name": "Execute Workflow1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1792,
+        688
+      ],
+      "id": "9f57097f-f7fd-4c92-a950-1442b0180f8b",
+      "name": "Execute Workflow2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-04T17:10:20.562Z",
+      "createdAt": "2025-12-04T17:10:20.562Z",
+      "role": "workflow:owner",
+      "workflowId": "OgKbOzAaYMJIIw68",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-04T18:02:47.000Z",
+  "versionId": "fe8ca3e6-622b-4400-8191-762e884b04ee"
+}
