@@ -2094,7 +2094,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://192.168.0.159:5566/print",
+        "url": "http://192.168.0.173:5566/print",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -2133,7 +2133,7 @@
             },
             {
               "name": "message",
-              "value": "={{ $('Sauda3').item.json.saudacao }} {{ $('Get Cliente1').item.json.nome }}! \nSua OS é a número {{ $('Get Cliente1').item.json.os_number }}\n\nReferente ao seu *{{ $('Get Cliente1').item.json.aparelho }} {{ $('Get Cliente1').item.json.marca }}*\n\n_Modelo {{ $('Get a row').item.json.modelo }}._\n\nDefeito relatado: *{{ $('Get a row').item.json.defeito }}*\n\nObservações do técnico: {{ $('Get a row').item.json.observacoes }}\n"
+              "value": "={{ $('Sauda3').item.json.saudacao }} {{ $('Get Cliente1').item.json.nome }}! \nSua OS é a número {{ $('Get Cliente1').item.json.os_number }}\n\nReferente ao seu *{{ $('Get Cliente1').item.json.aparelho }} {{ $('Get Cliente1').item.json.marca }}*\n\n_Modelo {{ $('Get Cliente1').item.json.modelo }}._\n\nDefeito relatado: *{{ $('Get Cliente1').item.json.defeito }}*\n\nObservações do técnico: {{ $('Get Cliente1').item.json.observacoes }}"
             },
             {
               "name": "delayMessage",
@@ -2945,7 +2945,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://192.168.0.159:5566/print",
+        "url": "http://192.168.0.173:5566/print",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -3170,44 +3170,44 @@
         "json": {
           "headers": {
             "host": "auto.kadovesh.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36",
-            "content-length": "246",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
+            "content-length": "242",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "2804:14d:6885:42f0:2435:f9a8:b91a:96cc",
+            "cf-connecting-ip": "2804:14d:6885:42f0:644e:c0eb:e287:1bed",
             "cf-ipcountry": "BR",
-            "cf-ray": "9a5cf8ab08afe0e5-GIG",
+            "cf-ray": "9ae6d9128f2a6461-GIG",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "cf-warp-tag-id": "279fcf3b-49f7-4ff8-8407-12560b04ce31",
+            "cf-warp-tag-id": "ee6d7879-794d-4c93-b80a-68726340dd84",
             "connection": "keep-alive",
             "content-type": "application/json",
-            "origin": "http://192.168.0.173",
+            "origin": "http://localhost",
             "priority": "u=1, i",
-            "referer": "http://192.168.0.173/",
-            "sec-ch-ua": "\"Chromium\";v=\"142\", \"Google Chrome\";v=\"142\", \"Not_A Brand\";v=\"99\"",
+            "referer": "http://localhost/",
+            "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
             "sec-ch-ua-mobile": "?0",
             "sec-ch-ua-platform": "\"Windows\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "2804:14d:6885:42f0:2435:f9a8:b91a:96cc",
+            "x-forwarded-for": "2804:14d:6885:42f0:644e:c0eb:e287:1bed",
             "x-forwarded-proto": "https"
           },
           "params": {},
           "query": {},
           "body": {
-            "reprinting": false,
-            "os_number": "25766",
-            "telefone": "(12) 99230-5445",
-            "nome": "sheyla",
-            "sobrenome": "costa",
-            "aparelho": "PC",
-            "marca": "INTEL",
-            "modelo": "Core i3",
-            "defeito": "Muito lento, troca HD SSD Nvme 500gb",
-            "observacoes": "Backup Completo disco D:"
+            "reprinting": true,
+            "os_number": "25795",
+            "telefone": "(12) 98835-2070",
+            "nome": "Fernanda",
+            "sobrenome": "Rana",
+            "aparelho": "Televisor",
+            "marca": "SEMP TOSHIBA",
+            "modelo": "DL3254(A)(W)",
+            "defeito": "Não Liga",
+            "observacoes": "Com Manchas E Riscos Na Tela"
           },
           "webhookUrl": "https://auto.kadovesh.com/webhook/form1",
           "executionMode": "production"
@@ -3232,6 +3232,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-11-28T21:43:55.000Z",
-  "versionId": "2363912e-c734-40eb-a898-50537917d184"
+  "updatedAt": "2025-12-15T15:09:24.000Z",
+  "versionId": "656a5266-dc86-4946-892f-ada6d1cd7b1e"
 }
