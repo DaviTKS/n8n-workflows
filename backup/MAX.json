@@ -158,13 +158,7 @@
     },
     "Mensagem Lead": {
       "main": [
-        [
-          {
-            "node": "IF FromMe",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Grp ou Msg": {
@@ -4130,6 +4124,7 @@
           "__rl": true,
           "value": "ACz8t2Fx78PJWMYx",
           "mode": "list",
+          "cachedResultUrl": "/workflow/ACz8t2Fx78PJWMYx",
           "cachedResultName": "Cria Ticket"
         },
         "workflowInputs": {
@@ -4338,6 +4333,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-12-22T20:45:21.000Z",
-  "versionId": "6b58f5d7-a88b-4438-861e-862d2a263abd"
+  "updatedAt": "2025-12-30T18:57:08.000Z",
+  "versionId": "0d1b7e3b-cb3f-48a1-ac62-dd88ac3b9410"
 }
