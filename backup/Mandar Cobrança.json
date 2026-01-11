@@ -1,0 +1,95 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Z-API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-01-10T18:49:38.037Z",
+  "id": "ZDD4fRNsW1FkZTZu",
+  "isArchived": false,
+  "meta": null,
+  "name": "Mandar Cobrança",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363405585257695-group"
+            },
+            {
+              "name": "message",
+              "value": "=*#Max - Atendimento virtual*\n\nBoa tarde pessoal! \nEsta é uma mensagem automática referente à mensalidade do suporte de TI deste mês com vencimento para o dia *10/01/2026*.\n\nQuando estiverem disponíveis, basta realizar o pagamento para manter o suporte ativo normalmente.\nCaso precisem dos dados de pagamento ou de mais alguma informação, estamos a disposição!"
+            },
+            {
+              "name": "delayMessage",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b62a5b93-fa3d-4a0c-ad5e-3bf54135297c",
+      "name": "Z-API",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        0
+      ],
+      "id": "81e9d1f5-2920-428d-bece-8c30c7040868",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-01-10T18:49:38.049Z",
+      "createdAt": "2026-01-10T18:49:38.049Z",
+      "role": "workflow:owner",
+      "workflowId": "ZDD4fRNsW1FkZTZu",
+      "projectId": "O2voI4XYg26wWumH"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-01-10T19:02:36.000Z",
+  "versionId": "d05a2c1b-b894-42a1-94e7-d238c0125980"
+}
