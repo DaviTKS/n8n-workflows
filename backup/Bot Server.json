@@ -173,7 +173,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://192.168.0.159:2208/execute",
+        "url": "http://192.168.0.173:2208/execute",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -592,6 +592,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-05T18:55:06.000Z",
-  "versionId": "c55f2a98-307a-4f7c-a5e5-fdea5fecaf5b"
+  "updatedAt": "2026-02-04T15:56:00.000Z",
+  "versionId": "2e319a52-67c5-437b-8462-33d6eb881773"
 }
