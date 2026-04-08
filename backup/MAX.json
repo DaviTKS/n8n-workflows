@@ -194,6 +194,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Horário1",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -1092,6 +1099,28 @@
           }
         ]
       ]
+    },
+    "Horário1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Z-API2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-08-02T01:36:18.113Z",
@@ -1513,6 +1542,29 @@
                 ],
                 "combinator": "and"
               }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f158cab1-40d3-46de-b068-ebb6fad28ea1",
+                    "leftValue": "={{ $json.body.phone }}",
+                    "rightValue": "120363426783130323-group",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
             }
           ]
         },
@@ -1525,7 +1577,7 @@
       "typeVersion": 3.2,
       "position": [
         -10288,
-        128
+        192
       ],
       "id": "bab218f7-c7fb-45f7-8201-dbe5d55c2ec6",
       "name": "Que Grp?",
@@ -3860,8 +3912,8 @@
     {
       "parameters": {
         "content": "## Starter para grupos internos",
-        "height": 568,
-        "width": 720,
+        "height": 760,
+        "width": 944,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -4249,6 +4301,116 @@
           "name": "Redis account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0532fcca-a591-4500-88f6-5d12061c0395",
+              "leftValue": "={{ $('Webhook').item.json.body.chatName }}",
+              "rightValue": "Finanças",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "aada36c3-489b-4aad-ae4a-2df9e6a06d3e",
+              "leftValue": "={{ $json.body.fromMe }}",
+              "rightValue": false,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -10064,
+        496
+      ],
+      "id": "a9430c9c-97ae-476e-be8c-fc7f989183e7",
+      "name": "Horário1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://cashin-production.up.railway.app/webhook",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.phone }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $('Webhook').item.json.body.senderName }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $('Webhook').item.json.body.text.message }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -9856,
+        496
+      ],
+      "id": "165a9e6d-26ec-4455-81ab-5abdc57b1587",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/modify-chat",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.phone }}"
+            },
+            {
+              "name": "action",
+              "value": "=clear"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -9648,
+        496
+      ],
+      "id": "0f51cbbe-b9ea-4ba0-be08-ba16541c10ab",
+      "name": "Z-API2",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Gx5XA9roLVkNIKBs",
+          "name": "Z-API"
+        }
+      }
     }
   ],
   "pinData": {
@@ -4257,20 +4419,20 @@
         "json": {
           "headers": {
             "host": "auto.kadovesh.com",
-            "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/111.0 Mobile/15E148 Safari/605.1.15",
-            "content-length": "1152",
+            "user-agent": "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:111.0) Gecko/20100101 Firefox/111.0",
+            "content-length": "788",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare; loops=1",
-            "cf-connecting-ip": "137.131.203.164",
+            "cf-connecting-ip": "144.22.238.203",
             "cf-ipcountry": "BR",
-            "cf-ray": "9901b17fed07016c-GRU",
+            "cf-ray": "9e8b33ff9bacda2d-GRU",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "cf-warp-tag-id": "9bb28596-847b-4baa-9ac1-10de60354c08",
+            "cf-warp-tag-id": "36a4d58d-d76f-4482-95be-3d26740f2c2a",
             "connection": "keep-alive",
             "content-type": "application/json; charset=utf-8",
             "origin": "https://api.z-api.io",
             "server": "Z-API",
-            "x-forwarded-for": "137.131.203.164",
+            "x-forwarded-for": "144.22.238.203",
             "x-forwarded-proto": "https",
             "z-api-token": "771E4BE1F789AB112E4831D6"
           },
@@ -4278,36 +4440,30 @@
           "query": {},
           "body": {
             "isStatusReply": false,
-            "chatLid": "90164332388418@lid",
+            "chatLid": null,
             "connectedPhone": "551239313000",
             "waitingMessage": false,
             "isEdit": false,
-            "isGroup": false,
+            "isGroup": true,
             "isNewsletter": false,
             "instanceId": "3E29DB01364090EFDC8006E9A5181015",
-            "messageId": "3B8989766AD3E6999F3F",
-            "phone": "5512982113000",
+            "messageId": "3AE54115B77958A0DD8E",
+            "phone": "120363426783130323-group",
             "fromMe": false,
-            "momment": 1760723999001,
+            "momment": 1775587644000,
             "status": "RECEIVED",
-            "chatName": "Davi Moraes 25611",
-            "senderPhoto": null,
+            "chatName": "Teste Finanças",
+            "senderPhoto": "https://pps.whatsapp.net/v/t61.24694-24/484873030_9628712110531731_5581350847859461709_n.jpg?ccb=11-4&oh=01_Q5Aa4QGhayym-q5uuTUR9kiNNE1ynKt9yq7mNjGf_wZFDSZW8A&oe=69E26461&_nc_sid=5e03e0&_nc_cat=102",
             "senderName": "Davi Moraes",
-            "photo": "https://pps.whatsapp.net/v/t61.24694-24/484873030_9628712110531731_5581350847859461709_n.jpg?ccb=11-4&oh=01_Q5Aa2wEWsJF2jg2N1QLmCf11ZQxrG5UVcWksTb1zNVGuUc7Viw&oe=68FFA261&_nc_sid=5e03e0&_nc_cat=102",
+            "photo": null,
             "broadcast": false,
+            "participantPhone": "5512982113000",
             "participantLid": null,
-            "messageExpirationSeconds": 0,
-            "forwarded": true,
+            "forwarded": false,
             "type": "ReceivedCallback",
             "fromApi": false,
-            "image": {
-              "imageUrl": "https://f004.backblazeb2.com/file/temp-file-download/instances/3E29DB01364090EFDC8006E9A5181015/3B8989766AD3E6999F3F/V7xi6XKBgm8LKBLkxn1JNQ==.jpg",
-              "thumbnailUrl": "https://f004.backblazeb2.com/file/temp-file-download/instances/3E29DB01364090EFDC8006E9A5181015/3B8989766AD3E6999F3F/V7xi6XKBgm8LKBLkxn1JNQ==.jpg",
-              "caption": "",
-              "mimeType": "image/jpeg",
-              "viewOnce": false,
-              "width": 663,
-              "height": 1600
+            "text": {
+              "message": "Cartão de crédito 1805,96"
             }
           },
           "webhookUrl": "https://auto.kadovesh.com/webhook/recebetext1",
@@ -4333,6 +4489,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-12-30T18:57:08.000Z",
-  "versionId": "0d1b7e3b-cb3f-48a1-ac62-dd88ac3b9410"
+  "updatedAt": "2026-04-07T18:50:45.000Z",
+  "versionId": "4ed95416-3560-4e37-a085-d09c6285f243"
 }
