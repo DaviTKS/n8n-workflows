@@ -158,7 +158,13 @@
     },
     "Mensagem Lead": {
       "main": [
-        []
+        [
+          {
+            "node": "IF FromMe",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Grp ou Msg": {
@@ -997,6 +1003,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Get Buffer 1",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -1665,8 +1678,7 @@
         -480
       ],
       "id": "6d360c63-89e1-4737-a39e-d151a85fdb15",
-      "name": "Filtro Davi",
-      "disabled": true
+      "name": "Filtro Davi"
     },
     {
       "parameters": {
@@ -1734,9 +1746,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-5-mini",
+          "value": "gpt-5.4-mini",
           "mode": "list",
-          "cachedResultName": "gpt-5-mini"
+          "cachedResultName": "gpt-5.4-mini"
         },
         "options": {
           "responseFormat": "text"
@@ -4489,6 +4501,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-04-07T18:50:45.000Z",
-  "versionId": "4ed95416-3560-4e37-a085-d09c6285f243"
+  "updatedAt": "2026-04-30T23:20:33.000Z",
+  "versionId": "2c8a34de-c219-4fcb-bf6b-8220d400ace9"
 }
