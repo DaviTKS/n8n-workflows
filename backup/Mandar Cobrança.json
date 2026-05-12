@@ -34,7 +34,7 @@
             },
             {
               "name": "message",
-              "value": "=*#Max - Atendimento virtual*\n\nBoa tarde pessoal! \nEsta é uma mensagem automática referente à mensalidade do suporte de TI deste mês com vencimento para o dia *10/04/2026*.\n\nQuando estiverem disponíveis, basta realizar o pagamento para manter o suporte ativo normalmente.\nCaso precisem dos dados de pagamento ou de mais alguma informação, estamos a disposição!"
+              "value": "=*#Max - Atendimento virtual*\n\nBoa tarde pessoal! \nEsta é uma mensagem automática referente à mensalidade do suporte de TI deste mês com vencimento para o dia *10/05/2026*.\n\nO pagamento está vencido a 1 dia(s).\n\nQuando estiverem disponíveis, basta realizar o pagamento para manter o suporte ativo normalmente.\nCaso precisem dos dados de pagamento ou de mais alguma informação, estamos a disposição!"
             },
             {
               "name": "delayMessage",
@@ -90,6 +90,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2026-04-10T14:44:00.000Z",
-  "versionId": "fdf7baf7-0429-4fb4-a3be-46efb1259efb"
+  "updatedAt": "2026-05-11T14:58:06.000Z",
+  "versionId": "e58bd5b0-e10d-46d7-bd3a-d1f2107a0bf3"
 }
