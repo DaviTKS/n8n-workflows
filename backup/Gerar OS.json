@@ -1856,7 +1856,7 @@
             {
               "id": "2deb0381-7106-474d-87eb-e36ddf65be29",
               "name": "local",
-              "value": "H13",
+              "value": "C1",
               "type": "string"
             }
           ]
@@ -3171,23 +3171,23 @@
         "json": {
           "headers": {
             "host": "auto.kadovesh.com",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
-            "content-length": "309",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+            "content-length": "214",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare; loops=1",
             "cf-connecting-ip": "2804:14d:6885:42f0:644e:c0eb:e287:1bed",
             "cf-ipcountry": "BR",
-            "cf-ray": "9c30170e5a36f2b4-GRU",
+            "cf-ray": "a2ab5c2bffd72829-GRU",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "cf-warp-tag-id": "e41232d6-f6dd-43f2-884e-fdf47f045e0f",
+            "cf-warp-tag-id": "f1eeb1b6-f02d-438d-86d1-a111831cbe15",
             "connection": "keep-alive",
             "content-type": "application/json",
             "origin": "http://192.168.0.173",
             "priority": "u=1, i",
             "referer": "http://192.168.0.173/",
-            "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+            "sec-ch-ua": "\"Not=A?Brand\";v=\"99\", \"Google Chrome\";v=\"151\", \"Chromium\";v=\"151\"",
             "sec-ch-ua-mobile": "?0",
             "sec-ch-ua-platform": "\"Windows\"",
             "sec-fetch-dest": "empty",
@@ -3199,20 +3199,16 @@
           "params": {},
           "query": {},
           "body": {
-            "reprinting_only": true,
-            "os_number": "26031",
-            "telefone": "(12) 99105-8840",
-            "nome": "Luis",
-            "sobrenome": "Pini",
-            "aparelho": "Pc",
-            "marca": "INTEL",
-            "modelo": "12700KF",
-            "defeito": "Liga Temperatura Alta - 88~100",
-            "observacoes": "Verificar Cooler",
-            "servicos": "",
-            "pecas": "",
-            "valor_total": 0,
-            "forma_pagamento": "Não informado"
+            "reprinting": false,
+            "os_number": "26453",
+            "telefone": "(12) 98211-3000",
+            "nome": "Davi",
+            "sobrenome": "Moraes",
+            "aparelho": "Televisor",
+            "marca": "WD",
+            "modelo": "1212",
+            "defeito": "Teste de Defeito",
+            "observacoes": "Teste de Obs"
           },
           "webhookUrl": "https://auto.kadovesh.com/webhook/form1",
           "executionMode": "production"
@@ -3237,6 +3233,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2026-01-24T14:08:29.000Z",
-  "versionId": "dd391b7c-6618-440a-bf9b-69d498c39394"
+  "updatedAt": "2026-08-14T00:07:14.000Z",
+  "versionId": "677f7616-b27b-4b92-afd2-14d8269e22a2"
 }
