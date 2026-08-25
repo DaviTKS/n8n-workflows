@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {},
   "createdAt": "2025-11-27T18:20:31.292Z",
   "id": "Cj1d2oSUn4HVw5pw",
@@ -8,6 +10,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "My workflow 6",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
