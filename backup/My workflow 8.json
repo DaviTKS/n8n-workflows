@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "When chat message received": {
       "main": [
@@ -45,6 +47,7 @@
   "isArchived": false,
   "meta": null,
   "name": "My workflow 8",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
