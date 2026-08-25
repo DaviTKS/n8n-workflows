@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Stop Interview?": {
       "main": [
@@ -329,6 +331,7 @@
   "isArchived": false,
   "meta": null,
   "name": "Revisão",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
