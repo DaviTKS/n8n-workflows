@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -93,6 +95,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Send Message",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
