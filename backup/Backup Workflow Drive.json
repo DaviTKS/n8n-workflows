@@ -1,5 +1,7 @@
 {
-  "active": true,
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "If1": {
       "main": [
@@ -200,6 +202,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Backup Workflow Drive",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
