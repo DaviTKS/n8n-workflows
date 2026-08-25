@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "chat_message_received": {
       "main": [
@@ -142,6 +144,7 @@
   "isArchived": true,
   "meta": null,
   "name": "My workflow 4",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
