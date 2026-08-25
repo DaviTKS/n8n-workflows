@@ -1,5 +1,7 @@
 {
-  "active": true,
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -108,6 +110,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "IP",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
