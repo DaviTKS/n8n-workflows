@@ -1,5 +1,7 @@
 {
   "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "AI Agent": {
       "main": [
@@ -964,6 +966,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Max Data Group",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
