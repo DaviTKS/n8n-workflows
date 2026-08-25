@@ -1,11 +1,14 @@
 {
-  "active": true,
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {},
   "createdAt": "2026-04-07T03:40:28.732Z",
   "id": "3uGas6ERVeKOMw4k",
   "isArchived": false,
   "meta": null,
   "name": "My workflow 9",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
