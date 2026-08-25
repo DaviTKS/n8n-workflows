@@ -1,5 +1,7 @@
 {
-  "active": true,
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -169,6 +171,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Bot Server",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
