@@ -1,5 +1,325 @@
 {
   "active": false,
+  "activeVersion": {
+    "updatedAt": "2025-11-28T19:37:48.928Z",
+    "createdAt": "2025-11-28T19:37:48.928Z",
+    "versionId": "2d2293bb-6c15-4450-9c41-edfe5d91f15f",
+    "workflowId": "2Zpk5F0YQDPeC5VM",
+    "nodes": [
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.z-api.io/instances/3E29DB01364090EFDC8006E9A5181015/token/771E4BE1F789AB112E4831D6/send-text",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "phone",
+                "value": "={{ $('Start').item.json.body.phone }}"
+              },
+              {
+                "name": "message",
+                "value": "={{ $json.output }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1024,
+          -64
+        ],
+        "id": "ee0c4250-5204-4387-9370-36cd4ce00598",
+        "name": "HTTP Request",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "Gx5XA9roLVkNIKBs",
+            "name": "Z-API"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "={{ $json.body.text.message }}",
+          "options": {
+            "systemMessage": "=\n##PERSONA:\nVocê é um assistente digital EXTREMAMENTE PROFISSIONAL, que não oferece ajuda ou alteraçoes sem pedido explicito do usuario, você é especializado na gestão e manutenção do banco de dados de produtos e serviços da Leão de Judá Assistência Técnica, localizada no bairro Jardim das Indústrias. A loja atua no ramo de informática e manutenção técnica, oferecendo consertos e vendas de peças para notebooks, computadores, monitores e micro-ondas.\n\nSeu papel inclui:\n\nEdição e Atualização do Banco de Dados: Corrigir, padronizar e atualizar valores, descrições e categorias de produtos e serviços.\nCálculos e Análises: Realizar cálculos de lucro, margem, descontos, projeções de venda, entre outros, com base nos dados fornecidos.\nOrientação Técnica e Comercial: Auxiliar os donos da loja em decisões estratégicas e operacionais, respondendo dúvidas técnicas sobre produtos, precificação e boas práticas de organização do estoque e atendimento.\nPesquisa de Mercado: Quando necessário, sugerir faixas de preço ou padrões de mercado para comparação, com base no segmento e tipo de produto.\nRespostas Assertivas: Ser direto, objetivo e claro, priorizando respostas úteis e contextualizadas. Se a informação não estiver disponível, sugira o que pode ser feito para obtê-la.\nLimitações:\n\nNão invente dados. Caso algum dado esteja ausente, solicite ou informe que não é possível concluir sem ele.\n\nVocê também é especialista em criar tabela para o usuario caso ele precise.\n\n##PERSONA:\nNÃO PERGUNTE se o usuário precisa de algo mais, seja suscinto e direto apenas na informação necessária.\nNão oferece mais informações ou alteraçoes, espere explicitamente o pedido do usuário.\n\n##Formatação:\n-Não use asteriscos(*), exceto para negritar os topicos importantes e titulos/nomes de produtos\n\n\nUse a tool Get Many para puxar os dados, a tool Update para atualizar os dados e a tool Create para criar novas entradas\n"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.agent",
+        "typeVersion": 2,
+        "position": [
+          656,
+          -64
+        ],
+        "id": "fc94bdb9-bccc-485c-814e-2d9bc3bb8ca6",
+        "name": "AI Agent1"
+      },
+      {
+        "parameters": {
+          "tableId": "produtos",
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "=produto",
+                "fieldValue": "={{ $fromAI(\"produto\") }}"
+              },
+              {
+                "fieldId": "valor",
+                "fieldValue": "={{ $fromAI(\"valor\")}}"
+              },
+              {
+                "fieldId": "Categoria",
+                "fieldValue": "={{ $fromAI(\"categoria\") }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabaseTool",
+        "typeVersion": 1,
+        "position": [
+          1136,
+          128
+        ],
+        "id": "adcd313f-a90c-4f0d-b00b-49ee1a487d83",
+        "name": "Criar",
+        "credentials": {
+          "supabaseApi": {
+            "id": "r7qiHeLbj3sFTwB4",
+            "name": "Supabase account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "tableId": "produtos",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "produto",
+                "condition": "eq",
+                "keyValue": "={{ $fromAI(\"produto\") }}"
+              }
+            ]
+          },
+          "fieldsUi": {
+            "fieldValues": [
+              {
+                "fieldId": "produto",
+                "fieldValue": "={{ $fromAI(\"produto\") }}"
+              },
+              {
+                "fieldId": "valor",
+                "fieldValue": "={{ $fromAI(\"Valor\") }}"
+              },
+              {
+                "fieldId": "Categoria",
+                "fieldValue": "={{ $fromAI(\"categoria\") }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.supabaseTool",
+        "typeVersion": 1,
+        "position": [
+          1024,
+          128
+        ],
+        "id": "0b07274d-8457-48e7-ab2d-63dfc1a3d9ec",
+        "name": "Update",
+        "credentials": {
+          "supabaseApi": {
+            "id": "r7qiHeLbj3sFTwB4",
+            "name": "Supabase account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "getAll",
+          "tableId": "produtos"
+        },
+        "type": "n8n-nodes-base.supabaseTool",
+        "typeVersion": 1,
+        "position": [
+          896,
+          128
+        ],
+        "id": "04d5364d-02fc-4999-be98-f7ae74987783",
+        "name": "Get Many",
+        "credentials": {
+          "supabaseApi": {
+            "id": "r7qiHeLbj3sFTwB4",
+            "name": "Supabase account"
+          }
+        }
+      },
+      {
+        "parameters": {},
+        "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+        "typeVersion": 1,
+        "position": [
+          1264,
+          128
+        ],
+        "id": "4736aeab-2649-47a5-81bc-3b100f86349e",
+        "name": "Calculator"
+      },
+      {
+        "parameters": {
+          "sessionIdType": "customKey",
+          "sessionKey": "={{ $json.body.phone }}",
+          "contextWindowLength": 7
+        },
+        "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+        "typeVersion": 1.3,
+        "position": [
+          640,
+          176
+        ],
+        "id": "f59a5a2f-4057-4c29-8da3-adbb919e6f78",
+        "name": "Mem"
+      },
+      {
+        "parameters": {
+          "model": {
+            "__rl": true,
+            "mode": "list",
+            "value": "gpt-4o-mini"
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+        "typeVersion": 1.2,
+        "position": [
+          528,
+          176
+        ],
+        "id": "01df230b-12d7-4744-a583-5801449575c6",
+        "name": "LLM",
+        "credentials": {
+          "openAiApi": {
+            "id": "sB9sHBeXxAJCJTEo",
+            "name": "OpenAi account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "inputSource": "passthrough"
+        },
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          256,
+          -64
+        ],
+        "id": "aa677ced-86ac-43cf-853d-d28174ee69af",
+        "name": "Start"
+      }
+    ],
+    "connections": {
+      "AI Agent1": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Criar": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Many": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Calculator": {
+        "ai_tool": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_tool",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Mem": {
+        "ai_memory": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_memory",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "LLM": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "AI Agent1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "system migration",
+    "name": null,
+    "description": null,
+    "autosaved": false
+  },
+  "activeVersionId": "2d2293bb-6c15-4450-9c41-edfe5d91f15f",
   "connections": {
     "AI Agent1": {
       "main": [
@@ -95,6 +415,7 @@
   "isArchived": false,
   "meta": null,
   "name": "Produtos",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
