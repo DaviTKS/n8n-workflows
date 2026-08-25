@@ -1,5 +1,7 @@
 {
-  "active": true,
+  "active": false,
+  "activeVersion": null,
+  "activeVersionId": null,
   "connections": {
     "Webhook": {
       "main": [
@@ -149,6 +151,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "Envio PIX/Orçamento",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
